@@ -1,3 +1,6 @@
+#ifndef __DOMINIOS__HPP__
+#define __DOMINIOS__HPP__
+
 class Nome {
 
     private:
@@ -116,3 +119,5 @@ class Classe {
 //Como sugestão para acrescentar ao sistema: Classes para identificar tipos de palavras, segundo um determinado valor. 
 
 // Indicar material a ser estudado para a manipulacao de strings
+
+#endif
