@@ -1,0 +1,14 @@
+Tarefas a serem realizadas:
+-Averiguar os warnings relativos ao throw, acredito que podem ser devido a declaração da função com void;
+-Resolver e decidir um padrão para não gerar "números mágicos"(soltos) ao longo do código;
+-Testar o funcionamento dos métodos de validação criados para nome, sobrenome e telefone;
+-Criar métodos de validação para: Endereço, data, endereço de correio eletrônico, senha, texto de definição, idioma,
+classe de termo;
+-Decidir acerca do padrão linguístico das variáveis (opino que é melhor adotar o português);
+-Averiguar a possibilidade de criar funções ou classes para código repetido(como proceder nesses casos?);
+
+
+Tarefas realizadas:
+-Gerado esqueleto dos módulos;
+-Construído esqueleto das classes do tipo Domínio;
+-Iniciada a construção dos métodos de validação;
