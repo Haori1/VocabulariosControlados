@@ -12,6 +12,10 @@
 #define TAM_MAX_ENDERECO 21;
 #define TAM_MAX_DATA 11;
 #define TAM_MAX_SENHA 9;
+#define POS_ESPA_TELEFONE 2;
+#define POS_TRACO_TELEFONE 8;
+#define TAM_MAX_ESPAC_CONSEC 2;
+
 
 
 using namespace std;
@@ -42,7 +46,7 @@ class Sobrenome{
 
 };
 
-class Telefone{
+class Telefone{ 
     private:
         string telefone;
         void validation (string) throw (invalid_argument);

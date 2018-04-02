@@ -10,21 +10,15 @@ using namespace std;
 
 // Vamos deixar os métodos das classes, todos juntos, separando por comentário.
 void Nome::validation(string nome) throw (invalid_argument){
-    int tamanhoVetor = 0;
 
-    for(int i = 0; i <= TAM_MAX_NOME; i++) { //o problema dos números mágicos é capaz de persisitir aqui.
-        if(nome[i] == '\n') {
-            tamanhoVetor = i;
-            break;
-        }
-    } // Conta a quantidade de caracteres inseridos
+    int tamanhoVetor = nome.size();//precisa de alguma biblioteca esse comando?
 
     if(tamanhoVetor > TAM_MAX_NOME) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
     if(tamanhoVetor == 0) {
-        throw invalid_argument("Nao foi inserido nenhum caractere");
+        throw invalid_argument("Nao foi inserido nenhum caractere"); //o prompt permite que não sejam inseridos caracteres?
     }
 
     if(nome[0] < 'A' || nome[0] > 'Z'){ 
@@ -43,16 +37,10 @@ void Nome::validation(string nome) throw (invalid_argument){
 }
 
 void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
-    int tamanhoVetor = 0;
 
-    for(int i = 0; i <= TAM_MAX_NOME; i++) { //o problema dos números mágicos é capaz de persisitir aqui.
-        if(sobrenome[i] == '\n') {
-            tamanhoVetor = i;
-            break;
-        }
-    } // Conta a quantidade de caracteres inseridos
+    int tamanhoVetor = sobrenome.size();
 
-    if(tamanhoVetor > TAM_MAX_NOME) {
+    if(tamanhoVetor > TAM_MAX_SOBRENOME) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
@@ -74,17 +62,10 @@ void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
 }
 
 void Telefone::validation(string telefone) throw(invalid_argument) {
-    int tamanhoVetor = 0;
 
-    //Seria possível transformar esse código repetido de contar o tamanho do vetor e esses erros gerais, em uma função.
-    for(int i = 0; i <= TAM_MAX_TELEFONE; i++) { //o problema dos números mágicos é capaz de persisitir aqui.
-        if(telefone[i] == '\n') {
-            tamanhoVetor = i;
-            break;
-        }
-    } // Conta a quantidade de caracteres inseridos
+    int tamanhoVetor = telefone.size();
 
-    if(tamanhoVetor > TAM_MAX_NOME) {
+    if(tamanhoVetor > TAM_MAX_TELEFONE) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
@@ -94,25 +75,55 @@ void Telefone::validation(string telefone) throw(invalid_argument) {
 
     for(int i = 0; i < tamanhoVetor; i++){
 
-        if(i == 2 || i == 8) {
+        if(i == POS_ESPA_TELEFONE || i == POS_TRACO_TELEFONE) {
             continue;
         }
 
-        if(telefone[i] < '0' || telefone[i] > '9') {
+        //Utiliza tabela ascii:
+        if(telefone[i] < '0' || telefone[i] > '9') { //A tabela ascii é considerada número mágico?
             throw invalid_argument("Nao foi inserido nenhum caractere");
             break;
         }
     }
 
-    if(telefone[2] != ' ') {
+    if(telefone[POS_ESPA_TELEFONE] != ' ') {
         throw invalid_argument("Fortamo Invalido. Insira o formato correto: AA BBBBB-BBBB");
     }
 
-    if(telefone[8] != '-') {
+    if(telefone[POS_TRACO_TELEFONE] != '-') {
         throw invalid_argument("Fortamo Invalido. Insira o formato correto: AA BBBBB-BBBB");
     }
 
 
 } // no formato AA numero, há uma espaço entre o AA e o número, ou não?
+
+void Endereco::validation(string endereco) throw(invalid_argument) {
+
+    int contaEspacos = 0;
+    int tamanhoVetor = endereco.size();
+
+      if(tamanhoVetor > TAM_MAX_ENDERECO) {
+        throw invalid_argument("Quantidade maxima de caracteres excedida");
+     }
+
+    if(endereco[0] == ' ') {
+        throw invalid_argument("O primeiro caractere nao pode ser um espaco");
+    }
+
+    if(endereco[TAM_MAX_ENDERECO - 1] == ' ') {
+        throw invalid_argument("O ultimo caractere nao pode ser um espaco");
+    }
+
+    for(int i = 1; i < TAM_MAX_ENDERECO; i++) { //começa do 1, pois o primeiro não pode ser espaço
+        if(endereco[i] == ' ') {
+            contaEspacos++;
+        }
+
+        if(contaEspacos == TAM_MAX_ESPAC_CONSEC) {
+            throw invalid_argument("Nao podem haver dois espacos consecutivos no endereco");
+        } //Chamar o throw dentro de um laço for interrompe o for e o método de exceção? 
+    }
+
+}
 
 #endif
