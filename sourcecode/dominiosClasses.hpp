@@ -3,28 +3,27 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 #include <stdexcept>
 
-#define TAM_MAX_NOME 21; // O professor havia falado para tomar cuidado com números mágicos
-                          //estes não seriam? 
-#define TAM_MAX_SOBRENOME 21;
-#define TAM_MAX_TELEFONE 14;
-#define TAM_MAX_ENDERECO 21;
-#define TAM_MAX_DATA 11;
-#define TAM_MAX_SENHA 9;
-#define POS_ESPA_TELEFONE 2;
-#define POS_TRACO_TELEFONE 8;
-#define TAM_MAX_ESPAC_CONSEC 2;
-
-
+#define TAM_MAX_NOME 20
+#define TAM_MAX_SOBRENOME 20
+#define TAM_MAX_TELEFONE 13
+#define TAM_MAX_ENDERECO 20
+#define TAM_MAX_DATA 10
+#define TAM_MAX_SENHA 8
+#define POS_ESPA_TELEFONE 2
+#define POS_TRACO_TELEFONE 8
+#define TAM_MAX_ESPAC_CONSEC 2
+#define STRING_VAZIA 0
 
 using namespace std;
 
 class Nome{
     private:
         string nome;
-        void validation (string) throw (invalid_argument); //Sugiro utilizar "argumento_invalido", devido a nossa nacionalidade
-                //Os warnings não são provenientes da declaração da função como um void? Ela está retornando um valor...
+        void validation (string) throw (invalid_argument);
+
     public:
         void setNome (string nome) throw (invalid_argument);
         string getNome(){

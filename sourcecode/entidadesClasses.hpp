@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "dominios.hpp"
+#include "dominiosClasses.hpp"
 
 using namespace std;
 

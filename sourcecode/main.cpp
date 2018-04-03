@@ -1,7 +1,9 @@
-include <dominiosClasses.h>
+#include <iostream>
+#include <string>
+#include "dominiosClasses.hpp"
 
 int main(void) {
-    idioma a; 
-
+    string a; 
+    cin >> a;
     return 0;
 }

@@ -1,23 +1,22 @@
-#ifndef ___DOMINIOS_CPP__
-#define ___DOMINIOS_CPP__
-
-#include "dominios.hpp"
 #include <iostream>
 #include <string>
+#include <exception>
+#include <stdexcept>
+#include "dominiosClasses.hpp"
 
 using namespace std;
 
+/*---------------------------------------------------------------------------------------------------------*/
 
-// Vamos deixar os métodos das classes, todos juntos, separando por comentário.
 void Nome::validation(string nome) throw (invalid_argument){
 
-    int tamanhoVetor = nome.size();//precisa de alguma biblioteca esse comando?
+    int tamanhoVetor = nome.size();
 
     if(tamanhoVetor > TAM_MAX_NOME) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanhoVetor == 0) {
+    if(tamanhoVetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere"); //o prompt permite que não sejam inseridos caracteres?
     }
 
@@ -34,7 +33,15 @@ void Nome::validation(string nome) throw (invalid_argument){
         //nos restantes caracteres de nome.
 
     }
+
+    for(int i = 0; i < tamanhoVetor; i++){
+        if(nome[i] >= '0' && nome[i] <= '9'){
+            throw invalid_argument("Nao é possível ter numeros no nome");
+        }
+    }
 }
+
+/*---------------------------------------------------------------------------------------------------------*/
 
 void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
 
@@ -44,7 +51,7 @@ void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanhoVetor == 0) {
+    if(tamanhoVetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
@@ -61,7 +68,9 @@ void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
     }
 }
 
-void Telefone::validation(string telefone) throw(invalid_argument) {
+/*---------------------------------------------------------------------------------------------------------*/
+
+void Telefone::validation(string telefone) throw (invalid_argument) {
 
     int tamanhoVetor = telefone.size();
 
@@ -69,7 +78,7 @@ void Telefone::validation(string telefone) throw(invalid_argument) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanhoVetor == 0) { //existem aqui muitos números mágicos, como podemos resolver o problema?
+    if(tamanhoVetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
@@ -97,7 +106,9 @@ void Telefone::validation(string telefone) throw(invalid_argument) {
 
 } // no formato AA numero, há uma espaço entre o AA e o número, ou não?
 
-void Endereco::validation(string endereco) throw(invalid_argument) {
+/*---------------------------------------------------------------------------------------------------------*/
+
+void Endereco::validation(string endereco) throw (invalid_argument) {
 
     int contaEspacos = 0;
     int tamanhoVetor = endereco.size();
@@ -126,4 +137,13 @@ void Endereco::validation(string endereco) throw(invalid_argument) {
 
 }
 
-#endif
+/*---------------------------------------------------------------------------------------------------------*/
+
+void Data::validation(string data){
+    int tam_string = data.size();
+
+    if(tam_string > TAM_MAX_DATA){
+        throw invalid_argument("Tamanho maximo excedido");
+    }
+
+}
