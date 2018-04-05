@@ -139,11 +139,11 @@ void Endereco::validation(string endereco) throw (invalid_argument) {
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Data::validation(string data){
+void Data::validation(string data) throw(invalid_argument){
     int tam_string = data.size();
 
     if(tam_string > TAM_MAX_DATA){
         throw invalid_argument("Tamanho maximo excedido");
     }
 
-}
+} 
