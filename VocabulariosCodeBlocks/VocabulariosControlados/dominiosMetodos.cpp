@@ -151,20 +151,30 @@ void Endereco::setEndereco(string endereco) throw (invalid_argument) {
 
 void Data::validation(string data) throw(invalid_argument){
     int tamanhoVetor = data.size();
-    string dia = ""; /*Data == posicao 0 + 1*/ /* Posicao 2 e 5 == '/' */
-    string mes = ""; /*Mes == posicao 3 + 4*/
+    string dia = "";
+    string mes = "";
+    string ano = "";
     int dia_int;
+    int mes_int;
+    int ano_int;
     if(tamanhoVetor > TAM_MAX_DATA){
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if((data[2] != '/') && (data[5] != '/'))
+    if((data[2] != '/') && (data[5] != '/'))    /* Posicao 2 e 5 == '/' */
         throw invalid_argument("Formato Invalido. Insira o formato correto: DD/MM/AAAA");
 
-    for (int i = 0; i < tamanhoVetor; i++) {
-        if(i == 0 || i == 1)
-            dia += data[i];
+    for(int i = 0; i < tamanhoVetor; i++)
+        if((i != 2 && i != 5) && (data[i] < '0' || data[i] > '9'))
+            throw invalid_argument("Caractere invalido inserido");
 
+    for (int i = 0; i < tamanhoVetor; i++) {
+        if(i == 0 || i == 1)              /*Data == posicao 0 + 1*/
+            dia += data[i];
+        if(i == 3 || i == 4)              /*Mes == posicao 3 + 4*/
+            mes += data[i];
+        if(i == 6 || i == 7 || i == 8)    /*Ano == posicao 6 + 7 + 8*/
+            ano += data[i];
     }
 
 
