@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1523035290 source:c:\users\henri\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
+	<iostream>
+	<string>
+	"dominiosClasses.hpp"
+
+1523033433 c:\users\henri\vocabularioscodeblocks\vocabularioscontrolados\dominiosclasses.hpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1522557686 source:c:\users\henri\vocabularioscodeblocks\vocabularioscontrolados\entidadesmetodos.cpp
+
+1522557687 source:c:\users\henri\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
+
+1523035156 source:c:\users\henri\vocabularioscodeblocks\vocabularioscontrolados\dominiosmetodos.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominiosClasses.hpp"
+
