@@ -22,6 +22,7 @@ void Nome::validation(string nome) throw (invalid_argument){
 
     if(nome[0] < 'A' || nome[0] > 'Z'){
         throw invalid_argument("A primeira letra deve ser maiuscula.");
+
     } else {
 
         for(int i = 1; i < tamanhoVetor; i++) {
@@ -32,12 +33,6 @@ void Nome::validation(string nome) throw (invalid_argument){
         //obs: Nas especificações do trabalho não é informado se devemos considerar somente caracteres minusculos
         //nos restantes caracteres de nome.
 
-    }
-
-    for(int i = 0; i < tamanhoVetor; i++){
-        if(nome[i] >= '0' && nome[i] <= '9'){
-            throw invalid_argument("Nao é possível ter numeros no nome");
-        }
     }
 }
 
@@ -69,10 +64,13 @@ void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
                 throw invalid_argument("Caractere invalido inserido");
             }
         }
-
     }
 }
 
+void Sobrenome::setSobrenome(string sobrenome) throw (invalid_argument) {
+    validation(sobrenome);
+    this->sobrenome = sobrenome;
+}
 /*---------------------------------------------------------------------------------------------------------*/
 
 void Telefone::validation(string telefone) throw (invalid_argument) {
@@ -101,15 +99,18 @@ void Telefone::validation(string telefone) throw (invalid_argument) {
     }
 
     if(telefone[POS_ESPA_TELEFONE] != ' ') {
-        throw invalid_argument("Fortamo Invalido. Insira o formato correto: AA BBBBB-BBBB");
+        throw invalid_argument("Formato Invalido. Insira o formato correto: AA BBBBB-BBBB");
     }
 
     if(telefone[POS_TRACO_TELEFONE] != '-') {
-        throw invalid_argument("Fortamo Invalido. Insira o formato correto: AA BBBBB-BBBB");
+        throw invalid_argument("Formato Invalido. Insira o formato correto: AA BBBBB-BBBB");
     }
-
-
 } // no formato AA numero, há uma espaço entre o AA e o número, ou não?
+
+void Telefone::setTelefone(string telefone) throw (invalid_argument) {
+    validation(telefone);
+    this->telefone = telefone;
+}
 
 /*---------------------------------------------------------------------------------------------------------*/
 
@@ -139,16 +140,32 @@ void Endereco::validation(string endereco) throw (invalid_argument) {
             throw invalid_argument("Nao podem haver dois espacos consecutivos no endereco");
         } //Chamar o throw dentro de um laço for interrompe o for e o método de exceção?
     }
+}
 
+void Endereco::setEndereco(string endereco) throw (invalid_argument) {
+    validation(endereco);
+    this->endereco = endereco;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
 void Data::validation(string data) throw(invalid_argument){
-    int tam_string = data.size();
-
-    if(tam_string > TAM_MAX_DATA){
-        throw invalid_argument("Tamanho maximo excedido");
+    int tamanhoVetor = data.size();
+    string dia = ""; /*Data == posicao 0 + 1*/ /* Posicao 2 e 5 == '/' */
+    string mes = ""; /*Mes == posicao 3 + 4*/
+    int dia_int;
+    if(tamanhoVetor > TAM_MAX_DATA){
+        throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
+
+    if((data[2] != '/') && (data[5] != '/'))
+        throw invalid_argument("Formato Invalido. Insira o formato correto: DD/MM/AAAA");
+
+    for (int i = 0; i < tamanhoVetor; i++) {
+        if(i == 0 || i == 1)
+            dia += data[i];
+
+    }
+
 
 }

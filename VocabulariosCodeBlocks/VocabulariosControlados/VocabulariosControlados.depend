@@ -21,3 +21,38 @@
 	<stdexcept>
 	"dominiosClasses.hpp"
 
+1522557686 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidadesmetodos.cpp
+
+1523050789 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosmetodos.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominiosClasses.hpp"
+
+1523033433 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosclasses.hpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1523052299 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
+	"testes.hpp"
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1523053116 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
+	"dominiosClasses.hpp"
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1523052652 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
+	<iostream>
+	<string>
+	"dominiosClasses.hpp"
+	"testes.hpp"
+
