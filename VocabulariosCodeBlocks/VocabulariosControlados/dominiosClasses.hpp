@@ -16,6 +16,17 @@
 #define POS_TRACO_TELEFONE 8
 #define TAM_MAX_ESPAC_CONSEC 2
 #define STRING_VAZIA 0
+#define DIA_MAX 31
+#define DIA_MIN 1
+#define MES_MAX 12
+#define MES_MIN 1
+#define ANO_MIN 1900
+#define ANO_MAX 2099
+#define FEVEREIRO 2
+#define ABRIL 4
+#define JUNHO 6
+#define SETEMBRO 9
+#define NOVEMBRO 11
 
 using namespace std;
 
@@ -45,7 +56,7 @@ class Sobrenome{
 
 };
 
-class Telefone{ 
+class Telefone{
     private:
         string telefone;
         void validation (string) throw (invalid_argument);
@@ -133,7 +144,7 @@ class Classe_Termo{
     private:
         string classe_termo;
         void validation(string) throw (invalid_argument);
-    
+
     public:
         void setClasse_Termo (string classe_termo) throw (invalid_argument);
         string getClasse_Termo(){
