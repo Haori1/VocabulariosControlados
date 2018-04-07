@@ -198,7 +198,7 @@ void Data::validation(string data) throw (invalid_argument) {
 
     if( (bissexto == false && mes_int == FEVEREIRO && dia_int > 28) ||
         (bissexto == true && mes_int == FEVEREIRO && dia_int > 29) )    /*Mes 2 é fevereiro e fevereiro só pode ter 29 dias em anos bissextos*/
-        throw invalid_argument("O Mes de fevereiro possui ate 29 dias somente em anos bissextos");
+        throw invalid_argument("O Mes de fevereiro possui somente ate 29 dias em anos bissextos");
 
     if( (mes_int == ABRIL ||
          mes_int == JUNHO ||

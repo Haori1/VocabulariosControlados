@@ -4,11 +4,39 @@
 #include "testes.hpp"
 
 int main(void) {
-    TData data;
-    bool x = data.run();
-    if(x){
+    bool executou;
+
+    TNome nome;
+    executou = nome.run();
+    if(executou){
         cout << "SUCESSO" << endl;
     } else {
         cout << "FALHA" << endl;
     }
+
+    TSobrenome sobrenome;
+    executou = sobrenome.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
+    TTelefone telefone;
+    executou = telefone.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
+    TData data;
+    executou = data.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
+    return 0;
 }
