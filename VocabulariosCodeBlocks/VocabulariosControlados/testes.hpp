@@ -20,6 +20,15 @@ using namespace std;
 class TNome{
     private:
         Nome* nome;
+
+        //const static string Valor_Valido_Nome;
+        //const static string Valor_Invalido_Nome_1;
+        //const static string Valor_Invalido_Nome_2;
+        //const static string Valor_Invalido_Nome_3;
+        //const static string Valor_Invalido_Nome_4;
+        //const static int sucesso = true;
+        //const static int falha = false;
+
         bool estado;
         void setUp();
         void tearDown();
@@ -29,5 +38,11 @@ class TNome{
     public:
         bool run();
 };
+
+        //const string  TNome::Valor_Valido_Nome = "Joniscleuson";
+        //const string  TNome::Valor_Invalido_Nome_1 = "eaemermao";
+        //const string TNome::Valor_Invalido_Nome_2 = "23eoq";
+        //const string TNome::Valor_Invalido_Nome_3 = "Mas0qu3";
+        //const string TNome::Valor_Invalido_Nome_4 = "\0";
 
 #endif

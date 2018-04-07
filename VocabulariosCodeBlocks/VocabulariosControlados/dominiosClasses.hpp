@@ -6,7 +6,6 @@
 #include <exception>
 #include <stdexcept>
 
-
 using namespace std;
 
 class Nome{
@@ -78,6 +77,17 @@ class Data{
         string data;
         const static int TAM_MAX_DATA = 10;
         const static int STRING_VAZIA = 0;
+        const static int DIA_MAX = 31;
+        const static int DIA_MIN = 1;
+        const static int MES_MAX = 12;
+        const static int MES_MIN = 1;
+        const static int ANO_MIN = 1900;
+        const static int ANO_MAX = 2099;
+        const static int FEVEREIRO = 2;
+        const static int ABRIL = 4;
+        const static int JUNHO = 6;
+        const static int SETEMBRO = 9;
+        const static int NOVEMBRO = 11;
 
         void validation(string) throw (invalid_argument);
 
