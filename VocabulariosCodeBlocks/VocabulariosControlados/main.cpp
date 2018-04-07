@@ -4,12 +4,11 @@
 #include "testes.hpp"
 
 int main(void) {
-    TNome nome;
-    bool x = nome.run();
+    TData data;
+    bool x = data.run();
     if(x){
-        cout << "Sucesso" << endl;
+        cout << "SUCESSO" << endl;
     } else {
-        cout << "Falha" << endl;
+        cout << "FALHA" << endl;
     }
-    return 0;
 }

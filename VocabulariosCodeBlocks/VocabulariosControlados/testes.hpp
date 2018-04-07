@@ -7,27 +7,17 @@
 #include <exception>
 #include <stdexcept>
 
-#define Valor_Valido_Nome "Joniscleuson"
-#define Valor_Invalido_Nome_1 "eaemermao"
-#define Valor_Invalido_Nome_2 "23eoq"
-#define Valor_Invalido_Nome_3 "Mas0qu3"
-#define Valor_Invalido_Nome_4 "\0"
-#define sucesso true
-#define falha false
-
 using namespace std;
 
 class TNome{
     private:
         Nome* nome;
 
-        //const static string Valor_Valido_Nome;
-        //const static string Valor_Invalido_Nome_1;
-        //const static string Valor_Invalido_Nome_2;
-        //const static string Valor_Invalido_Nome_3;
-        //const static string Valor_Invalido_Nome_4;
-        //const static int sucesso = true;
-        //const static int falha = false;
+        static constexpr const char* Valor_Valido_Nome = "Joniscleuson";
+        static constexpr const char* Valor_Invalido_Nome_1 = "eaemermao";
+        static constexpr const char* Valor_Invalido_Nome_2 = "23eoq";
+        static constexpr const char* Valor_Invalido_Nome_3 = "Mas0qu3";
+        static constexpr const char* Valor_Invalido_Nome_4 = "\0";
 
         bool estado;
         void setUp();
@@ -36,13 +26,27 @@ class TNome{
         void casoFalha();
 
     public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
         bool run();
 };
 
-        //const string  TNome::Valor_Valido_Nome = "Joniscleuson";
-        //const string  TNome::Valor_Invalido_Nome_1 = "eaemermao";
-        //const string TNome::Valor_Invalido_Nome_2 = "23eoq";
-        //const string TNome::Valor_Invalido_Nome_3 = "Mas0qu3";
-        //const string TNome::Valor_Invalido_Nome_4 = "\0";
+class TData{
+    private:
+        Data* data;
 
+        static constexpr const char* Valor_Valido_Data = "11/03/1999";
+        static constexpr const char* Valor_Invalido_Data = "29/02/2018";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+};
 #endif
