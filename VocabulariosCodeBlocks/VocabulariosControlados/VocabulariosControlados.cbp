@@ -38,6 +38,7 @@
 		<Unit filename="entidadesMetodos.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="testes.cpp" />
+		<Unit filename="testes.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
