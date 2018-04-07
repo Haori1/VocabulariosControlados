@@ -35,7 +35,7 @@ void TNome::casoFalha(){
     } catch (invalid_argument) {
         return;
     }
-}
+} //Acredito que deve ser separado, pois o teste deve validar todos os casos propostos, e não somente um.
 
 bool TNome::run(){
     setUp();
