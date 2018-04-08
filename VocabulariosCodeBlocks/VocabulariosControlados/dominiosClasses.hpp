@@ -101,6 +101,9 @@ class Data{
 class Correio_Eletronico{
     private:
         string correio_eletronico;
+        const static int POS_INVALIDA = -1;
+        const static int STRING_VAZIA = 0;
+
         void validation(string) throw (invalid_argument);
 
     public:
@@ -128,6 +131,8 @@ class Senha{
 class Texto_Definicao{
     private:
         string texto_definicao;
+        const static int TAM_MAX_TEXTO = 30;
+
         void validation(string) throw (invalid_argument);
 
     public:

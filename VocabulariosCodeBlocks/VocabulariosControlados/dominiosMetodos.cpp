@@ -168,7 +168,7 @@ void Data::validation(string data) throw (invalid_argument) {
     if(data[2] != '/' || data[5] != '/')    /* Posicao 2 e 5 == '/' */
         throw invalid_argument("Formato Invalido. Insira o formato correto: DD/MM/AAAA");
 
-    for(int i = 0; i < tamanhoVetor; i++)
+    for (int i = 0; i < tamanhoVetor; i++)
         if((i != 2 && i != 5) && (data[i] < '0' || data[i] > '9'))
             throw invalid_argument("Caractere invalido inserido");
 
@@ -181,7 +181,7 @@ void Data::validation(string data) throw (invalid_argument) {
             ano += data[i];
     }
 
-    dia_int = stoi(dia);
+    dia_int = stoi(dia);    /*stoi() passa de string para inteiro*/
     mes_int = stoi(mes);
     ano_int = stoi(ano);
 
@@ -200,9 +200,9 @@ void Data::validation(string data) throw (invalid_argument) {
         (bissexto == true && mes_int == FEVEREIRO && dia_int > 29) )    /*Mes 2 é fevereiro e fevereiro só pode ter 29 dias em anos bissextos*/
         throw invalid_argument("O Mes de fevereiro possui somente ate 29 dias em anos bissextos");
 
-    if( (mes_int == ABRIL ||
-         mes_int == JUNHO ||
-         mes_int == SETEMBRO ||
+    if( (mes_int == ABRIL     ||
+         mes_int == JUNHO     ||
+         mes_int == SETEMBRO  ||
          mes_int == NOVEMBRO) &&
          dia_int > 30)
         throw invalid_argument("Os meses de Abril, Junho, Setembro e Novembro possuem ate 30 dias");
@@ -212,4 +212,96 @@ void Data::setData(string data) throw (invalid_argument) {
     validation(data);
     this->data = data;
 }
+
+/*---------------------------------------------------------------------------------------------------------*/
+
+void Correio_Eletronico::validation(string correio_eletronico) throw (invalid_argument) {
+    int tamanhoVetor = correio_eletronico.size();
+    int pos = POS_INVALIDA;
+    string local = "";
+    string dominio = "";
+
+    if (tamanhoVetor == STRING_VAZIA) {
+        throw invalid_argument("Nao foi inserido nenhum caractere");
+    }
+
+    for (int i = 0; i < tamanhoVetor; i++){
+        if(correio_eletronico[i] != '@')        /*Pega a parte local do email*/
+            local += correio_eletronico[i];
+
+        if(correio_eletronico[i] == '@'){       /*Salva a posição do domínio*/
+            pos = i + 1;
+            break;
+        }
+    }
+
+    if(pos == POS_INVALIDA) /*Se durante o percorrimento da string não for encontrado o caractere '@' a pos fica com POS_INVALIDA*/
+        throw invalid_argument("Formato Invalido. O email deve conter o caractere '@'");
+
+    for (int i = pos; i < tamanhoVetor; i++){
+        if(correio_eletronico[i] == '@'){
+            throw invalid_argument("Formato Invalido. O email não pode haver mais de um caracter '@'");
+        } else {
+            dominio += correio_eletronico[i];   /*Pega a parte do dominio do email*/
+        }
+    }
+
+    if(correio_eletronico[0] == '.' || correio_eletronico[tamanhoVetor - 1] == '.')
+        throw invalid_argument("Nao pode haver o caracter '.' na primeira ou ultima posicao do email");
+    if(correio_eletronico[0] == '-' || correio_eletronico[tamanhoVetor - 1] == '-')
+        throw invalid_argument("Nao pode haver o caracter '-' na primeira ou ultima do email");
+
+    /*Verificacao local*/
+    int tamanhoLocal = local.size();
+    for (int i = 0; i < tamanhoLocal; i++){
+        if((local[i] >= 'A' && local[i] <= 'Z')      ||
+           (local[i] >= 'a' && local[i] <= 'z')      ||
+           (local[i] >= '0' && local[i] <= '9')      ||
+            local[i] == '!' || local[i] == '#'       ||
+            local[i] == '$' || local[i] == '%'       ||
+            local[i] == '&' || local[i] == (char) 39 ||         /*O char 39 na tabela ascii é o caracter apostrofo*/
+            local[i] == '*' || local[i] == '+'       ||
+            local[i] == '-' || local[i] == '/'       ||
+            local[i] == '=' || local[i] == '?'       ||
+            local[i] == '^' || local[i] == '_'       ||
+            local[i] == '`' || local[i] == '{'       ||
+            local[i] == '|' || local[i] == '}'       ||
+            local[i] == '~' || local[i] == ';'       ||
+            local[i] == '.'){
+                continue;
+            } else {
+                throw invalid_argument("Caractere invalido inserido na parte local do email");
+            }
+    }
+
+    /*Verificacao dominio*/
+    int tamanhoDominio = dominio.size();
+    bool letra = false;
+    for (int i = 0; i < tamanhoDominio; i++){
+        if((dominio[i] >= 'A' && dominio[i] <= 'Z') ||  /*O dominio do email so pode conter letras, numeros, o caracter '.' e o caracter '-'*/
+           (dominio[i] >= 'a' && dominio[i] <= 'z') ||
+           (dominio[i] >= '0' && dominio[i] <= '9') ||
+            dominio[i] == '.' || dominio[i] == '-'){
+                continue;
+            } else {
+                throw invalid_argument("Caractere invalido inserido no dominio do email");
+            }
+    }
+    for (int i = 0; i < tamanhoDominio; i++){
+        if((dominio[i] >= 'A' && dominio[i] <= 'Z') ||
+           (dominio[i] >= 'a' && dominio[i] <= 'z'))
+            letra = true;
+        if(dominio[i] == '.')
+            break;
+    }
+
+    if(letra == false)
+        throw invalid_argument("O dominio do email nao pode ser somente numerico");
+}
+
+void Correio_Eletronico::setCorreio_Eletronico(string correio_eletronico) throw (invalid_argument) {
+    validation(correio_eletronico);
+    this->correio_eletronico = correio_eletronico;
+}
+
 /*---------------------------------------------------------------------------------------------------------*/

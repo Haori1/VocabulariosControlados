@@ -21,7 +21,7 @@ class TNome{
         static constexpr const char* Valor_Invalido_Nome_2 = "23numero";
         static constexpr const char* Valor_Invalido_Nome_3 = "Maius2culo3";
         static constexpr const char* Valor_Invalido_Nome_4 = "\0";
-        static constexpr const char* Valor_Invalido_Nome_5 = "Excedenteeeeeeeeeeeeeeee"; // acredito que realizar esse teste seja v�lido.
+        static constexpr const char* Valor_Invalido_Nome_5 = "Excedenteeeeeeeeeeeeeeee"; // acredito que realizar esse teste seja v�lido.
 
 
         bool estado;
@@ -69,6 +69,7 @@ class TData{
 
         static constexpr const char* Valor_Valido_Data = "11/03/1999";
         static constexpr const char* Valor_Invalido_Data = "29/02/2018";
+
         bool estado;
         void setUp();
         void tearDown();
@@ -76,7 +77,7 @@ class TData{
         void casoFalha();
 
     public:
-        const static bool SUCESSO = true; //Por que colocou como publica?
+        const static bool SUCESSO = true; //Por que colocou como publica? sla ta assim no codigo do chacon
         const static bool FALHA = false;
         bool run();
 };
@@ -110,5 +111,28 @@ class TTelefone{
 
 /*---------------------------------------------------------------------------*/
 
+class TCorreio_Eletronico{
+    private:
+        Correio_Eletronico* correio_eletronico;
+
+        static constexpr const char* Valor_Valido_Correio_Eletronico = "eaemen@hotmail.com";
+        static constexpr const char* Valor_Invalido_Correio_Eletronico_1 = ".eaemen@hotmail.com";
+        static constexpr const char* Valor_Invalido_Correio_Eletronico_2 = "eaemen@@hotmail.com";
+        static constexpr const char* Valor_Invalido_Correio_Eletronico_3 = "lel@gmail.com.";
+        static constexpr const char* Valor_Invalido_Correio_Eletronico_4 = "eaemeubacana@25655.com";
+        static constexpr const char* Valor_Invalido_Correio_Eletronico_5 = "ewewwewe";
+        static constexpr const char* Valor_Invalido_Correio_Eletronico_6 = "eaemeuguerreiro@yahoo.c0m"; /*A validação desse caso de teste não é feita, porém de acordo com as especificações é valido, como proceder?*/
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+};
 
 #endif

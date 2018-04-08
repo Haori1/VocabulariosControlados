@@ -28,16 +28,19 @@ void TNome::casoSucesso(){
 void TNome::casoFalha(){
     try{
         nome->setNome(Valor_Invalido_Nome_1);
+        estado = FALHA;
         nome->setNome(Valor_Invalido_Nome_2);
+        estado = FALHA;
         nome->setNome(Valor_Invalido_Nome_3);
+        estado = FALHA;
         nome->setNome(Valor_Invalido_Nome_4);
+        estado = FALHA;
         nome->setNome(Valor_Invalido_Nome_5);
-
         estado = FALHA;
     } catch (invalid_argument) {
         return;
     }
-} //Acredito que deve ser separado, pois o teste deve validar todos os casos propostos, e não somente um.
+} //Acredito que deve ser separado, pois o teste deve validar todos os casos propostos, e nï¿½o somente um.
 
 bool TNome::run(){
     setUp();
@@ -70,16 +73,19 @@ void TSobrenome::casoSucesso(){
 void TSobrenome::casoFalha(){
     try{
         sobrenome->setSobrenome(Valor_Invalido_Sobrenome_1);
+        estado = FALHA;
         sobrenome->setSobrenome(Valor_Invalido_Sobrenome_2);
+        estado = FALHA;
         sobrenome->setSobrenome(Valor_Invalido_Sobrenome_3);
+        estado = FALHA;
         sobrenome->setSobrenome(Valor_Invalido_Sobrenome_4);
+        estado = FALHA;                                     /*Sera que assim funfa?*/
         sobrenome->setSobrenome(Valor_Invalido_Sobrenome_5);
-
         estado = FALHA;
     } catch (invalid_argument) {
         return;
     }
-} //Acredito que deve ser separado, pois o teste deve validar todos os casos propostos, e não somente um.
+} //Acredito que deve ser separado, pois o teste deve validar todos os casos propostos, e nao somente um.
 
 bool TSobrenome::run(){
     setUp();
@@ -113,13 +119,16 @@ void TTelefone::casoSucesso(){
 void TTelefone::casoFalha(){
     try{
         telefone->setTelefone(Valor_Invalido_Telefone_1);
+        estado = FALHA;
         telefone->setTelefone(Valor_Invalido_Telefone_2);
+        estado = FALHA;
         telefone->setTelefone(Valor_Invalido_Telefone_3);
+        estado = FALHA;
         telefone->setTelefone(Valor_Invalido_Telefone_4);
+        estado = FALHA;
         telefone->setTelefone(Valor_Invalido_Telefone_5);
+        estado = FALHA;
         telefone->setTelefone(Valor_Invalido_Telefone_6);
-
-
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -135,7 +144,6 @@ bool TTelefone::run(){
 }
 
 /*---------------------------------------------------------------------------*/
-
 
 void TData::setUp(){
     data = new Data();
@@ -166,6 +174,44 @@ void TData::casoFalha(){
 }
 
 bool TData::run(){
+    setUp();
+    casoSucesso();
+    casoFalha();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TCorreio_Eletronico::setUp(){
+    correio_eletronico = new Correio_Eletronico();
+    estado = SUCESSO;
+}
+
+void TCorreio_Eletronico::tearDown(){
+    delete correio_eletronico;
+}
+
+void TCorreio_Eletronico::casoSucesso(){
+    try{
+        correio_eletronico->setCorreio_Eletronico(Valor_Valido_Correio_Eletronico);
+        if(correio_eletronico->getCorreio_Eletronico() != Valor_Valido_Correio_Eletronico)
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+void TCorreio_Eletronico::casoFalha(){
+    try{
+        correio_eletronico->setCorreio_Eletronico(Valor_Invalido_Correio_Eletronico_6);
+        estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TCorreio_Eletronico::run(){
     setUp();
     casoSucesso();
     casoFalha();

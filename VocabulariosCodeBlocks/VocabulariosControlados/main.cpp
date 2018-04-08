@@ -38,5 +38,12 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
+    TCorreio_Eletronico correio_eletronico;
+    executou = correio_eletronico.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
     return 0;
 }
