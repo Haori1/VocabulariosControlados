@@ -30,8 +30,8 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
-    TData data;
-    executou = data.run();
+    TEndereco endereco;
+    executou = endereco.run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -45,5 +45,14 @@ int main(void) {
     } else {
         cout << "FALHA" << endl;
     }
+
+    TData data;
+    executou = data.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
     return 0;
 }

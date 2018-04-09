@@ -63,27 +63,6 @@ class TSobrenome {
 
 /*---------------------------------------------------------------------------*/
 
-class TData{
-    private:
-        Data* data;
-
-        static constexpr const char* Valor_Valido_Data = "11/03/1999";
-        static constexpr const char* Valor_Invalido_Data = "29/02/2018";
-
-        bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha();
-
-    public:
-        const static bool SUCESSO = true; //Por que colocou como publica? sla ta assim no codigo do chacon
-        const static bool FALHA = false;
-        bool run();
-};
-
-/*---------------------------------------------------------------------------*/
-
 class TTelefone{
     private:
         Telefone* telefone;
@@ -104,10 +83,46 @@ class TTelefone{
         void casoFalha();
 
     public:
-        const static bool SUCESSO = true; //Por que colocou como publica?
+        const static bool SUCESSO = true;
         const static bool FALHA = false;
         bool run();
 };
+
+/*---------------------------------------------------------------------------*/
+
+class TEndereco{
+
+    private:
+        Endereco* endereco;
+
+        static constexpr const char* Valor_Valido_Endereco = "endereco qualquer";
+        static constexpr const char* Valor_Invalido_Endereco_1 = " teste";
+        static constexpr const char* Valor_Invalido_Endereco_2 = " testesestes ";
+        static constexpr const char* Valor_Invalido_Endereco_3 = "testes  estes";
+        static constexpr const char* Valor_Invalido_Endereco_4 = "testes estes ";
+        static constexpr const char* Valor_Invalido_Endereco_5 = "testes es  tes";
+        static constexpr const char* Valor_Invalido_Endereco_6 = "Excedenteeeeeeeeeeeeeeee";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha(string);
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+};
+
+    // A declaração abaixo não está dando certo, provavelmente declarei algo errado, concertar depois.
+    //const char Valor_Valido_Endereco[] = "endereco qualquer";
+    //const char Valor_Invalido_Endereco_1[] = " teste";
+    //const char Valor_Invalido_Endereco_2[] = " testesestes ";
+    //const char Valor_Invalido_Endereco_3[] = "testes  estes";
+    //const char Valor_Invalido_Endereco_4[] = "testes estes ";
+    //const char Valor_Invalido_Endereco_5[] = "testes es  tes";
+    //const char Valor_Invalido_Endereco_6[] = "Excedenteeeeeeeeeeeeeeee";
 
 /*---------------------------------------------------------------------------*/
 
@@ -134,5 +149,30 @@ class TCorreio_Eletronico{
         const static bool FALHA = false;
         bool run();
 };
+
+/*---------------------------------------------------------------------------*/
+
+
+class TData{
+    private:
+        Data* data;
+
+        static constexpr const char* Valor_Valido_Data = "11/03/1999";
+        static constexpr const char* Valor_Invalido_Data = "29/02/2018";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha();
+
+    public:
+        const static bool SUCESSO = true; //Por que colocou como publica? sla ta assim no codigo do chacon
+        const static bool FALHA = false;
+        bool run();
+};
+
+/*---------------------------------------------------------------------------*/
+
 
 #endif

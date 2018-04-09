@@ -145,43 +145,74 @@ bool TTelefone::run(){
 
 /*---------------------------------------------------------------------------*/
 
-void TData::setUp(){
-    data = new Data();
+void TEndereco::setUp(){
+    endereco = new Endereco();
     estado = SUCESSO;
 }
 
-void TData::tearDown(){
-    delete data;
+void TEndereco::tearDown(){
+    delete endereco;
 }
 
-void TData::casoSucesso(){
-    try{
-        data->setData(Valor_Valido_Data);
-        if(data->getData() != Valor_Valido_Data)
+void TEndereco::casoSucesso(){
+    try {
+        endereco->setEndereco(Valor_Valido_Endereco);
+        if(endereco->getEndereco() != Valor_Valido_Endereco) {
             estado = FALHA;
+        }
+    } catch (invalid_argument){
+        return;
+    }
+}
+
+void TEndereco::casoFalha(string teste){
+    try {
+
+        if(teste == Valor_Invalido_Endereco_1) {
+            endereco->setEndereco(Valor_Invalido_Endereco_1);
+            estado = FALHA;
+        }
+        if(teste == Valor_Invalido_Endereco_2) {
+            endereco->setEndereco(Valor_Invalido_Endereco_2);
+            estado = FALHA;
+        }
+        if(teste == Valor_Invalido_Endereco_3) {
+            endereco->setEndereco(Valor_Invalido_Endereco_3);
+            estado = FALHA;
+        }
+        if(teste == Valor_Invalido_Endereco_4) {
+            endereco->setEndereco(Valor_Invalido_Endereco_4);
+            estado = FALHA;
+        }
+        if(teste == Valor_Invalido_Endereco_5) {
+            endereco->setEndereco(Valor_Invalido_Endereco_5);
+            estado = FALHA;
+        }
+        if(teste == Valor_Invalido_Endereco_6) {
+            endereco->setEndereco(Valor_Invalido_Endereco_6);
+            estado = FALHA;
+        }
     } catch (invalid_argument) {
         return;
     }
 }
 
-void TData::casoFalha(){
-    try{
-        data->setData(Valor_Invalido_Data);
-        estado = FALHA;
-    } catch (invalid_argument) {
-        return;
-    }
-}
-
-bool TData::run(){
+bool TEndereco::run(){
     setUp();
     casoSucesso();
-    casoFalha();
+    casoFalha(Valor_Invalido_Endereco_1);
+    casoFalha(Valor_Invalido_Endereco_2);
+    casoFalha(Valor_Invalido_Endereco_3);
+    casoFalha(Valor_Invalido_Endereco_4);
+    casoFalha(Valor_Invalido_Endereco_5);
+    casoFalha(Valor_Invalido_Endereco_6);
     tearDown();
     return estado;
 }
 
+
 /*---------------------------------------------------------------------------*/
+
 
 void TCorreio_Eletronico::setUp(){
     correio_eletronico = new Correio_Eletronico();
@@ -218,3 +249,42 @@ bool TCorreio_Eletronico::run(){
     tearDown();
     return estado;
 }
+
+/*---------------------------------------------------------------------------*/
+
+void TData::setUp(){
+    data = new Data();
+    estado = SUCESSO;
+}
+
+void TData::tearDown(){
+    delete data;
+}
+
+void TData::casoSucesso(){
+    try{
+        data->setData(Valor_Valido_Data);
+        if(data->getData() != Valor_Valido_Data)
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+void TData::casoFalha(){
+    try{
+        data->setData(Valor_Invalido_Data);
+        estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TData::run(){
+    setUp();
+    casoSucesso();
+    casoFalha();
+    tearDown();
+    return estado;
+}
+

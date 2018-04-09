@@ -149,72 +149,6 @@ void Endereco::setEndereco(string endereco) throw (invalid_argument) {
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Data::validation(string data) throw (invalid_argument) {
-    int tamanhoVetor = data.size();
-    string dia = "";
-    string mes = "";
-    string ano = "";
-    int dia_int;
-    int mes_int;
-    int ano_int;
-    if (tamanhoVetor == STRING_VAZIA) {
-        throw invalid_argument("Nao foi inserido nenhum caractere");
-    }
-
-    if(tamanhoVetor > TAM_MAX_DATA){
-        throw invalid_argument("Quantidade maxima de caracteres excedida");
-    }
-
-    if(data[2] != '/' || data[5] != '/')    /* Posicao 2 e 5 == '/' */
-        throw invalid_argument("Formato Invalido. Insira o formato correto: DD/MM/AAAA");
-
-    for (int i = 0; i < tamanhoVetor; i++)
-        if((i != 2 && i != 5) && (data[i] < '0' || data[i] > '9'))
-            throw invalid_argument("Caractere invalido inserido");
-
-    for (int i = 0; i < tamanhoVetor; i++) {
-        if(i == 0 || i == 1)              /*Data == posicao 0 + 1*/
-            dia += data[i];
-        if(i == 3 || i == 4)              /*Mes == posicao 3 + 4*/
-            mes += data[i];
-        if(i == 6 || i == 7 || i == 8 || i == 9)    /*Ano == posicao 6 + 7 + 8 + 9*/
-            ano += data[i];
-    }
-
-    dia_int = stoi(dia);    /*stoi() passa de string para inteiro*/
-    mes_int = stoi(mes);
-    ano_int = stoi(ano);
-
-    if(dia_int > DIA_MAX || dia_int < DIA_MIN)
-        throw invalid_argument("DD consiste em um numero de 01 a 31");
-    if(mes_int > MES_MAX || mes_int < MES_MIN)
-        throw invalid_argument("MM consiste em um numero de 01 a 12");
-    if(ano_int > ANO_MAX || ano_int < ANO_MIN)
-        throw invalid_argument("AAAA consiste em um numero de 1900 a 2099");
-
-    bool bissexto = false;
-    if((ano_int % 4 == 0 && ano_int % 100 != 0) || (ano_int % 400 == 0))    /*Condição para que o ano seja bissexto*/
-        bissexto = true;
-
-    if( (bissexto == false && mes_int == FEVEREIRO && dia_int > 28) ||
-        (bissexto == true && mes_int == FEVEREIRO && dia_int > 29) )    /*Mes 2 é fevereiro e fevereiro só pode ter 29 dias em anos bissextos*/
-        throw invalid_argument("O Mes de fevereiro possui somente ate 29 dias em anos bissextos");
-
-    if( (mes_int == ABRIL     ||
-         mes_int == JUNHO     ||
-         mes_int == SETEMBRO  ||
-         mes_int == NOVEMBRO) &&
-         dia_int > 30)
-        throw invalid_argument("Os meses de Abril, Junho, Setembro e Novembro possuem ate 30 dias");
-}
-
-void Data::setData(string data) throw (invalid_argument) {
-    validation(data);
-    this->data = data;
-}
-
-/*---------------------------------------------------------------------------------------------------------*/
-
 void Correio_Eletronico::validation(string correio_eletronico) throw (invalid_argument) {
     int tamanhoVetor = correio_eletronico.size();
     int pos = POS_INVALIDA;
@@ -305,3 +239,70 @@ void Correio_Eletronico::setCorreio_Eletronico(string correio_eletronico) throw 
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
+
+void Data::validation(string data) throw (invalid_argument) {
+    int tamanhoVetor = data.size();
+    string dia = "";
+    string mes = "";
+    string ano = "";
+    int dia_int;
+    int mes_int;
+    int ano_int;
+    if (tamanhoVetor == STRING_VAZIA) {
+        throw invalid_argument("Nao foi inserido nenhum caractere");
+    }
+
+    if(tamanhoVetor > TAM_MAX_DATA){
+        throw invalid_argument("Quantidade maxima de caracteres excedida");
+    }
+
+    if(data[2] != '/' || data[5] != '/')    /* Posicao 2 e 5 == '/' */
+        throw invalid_argument("Formato Invalido. Insira o formato correto: DD/MM/AAAA");
+
+    for (int i = 0; i < tamanhoVetor; i++)
+        if((i != 2 && i != 5) && (data[i] < '0' || data[i] > '9'))
+            throw invalid_argument("Caractere invalido inserido");
+
+    for (int i = 0; i < tamanhoVetor; i++) {
+        if(i == 0 || i == 1)              /*Data == posicao 0 + 1*/
+            dia += data[i];
+        if(i == 3 || i == 4)              /*Mes == posicao 3 + 4*/
+            mes += data[i];
+        if(i == 6 || i == 7 || i == 8 || i == 9)    /*Ano == posicao 6 + 7 + 8 + 9*/
+            ano += data[i];
+    }
+
+    dia_int = stoi(dia);    /*stoi() passa de string para inteiro*/
+    mes_int = stoi(mes);
+    ano_int = stoi(ano);
+
+    if(dia_int > DIA_MAX || dia_int < DIA_MIN)
+        throw invalid_argument("DD consiste em um numero de 01 a 31");
+    if(mes_int > MES_MAX || mes_int < MES_MIN)
+        throw invalid_argument("MM consiste em um numero de 01 a 12");
+    if(ano_int > ANO_MAX || ano_int < ANO_MIN)
+        throw invalid_argument("AAAA consiste em um numero de 1900 a 2099");
+
+    bool bissexto = false;
+    if((ano_int % 4 == 0 && ano_int % 100 != 0) || (ano_int % 400 == 0))    /*Condição para que o ano seja bissexto*/
+        bissexto = true;
+
+    if( (bissexto == false && mes_int == FEVEREIRO && dia_int > 28) ||
+        (bissexto == true && mes_int == FEVEREIRO && dia_int > 29) )    /*Mes 2 é fevereiro e fevereiro só pode ter 29 dias em anos bissextos*/
+        throw invalid_argument("O Mes de fevereiro possui somente ate 29 dias em anos bissextos");
+
+    if( (mes_int == ABRIL     ||
+         mes_int == JUNHO     ||
+         mes_int == SETEMBRO  ||
+         mes_int == NOVEMBRO) &&
+         dia_int > 30)
+        throw invalid_argument("Os meses de Abril, Junho, Setembro e Novembro possuem ate 30 dias");
+}
+
+void Data::setData(string data) throw (invalid_argument) {
+    validation(data);
+    this->data = data;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+
