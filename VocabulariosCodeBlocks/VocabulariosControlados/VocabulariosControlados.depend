@@ -23,7 +23,7 @@
 
 1522557686 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidadesmetodos.cpp
 
-1523224201 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosmetodos.cpp
+1523322014 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosmetodos.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -43,14 +43,14 @@
 	<exception>
 	<stdexcept>
 
-1523225115 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
+1523325138 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
 	"dominiosClasses.hpp"
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 
-1523224084 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
+1523324197 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
 	<iostream>
 	<string>
 	"dominiosClasses.hpp"

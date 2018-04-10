@@ -38,6 +38,14 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
+    TData data;
+    executou = data.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
     TCorreio_Eletronico correio_eletronico;
     executou = correio_eletronico.run();
     if(executou){
@@ -46,8 +54,32 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
-    TData data;
-    executou = data.run();
+    TSenha senha;
+    executou = senha.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
+    TTexto_Definicao texto_definicao;
+    executou = texto_definicao.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
+    TIdioma idioma;
+    executou = idioma.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
+    TClasse_Termo classe_termo;
+    executou = classe_termo.run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {

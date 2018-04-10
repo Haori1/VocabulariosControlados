@@ -126,6 +126,28 @@ class TEndereco{
 
 /*---------------------------------------------------------------------------*/
 
+class TData{
+    private:
+        Data* data;
+
+        static constexpr const char* Valor_Valido_Data = "11/03/1999";
+        static constexpr const char* Valor_Invalido_Data = "29/02/2018";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha();
+
+    public:
+        const static bool SUCESSO = true; //Por que colocou como publica? sla ta assim no codigo do chacon
+        const static bool FALHA = false;
+        bool run();
+};
+
+
+/*---------------------------------------------------------------------------*/
+
 class TCorreio_Eletronico{
     private:
         Correio_Eletronico* correio_eletronico;
@@ -149,16 +171,16 @@ class TCorreio_Eletronico{
         const static bool FALHA = false;
         bool run();
 };
-
 /*---------------------------------------------------------------------------*/
 
-
-class TData{
+class TSenha{
     private:
-        Data* data;
+        Senha* senha;
 
-        static constexpr const char* Valor_Valido_Data = "11/03/1999";
-        static constexpr const char* Valor_Invalido_Data = "29/02/2018";
+        static constexpr const char* Valor_Valido_Senha = "EaeM3ule";
+        static constexpr const char* Valor_Invalido_Senha_1 = "kkeaemen";
+        static constexpr const char* Valor_Invalido_Senha_2 = "kkkkkkkkkkkkkkkkk";
+        static constexpr const char* Valor_Invalido_Senha_3 = "xd3E.d";
 
         bool estado;
         void setUp();
@@ -167,12 +189,73 @@ class TData{
         void casoFalha();
 
     public:
-        const static bool SUCESSO = true; //Por que colocou como publica? sla ta assim no codigo do chacon
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+
+};
+
+/*---------------------------------------------------------------------------*/
+
+class TTexto_Definicao{
+    private:
+        Texto_Definicao* texto_definicao;
+
+        static constexpr const char* Valor_Valido_Texto_Definicao = "eaemeuguerreirotudonapaz?";
+        static constexpr const char* Valor_Invalido_Texto_Definicao = "tranquilidadeaimeuparcerinsuavao?";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha();
+
+    public:
+        const static bool SUCESSO = true;
         const static bool FALHA = false;
         bool run();
 };
 
 /*---------------------------------------------------------------------------*/
 
+class TIdioma{
+    private:
+        Idioma* idioma;
+
+        static constexpr const char* Valor_Valido_Idioma = "POR";
+        static constexpr const char* Valor_Invalido_Idioma = "JAP";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+};
+
+/*---------------------------------------------------------------------------*/
+
+class TClasse_Termo{
+    private:
+        Classe_Termo* classe_termo;
+
+        static constexpr const char* Valor_Valido_Classe_Termo = "PT";
+        static constexpr const char* Valor_Invalido_Classe_Termo = "XD";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+        void casoFalha();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+};
 
 #endif

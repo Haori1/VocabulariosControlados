@@ -213,6 +213,43 @@ bool TEndereco::run(){
 
 /*---------------------------------------------------------------------------*/
 
+void TData::setUp(){
+    data = new Data();
+    estado = SUCESSO;
+}
+
+void TData::tearDown(){
+    delete data;
+}
+
+void TData::casoSucesso(){
+    try{
+        data->setData(Valor_Valido_Data);
+        if(data->getData() != Valor_Valido_Data)
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+void TData::casoFalha(){
+    try{
+        data->setData(Valor_Invalido_Data);
+        estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TData::run(){
+    setUp();
+    casoSucesso();
+    casoFalha();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
 
 void TCorreio_Eletronico::setUp(){
     correio_eletronico = new Correio_Eletronico();
@@ -252,35 +289,35 @@ bool TCorreio_Eletronico::run(){
 
 /*---------------------------------------------------------------------------*/
 
-void TData::setUp(){
-    data = new Data();
+void TSenha::setUp(){
+    senha = new Senha();
     estado = SUCESSO;
 }
 
-void TData::tearDown(){
-    delete data;
+void TSenha::tearDown(){
+    delete senha;
 }
 
-void TData::casoSucesso(){
+void TSenha::casoSucesso(){
     try{
-        data->setData(Valor_Valido_Data);
-        if(data->getData() != Valor_Valido_Data)
+        senha->setSenha(Valor_Valido_Senha);
+        if(senha->getSenha() != Valor_Valido_Senha)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
     }
 }
 
-void TData::casoFalha(){
+void TSenha::casoFalha(){
     try{
-        data->setData(Valor_Invalido_Data);
+        senha->setSenha(Valor_Invalido_Senha_3);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
     }
 }
 
-bool TData::run(){
+bool TSenha::run(){
     setUp();
     casoSucesso();
     casoFalha();
@@ -288,3 +325,116 @@ bool TData::run(){
     return estado;
 }
 
+/*---------------------------------------------------------------------------*/
+
+void TTexto_Definicao::setUp(){
+    texto_definicao = new Texto_Definicao();
+    estado = SUCESSO;
+}
+
+void TTexto_Definicao::tearDown(){
+    delete texto_definicao;
+}
+
+void TTexto_Definicao::casoSucesso(){
+    try{
+        texto_definicao->setTexto_Definicao(Valor_Valido_Texto_Definicao);
+        if(texto_definicao->getTexto_Definicao() != Valor_Valido_Texto_Definicao)
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+void TTexto_Definicao::casoFalha(){
+    try{
+        texto_definicao->setTexto_Definicao(Valor_Invalido_Texto_Definicao);
+        estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TTexto_Definicao::run(){
+    setUp();
+    casoSucesso();
+    casoFalha();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TIdioma::setUp(){
+    idioma = new Idioma();
+    estado = SUCESSO;
+}
+
+void TIdioma::tearDown(){
+    delete idioma;
+}
+
+void TIdioma::casoSucesso(){
+    try{
+        idioma->setIdioma(Valor_Valido_Idioma);
+        if(idioma->getIdioma() != Valor_Valido_Idioma)
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+void TIdioma::casoFalha(){
+    try{
+        idioma->setIdioma(Valor_Invalido_Idioma);
+        estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TIdioma::run(){
+    setUp();
+    casoSucesso();
+    casoFalha();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TClasse_Termo::setUp(){
+    classe_termo = new Classe_Termo();
+    estado = SUCESSO;
+}
+
+void TClasse_Termo::tearDown(){
+    delete classe_termo;
+}
+
+void TClasse_Termo::casoSucesso(){
+    try{
+        classe_termo->setClasse_Termo(Valor_Valido_Classe_Termo);
+        if(classe_termo->getClasse_Termo() != Valor_Valido_Classe_Termo)
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+void TClasse_Termo::casoFalha(){
+    try{
+        classe_termo->setClasse_Termo(Valor_Invalido_Classe_Termo);
+        estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TClasse_Termo::run(){
+    setUp();
+    casoSucesso();
+    casoFalha();
+    tearDown();
+    return estado;
+}
