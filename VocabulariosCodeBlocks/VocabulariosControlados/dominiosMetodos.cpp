@@ -77,7 +77,7 @@ void Telefone::validation(string telefone) throw (invalid_argument) {
 
     int tamanhoVetor = telefone.size();
 
-    if(tamanhoVetor > TAM_MAX_TELEFONE) {
+    if(tamanhoVetor != TAM_MAX_TELEFONE) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
@@ -93,7 +93,7 @@ void Telefone::validation(string telefone) throw (invalid_argument) {
 
         //Utiliza tabela ascii:
         if(telefone[i] < '0' || telefone[i] > '9') { //A tabela ascii é considerada número mágico?
-            throw invalid_argument("Nao foi inserido nenhum caractere");
+            throw invalid_argument("Formato Invalido. Insira o formato correto: AA BBBBB-BBBB");
             break;
         }
     }
@@ -105,7 +105,7 @@ void Telefone::validation(string telefone) throw (invalid_argument) {
     if(telefone[POS_TRACO_TELEFONE] != '-') {
         throw invalid_argument("Formato Invalido. Insira o formato correto: AA BBBBB-BBBB");
     }
-} // no formato AA numero, há uma espaço entre o AA e o número, ou não?
+}
 
 void Telefone::setTelefone(string telefone) throw (invalid_argument) {
     validation(telefone);

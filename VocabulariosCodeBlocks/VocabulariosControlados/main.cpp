@@ -2,6 +2,7 @@
 #include <string>
 #include "dominiosClasses.hpp"
 #include "testes.hpp"
+#include "entidadesClasses.hpp"
 
 int main(void) {
     bool executou;
@@ -84,6 +85,22 @@ int main(void) {
         cout << "SUCESSO" << endl;
     } else {
         cout << "FALHA" << endl;
+    }
+
+    Nome nomeTeste;
+    Senha senhaTeste;
+
+    nomeTeste.setNome("Puta");
+    senhaTeste.setSenha("1Puta");
+
+    Leitor leitor;
+
+    leitor.setNome(nomeTeste);
+
+    try {
+        leitor.setSenha(senhaTeste);
+    }catch(invalid_argument) {
+        printf("Deu certo, capturei a senha contida no nome.");
     }
 
     return 0;

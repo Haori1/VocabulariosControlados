@@ -67,7 +67,7 @@ class TTelefone{
     private:
         Telefone* telefone;
 
-        static constexpr const char* Valor_Valido_Telefone = "99 9999-9999";
+        static constexpr const char* Valor_Valido_Telefone = "99 99999-9999";
         static constexpr const char* Valor_Invalido_Telefone_1 = "A9 9999-9999";
         static constexpr const char* Valor_Invalido_Telefone_2 = "999999-9999";
         static constexpr const char* Valor_Invalido_Telefone_3 = "999 9999-9999";
