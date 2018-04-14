@@ -90,15 +90,15 @@ int main(void) {
     Nome nomeTeste;
     Senha senhaTeste;
 
-    nomeTeste.setNome("Puta");
-    senhaTeste.setSenha("1Puta");
+    nomeTeste.set_nome("eaemen");
+    senhaTeste.set_senha("1eaemen");
 
     Leitor leitor;
 
-    leitor.setNome(nomeTeste);
+    leitor.set_nome(nomeTeste);
 
     try {
-        leitor.setSenha(senhaTeste);
+        leitor.set_senha(senhaTeste);
     }catch(invalid_argument) {
         printf("Deu certo, capturei a senha contida no nome.");
     }

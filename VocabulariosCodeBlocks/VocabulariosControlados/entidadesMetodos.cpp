@@ -11,8 +11,8 @@ void Leitor::validation(const Senha &senha) throw(invalid_argument){
 
     teste_Senha = senha;
 
-    string nome_Leitor = nome.getNome();
-    string senha_String = teste_Senha.getSenha();
+    string nome_Leitor = nome.get_nome();
+    string senha_String = teste_Senha.get_senha();
 
     int tamanho_Nome = nome_Leitor.size();
     int tamanho_Senha = senha_String.size();
@@ -22,20 +22,20 @@ void Leitor::validation(const Senha &senha) throw(invalid_argument){
     for(int i = 0; i < tamanho_Senha; i++){ //ponto inicial da senha
         for(int j = 0; j < tamanho_Nome; j++){ //percorre o tamanho do nome
             if(senha_String[i + j] == nome_Leitor[j]) {
-                contador++; //Conta quantos caracteres são iguais, pois caso a quantidade seja o tamanho do nome, temos um nome contido na senha.
+                contador++; //Conta quantos caracteres sï¿½o iguais, pois caso a quantidade seja o tamanho do nome, temos um nome contido na senha.
             }
         }
         if(contador == tamanho_Nome) {
-            throw invalid_argument("Senha invalida. O nome não pode estar contido na senha.");
+            throw invalid_argument("Senha invalida. O nome nao pode estar contido na senha.");
         }
         if((tamanho_Senha - i) < tamanho_Nome) {
             break;
-        } //Verifica se há menos caracteres a serem checados do que a quantidade de caracteres que o nome possui. Caso sim, para o laço.
+        } //Verifica se ha menos caracteres a serem checados do que a quantidade de caracteres que o nome possui. Caso sim, para o laï¿½o.
         contador = 0;
     }
 }
 
-void Leitor::setSenha(const Senha &senha) throw(invalid_argument){
+void Leitor::set_senha(const Senha &senha) throw(invalid_argument){
     validation(senha);
 
     this->senha = senha;

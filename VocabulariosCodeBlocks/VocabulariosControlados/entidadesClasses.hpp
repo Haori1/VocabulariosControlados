@@ -16,25 +16,25 @@ class Leitor{
 
         void validation (const Senha &senha) throw (invalid_argument);
     public:
-      void setNome(const Nome &nome){
+      void set_nome(const Nome &nome){
             this->nome = nome;
         }
-        Nome getNome() const {
+        Nome get_nome() const {
             return nome;
         }
-        void setSobrenome(const Sobrenome &sobrenome){
+        void set_sobrenome(const Sobrenome &sobrenome){
             this->sobrenome = sobrenome;
         }
-        Sobrenome getSobrenome() const {
+        Sobrenome get_sobrenome() const {
             return sobrenome;
         }
-        void setCorreio_Eletronico(const Correio_Eletronico &correio_eletronico){
+        void set_correio_eletronico(const Correio_Eletronico &correio_eletronico){
             this->correio_eletronico = correio_eletronico;
         }
-        Correio_Eletronico getCorreio_Eletronico() const {
+        Correio_Eletronico get_correio_eletronico() const {
             return correio_eletronico;
         }
-        void setSenha(const Senha &senha) throw (invalid_argument);
+        void set_senha(const Senha &senha) throw (invalid_argument);
 
 };
 
@@ -43,7 +43,7 @@ class Desenvolvedor : public Leitor{
     Data data_nascimento;
 
     public:
-        void setData_nascimento(const Data &data_nascimento){
+        void set_data_nascimento(const Data &data_nascimento){
             this->data_nascimento = data_nascimento;
         }
 
@@ -54,7 +54,7 @@ class Administrador : public Desenvolvedor{
         Endereco endereco;
 
     public:
-        void setEndereco(const Endereco &endereco){
+        void set_endereco(const Endereco &endereco){
             this->endereco = endereco;
         }
 };
@@ -66,6 +66,24 @@ class VocControlado{
         Data data;
 
     public:
+        void set_nome(const Nome &nome){
+            this->nome = nome;
+        }
+        Nome get_nome(){
+            return nome;
+        }
+        void set_idioma(const Idioma &idioma){
+            this->idioma = idioma;
+        }
+        Idioma get_idioma(){
+            return idioma;
+        }
+        void set_data(const Data &data){
+            this->data = data;
+        }
+        Data get_data(){
+            return data;
+        }
 
 
 };
@@ -76,7 +94,25 @@ class Termo{
         Classe_Termo classe_termo;
         Data data;
 
-    private:
+    public:
+        void set_nome(const Nome &nome){
+            this->nome = nome;
+        }
+        Nome get_nome(){
+            return nome;
+        }
+        void set_classe_termo(const Classe_Termo &classe_termo){
+            this->classe_termo = classe_termo;
+        }
+        Classe_Termo get_classe_termo(){
+            return classe_termo;
+        }
+        void set_data(const Data &data){
+            this->data = data;
+        }
+        Data get_data(){
+            return data;
+        }
 };
 
 class Definicao{
@@ -84,7 +120,19 @@ class Definicao{
         Texto_Definicao texto_definicao;
         Data data;
 
-    private:
+    public:
+        void set_texto_definicao(const Texto_Definicao &texto_definicao){
+            this->texto_definicao = texto_definicao;
+        }
+        Texto_Definicao get_texto_definicao(){
+            return texto_definicao;
+        }
+        void set_data(const Data &data){
+            this->data = data;
+        }
+        Data get_data(){
+            return data;
+        }
 };
 
 

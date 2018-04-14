@@ -36,7 +36,7 @@ void Nome::validation(string nome) throw (invalid_argument){
     }
 }
 
-void Nome::setNome(string nome) throw (invalid_argument){
+void Nome::set_nome(string nome) throw (invalid_argument){
     validation(nome);
     this->nome = nome;
 }
@@ -67,7 +67,7 @@ void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
     }
 }
 
-void Sobrenome::setSobrenome(string sobrenome) throw (invalid_argument) {
+void Sobrenome::set_sobrenome(string sobrenome) throw (invalid_argument) {
     validation(sobrenome);
     this->sobrenome = sobrenome;
 }
@@ -107,7 +107,7 @@ void Telefone::validation(string telefone) throw (invalid_argument) {
     }
 }
 
-void Telefone::setTelefone(string telefone) throw (invalid_argument) {
+void Telefone::set_telefone(string telefone) throw (invalid_argument) {
     validation(telefone);
     this->telefone = telefone;
 }
@@ -142,7 +142,7 @@ void Endereco::validation(string endereco) throw (invalid_argument) {
     }
 }
 
-void Endereco::setEndereco(string endereco) throw (invalid_argument) {
+void Endereco::set_endereco(string endereco) throw (invalid_argument) {
     validation(endereco);
     this->endereco = endereco;
 }
@@ -208,7 +208,7 @@ void Data::validation(string data) throw (invalid_argument) {
         throw invalid_argument("Os meses de Abril, Junho, Setembro e Novembro possuem ate 30 dias");
 }
 
-void Data::setData(string data) throw (invalid_argument) {
+void Data::set_data(string data) throw (invalid_argument) {
     validation(data);
     this->data = data;
 }
@@ -299,7 +299,7 @@ void Correio_Eletronico::validation(string correio_eletronico) throw (invalid_ar
         throw invalid_argument("O dominio do email nao pode ser somente numerico");
 }
 
-void Correio_Eletronico::setCorreio_Eletronico(string correio_eletronico) throw (invalid_argument) {
+void Correio_Eletronico::set_correio_eletronico(string correio_eletronico) throw (invalid_argument) {
     validation(correio_eletronico);
     this->correio_eletronico = correio_eletronico;
 }
@@ -340,7 +340,7 @@ void Senha::validation(string senha) throw (invalid_argument) {
         throw invalid_argument("A senha precisa conter pelo menos uma letra maiuscula, uma letra minuscula e um digito");
 }
 
-void Senha::setSenha(string senha) throw (invalid_argument) {
+void Senha::set_senha(string senha) throw (invalid_argument) {
     validation(senha);
     this->senha = senha;
 }
@@ -354,7 +354,7 @@ void Texto_Definicao::validation(string texto_definicao) throw (invalid_argument
         throw invalid_argument("Quantidade maxima de caracteres excedida");
 }
 
-void Texto_Definicao::setTexto_Definicao(string texto_definicao) throw (invalid_argument) {
+void Texto_Definicao::set_texto_definicao(string texto_definicao) throw (invalid_argument) {
     validation(texto_definicao);
     this->texto_definicao = texto_definicao;
 }
@@ -368,7 +368,7 @@ void Idioma::validation(string idioma) throw (invalid_argument) {
         throw invalid_argument("Idioma invalido. Os idiomas disponiveis sao: ENG, FRA, GER, ITA, POR e SPA");
 }
 
-void Idioma::setIdioma(string idioma) throw (invalid_argument) {
+void Idioma::set_idioma(string idioma) throw (invalid_argument) {
     validation(idioma);
     this->idioma = idioma;
 }
@@ -380,7 +380,7 @@ void Classe_Termo::validation(string classe_termo) throw (invalid_argument) {
         throw invalid_argument("Escolha invalida. As possiveis escolhas sao PT e NP");
 }
 
-void Classe_Termo::setClasse_Termo(string classe_termo) throw (invalid_argument) {
+void Classe_Termo::set_classe_termo(string classe_termo) throw (invalid_argument) {
     validation(classe_termo);
     this->classe_termo = classe_termo;
 }
