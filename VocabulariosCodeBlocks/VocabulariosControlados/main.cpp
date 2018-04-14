@@ -87,20 +87,12 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
-    Nome nomeTeste;
-    Senha senhaTeste;
-
-    nomeTeste.set_nome("eaemen");
-    senhaTeste.set_senha("1eaemen");
-
-    Leitor leitor;
-
-    leitor.set_nome(nomeTeste);
-
-    try {
-        leitor.set_senha(senhaTeste);
-    }catch(invalid_argument) {
-        printf("Deu certo, capturei a senha contida no nome.");
+    TLeitor leitor;
+    executou = leitor.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
     }
 
     return 0;

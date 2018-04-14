@@ -1,8 +1,11 @@
-#include "testes.hpp"
 #include <iostream>
 #include <string>
 #include <exception>
 #include <stdexcept>
+
+#include "testes.hpp"
+#include "dominiosClasses.hpp"
+#include "entidadesClasses.hpp"
 
 /*---------------------------------------------------------------------------*/
 
@@ -435,6 +438,44 @@ bool TClasse_Termo::run(){
     setUp();
     casoSucesso();
     casoFalha();
+    tearDown();
+    return estado;
+}
+
+/*-------------------------------------Entidades--------------------------------------*/
+
+void TLeitor::setUp(){
+    nome.set_nome(Valor_Nome);
+    sobrenome.set_sobrenome(Valor_Sobrenome);
+    correio_eletronico.set_correio_eletronico(Valor_Correio_Eletronico);
+    senha.set_senha(Valor_Senha);
+
+    leitor = new Leitor(nome, sobrenome, correio_eletronico, senha);
+    estado = SUCESSO;
+}
+
+void TLeitor::tearDown(){
+    delete leitor;
+}
+
+void TLeitor::casoSucesso(){
+    try{
+        if(leitor->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(leitor->get_sobrenome().get_sobrenome() != sobrenome.get_sobrenome())
+            estado = FALHA;
+        if(leitor->get_correio_eletronico().get_correio_eletronico() != correio_eletronico.get_correio_eletronico())
+            estado = FALHA;
+        if(leitor->get_senha().get_senha() != senha.get_senha())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TLeitor::run(){
+    setUp();
+    casoSucesso();
     tearDown();
     return estado;
 }

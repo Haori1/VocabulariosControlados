@@ -1,11 +1,13 @@
 #ifndef __TESTES__HPP__
 #define __TESTES__HPP__
 
-#include "dominiosClasses.hpp"
 #include <iostream>
 #include <string>
 #include <exception>
 #include <stdexcept>
+
+#include "dominiosClasses.hpp"
+#include "entidadesClasses.hpp"
 
 
 using namespace std;
@@ -260,4 +262,28 @@ class TClasse_Termo{
 
 /*-------------------------------------Entidades--------------------------------------*/
 
+class TLeitor{
+    private:
+        Leitor* leitor;
+        Nome nome;
+        Sobrenome sobrenome;
+        Senha senha;
+        Correio_Eletronico correio_eletronico;
+
+        static constexpr const char* Valor_Nome = "Boruto";
+        static constexpr const char* Valor_Sobrenome = "Uzumaki";
+        static constexpr const char* Valor_Correio_Eletronico = "boruto@gmail.com";
+        static constexpr const char* Valor_Senha = "Tocerto1";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+
+};
 #endif
