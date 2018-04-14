@@ -444,6 +444,8 @@ bool TClasse_Termo::run(){
 
 /*-------------------------------------Entidades--------------------------------------*/
 
+/*---------------------------------------------------------------------------*/
+
 void TLeitor::setUp(){
     nome.set_nome(Valor_Nome);
     sobrenome.set_sobrenome(Valor_Sobrenome);
@@ -478,4 +480,85 @@ bool TLeitor::run(){
     casoSucesso();
     tearDown();
     return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TDesenvolvedor::setUp(){
+    nome.set_nome(Valor_Nome);
+    sobrenome.set_sobrenome(Valor_Sobrenome);
+    data_nascimento.set_data(Valor_Data_Nascimento);
+    correio_eletronico.set_correio_eletronico(Valor_Correio_Eletronico);
+    senha.set_senha(Valor_Senha);
+
+    desenvolvedor = new Desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
+    estado = SUCESSO;
+}
+
+void TDesenvolvedor::tearDown(){
+    delete desenvolvedor;
+}
+
+void TDesenvolvedor::casoSucesso(){
+    try{
+        if(desenvolvedor->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(desenvolvedor->get_sobrenome().get_sobrenome() != sobrenome.get_sobrenome())
+            estado = FALHA;
+        if(desenvolvedor->get_data().get_data() != data_nascimento.get_data())
+            estado = FALHA;
+        if(desenvolvedor->get_correio_eletronico().get_correio_eletronico() != correio_eletronico.get_correio_eletronico())
+            estado = FALHA;
+        if(desenvolvedor->get_senha().get_senha() != senha.get_senha())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TDesenvolvedor::run(){
+    setUp();
+    casoSucesso();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TAdministrador::setUp(){
+    nome.set_nome(Valor_Nome);
+    sobrenome.set_sobrenome(Valor_Sobrenome);
+    telefone.set_telefone(Valor_Telefone);
+    data_nascimento.set_data(Valor_Data_Nascimento);
+    endereco.set_endereco(Valor_Endereco);
+    correio_eletronico.set_correio_eletronico(Valor_Correio_Eletronico);
+    senha.set_senha(Valor_Senha);
+
+    administrador = new Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
+    estado = SUCESSO;
+}
+
+void TAdministrador::tearDown(){
+    delete administrador;
+}
+
+void TAdministrador::casoSucesso(){
+    try{
+        if(administrador->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(administrador->get_sobrenome().get_sobrenome() != sobrenome.get_sobrenome())
+            estado = FALHA;
+        if(administrador->get_telefone().get_telefone() != telefone.get_telefone())
+            estado = FALHA;
+        if(administrador->get_data().get_data() != data_nascimento.get_data())
+            estado = FALHA;
+        if(administrador->get_endereco().get_endereco() != endereco.get_endereco())
+            estado = FALHA;
+        if(administrador->get_correio_eletronico().get_correio_eletronico() != correio_eletronico.get_correio_eletronico())
+            estado = FALHA;
+        if(administrador->get_senha().get_senha() != senha.get_senha())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
 }

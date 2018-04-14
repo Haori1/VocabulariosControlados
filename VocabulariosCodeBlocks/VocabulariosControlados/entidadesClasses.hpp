@@ -65,30 +65,44 @@ class Desenvolvedor : public Leitor{
             this->senha = senha;
                       }
         Desenvolvedor(){}
-        void set_data_nascimento(const Data &data_nascimento_){
+        void set_data(const Data &data_nascimento_){
             this->data_nascimento = data_nascimento;
+        }
+        Data get_data() const {
+            return data_nascimento;
         }
 
 };
 
 class Administrador : public Desenvolvedor{
     protected:
+        Telefone telefone;
         Endereco endereco;
 
     public:
-        Administrador(const Nome &nome, const Sobrenome &sobrenome,
-                      const Data &data_nascimento, const Correio_Eletronico &correio_eletronico,
-                      const Senha &senha, const Endereco &endereco){
+        Administrador(const Nome &nome, const Sobrenome &sobrenome, const Telefone &telefone,
+                      const Data &data_nascimento, const Endereco &endereco,
+                      const Correio_Eletronico &correio_eletronico, const Senha &senha){
             this->nome = nome;
             this->sobrenome = sobrenome;
+            this->telefone = telefone;
             this->data_nascimento = data_nascimento;
+            this->endereco = endereco;
             this->correio_eletronico = correio_eletronico;
             this->senha = senha;
-            this->endereco = endereco;
         }
         Administrador(){}
+        void set_telefone(const Telefone &telefone){
+            this->telefone = telefone;
+        }
+        Telefone get_telefone() const {
+            return telefone;
+        }
         void set_endereco(const Endereco &endereco){
             this->endereco = endereco;
+        }
+        Endereco get_endereco() const {
+            return endereco;
         }
 };
 

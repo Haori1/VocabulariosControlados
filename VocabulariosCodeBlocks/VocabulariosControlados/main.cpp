@@ -95,5 +95,12 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
+    TDesenvolvedor desenvolvedor;
+    executou = leitor.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
     return 0;
 }
