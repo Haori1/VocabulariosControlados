@@ -1,11 +1,13 @@
 #ifndef __TESTES__HPP__
 #define __TESTES__HPP__
 
-#include "dominiosClasses.hpp"
 #include <iostream>
 #include <string>
 #include <exception>
 #include <stdexcept>
+
+#include "dominiosClasses.hpp"
+#include "entidadesClasses.hpp"
 
 
 using namespace std;
@@ -158,7 +160,7 @@ class TCorreio_Eletronico{
         static constexpr const char* Valor_Invalido_Correio_Eletronico_3 = "lel@gmail.com.";
         static constexpr const char* Valor_Invalido_Correio_Eletronico_4 = "eaemeubacana@25655.com";
         static constexpr const char* Valor_Invalido_Correio_Eletronico_5 = "ewewwewe";
-        static constexpr const char* Valor_Invalido_Correio_Eletronico_6 = "eaemeuguerreiro@yahoo.c0m"; /*A validação desse caso de teste não é feita, porém de acordo com as especificações é valido, como proceder?*/
+        static constexpr const char* Valor_Invalido_Correio_Eletronico_6 = "eaemeuguerreiro@yahoo.com."; /*A validação desse caso de teste não é feita, porém de acordo com as especificações é valido, como proceder?*/
 
         bool estado;
         void setUp();
@@ -258,4 +260,94 @@ class TClasse_Termo{
         bool run();
 };
 
+/*-------------------------------------Entidades--------------------------------------*/
+
+/*---------------------------------------------------------------------------*/
+
+class TLeitor{
+    private:
+        Leitor* leitor;
+        Nome nome;
+        Sobrenome sobrenome;
+        Correio_Eletronico correio_eletronico;
+        Senha senha;
+
+        static constexpr const char* Valor_Nome = "Boruto";
+        static constexpr const char* Valor_Sobrenome = "Uzumaki";
+        static constexpr const char* Valor_Correio_Eletronico = "boruto@gmail.com";
+        static constexpr const char* Valor_Senha = "Tocerto1";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+
+};
+
+/*---------------------------------------------------------------------------*/
+
+class TDesenvolvedor{
+    private:
+        Desenvolvedor* desenvolvedor;
+        Nome nome;
+        Sobrenome sobrenome;
+        Data data_nascimento;
+        Correio_Eletronico correio_eletronico;
+        Senha senha;
+
+        static constexpr const char* Valor_Nome = "Boruto";
+        static constexpr const char* Valor_Sobrenome = "Uzumaki";
+        static constexpr const char* Valor_Data_Nascimento = "11/03/1999";
+        static constexpr const char* Valor_Correio_Eletronico = "boruto@gmail.com";
+        static constexpr const char* Valor_Senha = "Tocerto1";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+};
+
+/*---------------------------------------------------------------------------*/
+
+class TAdministrador{
+    private:
+        Administrador* administrador;
+        Nome nome;
+        Sobrenome sobrenome;
+        Telefone telefone;
+        Data data_nascimento;
+        Endereco endereco;
+        Correio_Eletronico correio_eletronico;
+        Senha senha;
+
+        static constexpr const char* Valor_Nome = "Boruto";
+        static constexpr const char* Valor_Sobrenome = "Uzumaki";
+        static constexpr const char* Valor_Telefone = "61 99999-9999";
+        static constexpr const char* Valor_Data_Nascimento = "11/03/1999";
+        static constexpr const char* Valor_Endereco = "Aldeia da folha";
+        static constexpr const char* Valor_Correio_Eletronico = "boruto@gmail.com";
+        static constexpr const char* Valor_Senha = "Tocerto1";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+    };
+
+/*---------------------------------------------------------------------------*/
 #endif

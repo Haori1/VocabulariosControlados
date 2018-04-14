@@ -1,8 +1,11 @@
-#include "testes.hpp"
 #include <iostream>
 #include <string>
 #include <exception>
 #include <stdexcept>
+
+#include "testes.hpp"
+#include "dominiosClasses.hpp"
+#include "entidadesClasses.hpp"
 
 /*---------------------------------------------------------------------------*/
 
@@ -17,8 +20,8 @@ void TNome::tearDown(){
 
 void TNome::casoSucesso(){
     try{
-        nome->setNome(Valor_Valido_Nome);
-        if(nome->getNome() != Valor_Valido_Nome)
+        nome->set_nome(Valor_Valido_Nome);
+        if(nome->get_nome() != Valor_Valido_Nome)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -27,15 +30,15 @@ void TNome::casoSucesso(){
 
 void TNome::casoFalha(){
     try{
-        nome->setNome(Valor_Invalido_Nome_1);
+        nome->set_nome(Valor_Invalido_Nome_1);
         estado = FALHA;
-        nome->setNome(Valor_Invalido_Nome_2);
+        nome->set_nome(Valor_Invalido_Nome_2);
         estado = FALHA;
-        nome->setNome(Valor_Invalido_Nome_3);
+        nome->set_nome(Valor_Invalido_Nome_3);
         estado = FALHA;
-        nome->setNome(Valor_Invalido_Nome_4);
+        nome->set_nome(Valor_Invalido_Nome_4);
         estado = FALHA;
-        nome->setNome(Valor_Invalido_Nome_5);
+        nome->set_nome(Valor_Invalido_Nome_5);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -62,8 +65,8 @@ void TSobrenome::tearDown(){
 
 void TSobrenome::casoSucesso(){
     try{
-        sobrenome->setSobrenome(Valor_Valido_Sobrenome);
-        if(sobrenome->getSobrenome() != Valor_Valido_Sobrenome)
+        sobrenome->set_sobrenome(Valor_Valido_Sobrenome);
+        if(sobrenome->get_sobrenome() != Valor_Valido_Sobrenome)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -72,15 +75,15 @@ void TSobrenome::casoSucesso(){
 
 void TSobrenome::casoFalha(){
     try{
-        sobrenome->setSobrenome(Valor_Invalido_Sobrenome_1);
+        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_1);
         estado = FALHA;
-        sobrenome->setSobrenome(Valor_Invalido_Sobrenome_2);
+        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_2);
         estado = FALHA;
-        sobrenome->setSobrenome(Valor_Invalido_Sobrenome_3);
+        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_3);
         estado = FALHA;
-        sobrenome->setSobrenome(Valor_Invalido_Sobrenome_4);
+        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_4);
         estado = FALHA;                                     /*Sera que assim funfa?*/
-        sobrenome->setSobrenome(Valor_Invalido_Sobrenome_5);
+        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_5);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -108,8 +111,8 @@ void TTelefone::tearDown(){
 
 void TTelefone::casoSucesso(){
     try{
-        telefone->setTelefone(Valor_Valido_Telefone);
-        if(telefone->getTelefone() != Valor_Valido_Telefone)
+        telefone->set_telefone(Valor_Valido_Telefone);
+        if(telefone->get_telefone() != Valor_Valido_Telefone)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -118,17 +121,17 @@ void TTelefone::casoSucesso(){
 
 void TTelefone::casoFalha(){
     try{
-        telefone->setTelefone(Valor_Invalido_Telefone_1);
+        telefone->set_telefone(Valor_Invalido_Telefone_1);
         estado = FALHA;
-        telefone->setTelefone(Valor_Invalido_Telefone_2);
+        telefone->set_telefone(Valor_Invalido_Telefone_2);
         estado = FALHA;
-        telefone->setTelefone(Valor_Invalido_Telefone_3);
+        telefone->set_telefone(Valor_Invalido_Telefone_3);
         estado = FALHA;
-        telefone->setTelefone(Valor_Invalido_Telefone_4);
+        telefone->set_telefone(Valor_Invalido_Telefone_4);
         estado = FALHA;
-        telefone->setTelefone(Valor_Invalido_Telefone_5);
+        telefone->set_telefone(Valor_Invalido_Telefone_5);
         estado = FALHA;
-        telefone->setTelefone(Valor_Invalido_Telefone_6);
+        telefone->set_telefone(Valor_Invalido_Telefone_6);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -156,8 +159,8 @@ void TEndereco::tearDown(){
 
 void TEndereco::casoSucesso(){
     try {
-        endereco->setEndereco(Valor_Valido_Endereco);
-        if(endereco->getEndereco() != Valor_Valido_Endereco) {
+        endereco->set_endereco(Valor_Valido_Endereco);
+        if(endereco->get_endereco() != Valor_Valido_Endereco) {
             estado = FALHA;
         }
     } catch (invalid_argument){
@@ -169,27 +172,27 @@ void TEndereco::casoFalha(string teste){
     try {
 
         if(teste == Valor_Invalido_Endereco_1) {
-            endereco->setEndereco(Valor_Invalido_Endereco_1);
+            endereco->set_endereco(Valor_Invalido_Endereco_1);
             estado = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_2) {
-            endereco->setEndereco(Valor_Invalido_Endereco_2);
+            endereco->set_endereco(Valor_Invalido_Endereco_2);
             estado = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_3) {
-            endereco->setEndereco(Valor_Invalido_Endereco_3);
+            endereco->set_endereco(Valor_Invalido_Endereco_3);
             estado = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_4) {
-            endereco->setEndereco(Valor_Invalido_Endereco_4);
+            endereco->set_endereco(Valor_Invalido_Endereco_4);
             estado = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_5) {
-            endereco->setEndereco(Valor_Invalido_Endereco_5);
+            endereco->set_endereco(Valor_Invalido_Endereco_5);
             estado = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_6) {
-            endereco->setEndereco(Valor_Invalido_Endereco_6);
+            endereco->set_endereco(Valor_Invalido_Endereco_6);
             estado = FALHA;
         }
     } catch (invalid_argument) {
@@ -224,8 +227,8 @@ void TData::tearDown(){
 
 void TData::casoSucesso(){
     try{
-        data->setData(Valor_Valido_Data);
-        if(data->getData() != Valor_Valido_Data)
+        data->set_data(Valor_Valido_Data);
+        if(data->get_data() != Valor_Valido_Data)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -234,7 +237,7 @@ void TData::casoSucesso(){
 
 void TData::casoFalha(){
     try{
-        data->setData(Valor_Invalido_Data);
+        data->set_data(Valor_Invalido_Data);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -262,8 +265,8 @@ void TCorreio_Eletronico::tearDown(){
 
 void TCorreio_Eletronico::casoSucesso(){
     try{
-        correio_eletronico->setCorreio_Eletronico(Valor_Valido_Correio_Eletronico);
-        if(correio_eletronico->getCorreio_Eletronico() != Valor_Valido_Correio_Eletronico)
+        correio_eletronico->set_correio_eletronico(Valor_Valido_Correio_Eletronico);
+        if(correio_eletronico->get_correio_eletronico() != Valor_Valido_Correio_Eletronico)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -272,7 +275,7 @@ void TCorreio_Eletronico::casoSucesso(){
 
 void TCorreio_Eletronico::casoFalha(){
     try{
-        correio_eletronico->setCorreio_Eletronico(Valor_Invalido_Correio_Eletronico_6);
+        correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_6);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -300,8 +303,8 @@ void TSenha::tearDown(){
 
 void TSenha::casoSucesso(){
     try{
-        senha->setSenha(Valor_Valido_Senha);
-        if(senha->getSenha() != Valor_Valido_Senha)
+        senha->set_senha(Valor_Valido_Senha);
+        if(senha->get_senha() != Valor_Valido_Senha)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -310,7 +313,7 @@ void TSenha::casoSucesso(){
 
 void TSenha::casoFalha(){
     try{
-        senha->setSenha(Valor_Invalido_Senha_3);
+        senha->set_senha(Valor_Invalido_Senha_3);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -338,8 +341,8 @@ void TTexto_Definicao::tearDown(){
 
 void TTexto_Definicao::casoSucesso(){
     try{
-        texto_definicao->setTexto_Definicao(Valor_Valido_Texto_Definicao);
-        if(texto_definicao->getTexto_Definicao() != Valor_Valido_Texto_Definicao)
+        texto_definicao->set_texto_definicao(Valor_Valido_Texto_Definicao);
+        if(texto_definicao->get_texto_definicao() != Valor_Valido_Texto_Definicao)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -348,7 +351,7 @@ void TTexto_Definicao::casoSucesso(){
 
 void TTexto_Definicao::casoFalha(){
     try{
-        texto_definicao->setTexto_Definicao(Valor_Invalido_Texto_Definicao);
+        texto_definicao->set_texto_definicao(Valor_Invalido_Texto_Definicao);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -376,8 +379,8 @@ void TIdioma::tearDown(){
 
 void TIdioma::casoSucesso(){
     try{
-        idioma->setIdioma(Valor_Valido_Idioma);
-        if(idioma->getIdioma() != Valor_Valido_Idioma)
+        idioma->set_idioma(Valor_Valido_Idioma);
+        if(idioma->get_idioma() != Valor_Valido_Idioma)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -386,7 +389,7 @@ void TIdioma::casoSucesso(){
 
 void TIdioma::casoFalha(){
     try{
-        idioma->setIdioma(Valor_Invalido_Idioma);
+        idioma->set_idioma(Valor_Invalido_Idioma);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -414,8 +417,8 @@ void TClasse_Termo::tearDown(){
 
 void TClasse_Termo::casoSucesso(){
     try{
-        classe_termo->setClasse_Termo(Valor_Valido_Classe_Termo);
-        if(classe_termo->getClasse_Termo() != Valor_Valido_Classe_Termo)
+        classe_termo->set_classe_termo(Valor_Valido_Classe_Termo);
+        if(classe_termo->get_classe_termo() != Valor_Valido_Classe_Termo)
             estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -424,7 +427,7 @@ void TClasse_Termo::casoSucesso(){
 
 void TClasse_Termo::casoFalha(){
     try{
-        classe_termo->setClasse_Termo(Valor_Invalido_Classe_Termo);
+        classe_termo->set_classe_termo(Valor_Invalido_Classe_Termo);
         estado = FALHA;
     } catch (invalid_argument) {
         return;
@@ -437,4 +440,125 @@ bool TClasse_Termo::run(){
     casoFalha();
     tearDown();
     return estado;
+}
+
+/*-------------------------------------Entidades--------------------------------------*/
+
+/*---------------------------------------------------------------------------*/
+
+void TLeitor::setUp(){
+    nome.set_nome(Valor_Nome);
+    sobrenome.set_sobrenome(Valor_Sobrenome);
+    correio_eletronico.set_correio_eletronico(Valor_Correio_Eletronico);
+    senha.set_senha(Valor_Senha);
+
+    leitor = new Leitor(nome, sobrenome, correio_eletronico, senha);
+    estado = SUCESSO;
+}
+
+void TLeitor::tearDown(){
+    delete leitor;
+}
+
+void TLeitor::casoSucesso(){
+    try{
+        if(leitor->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(leitor->get_sobrenome().get_sobrenome() != sobrenome.get_sobrenome())
+            estado = FALHA;
+        if(leitor->get_correio_eletronico().get_correio_eletronico() != correio_eletronico.get_correio_eletronico())
+            estado = FALHA;
+        if(leitor->get_senha().get_senha() != senha.get_senha())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TLeitor::run(){
+    setUp();
+    casoSucesso();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TDesenvolvedor::setUp(){
+    nome.set_nome(Valor_Nome);
+    sobrenome.set_sobrenome(Valor_Sobrenome);
+    data_nascimento.set_data(Valor_Data_Nascimento);
+    correio_eletronico.set_correio_eletronico(Valor_Correio_Eletronico);
+    senha.set_senha(Valor_Senha);
+
+    desenvolvedor = new Desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
+    estado = SUCESSO;
+}
+
+void TDesenvolvedor::tearDown(){
+    delete desenvolvedor;
+}
+
+void TDesenvolvedor::casoSucesso(){
+    try{
+        if(desenvolvedor->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(desenvolvedor->get_sobrenome().get_sobrenome() != sobrenome.get_sobrenome())
+            estado = FALHA;
+        if(desenvolvedor->get_data().get_data() != data_nascimento.get_data())
+            estado = FALHA;
+        if(desenvolvedor->get_correio_eletronico().get_correio_eletronico() != correio_eletronico.get_correio_eletronico())
+            estado = FALHA;
+        if(desenvolvedor->get_senha().get_senha() != senha.get_senha())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TDesenvolvedor::run(){
+    setUp();
+    casoSucesso();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TAdministrador::setUp(){
+    nome.set_nome(Valor_Nome);
+    sobrenome.set_sobrenome(Valor_Sobrenome);
+    telefone.set_telefone(Valor_Telefone);
+    data_nascimento.set_data(Valor_Data_Nascimento);
+    endereco.set_endereco(Valor_Endereco);
+    correio_eletronico.set_correio_eletronico(Valor_Correio_Eletronico);
+    senha.set_senha(Valor_Senha);
+
+    administrador = new Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
+    estado = SUCESSO;
+}
+
+void TAdministrador::tearDown(){
+    delete administrador;
+}
+
+void TAdministrador::casoSucesso(){
+    try{
+        if(administrador->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(administrador->get_sobrenome().get_sobrenome() != sobrenome.get_sobrenome())
+            estado = FALHA;
+        if(administrador->get_telefone().get_telefone() != telefone.get_telefone())
+            estado = FALHA;
+        if(administrador->get_data().get_data() != data_nascimento.get_data())
+            estado = FALHA;
+        if(administrador->get_endereco().get_endereco() != endereco.get_endereco())
+            estado = FALHA;
+        if(administrador->get_correio_eletronico().get_correio_eletronico() != correio_eletronico.get_correio_eletronico())
+            estado = FALHA;
+        if(administrador->get_senha().get_senha() != senha.get_senha())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
 }

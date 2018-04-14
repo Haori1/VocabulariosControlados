@@ -87,21 +87,38 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
-    Nome nomeTeste;
-    Senha senhaTeste;
-
-    nomeTeste.setNome("Puta");
-    senhaTeste.setSenha("1Puta");
-
-    Leitor leitor;
-
-    leitor.setNome(nomeTeste);
-
-    try {
-        leitor.setSenha(senhaTeste);
-    }catch(invalid_argument) {
-        printf("Deu certo, capturei a senha contida no nome.");
+    TLeitor leitor;
+    executou = leitor.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
     }
+
+    TDesenvolvedor desenvolvedor;
+    executou = leitor.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+
+
+    Nome testeNome;
+
+    testeNome.set_nome("Aldo");
+
+    Senha testeSenha;
+
+    testeSenha.set_senha("21aLDo");
+
+    Sobrenome qualquer;
+
+    Correio_Eletronico qualquer2;
+
+    Leitor leitorb(testeNome, qualquer, qualquer2, testeSenha);
+
+
 
     return 0;
 }

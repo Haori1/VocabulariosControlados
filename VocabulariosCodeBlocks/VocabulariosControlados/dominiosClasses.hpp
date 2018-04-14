@@ -17,8 +17,8 @@ class Nome{
         void validation (string) throw (invalid_argument);
 
     public:
-        void setNome (string nome) throw (invalid_argument);
-        string getNome(){
+        void set_nome (string nome) throw (invalid_argument);
+        string get_nome(){
             return nome;
         }
 
@@ -32,8 +32,8 @@ class Sobrenome{
         void validation (string) throw (invalid_argument);
 
     public:
-        void setSobrenome (string sobrenome) throw (invalid_argument);
-        string getSobrenome(){
+        void set_sobrenome (string sobrenome) throw (invalid_argument);
+        string get_sobrenome(){
             return sobrenome;
         }
 
@@ -50,8 +50,8 @@ class Telefone{
         void validation (string) throw (invalid_argument);
 
     public:
-        void setTelefone (string telefone) throw (invalid_argument);
-        string getTelefone(){
+        void set_telefone (string telefone) throw (invalid_argument);
+        string get_telefone(){
             return telefone;
         }
 };
@@ -66,8 +66,8 @@ class Endereco{
         void validation(string) throw (invalid_argument);
 
     public:
-        void setEndereco (string endereco) throw (invalid_argument);
-        string getEndereco(){
+        void set_endereco (string endereco) throw (invalid_argument);
+        string get_endereco(){
             return endereco;
         }
 };
@@ -92,8 +92,8 @@ class Data{
         void validation(string) throw (invalid_argument);
 
     public:
-        void setData (string data) throw (invalid_argument);
-        string getData(){
+        void set_data (string data) throw (invalid_argument);
+        string get_data(){
             return data;
         }
 };
@@ -107,8 +107,8 @@ class Correio_Eletronico{
         void validation(string) throw (invalid_argument);
 
     public:
-        void setCorreio_Eletronico (string correio_eletronico) throw (invalid_argument);
-        string getCorreio_Eletronico(){
+        void set_correio_eletronico (string correio_eletronico) throw (invalid_argument);
+        string get_correio_eletronico(){
             return correio_eletronico;
         }
 };
@@ -122,8 +122,8 @@ class Senha{
         void validation(string) throw (invalid_argument);
 
     public:
-        void setSenha (string senha) throw (invalid_argument);
-        string getSenha(){
+        void set_senha (string senha) throw (invalid_argument);
+        string get_senha(){
             return senha;
         }
 };
@@ -136,8 +136,8 @@ class Texto_Definicao{
         void validation(string) throw (invalid_argument);
 
     public:
-        void setTexto_Definicao (string texto_definicao) throw (invalid_argument);
-        string getTexto_Definicao(){
+        void set_texto_definicao (string texto_definicao) throw (invalid_argument);
+        string get_texto_definicao(){
             return texto_definicao;
         }
 };
@@ -148,8 +148,8 @@ class Idioma{
         void validation(string) throw (invalid_argument);
 
     public:
-        void setIdioma (string idioma) throw (invalid_argument);
-        string getIdioma(){
+        void set_idioma (string idioma) throw (invalid_argument);
+        string get_idioma(){
             return idioma;
         }
 };
@@ -160,8 +160,8 @@ class Classe_Termo{
         void validation(string) throw (invalid_argument);
 
     public:
-        void setClasse_Termo (string classe_termo) throw (invalid_argument);
-        string getClasse_Termo(){
+        void set_classe_termo (string classe_termo) throw (invalid_argument);
+        string get_classe_termo(){
             return classe_termo;
         }
 };
