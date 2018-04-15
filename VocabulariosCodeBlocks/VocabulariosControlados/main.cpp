@@ -104,21 +104,37 @@ int main(void) {
     }
 
 
-    Nome testeNome;
+    TAdministrador administrador;
+    executou = administrador.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
 
-    testeNome.set_nome("Aldo");
+    TVocControlado voccontrolado;
+    executou = voccontrolado.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
 
-    Senha testeSenha;
+    TTermo termo;
+    executou = termo.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
 
-    testeSenha.set_senha("21aLDo");
-
-    Sobrenome qualquer;
-
-    Correio_Eletronico qualquer2;
-
-    Leitor leitorb(testeNome, qualquer, qualquer2, testeSenha);
-
-
-
+    TDefinicao definicao;
+    executou = definicao.run();
+    if(executou){
+        cout << "SUCESSO" << endl;
+    } else {
+        cout << "FALHA" << endl;
+    }
+    
     return 0;
 }
