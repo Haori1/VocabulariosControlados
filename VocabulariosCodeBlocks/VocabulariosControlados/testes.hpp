@@ -27,10 +27,11 @@ class TNome{
 
 
         bool estado;
+        bool notifica;
         void setUp();
         void tearDown();
         void casoSucesso();
-        void casoFalha();
+        void casoFalha(string);
 
     public:
         const static bool SUCESSO = true;
@@ -52,10 +53,11 @@ class TSobrenome {
         static constexpr const char* Valor_Invalido_Sobrenome_5 = "Excedenteeeeeeeeeeeeeeee";
 
         bool estado;
+        bool notifica;
         void setUp();
         void tearDown();
         void casoSucesso();
-        void casoFalha();
+        void casoFalha(string);
 
     public:
         const static bool SUCESSO = true;
@@ -79,10 +81,11 @@ class TTelefone{
 
 
         bool estado;
+        bool notifica;
         void setUp();
         void tearDown();
         void casoSucesso();
-        void casoFalha();
+        void casoFalha(string);
 
     public:
         const static bool SUCESSO = true;
@@ -106,6 +109,7 @@ class TEndereco{
         static constexpr const char* Valor_Invalido_Endereco_6 = "Excedenteeeeeeeeeeeeeeee";
 
         bool estado;
+        bool notifica;
         void setUp();
         void tearDown();
         void casoSucesso();
@@ -117,6 +121,7 @@ class TEndereco{
         bool run();
 };
 
+    // URGENTE:
     // A declaração abaixo não está dando certo, provavelmente declarei algo errado, concertar depois.
     //const char Valor_Valido_Endereco[] = "endereco qualquer";
     //const char Valor_Invalido_Endereco_1[] = " teste";
@@ -163,10 +168,11 @@ class TCorreio_Eletronico{
         static constexpr const char* Valor_Invalido_Correio_Eletronico_6 = "eaemeuguerreiro@yahoo.com."; /*A validação desse caso de teste não é feita, porém de acordo com as especificações é valido, como proceder?*/
 
         bool estado;
+        bool notifica;
         void setUp();
         void tearDown();
         void casoSucesso();
-        void casoFalha();
+        void casoFalha(string);
 
     public:
         const static bool SUCESSO = true;
@@ -185,10 +191,11 @@ class TSenha{
         static constexpr const char* Valor_Invalido_Senha_3 = "xd3E.d";
 
         bool estado;
+        bool notifica;
         void setUp();
         void tearDown();
         void casoSucesso();
-        void casoFalha();
+        void casoFalha(string);
 
     public:
         const static bool SUCESSO = true;

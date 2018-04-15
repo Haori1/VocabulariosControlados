@@ -12,6 +12,7 @@
 void TNome::setUp(){
     nome = new Nome();
     estado = SUCESSO;
+    notifica = SUCESSO;
 }
 
 void TNome::tearDown(){
@@ -28,18 +29,33 @@ void TNome::casoSucesso(){
     }
 }
 
-void TNome::casoFalha(){
+void TNome::casoFalha(string teste){
     try{
-        nome->set_nome(Valor_Invalido_Nome_1);
-        estado = FALHA;
-        nome->set_nome(Valor_Invalido_Nome_2);
-        estado = FALHA;
-        nome->set_nome(Valor_Invalido_Nome_3);
-        estado = FALHA;
-        nome->set_nome(Valor_Invalido_Nome_4);
-        estado = FALHA;
-        nome->set_nome(Valor_Invalido_Nome_5);
-        estado = FALHA;
+        if(teste == Valor_Invalido_Nome_1){
+            nome->set_nome(Valor_Invalido_Nome_1);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Nome_2){
+            nome->set_nome(Valor_Invalido_Nome_2);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Nome_3){
+            nome->set_nome(Valor_Invalido_Nome_3);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Nome_4){
+            nome->set_nome(Valor_Invalido_Nome_4);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Nome_5){
+            nome->set_nome(Valor_Invalido_Nome_5);
+            estado = FALHA;
+            notifica = FALHA;
+        }
     } catch (invalid_argument) {
         return;
     }
@@ -48,7 +64,31 @@ void TNome::casoFalha(){
 bool TNome::run(){
     setUp();
     casoSucesso();
-    casoFalha();
+    casoFalha(Valor_Invalido_Nome_1);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 1 de nome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Nome_2);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 2 de nome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Nome_3);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 3 de nome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Nome_4);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 4 de nome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Nome_5);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 5 de nome";
+        notifica == SUCESSO;
+    }
     tearDown();
     return estado;
 }
@@ -57,6 +97,7 @@ bool TNome::run(){
 void TSobrenome::setUp(){
     sobrenome = new Sobrenome();
     estado = SUCESSO;
+    notifica = SUCESSO;
 }
 
 void TSobrenome::tearDown(){
@@ -73,18 +114,33 @@ void TSobrenome::casoSucesso(){
     }
 }
 
-void TSobrenome::casoFalha(){
+void TSobrenome::casoFalha(string teste){
     try{
-        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_1);
-        estado = FALHA;
-        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_2);
-        estado = FALHA;
-        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_3);
-        estado = FALHA;
-        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_4);
-        estado = FALHA;                                     /*Sera que assim funfa?*/
-        sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_5);
-        estado = FALHA;
+        if(teste == Valor_Invalido_Sobrenome_1) {
+            sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_1);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Sobrenome_2) {
+            sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_2);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Sobrenome_2) {
+            sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_2);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Sobrenome_2) {
+            sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_2);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Sobrenome_2) {
+            sobrenome->set_sobrenome(Valor_Invalido_Sobrenome_2);
+            estado = FALHA;
+            notifica = FALHA;
+        }
     } catch (invalid_argument) {
         return;
     }
@@ -93,7 +149,31 @@ void TSobrenome::casoFalha(){
 bool TSobrenome::run(){
     setUp();
     casoSucesso();
-    casoFalha();
+    casoFalha(Valor_Invalido_Sobrenome_1);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 1 de sobrenome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Sobrenome_2);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 2 de sobrenome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Sobrenome_3);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 3 de sobrenome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Sobrenome_4);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 4 de sobrenome";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Sobrenome_5);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 5 de sobrenome";
+        notifica == SUCESSO;
+    }
     tearDown();
     return estado;
 }
@@ -103,6 +183,7 @@ bool TSobrenome::run(){
 void TTelefone::setUp(){
     telefone = new Telefone();
     estado = SUCESSO;
+    notifica = SUCESSO;
 }
 
 void TTelefone::tearDown(){
@@ -119,20 +200,38 @@ void TTelefone::casoSucesso(){
     }
 }
 
-void TTelefone::casoFalha(){
+void TTelefone::casoFalha(string teste){
     try{
-        telefone->set_telefone(Valor_Invalido_Telefone_1);
-        estado = FALHA;
-        telefone->set_telefone(Valor_Invalido_Telefone_2);
-        estado = FALHA;
-        telefone->set_telefone(Valor_Invalido_Telefone_3);
-        estado = FALHA;
-        telefone->set_telefone(Valor_Invalido_Telefone_4);
-        estado = FALHA;
-        telefone->set_telefone(Valor_Invalido_Telefone_5);
-        estado = FALHA;
-        telefone->set_telefone(Valor_Invalido_Telefone_6);
-        estado = FALHA;
+        if(teste == Valor_Invalido_Telefone_1){
+            telefone->set_telefone(Valor_Invalido_Telefone_1);
+            estado = FALHA;
+            notifica = SUCESSO;
+        }
+        if(teste == Valor_Invalido_Telefone_2){
+            telefone->set_telefone(Valor_Invalido_Telefone_2);
+            estado = FALHA;
+            notifica = SUCESSO;
+        }
+        if(teste == Valor_Invalido_Telefone_3){
+            telefone->set_telefone(Valor_Invalido_Telefone_3);
+            estado = FALHA;
+            notifica = SUCESSO;
+        }
+        if(teste == Valor_Invalido_Telefone_4){
+            telefone->set_telefone(Valor_Invalido_Telefone_4);
+            estado = FALHA;
+            notifica = SUCESSO;
+        }
+        if(teste == Valor_Invalido_Telefone_5){
+            telefone->set_telefone(Valor_Invalido_Telefone_5);
+            estado = FALHA;
+            notifica = SUCESSO;
+        }
+        if(teste == Valor_Invalido_Telefone_6){
+            telefone->set_telefone(Valor_Invalido_Telefone_6);
+            estado = FALHA;
+            notifica = SUCESSO;
+        }
     } catch (invalid_argument) {
         return;
     }
@@ -141,7 +240,36 @@ void TTelefone::casoFalha(){
 bool TTelefone::run(){
     setUp();
     casoSucesso();
-    casoFalha();
+    casoFalha(Valor_Invalido_Telefone_1);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 1 de telefone";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Telefone_2);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 2 de telefone";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Telefone_3);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 3 de telefone";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Telefone_4);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 4 de telefone";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Telefone_5);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 5 de telefone";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Telefone_6);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 6 de telefone";
+        notifica == SUCESSO;
+    }
     tearDown();
     return estado;
 }
@@ -151,6 +279,7 @@ bool TTelefone::run(){
 void TEndereco::setUp(){
     endereco = new Endereco();
     estado = SUCESSO;
+    notifica = SUCESSO;
 }
 
 void TEndereco::tearDown(){
@@ -174,26 +303,32 @@ void TEndereco::casoFalha(string teste){
         if(teste == Valor_Invalido_Endereco_1) {
             endereco->set_endereco(Valor_Invalido_Endereco_1);
             estado = FALHA;
+            notifica = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_2) {
             endereco->set_endereco(Valor_Invalido_Endereco_2);
             estado = FALHA;
+            notifica = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_3) {
             endereco->set_endereco(Valor_Invalido_Endereco_3);
             estado = FALHA;
+            notifica = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_4) {
             endereco->set_endereco(Valor_Invalido_Endereco_4);
             estado = FALHA;
+            notifica = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_5) {
             endereco->set_endereco(Valor_Invalido_Endereco_5);
             estado = FALHA;
+            notifica = FALHA;
         }
         if(teste == Valor_Invalido_Endereco_6) {
             endereco->set_endereco(Valor_Invalido_Endereco_6);
             estado = FALHA;
+            notifica = FALHA;
         }
     } catch (invalid_argument) {
         return;
@@ -204,11 +339,35 @@ bool TEndereco::run(){
     setUp();
     casoSucesso();
     casoFalha(Valor_Invalido_Endereco_1);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 1 de endereco";
+        notifica == SUCESSO;
+    }
     casoFalha(Valor_Invalido_Endereco_2);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 2 de endereco";
+        notifica == SUCESSO;
+    }
     casoFalha(Valor_Invalido_Endereco_3);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 3 de endereco";
+        notifica == SUCESSO;
+    }
     casoFalha(Valor_Invalido_Endereco_4);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 4 de endereco";
+        notifica == SUCESSO;
+    }
     casoFalha(Valor_Invalido_Endereco_5);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 5 de endereco";
+        notifica == SUCESSO;
+    }
     casoFalha(Valor_Invalido_Endereco_6);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 6 de endereco";
+        notifica == SUCESSO;
+    }
     tearDown();
     return estado;
 }
@@ -257,6 +416,7 @@ bool TData::run(){
 void TCorreio_Eletronico::setUp(){
     correio_eletronico = new Correio_Eletronico();
     estado = SUCESSO;
+    notifica = SUCESSO;
 }
 
 void TCorreio_Eletronico::tearDown(){
@@ -273,10 +433,38 @@ void TCorreio_Eletronico::casoSucesso(){
     }
 }
 
-void TCorreio_Eletronico::casoFalha(){
+void TCorreio_Eletronico::casoFalha(string teste){
     try{
-        correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_6);
-        estado = FALHA;
+        if(teste == Valor_Invalido_Correio_Eletronico_1){
+            correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_1);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Correio_Eletronico_2){
+            correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_2);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Correio_Eletronico_3){
+            correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_3);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Correio_Eletronico_4){
+            correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_4);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Correio_Eletronico_5){
+            correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_5);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Correio_Eletronico_6){
+            correio_eletronico->set_correio_eletronico(Valor_Invalido_Correio_Eletronico_6);
+            estado = FALHA;
+            notifica = FALHA;
+        }
     } catch (invalid_argument) {
         return;
     }
@@ -285,7 +473,36 @@ void TCorreio_Eletronico::casoFalha(){
 bool TCorreio_Eletronico::run(){
     setUp();
     casoSucesso();
-    casoFalha();
+    casoFalha(Valor_Invalido_Correio_Eletronico_1);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 1 de correio eletronico";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Correio_Eletronico_2);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 2 de correio eletronico";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Correio_Eletronico_3);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 3 de correio eletronico";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Correio_Eletronico_4);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 4 de correio eletronico";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Correio_Eletronico_5);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 5 de correio eletronico";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Correio_Eletronico_6);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 6 de correio eletronico";
+        notifica == SUCESSO;
+    }
     tearDown();
     return estado;
 }
@@ -295,6 +512,7 @@ bool TCorreio_Eletronico::run(){
 void TSenha::setUp(){
     senha = new Senha();
     estado = SUCESSO;
+    notifica = SUCESSO;
 }
 
 void TSenha::tearDown(){
@@ -311,10 +529,24 @@ void TSenha::casoSucesso(){
     }
 }
 
-void TSenha::casoFalha(){
+void TSenha::casoFalha(string teste){
     try{
-        senha->set_senha(Valor_Invalido_Senha_3);
-        estado = FALHA;
+        if(teste == Valor_Invalido_Senha_1){
+            senha->set_senha(Valor_Invalido_Senha_1);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Senha_2){
+            senha->set_senha(Valor_Invalido_Senha_2);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+        if(teste == Valor_Invalido_Senha_3){
+            senha->set_senha(Valor_Invalido_Senha_3);
+            estado = FALHA;
+            notifica = FALHA;
+        }
+
     } catch (invalid_argument) {
         return;
     }
@@ -323,7 +555,21 @@ void TSenha::casoFalha(){
 bool TSenha::run(){
     setUp();
     casoSucesso();
-    casoFalha();
+    casoFalha(Valor_Invalido_Senha_1);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 1 de senha";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Senha_2);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 2 de senha";
+        notifica == SUCESSO;
+    }
+    casoFalha(Valor_Invalido_Senha_3);
+    if(notifica == FALHA) {
+        cout << "Falha no teste para o valor invalido padrao 3 de senha";
+        notifica == SUCESSO;
+    }
     tearDown();
     return estado;
 }
