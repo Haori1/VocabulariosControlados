@@ -22,7 +22,20 @@ using namespace std;
 
 /**
  * @brief Classe abstrata com o intuito de armazenar os dados de um leitor.
- * As formas de se utilizar essa classe é pelo seu construtor Leitor() e pelos seus metodos set e get.
+ * As formas de se utilizar essa classe sao pelo seu construtor Leitor() e pelos seus metodos set e get.
+ *
+ * Atributos de validacao:
+ * A string de senha da classe Leitor nao pode possuir a string de nome da classe Leitor, ou mesmo variacoes do nome por meio de
+ * vogais ou consoantes maiusculas ou minusculas.
+ * Exemplo: Dado o nome "Caio":
+ * senha invalida: "cAio12".
+ * senha valida: "C8io12".
+ *
+ * Possui:
+ * nome
+ * sobrenome
+ * correio eletronico
+ * senha
  */
 
 class Leitor{
@@ -112,7 +125,21 @@ class Leitor{
 };
 /**
  * @brief Classe abstrata com o intuito de armazenar os dados de um Desenvolvedor.
- * As formas de se utilizar essa classe é pelo seu construtor Desenvolvedor() e pelos seus metodos set e get.
+ * As formas de se utilizar essa classe sao pelo seu construtor Desenvolvedor() e pelos seus metodos set e get.
+ *
+ * Atributos de validacao:
+ * A string de senha da classe Desenvolvedor nao pode possuir a string de nome da classe Desenvolvedor, ou mesmo variacoes do nome por meio de
+ * vogais ou consoantes maiusculas ou minusculas.
+ * Exemplo: Dado o nome "Caio":
+ * senha invalida: "cAio12".
+ * senha valida: "C8io12".
+ *
+ * Possui:
+ * nome
+ * sobrenome
+ * correio eletronico
+ * senha
+ * data de nascimento
  */
 class Desenvolvedor : public Leitor{
     protected:
@@ -158,7 +185,23 @@ class Desenvolvedor : public Leitor{
 };
 /**
  * @brief Classe abstrata com o intuito de armazenar os dados de um Administrador.
- * As formas de se utilizar essa classe é pelo seu construtor Administrador() e pelos seus metodos set e get.
+ * As formas de se utilizar essa classe sao pelo seu construtor Administrador() e pelos seus metodos set e get.
+ *
+ * Atributos de validacao:
+ * A string de senha da classe Administrador nao pode possuir a string de nome da classe Administrador, ou mesmo variacoes do nome por meio de
+ * vogais ou consoantes maiusculas ou minusculas.
+ * Exemplo: Dado o nome "Caio":
+ * senha invalida: "cAio12".
+ * senha valida: "C8io12".
+ *
+ * Possui:
+ * nome
+ * sobrenome
+ * correio eletronico
+ * senha
+ * data de nascimento
+ * telefone
+ * endereco
  */
 class Administrador : public Desenvolvedor{
     protected:
@@ -223,7 +266,12 @@ class Administrador : public Desenvolvedor{
 };
 /**
  * @brief Classe abstrata com o intuito de armazenar os dados de um VocControlado.
- * As formas de se utilizar essa classe é pelo seu construtor VocControlado() e pelos seus metodos set e get.
+ * As formas de se utilizar essa classe sao pelo seu construtor VocControlado() e pelos seus metodos set e get.
+ *
+ * Possui:
+ * nome
+ * idioma
+ * data
  */
 class VocControlado{
     private:
@@ -293,7 +341,12 @@ class VocControlado{
 };
 /**
  * @brief Classe abstrata com o intuito de armazenar os dados de um Termo.
- * As formas de se utilizar essa classe é pelo seu construtor Termo() e pelos seus metodos set e get.
+ * As formas de se utilizar essa classe sao pelo seu construtor Termo() e pelos seus metodos set e get.
+ *
+ * Possui:
+ * nome
+ * termo
+ * data
  */
 class Termo{
     private:
@@ -363,7 +416,11 @@ class Termo{
 };
 /**
  * @brief Classe abstrata com o intuito de armazenar os dados de uma Definicao.
- * As formas de se utilizar essa classe é pelo seu construtor Definicao() e pelos seus metodos set e get.
+ * As formas de se utilizar essa classe sao pelo seu construtor Definicao() e pelos seus metodos set e get.
+ *
+ * Possui:
+ * texto de definicao
+ * data
  */
 class Definicao{
     private:
