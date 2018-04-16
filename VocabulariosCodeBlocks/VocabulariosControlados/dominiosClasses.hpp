@@ -24,7 +24,7 @@ using namespace std;
  * @brief classe abstrata com o intuito de nomear (usuarios ou qualquer outra abstracao que possa receber um "nome").
  *
  * Possui os seguintes atributos de validacao:
- * A classe Nome recebe uma string que pode possuir no máximo 20 caracteres.
+ * A classe Nome recebe uma string que pode possuir no maximo 20 caracteres.
  * O primeiro caractere deve ser uma vogal ou consoante maiusculas.
  * A string so pode conter como caracteres consoantes e vogais minusculas.
  *
@@ -42,7 +42,7 @@ class Nome{
     /**
      * @brief Valida o atributo do tipo string da classe Nome
      *
-     * eh responsavel por validar a string recebida pela classe Nome, de acordo com os seus atributos de validacao.
+     * Ã© responsavel por validar a string recebida pela classe Nome, de acordo com os seus atributos de validacao.
      *
      * @param string recebe a string da classe Nome, para realizar a sua validacao.
      */
@@ -53,7 +53,7 @@ class Nome{
     /**
      * @brief Recebe uma string para guardar na classe Nome, de acordo com seus atributos privados.
      *
-     *  O valor eh guardado somente se for validado pelo metodo de validacao.
+     *  O valor Ã© guardado somente se for validado pelo metodo de validacao.
      *  Os atributos de validacao sao os explicitados nas informacoes referentes a classe Nome.
      *
      * @param nome recebe a string da classe Nome.
@@ -70,7 +70,7 @@ class Nome{
  * @brief classe abstrata com o intuito de subnomear entidades que representam informacoes acerca de seres humanos no sistema.
  *
  * Possui os seguintes atributos de validacao:
- * A classe Sobrenome recebe uma string que pode possuir no máximo 20 caracteres.
+ * A classe Sobrenome recebe uma string que pode possuir no mï¿½ximo 20 caracteres.
  * O primeiro caractere deve ser uma vogal ou consoante maiusculas.
  * A string so pode conter como caracteres consoantes e vogais minusculas.
  *
@@ -115,7 +115,7 @@ class Sobrenome{
  * @brief classe abstrata com o intuito de guardar um endereco de telefone valido.
  *
  * Possui os seguintes atributos de validacao:
- * A classe Telefone recebe uma string que pode possuir no máximo 13 caracteres.
+ * A classe Telefone recebe uma string que pode possuir no mï¿½ximo 13 caracteres.
  * O terceiro caractere deve ser um espaco.
  * O nono caractere deve ser um traco do tipo "-".
  * A string so pode conter como caracteres numeros de 0 a 9.
@@ -162,7 +162,7 @@ class Telefone{
  * @brief classe abstrata com o intuito de guardar um endereco geografico.
  *
  * Possui os seguintes atributos de validacao:
- * A classe Endereco recebe uma string que pode possuir no máximo 20 caracteres.
+ * A classe Endereco recebe uma string que pode possuir no mï¿½ximo 20 caracteres.
  * O primeiro e o ultimo caracteres nao podem ser um espaco.
  * Nao deve possuir dois ou mais espacos consecutivos.
  * A string so pode conter como caracteres vogais ou consoantes, minusculas ou maiusculas.
@@ -208,7 +208,7 @@ class Endereco{
  *
  *
  * Possui os seguintes atributos de validacao:
- * A classe Endereco recebe uma string que pode possuir no máximo 20 caracteres.
+ * A classe Endereco recebe uma string que pode possuir no mï¿½ximo 20 caracteres.
  * Deve possuir um formato fixo: DD/MM/AAAA.
  * DD eh uma string que representa um numero entre 01 e 31.
  * MM eh uma string que representa um numero entre 01 e 12.
@@ -285,11 +285,12 @@ class Correio_Eletronico{
         string correio_eletronico;
         const static int POS_INVALIDA = -1;
         const static int STRING_VAZIA = 0;
+        const static int APOSTROFO = 39;
 
     /**
      * @brief Valida o atributo do tipo string da classe Correio_Eletronico
      *
-     * eh responsavel por validar a string recebida pela classe Correio_Eletronico, de acordo com os seus atributos de valicacao.
+     * Ã© responsavel por validar a string recebida pela classe Correio_Eletronico, de acordo com os seus atributos de valicacao.
      *
      * @param string recebe a string da classe Correio_Eletronico, para realizar a sua validacao.
      */
@@ -315,7 +316,7 @@ class Correio_Eletronico{
  *
  *
  * Possui os seguintes atributos de validacao:
- * A classe Senha recebe uma string que pode possuir no máximo 8 caracteres.
+ * A classe Senha recebe uma string que pode possuir no mï¿½ximo 8 caracteres.
  * Deve conter ao menos uma letra minuscula, uma letra maiuscula e um numero.
  * Pode conter como caracteres vogais ou consoantes, minusculas ou maiusculas. numeros de 0 a 9.
  *
@@ -358,7 +359,7 @@ class Senha{
  * @brief classe abstrata com o intuito de guardar um paragrafo tido como uma definicao.
  *
  * Possui os seguintes atributos de validacao:
- * A classe Senha recebe uma string que pode possuir no máximo 30 caracteres.
+ * A classe Senha recebe uma string que pode possuir no mï¿½ximo 30 caracteres.
  *
  * A classe possui um metodo set_texto_definicao, para receber uma string.
  * A classe possui um metodo get_texto_definicao, que apenas retorna a string contida em um eventual objeto da classe Senha.

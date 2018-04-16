@@ -1,4 +1,12 @@
-Tarefas a serem realizadas:
+﻿Tarefas a serem realizadas:
+-Revisar a declaração das constantes strings das classes de domínio;
+-Comentar o hpp de testes;
+-Revisar os comentários em entidades e domínios;
+
+Tarefas realizadas:
+-Gerado esqueleto dos módulos;
+-Construído esqueleto das classes do tipo Domínio;
+-Iniciada a construção dos métodos de validação;
 -Averiguar os warnings relativos ao throw, acredito que podem ser devido a declaração da função com void;
 -Resolver e decidir um padrão para não gerar "números mágicos"(soltos) ao longo do código;
 -Testar o funcionamento dos métodos de validação criados para nome, sobrenome e telefone;
@@ -7,8 +15,3 @@ classe de termo;
 -Decidir acerca do padrão linguístico das variáveis (opino que é melhor adotar o português);
 -Averiguar a possibilidade de criar funções ou classes para código repetido(como proceder nesses casos?);
 
-
-Tarefas realizadas:
--Gerado esqueleto dos módulos;
--Construído esqueleto das classes do tipo Domínio;
--Iniciada a construção dos métodos de validação;
