@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+
 #include "dominiosClasses.hpp"
 #include "testes.hpp"
 #include "entidadesClasses.hpp"
@@ -135,6 +136,6 @@ int main(void) {
     } else {
         cout << "FALHA" << endl;
     }
-    
+
     return 0;
 }

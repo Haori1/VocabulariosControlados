@@ -21,27 +21,27 @@
 	<stdexcept>
 	"dominiosClasses.hpp"
 
-1523815767 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidadesmetodos.cpp
+1523851052 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidadesmetodos.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"entidadesClasses.hpp"
 
-1523669751 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosmetodos.cpp
+1523851869 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosmetodos.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"dominiosClasses.hpp"
 
-1523669679 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosclasses.hpp
+1523851319 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosclasses.hpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 
-1523834602 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
+1523851120 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -58,7 +58,7 @@
 	"dominiosClasses.hpp"
 	"entidadesClasses.hpp"
 
-1523834696 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
+1523845634 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
 	<iostream>
 	<string>
 	"dominiosClasses.hpp"
@@ -113,7 +113,7 @@
 	<iostream>
 	"dominiosClasses.hpp"
 
-1523815767 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidadesclasses.hpp
+1523850808 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidadesclasses.hpp
 	<iostream>
 	"dominiosClasses.hpp"
 

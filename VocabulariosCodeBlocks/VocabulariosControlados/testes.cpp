@@ -59,7 +59,7 @@ void TNome::casoFalha(string teste){
     } catch (invalid_argument) {
         return;
     }
-} //Acredito que deve ser separado, pois o teste deve validar todos os casos propostos, e n�o somente um.
+}
 
 bool TNome::run(){
     setUp();
@@ -144,7 +144,7 @@ void TSobrenome::casoFalha(string teste){
     } catch (invalid_argument) {
         return;
     }
-} //Acredito que deve ser separado, pois o teste deve validar todos os casos propostos, e nao somente um.
+}
 
 bool TSobrenome::run(){
     setUp();
