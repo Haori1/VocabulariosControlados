@@ -341,7 +341,7 @@ class TAdministrador{
         static constexpr const char* Valor_Sobrenome = "Uzumaki";
         static constexpr const char* Valor_Telefone = "61 99999-9999";
         static constexpr const char* Valor_Data_Nascimento = "11/03/1999";
-        static constexpr const char* Valor_Endereco = "Aldeia da folha";
+        static constexpr const char* Valor_Endereco = "Aldeiadafolha";
         static constexpr const char* Valor_Correio_Eletronico = "boruto@gmail.com";
         static constexpr const char* Valor_Senha = "Tocerto1";
 
@@ -357,4 +357,74 @@ class TAdministrador{
     };
 
 /*---------------------------------------------------------------------------*/
+
+class TVocControlado{
+    private:
+        VocControlado* voccontrolado;
+        Nome nome;
+        Idioma idioma;
+        Data data;
+
+        static constexpr const char* Valor_Nome = "Boruto";
+        static constexpr const char* Valor_Idioma = "ENG";
+        static constexpr const char* Valor_Data = "15/04/2018";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+
+};
+
+/*---------------------------------------------------------------------------*/
+
+class TTermo{
+    private:
+        Termo* termo;
+        Nome nome;
+        Classe_Termo classe_termo;
+        Data data;
+
+        static constexpr const char* Valor_Nome = "Boruto";
+        static constexpr const char* Valor_Classe_Termo = "PT";
+        static constexpr const char* Valor_Data = "15/04/2018";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+
+};
+
+/*---------------------------------------------------------------------------*/
+
+class TDefinicao{
+    private:
+        Definicao* definicao;
+        Texto_Definicao texto_definicao;
+        Data data;
+
+        static constexpr const char* Valor_Texto_Definicao = "Eaemeuchapa";
+        static constexpr const char* Valor_Data = "15/04/2018";
+
+        bool estado;
+        void setUp();
+        void tearDown();
+        void casoSucesso();
+
+    public:
+        const static bool SUCESSO = true;
+        const static bool FALHA = false;
+        bool run();
+};
 #endif

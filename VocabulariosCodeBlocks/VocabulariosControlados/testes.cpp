@@ -67,27 +67,27 @@ bool TNome::run(){
     casoFalha(Valor_Invalido_Nome_1);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 1 de nome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Nome_2);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 2 de nome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Nome_3);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 3 de nome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Nome_4);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 4 de nome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Nome_5);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 5 de nome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     tearDown();
     return estado;
@@ -152,27 +152,27 @@ bool TSobrenome::run(){
     casoFalha(Valor_Invalido_Sobrenome_1);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 1 de sobrenome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Sobrenome_2);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 2 de sobrenome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Sobrenome_3);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 3 de sobrenome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Sobrenome_4);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 4 de sobrenome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Sobrenome_5);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 5 de sobrenome";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     tearDown();
     return estado;
@@ -243,32 +243,32 @@ bool TTelefone::run(){
     casoFalha(Valor_Invalido_Telefone_1);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 1 de telefone";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Telefone_2);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 2 de telefone";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Telefone_3);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 3 de telefone";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Telefone_4);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 4 de telefone";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Telefone_5);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 5 de telefone";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Telefone_6);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 6 de telefone";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     tearDown();
     return estado;
@@ -341,32 +341,32 @@ bool TEndereco::run(){
     casoFalha(Valor_Invalido_Endereco_1);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 1 de endereco";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Endereco_2);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 2 de endereco";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Endereco_3);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 3 de endereco";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Endereco_4);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 4 de endereco";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Endereco_5);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 5 de endereco";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Endereco_6);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 6 de endereco";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     tearDown();
     return estado;
@@ -476,32 +476,32 @@ bool TCorreio_Eletronico::run(){
     casoFalha(Valor_Invalido_Correio_Eletronico_1);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 1 de correio eletronico";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Correio_Eletronico_2);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 2 de correio eletronico";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Correio_Eletronico_3);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 3 de correio eletronico";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Correio_Eletronico_4);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 4 de correio eletronico";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Correio_Eletronico_5);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 5 de correio eletronico";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Correio_Eletronico_6);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 6 de correio eletronico";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     tearDown();
     return estado;
@@ -558,17 +558,17 @@ bool TSenha::run(){
     casoFalha(Valor_Invalido_Senha_1);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 1 de senha";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Senha_2);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 2 de senha";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     casoFalha(Valor_Invalido_Senha_3);
     if(notifica == FALHA) {
         cout << "Falha no teste para o valor invalido padrao 3 de senha";
-        notifica == SUCESSO;
+        notifica = SUCESSO;
     }
     tearDown();
     return estado;
@@ -808,3 +808,114 @@ void TAdministrador::casoSucesso(){
         return;
     }
 }
+
+bool TAdministrador::run(){
+    setUp();
+    casoSucesso();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TVocControlado::setUp(){
+    nome.set_nome(Valor_Nome);
+    idioma.set_idioma(Valor_Idioma);
+    data.set_data(Valor_Data);
+
+    voccontrolado = new VocControlado(nome, idioma, data);
+    estado = SUCESSO;
+}
+
+void TVocControlado::tearDown(){
+    delete voccontrolado;
+}
+
+void TVocControlado::casoSucesso(){
+    try{
+        if(voccontrolado->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(voccontrolado ->get_idioma().get_idioma() != idioma.get_idioma())
+            estado = FALHA;
+        if(voccontrolado->get_data().get_data() != data.get_data())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TVocControlado::run(){
+    setUp();
+    casoSucesso();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TTermo::setUp(){
+    nome.set_nome(Valor_Nome);
+    classe_termo.set_classe_termo(Valor_Classe_Termo);
+    data.set_data(Valor_Data);
+
+    termo = new Termo(nome, classe_termo, data);
+    estado = SUCESSO;
+}
+
+void TTermo::tearDown(){
+    delete termo;
+}
+
+void TTermo::casoSucesso(){
+    try{
+        if(termo->get_nome().get_nome() != nome.get_nome())
+            estado = FALHA;
+        if(termo->get_classe_termo().get_classe_termo() != classe_termo.get_classe_termo())
+            estado = FALHA;
+        if(termo->get_data().get_data() != data.get_data())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TTermo::run(){
+    setUp();
+    casoSucesso();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
+
+void TDefinicao::setUp(){
+    texto_definicao.set_texto_definicao(Valor_Texto_Definicao);
+    data.set_data(Valor_Data);
+
+    definicao = new Definicao(texto_definicao, data);
+    estado = SUCESSO;
+}
+
+void TDefinicao::tearDown(){
+    delete definicao;
+}
+
+void TDefinicao::casoSucesso(){
+    try{
+        if(definicao->get_texto_definicao().get_texto_definicao() != texto_definicao.get_texto_definicao())
+            estado = FALHA;
+        if(definicao->get_data().get_data() != data.get_data())
+            estado = FALHA;
+    } catch (invalid_argument) {
+        return;
+    }
+}
+
+bool TDefinicao::run(){
+    setUp();
+    casoSucesso();
+    tearDown();
+    return estado;
+}
+
+/*---------------------------------------------------------------------------*/
