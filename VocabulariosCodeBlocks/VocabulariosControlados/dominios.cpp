@@ -8,15 +8,15 @@ using namespace std;
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Nome::validation(string nome) throw (invalid_argument){
+void Nome::Validation(string nome) throw (invalid_argument){
 
-    int tamanhoVetor = nome.size();
+    int tamanho_vetor = nome.size();
 
-    if(tamanhoVetor > TAM_MAX_NOME) {
+    if(tamanho_vetor > TAM_MAX_NOME) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanhoVetor == STRING_VAZIA) {
+    if(tamanho_vetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
@@ -25,7 +25,7 @@ void Nome::validation(string nome) throw (invalid_argument){
 
     } else {
 
-        for(int i = 1; i < tamanhoVetor; i++) {
+        for(int i = 1; i < tamanho_vetor; i++) {
             if(nome[i] < 'a' || nome[i] > 'z') {
                 throw invalid_argument("Caractere invalido inserido");
             }
@@ -37,21 +37,21 @@ void Nome::validation(string nome) throw (invalid_argument){
 }
 
 void Nome::set_nome(string nome) throw (invalid_argument){
-    validation(nome);
+    Validation(nome);
     this->nome = nome;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
+void Sobrenome::Validation(string sobrenome) throw (invalid_argument) {
 
-    int tamanhoVetor = sobrenome.size();
+    int tamanho_vetor = sobrenome.size();
 
-    if(tamanhoVetor > TAM_MAX_SOBRENOME) {
+    if(tamanho_vetor > TAM_MAX_SOBRENOME) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanhoVetor == STRING_VAZIA) {
+    if(tamanho_vetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
@@ -59,7 +59,7 @@ void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
         throw invalid_argument("A primeira letra deve ser maiuscula.");
     } else {
 
-        for(int i = 1; i < tamanhoVetor; i++) {
+        for(int i = 1; i < tamanho_vetor; i++) {
             if(sobrenome[i] < 'a' || sobrenome[i] > 'z') {
                 throw invalid_argument("Caractere invalido inserido");
             }
@@ -68,24 +68,24 @@ void Sobrenome::validation(string sobrenome) throw (invalid_argument) {
 }
 
 void Sobrenome::set_sobrenome(string sobrenome) throw (invalid_argument) {
-    validation(sobrenome);
+    Validation(sobrenome);
     this->sobrenome = sobrenome;
 }
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Telefone::validation(string telefone) throw (invalid_argument) {
+void Telefone::Validation(string telefone) throw (invalid_argument) {
 
-    int tamanhoVetor = telefone.size();
+    int tamanho_vetor = telefone.size();
 
-    if(tamanhoVetor != TAM_MAX_TELEFONE) {
+    if(tamanho_vetor != TAM_MAX_TELEFONE) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanhoVetor == STRING_VAZIA) {
+    if(tamanho_vetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    for(int i = 0; i < tamanhoVetor; i++){
+    for(int i = 0; i < tamanho_vetor; i++){
 
         if(i == POS_ESPA_TELEFONE || i == POS_TRACO_TELEFONE) {
             continue;
@@ -108,18 +108,18 @@ void Telefone::validation(string telefone) throw (invalid_argument) {
 }
 
 void Telefone::set_telefone(string telefone) throw (invalid_argument) {
-    validation(telefone);
+    Validation(telefone);
     this->telefone = telefone;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Endereco::validation(string endereco) throw (invalid_argument) {
+void Endereco::Validation(string endereco) throw (invalid_argument) {
 
     int contaEspacos = 0;
-    int tamanhoVetor = endereco.size();
+    int tamanho_vetor = endereco.size();
 
-      if(tamanhoVetor > TAM_MAX_ENDERECO) {
+      if(tamanho_vetor > TAM_MAX_ENDERECO) {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
      }
 
@@ -143,36 +143,36 @@ void Endereco::validation(string endereco) throw (invalid_argument) {
 }
 
 void Endereco::set_endereco(string endereco) throw (invalid_argument) {
-    validation(endereco);
+    Validation(endereco);
     this->endereco = endereco;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Data::validation(string data) throw (invalid_argument) {
-    int tamanhoVetor = data.size();
+void Data::Validation(string data) throw (invalid_argument) {
+    int tamanho_vetor = data.size();
     string dia = "";
     string mes = "";
     string ano = "";
     int dia_int;
     int mes_int;
     int ano_int;
-    if (tamanhoVetor == STRING_VAZIA) {
+    if (tamanho_vetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    if(tamanhoVetor > TAM_MAX_DATA){
+    if(tamanho_vetor > TAM_MAX_DATA){
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
     if(data[2] != '/' || data[5] != '/')    //Posicao 2 e 5 == '/'
         throw invalid_argument("Formato Invalido. Insira o formato correto: DD/MM/AAAA");
 
-    for (int i = 0; i < tamanhoVetor; i++)
+    for (int i = 0; i < tamanho_vetor; i++)
         if((i != 2 && i != 5) && (data[i] < '0' || data[i] > '9'))
             throw invalid_argument("Caractere invalido inserido");
 
-    for (int i = 0; i < tamanhoVetor; i++) {
+    for (int i = 0; i < tamanho_vetor; i++) {
         if(i == 0 || i == 1)              //Data == posicao 0 + 1
             dia += data[i];
         if(i == 3 || i == 4)              //Mes == posicao 3 + 4
@@ -209,23 +209,23 @@ void Data::validation(string data) throw (invalid_argument) {
 }
 
 void Data::set_data(string data) throw (invalid_argument) {
-    validation(data);
+    Validation(data);
     this->data = data;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Correio_Eletronico::validation(string correio_eletronico) throw (invalid_argument) {
-    int tamanhoVetor = correio_eletronico.size();
+void Correio_Eletronico::Validation(string correio_eletronico) throw (invalid_argument) {
+    int tamanho_vetor = correio_eletronico.size();
     int pos = POS_INVALIDA;
     string local = "";
     string dominio = "";
 
-    if (tamanhoVetor == STRING_VAZIA) {
+    if (tamanho_vetor == STRING_VAZIA) {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    for (int i = 0; i < tamanhoVetor; i++){
+    for (int i = 0; i < tamanho_vetor; i++){
         if(correio_eletronico[i] != '@')        //Pega a parte local do email
             local += correio_eletronico[i];
 
@@ -238,7 +238,7 @@ void Correio_Eletronico::validation(string correio_eletronico) throw (invalid_ar
     if(pos == POS_INVALIDA) //Se durante o percorrimento da string não for encontrado o caractere '@' a pos fica com POS_INVALIDA
         throw invalid_argument("Formato Invalido. O email deve conter o caractere '@'");
 
-    for (int i = pos; i < tamanhoVetor; i++){
+    for (int i = pos; i < tamanho_vetor; i++){
         if(correio_eletronico[i] == '@'){
             throw invalid_argument("Formato Invalido. O email não pode haver mais de um caracter '@'");
         } else {
@@ -246,9 +246,9 @@ void Correio_Eletronico::validation(string correio_eletronico) throw (invalid_ar
         }
     }
 
-    if(correio_eletronico[0] == '.' || correio_eletronico[tamanhoVetor - 1] == '.')
+    if(correio_eletronico[0] == '.' || correio_eletronico[tamanho_vetor - 1] == '.')
         throw invalid_argument("Nao pode haver o caracter '.' na primeira ou ultima posicao do email");
-    if(correio_eletronico[0] == '-' || correio_eletronico[tamanhoVetor - 1] == '-')
+    if(correio_eletronico[0] == '-' || correio_eletronico[tamanho_vetor - 1] == '-')
         throw invalid_argument("Nao pode haver o caracter '-' na primeira ou ultima do email");
 
     /*Verificacao local*/
@@ -300,21 +300,21 @@ void Correio_Eletronico::validation(string correio_eletronico) throw (invalid_ar
 }
 
 void Correio_Eletronico::set_correio_eletronico(string correio_eletronico) throw (invalid_argument) {
-    validation(correio_eletronico);
+    Validation(correio_eletronico);
     this->correio_eletronico = correio_eletronico;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Senha::validation(string senha) throw (invalid_argument) {
-    int tamanhoVetor = senha.size();
+void Senha::Validation(string senha) throw (invalid_argument) {
+    int tamanho_vetor = senha.size();
 
-    if(tamanhoVetor == STRING_VAZIA)
+    if(tamanho_vetor == STRING_VAZIA)
         throw invalid_argument("Nao foi inserido nenhum caractere");
-    if(tamanhoVetor > TAM_MAX_SENHA)
+    if(tamanho_vetor > TAM_MAX_SENHA)
         throw invalid_argument("Quantidade maxima de caracteres excedida");
 
-    for(int i = 0; i < tamanhoVetor; i++){
+    for(int i = 0; i < tamanho_vetor; i++){
         if((senha[i] >= 'A' && senha[i] <= 'Z') ||
            (senha[i] >= 'a' && senha[i] <= 'z') ||
            (senha[i] >= '0' && senha[i] <= '9')){
@@ -325,7 +325,7 @@ void Senha::validation(string senha) throw (invalid_argument) {
     }
 
     bool letra_maiuscula = false, letra_minuscula = false, numero = false;
-    for(int i = 0; i < tamanhoVetor; i++){
+    for(int i = 0; i < tamanho_vetor; i++){
         if(senha[i] >= 'A' && senha[i] <= 'Z')
             letra_maiuscula = true;
         if(senha[i] >= 'a' && senha[i] <= 'z')
@@ -341,27 +341,27 @@ void Senha::validation(string senha) throw (invalid_argument) {
 }
 
 void Senha::set_senha(string senha) throw (invalid_argument) {
-    validation(senha);
+    Validation(senha);
     this->senha = senha;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Texto_Definicao::validation(string texto_definicao) throw (invalid_argument) {
-    int tamanhoVetor = texto_definicao.size();
+void Texto_Definicao::Validation(string texto_definicao) throw (invalid_argument) {
+    int tamanho_vetor = texto_definicao.size();
 
-    if(tamanhoVetor > TAM_MAX_TEXTO)
+    if(tamanho_vetor > TAM_MAX_TEXTO)
         throw invalid_argument("Quantidade maxima de caracteres excedida");
 }
 
 void Texto_Definicao::set_texto_definicao(string texto_definicao) throw (invalid_argument) {
-    validation(texto_definicao);
+    Validation(texto_definicao);
     this->texto_definicao = texto_definicao;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Idioma::validation(string idioma) throw (invalid_argument) {
+void Idioma::Validation(string idioma) throw (invalid_argument) {
     if(idioma != "ENG" && idioma != "FRA" &&
        idioma != "GER" && idioma != "ITA" &&
        idioma != "POR" && idioma != "SPA")
@@ -369,18 +369,18 @@ void Idioma::validation(string idioma) throw (invalid_argument) {
 }
 
 void Idioma::set_idioma(string idioma) throw (invalid_argument) {
-    validation(idioma);
+    Validation(idioma);
     this->idioma = idioma;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Classe_Termo::validation(string classe_termo) throw (invalid_argument) {
+void Classe_Termo::Validation(string classe_termo) throw (invalid_argument) {
     if(classe_termo != "PT" && classe_termo != "NP")
         throw invalid_argument("Escolha invalida. As possiveis escolhas sao PT e NP");
 }
 
 void Classe_Termo::set_classe_termo(string classe_termo) throw (invalid_argument) {
-    validation(classe_termo);
+    Validation(classe_termo);
     this->classe_termo = classe_termo;
 }

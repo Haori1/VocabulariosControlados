@@ -9,7 +9,7 @@ int main(void) {
     bool executou;
 
     TNome nome;
-    executou = nome.run();
+    executou = nome.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -17,7 +17,7 @@ int main(void) {
     }
 
     TSobrenome sobrenome;
-    executou = sobrenome.run();
+    executou = sobrenome.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -25,7 +25,7 @@ int main(void) {
     }
 
     TTelefone telefone;
-    executou = telefone.run();
+    executou = telefone.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -33,7 +33,7 @@ int main(void) {
     }
 
     TEndereco endereco;
-    executou = endereco.run();
+    executou = endereco.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -41,7 +41,7 @@ int main(void) {
     }
 
     TData data;
-    executou = data.run();
+    executou = data.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -49,7 +49,7 @@ int main(void) {
     }
 
     TCorreio_Eletronico correio_eletronico;
-    executou = correio_eletronico.run();
+    executou = correio_eletronico.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -57,7 +57,7 @@ int main(void) {
     }
 
     TSenha senha;
-    executou = senha.run();
+    executou = senha.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -65,7 +65,7 @@ int main(void) {
     }
 
     TTexto_Definicao texto_definicao;
-    executou = texto_definicao.run();
+    executou = texto_definicao.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -73,7 +73,7 @@ int main(void) {
     }
 
     TIdioma idioma;
-    executou = idioma.run();
+    executou = idioma.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -81,7 +81,7 @@ int main(void) {
     }
 
     TClasse_Termo classe_termo;
-    executou = classe_termo.run();
+    executou = classe_termo.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -89,7 +89,7 @@ int main(void) {
     }
 
     TLeitor leitor;
-    executou = leitor.run();
+    executou = leitor.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -97,7 +97,7 @@ int main(void) {
     }
 
     TDesenvolvedor desenvolvedor;
-    executou = leitor.run();
+    executou = leitor.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -106,15 +106,15 @@ int main(void) {
 
 
     TAdministrador administrador;
-    executou = administrador.run();
+    executou = administrador.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
         cout << "FALHA" << endl;
     }
 
-    TVoc_Controlado voc_controlado;
-    executou = voc_controlado.run();
+    TVocControlado voccontrolado;
+    executou = voccontrolado.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -122,7 +122,7 @@ int main(void) {
     }
 
     TTermo termo;
-    executou = termo.run();
+    executou = termo.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {
@@ -130,7 +130,7 @@ int main(void) {
     }
 
     TDefinicao definicao;
-    executou = definicao.run();
+    executou = definicao.Run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {

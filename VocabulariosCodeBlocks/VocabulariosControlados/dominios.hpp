@@ -47,7 +47,7 @@ class Nome{
      * @param string recebe a string da classe Nome, para realizar a sua validacao.
      */
 
-        void validation (string) throw (invalid_argument);
+        void Validation (string) throw (invalid_argument);
 
     public:
     /**
@@ -93,7 +93,7 @@ class Sobrenome{
      * @param string recebe a string da classe Sobrenome, para realizar a sua validacao.
      */
 
-        void validation (string) throw (invalid_argument);
+        void Validation (string) throw (invalid_argument);
 
     public:
     /**
@@ -141,7 +141,7 @@ class Telefone{
      *
      * @param string recebe a string da classe Telefone, para realizar a sua validacao.
      */
-        void validation (string) throw (invalid_argument);
+        void Validation (string) throw (invalid_argument);
 
     public:
     /**
@@ -186,7 +186,7 @@ class Endereco{
      *
      * @param string recebe a string da classe Endereco, para realizar a sua validacao.
      */
-        void validation(string) throw (invalid_argument);
+        void Validation(string) throw (invalid_argument);
 
     public:
     /**
@@ -244,7 +244,7 @@ class Data{
      *
      * @param string recebe a string da classe Data, para realizar a sua validacao.
      */
-        void validation(string) throw (invalid_argument);
+        void Validation(string) throw (invalid_argument);
 
     public:
     /**
@@ -294,7 +294,7 @@ class Correio_Eletronico{
      *
      * @param string recebe a string da classe Correio_Eletronico, para realizar a sua validacao.
      */
-        void validation(string) throw (invalid_argument);
+        void Validation(string) throw (invalid_argument);
 
     public:
     /**
@@ -338,7 +338,7 @@ class Senha{
      *
      * @param string recebe a string da classe Senha, para realizar a sua validacao.
      */
-        void validation(string) throw (invalid_argument);
+        void Validation(string) throw (invalid_argument);
 
     public:
     /**
@@ -378,7 +378,7 @@ class Texto_Definicao{
      *
      * @param string recebe a string da classe Texto_Definicao, para realizar a sua validacao.
      */
-        void validation(string) throw (invalid_argument);
+        void Validation(string) throw (invalid_argument);
 
     public:
     /**
@@ -417,7 +417,7 @@ class Idioma{
      *
      * @param string recebe a string da classe Idioma, para realizar a sua validacao.
      */
-        void validation(string) throw (invalid_argument);
+        void Validation(string) throw (invalid_argument);
 
     public:
     /**
@@ -455,7 +455,7 @@ class Classe_Termo{
      *
      * @param string recebe a string da classe Classe_Termo, para realizar a sua validacao.
      */
-        void validation(string) throw (invalid_argument);
+        void Validation(string) throw (invalid_argument);
 
     public:
     /**

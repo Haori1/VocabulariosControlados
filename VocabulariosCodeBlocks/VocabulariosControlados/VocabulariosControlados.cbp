@@ -32,10 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="dominiosClasses.hpp" />
-		<Unit filename="dominiosMetodos.cpp" />
-		<Unit filename="entidadesClasses.hpp" />
-		<Unit filename="entidadesMetodos.cpp" />
+		<Unit filename="dominios.cpp" />
+		<Unit filename="dominios.hpp" />
+		<Unit filename="entidades.cpp" />
+		<Unit filename="entidades.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="testes.cpp" />
 		<Unit filename="testes.hpp" />

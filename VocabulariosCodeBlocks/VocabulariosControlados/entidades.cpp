@@ -5,32 +5,32 @@
 
 #include "entidades.hpp"
 
-void Leitor::validation(const Senha &senha) throw(invalid_argument){
+void Leitor::Validation(const Senha &senha) throw(invalid_argument){
 
     Senha teste_Senha;
 
     teste_Senha = senha;
 
-    string nome_Leitor = nome.get_nome();
-    string senha_String = teste_Senha.get_senha();
+    string nome_leitor = nome.get_nome();
+    string senha_string = teste_Senha.get_senha();
 
-    int tamanho_Nome = nome_Leitor.size();
-    int tamanho_Senha = senha_String.size();
+    int tamanho_nome = nome_leitor.size();
+    int tamanho_senha = senha_string.size();
 
     int contador = 0;
 
-    for(int i = 0; i < tamanho_Senha; i++){ //ponto inicial da senha
-        for(int j = 0; j < tamanho_Nome; j++){ //percorre o tamanho do nome
-            if((senha_String[i + j] == nome_Leitor[j])                        ||
-               (senha_String[i + j] == (nome_Leitor[j] - Converte_Maiuscula)) ||
-              ((senha_String[i + j] - 32) == nome_Leitor[j])) {
+    for(int i = 0; i < tamanho_senha; i++){ //ponto inicial da senha
+        for(int j = 0; j < tamanho_nome; j++){ //percorre o tamanho do nome
+            if((senha_string[i + j] == nome_leitor[j])                        ||
+               (senha_string[i + j] == (nome_leitor[j] - CONVERTE_MAIUSCULA)) ||
+              ((senha_string[i + j] - 32) == nome_leitor[j])) {
                 contador++; //Conta quantos caracteres sao iguais, pois caso a quantidade seja o tamanho do nome, temos um nome contido na senha.
             }
         }
-        if(contador == tamanho_Nome) {
+        if(contador == tamanho_nome) {
             throw invalid_argument("Senha invalida. O nome nao pode estar contido na senha.");
         }
-        if((tamanho_Senha - i) < tamanho_Nome) {
+        if((tamanho_senha - i) < tamanho_nome) {
             break;
         } //Verifica se ha menos caracteres a serem checados do que a quantidade de caracteres que o nome possui. Caso sim, para o laco.
         contador = 0;
@@ -38,7 +38,7 @@ void Leitor::validation(const Senha &senha) throw(invalid_argument){
 }
 
 void Leitor::set_senha(const Senha &senha) throw(invalid_argument){
-    validation(senha);
+    Validation(senha);
 
     this->senha = senha;
 }

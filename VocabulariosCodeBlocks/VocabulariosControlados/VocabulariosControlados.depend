@@ -41,29 +41,29 @@
 	<exception>
 	<stdexcept>
 
-1523851120 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
+1523927958 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"testes.hpp"
-	"dominiosClasses.hpp"
-	"entidadesClasses.hpp"
+	"dominios.hpp"
+	"entidades.hpp"
 
-1523834787 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
+1523927811 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
-	"dominiosClasses.hpp"
-	"entidadesClasses.hpp"
+	"dominios.hpp"
+	"entidades.hpp"
 
-1523845634 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
+1523925796 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
 	<iostream>
 	<string>
-	"dominiosClasses.hpp"
+	"dominios.hpp"
 	"testes.hpp"
-	"entidadesClasses.hpp"
+	"entidades.hpp"
 
 1523743881 source:c:\users\cleibe\documents\pdfs curso ciência da computação\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominiosmetodos.cpp
 	<iostream>
@@ -117,27 +117,27 @@
 	<iostream>
 	"dominiosClasses.hpp"
 
-1523923982 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.cpp
+1523926732 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"dominios.hpp"
 
-1523851319 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.hpp
+1523926730 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.hpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 
-1523923950 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.cpp
+1523927358 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"entidades.hpp"
 
-1523924618 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.hpp
+1523926758 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.hpp
 	<iostream>
 	"dominios.hpp"
 

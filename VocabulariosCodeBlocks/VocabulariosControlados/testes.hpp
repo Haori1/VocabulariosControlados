@@ -61,10 +61,10 @@ class TNome{
 
         bool estado;
         bool notifica;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha(string);
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha(string);
 
     public:
     /**
@@ -90,7 +90,7 @@ class TNome{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 /*---------------------------------------------------------------------------*/
@@ -128,10 +128,10 @@ class TSobrenome {
 
         bool estado;
         bool notifica;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha(string);
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha(string);
 
     public:
      /**
@@ -157,7 +157,7 @@ class TSobrenome {
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 /*---------------------------------------------------------------------------*/
@@ -197,10 +197,10 @@ class TTelefone{
 
         bool estado;
         bool notifica;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha(string);
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha(string);
 
     public:
     /**
@@ -226,7 +226,7 @@ class TTelefone{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 /*---------------------------------------------------------------------------*/
@@ -266,10 +266,10 @@ class TEndereco{
 
         bool estado;
         bool notifica;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha(string);
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha(string);
 
     public:
     /**
@@ -295,7 +295,7 @@ class TEndereco{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
     // URGENTE:
@@ -338,10 +338,10 @@ class TData{
         static constexpr const char* Valor_Invalido_Data = "29/02/2018";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha();
 
     public:
     /**
@@ -367,7 +367,7 @@ class TData{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 
@@ -407,10 +407,10 @@ class TCorreio_Eletronico{
 
         bool estado;
         bool notifica;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha(string);
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha(string);
 
     public:
     /**
@@ -436,7 +436,7 @@ class TCorreio_Eletronico{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 /*---------------------------------------------------------------------------*/
 
@@ -471,10 +471,10 @@ class TSenha{
 
         bool estado;
         bool notifica;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha(string);
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha(string);
 
     public:
     /**
@@ -500,7 +500,7 @@ class TSenha{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 
 };
 
@@ -533,10 +533,10 @@ class TTexto_Definicao{
         static constexpr const char* Valor_Invalido_Texto_Definicao = "excedenteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha();
 
     public:
     /**
@@ -562,7 +562,7 @@ class TTexto_Definicao{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 /*---------------------------------------------------------------------------*/
@@ -594,10 +594,10 @@ class TIdioma{
         static constexpr const char* Valor_Invalido_Idioma = "JAP";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha();
 
     public:
     /**
@@ -623,7 +623,7 @@ class TIdioma{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 /*---------------------------------------------------------------------------*/
@@ -655,10 +655,10 @@ class TClasse_Termo{
         static constexpr const char* Valor_Invalido_Classe_Termo = "XD";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
-        void casoFalha();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
+        void CasoFalha();
 
     public:
     /**
@@ -684,7 +684,7 @@ class TClasse_Termo{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 /*-------------------------------------Entidades--------------------------------------*/
@@ -730,9 +730,9 @@ class TLeitor{
         static constexpr const char* Valor_Senha = "Tocerto1";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
 
     public:
     /**
@@ -757,7 +757,7 @@ class TLeitor{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 
 };
 
@@ -807,9 +807,9 @@ class TDesenvolvedor{
         static constexpr const char* Valor_Senha = "Tocerto1";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
 
     public:
     /**
@@ -834,7 +834,7 @@ class TDesenvolvedor{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 
 /*---------------------------------------------------------------------------*/
@@ -888,9 +888,9 @@ class TAdministrador{
         static constexpr const char* Valor_Senha = "Tocerto1";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
 
     public:
     /**
@@ -915,15 +915,15 @@ class TAdministrador{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
     };
 
 /*---------------------------------------------------------------------------*/
 
 /**
- * @brief classe abstrata com o intuito de testar o funcionamento da classe Voc_Controlado.
+ * @brief classe abstrata com o intuito de testar o funcionamento da classe VocControlado.
  *
- * Possui um objeto da classe Voc_Controlado para realizacao do teste de unidade.
+ * Possui um objeto da classe VocControlado para realizacao do teste de unidade.
  *
  * Possui os seguintes atributos de validacao:
  * Um objeto da classe Nome.
@@ -934,7 +934,7 @@ class TAdministrador{
  * Um string valido da classe Sobrenome.
  * Um string valido da classe Data.
  *
- * A classe retorna se a classe Voc_Controlado funcionou como o esperado:
+ * A classe retorna se a classe VocControlado funcionou como o esperado:
  * Se armazenou os valores esperados.
  *
  * O objetivo dessa classe se restringe ao auxilio aos desenvolvedores, ou aos utilitarios dessa biblioteca que desejam
@@ -943,9 +943,9 @@ class TAdministrador{
  * Nao deixa rastros na memoria referentes as classe Nome, Idioma e Data.
  */
 
-class TVoc_Controlado{
+class TVocControlado{
     private:
-        Voc_Controlado* voc_controlado;
+        VocControlado* voccontrolado;
         Nome nome;
         Idioma idioma;
         Data data;
@@ -955,9 +955,9 @@ class TVoc_Controlado{
         static constexpr const char* Valor_Data = "15/04/2018";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
 
     public:
     /**
@@ -978,11 +978,11 @@ class TVoc_Controlado{
      * @brief Metodo que chama todo o processo de teste da classe TVocControlocado.
      *
      * Nao possui parametro.
-     * Simula o funcionamento da classe Voc_Controlado.
+     * Simula o funcionamento da classe VocControlado.
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 
 };
 
@@ -1023,9 +1023,9 @@ class TTermo{
         static constexpr const char* Valor_Data = "15/04/2018";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
 
     public:
     /**
@@ -1050,7 +1050,7 @@ class TTermo{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 
 };
 
@@ -1087,9 +1087,9 @@ class TDefinicao{
         static constexpr const char* Valor_Data = "15/04/2018";
 
         bool estado;
-        void setUp();
-        void tearDown();
-        void casoSucesso();
+        void SetUp();
+        void TearDown();
+        void CasoSucesso();
 
     public:
     /**
@@ -1114,6 +1114,6 @@ class TDefinicao{
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */
-        bool run();
+        bool Run();
 };
 #endif
