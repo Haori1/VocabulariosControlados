@@ -86,7 +86,7 @@ class Sobrenome{
         const static int STRING_VAZIA = 0;
 
     /**
-     * @brief Valida o atributo do tipo string da classe Sobrenome
+     * @brief Valida o atributo do tipo string da classe Sobrenome.
      *
      * eh responsavel por validar a string recebida pela classe Sobrenome, de acordo com os seus atributos de valicacao.
      *
