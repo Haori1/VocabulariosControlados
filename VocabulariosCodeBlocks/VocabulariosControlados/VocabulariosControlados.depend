@@ -117,3 +117,27 @@
 	<iostream>
 	"dominiosClasses.hpp"
 
+1523923982 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+
+1523851319 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.hpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1523923950 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"entidades.hpp"
+
+1523924618 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.hpp
+	<iostream>
+	"dominios.hpp"
+

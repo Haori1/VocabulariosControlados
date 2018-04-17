@@ -6,8 +6,8 @@
 #include <exception>
 #include <stdexcept>
 
-#include "dominiosClasses.hpp"
-#include "entidadesClasses.hpp"
+#include "dominios.hpp"
+#include "entidades.hpp"
 
 
 using namespace std;
@@ -921,9 +921,9 @@ class TAdministrador{
 /*---------------------------------------------------------------------------*/
 
 /**
- * @brief classe abstrata com o intuito de testar o funcionamento da classe VocControlado.
+ * @brief classe abstrata com o intuito de testar o funcionamento da classe Voc_Controlado.
  *
- * Possui um objeto da classe VocControlado para realizacao do teste de unidade.
+ * Possui um objeto da classe Voc_Controlado para realizacao do teste de unidade.
  *
  * Possui os seguintes atributos de validacao:
  * Um objeto da classe Nome.
@@ -934,7 +934,7 @@ class TAdministrador{
  * Um string valido da classe Sobrenome.
  * Um string valido da classe Data.
  *
- * A classe retorna se a classe VocControlado funcionou como o esperado:
+ * A classe retorna se a classe Voc_Controlado funcionou como o esperado:
  * Se armazenou os valores esperados.
  *
  * O objetivo dessa classe se restringe ao auxilio aos desenvolvedores, ou aos utilitarios dessa biblioteca que desejam
@@ -943,9 +943,9 @@ class TAdministrador{
  * Nao deixa rastros na memoria referentes as classe Nome, Idioma e Data.
  */
 
-class TVocControlado{
+class TVoc_Controlado{
     private:
-        VocControlado* voccontrolado;
+        Voc_Controlado* voc_controlado;
         Nome nome;
         Idioma idioma;
         Data data;
@@ -978,7 +978,7 @@ class TVocControlado{
      * @brief Metodo que chama todo o processo de teste da classe TVocControlocado.
      *
      * Nao possui parametro.
-     * Simula o funcionamento da classe VocControlado.
+     * Simula o funcionamento da classe Voc_Controlado.
      * Retorna um booleano que indica SUCESSO ou FALHA.
      *
      */

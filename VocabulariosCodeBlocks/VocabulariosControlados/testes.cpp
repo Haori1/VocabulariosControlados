@@ -4,8 +4,8 @@
 #include <stdexcept>
 
 #include "testes.hpp"
-#include "dominiosClasses.hpp"
-#include "entidadesClasses.hpp"
+#include "dominios.hpp"
+#include "entidades.hpp"
 
 /*---------------------------------------------------------------------------*/
 
@@ -818,33 +818,33 @@ bool TAdministrador::run(){
 
 /*---------------------------------------------------------------------------*/
 
-void TVocControlado::setUp(){
+void TVoc_Controlado::setUp(){
     nome.set_nome(Valor_Nome);
     idioma.set_idioma(Valor_Idioma);
     data.set_data(Valor_Data);
 
-    voccontrolado = new VocControlado(nome, idioma, data);
+    voc_controlado = new Voc_Controlado(nome, idioma, data);
     estado = SUCESSO;
 }
 
-void TVocControlado::tearDown(){
-    delete voccontrolado;
+void TVoc_Controlado::tearDown(){
+    delete voc_controlado;
 }
 
-void TVocControlado::casoSucesso(){
+void TVoc_Controlado::casoSucesso(){
     try{
-        if(voccontrolado->get_nome().get_nome() != nome.get_nome())
+        if(voc_controlado->get_nome().get_nome() != nome.get_nome())
             estado = FALHA;
-        if(voccontrolado ->get_idioma().get_idioma() != idioma.get_idioma())
+        if(voc_controlado ->get_idioma().get_idioma() != idioma.get_idioma())
             estado = FALHA;
-        if(voccontrolado->get_data().get_data() != data.get_data())
+        if(voc_controlado->get_data().get_data() != data.get_data())
             estado = FALHA;
     } catch (invalid_argument) {
         return;
     }
 }
 
-bool TVocControlado::run(){
+bool TVoc_Controlado::run(){
     setUp();
     casoSucesso();
     tearDown();

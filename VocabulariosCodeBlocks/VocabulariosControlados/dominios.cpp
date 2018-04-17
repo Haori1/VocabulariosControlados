@@ -2,7 +2,7 @@
 #include <string>
 #include <exception>
 #include <stdexcept>
-#include "dominiosClasses.hpp"
+#include "dominios.hpp"
 
 using namespace std;
 

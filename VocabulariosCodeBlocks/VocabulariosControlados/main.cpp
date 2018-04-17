@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "dominiosClasses.hpp"
+#include "dominios.hpp"
 #include "testes.hpp"
-#include "entidadesClasses.hpp"
+#include "entidades.hpp"
 
 int main(void) {
     bool executou;
@@ -113,8 +113,8 @@ int main(void) {
         cout << "FALHA" << endl;
     }
 
-    TVocControlado voccontrolado;
-    executou = voccontrolado.run();
+    TVoc_Controlado voc_controlado;
+    executou = voc_controlado.run();
     if(executou){
         cout << "SUCESSO" << endl;
     } else {

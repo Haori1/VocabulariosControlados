@@ -3,7 +3,7 @@
 #include <exception>
 #include <stdexcept>
 
-#include "entidadesClasses.hpp"
+#include "entidades.hpp"
 
 void Leitor::validation(const Senha &senha) throw(invalid_argument){
 
@@ -21,7 +21,7 @@ void Leitor::validation(const Senha &senha) throw(invalid_argument){
 
     for(int i = 0; i < tamanho_Senha; i++){ //ponto inicial da senha
         for(int j = 0; j < tamanho_Nome; j++){ //percorre o tamanho do nome
-            if((senha_String[i + j] == nome_Leitor[j])                        || 
+            if((senha_String[i + j] == nome_Leitor[j])                        ||
                (senha_String[i + j] == (nome_Leitor[j] - Converte_Maiuscula)) ||
               ((senha_String[i + j] - 32) == nome_Leitor[j])) {
                 contador++; //Conta quantos caracteres sao iguais, pois caso a quantidade seja o tamanho do nome, temos um nome contido na senha.

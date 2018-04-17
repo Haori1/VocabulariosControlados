@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "dominiosClasses.hpp"
+#include "dominios.hpp"
 
 using namespace std;
 
@@ -15,7 +15,7 @@ using namespace std;
  *
  * @brief Descricao acerca das classes de entidades, referindo-se a seus atributos e funcionalidades.
  *
- * As classes de entidades sao um nivel maior de abstracao abordado nesse projeto.
+ * As classes de entidades são um nivel maior de abstração abordado nesse projeto.
  * Referem-se aos elementos que compoem o sistema.
  */
 
@@ -265,15 +265,15 @@ class Administrador : public Desenvolvedor{
         Administrador(){}
 };
 /**
- * @brief Classe abstrata com o intuito de armazenar os dados de um VocControlado.
- * As formas de se utilizar essa classe sao pelo seu construtor VocControlado() e pelos seus metodos set e get.
+ * @brief Classe abstrata com o intuito de armazenar os dados de um Voc_Controlado.
+ * As formas de se utilizar essa classe sao pelo seu construtor Voc_Controlado() e pelos seus metodos set e get.
  *
  * Possui:
  * nome
  * idioma
  * data
  */
-class VocControlado{
+class Voc_Controlado{
     private:
         Nome nome;
         Idioma idioma;
@@ -281,62 +281,62 @@ class VocControlado{
 
     public:
         /**
-         * @brief Recebe um objeto do tipo Nome para armazenar na classe VocControlado, de acordo com seus atributos privados.
+         * @brief Recebe um objeto do tipo Nome para armazenar na classe Voc_Controlado, de acordo com seus atributos privados.
          *
-         * @param nome é o objeto que é passado para a classe VocControlado, de acordo com seus atributos privados.
+         * @param nome é o objeto que é passado para a classe Voc_Controlado, de acordo com seus atributos privados.
          */
         void set_nome(const Nome &nome){
             this->nome = nome;
         }
         /**
-         * @brief Fornece o objeto do tipo Nome da classe VocControlado.
+         * @brief Fornece o objeto do tipo Nome da classe Voc_Controlado.
          */
         Nome get_nome() const {
             return nome;
         }
         /**
-         * @brief Recebe um objeto do tipo Idioma para armazenar na classe VocControlado, de acordo com seus atributos privados.
+         * @brief Recebe um objeto do tipo Idioma para armazenar na classe Voc_Controlado, de acordo com seus atributos privados.
          *
-         * @param idioma é o objeto que é passado para a classe VocControlado, de acordo com seus atributos privados.
+         * @param idioma é o objeto que é passado para a classe Voc_Controlado, de acordo com seus atributos privados.
          */
         void set_idioma(const Idioma &idioma){
             this->idioma = idioma;
         }
         /**
-         * @brief Fornece o objeto do tipo Idioma da classe VocControlado.
+         * @brief Fornece o objeto do tipo Idioma da classe Voc_Controlado.
          */
         Idioma get_idioma() const {
             return idioma;
         }
         /**
-         * @brief Recebe um objeto do tipo Data para armazenar na classe VocControlado, de acordo com seus atributos privados.
+         * @brief Recebe um objeto do tipo Data para armazenar na classe Voc_Controlado, de acordo com seus atributos privados.
          *
-         * @param data é o objeto que é passado para a classe VocControlado, de acordo com seus atributos privados.
+         * @param data é o objeto que é passado para a classe Voc_Controlado, de acordo com seus atributos privados.
          */
         void set_data(const Data &data){
             this->data = data;
         }
         /**
-         * @brief Fornece o objeto do tipo Data da classe VocControlado.
+         * @brief Fornece o objeto do tipo Data da classe Voc_Controlado.
          */
         Data get_data() const {
             return data;
         }
         /**
-         * @brief VocControlado() é a função que é passada para criar-se um novo objeto.
-         * @param nome é o objeto que é passado para a classe VocControlado, de acordo com seus atributos privados.
-         * @param idioma é o objeto que é passado para a classe VocControlado, de acordo com seus atributos privados.
-         * @param data é o objeto que é passado para a classe VocControlado, de acordo com seus atributos privados.
+         * @brief Voc_Controlado() é a função que é passada para criar-se um novo objeto.
+         * @param nome é o objeto que é passado para a classe Voc_Controlado, de acordo com seus atributos privados.
+         * @param idioma é o objeto que é passado para a classe Voc_Controlado, de acordo com seus atributos privados.
+         * @param data é o objeto que é passado para a classe Voc_Controlado, de acordo com seus atributos privados.
          */
-         VocControlado(const Nome &nome, const Idioma &idioma, const Data &data){
+         Voc_Controlado(const Nome &nome, const Idioma &idioma, const Data &data){
             set_nome(nome);
             set_idioma(idioma);
             set_data(data);
         }
         /**
-         * @brief Construtor default da classe VocControlado.
+         * @brief Construtor default da classe Voc_Controlado.
          */
-        VocControlado(){}
+        Voc_Controlado(){}
 
 };
 /**
