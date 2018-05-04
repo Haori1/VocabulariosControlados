@@ -13,8 +13,10 @@ using namespace std;
 
 class ApresentacaoControle : public IUAutenticacao {
     private:
-        void Controle();
         int escolha;
+
+        void Controle();
+        bool Autenticar() throw (invalid_argument);
 
     public:
         const static int ACESSAR_CONTA = 1;

@@ -11,7 +11,7 @@
 using namespace std;
 
 int main(void) {
-    ApresentacaoControle menu;  //Não ta rodando ainda n sei pq
+    ApresentacaoControle menu;
     menu.Menu();
     return 0;
 }
