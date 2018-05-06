@@ -23,7 +23,7 @@ void Leitor::Validation(const Senha &senha) throw(invalid_argument){
         for(int j = 0; j < tamanho_nome; j++){ //percorre o tamanho do nome
             if((senha_string[i + j] == nome_leitor[j])                        ||
                (senha_string[i + j] == (nome_leitor[j] - CONVERTE_MAIUSCULA)) ||
-              ((senha_string[i + j] - 32) == nome_leitor[j])) {
+              ((senha_string[i + j] - CONVERTE_MAIUSCULA) == nome_leitor[j])) {
                 contador++; //Conta quantos caracteres sao iguais, pois caso a quantidade seja o tamanho do nome, temos um nome contido na senha.
             }
         }

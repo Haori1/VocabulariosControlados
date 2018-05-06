@@ -11,7 +11,7 @@ using namespace std;
 
 class IUAutenticacao{
     public:
-        virtual bool Autenticar() throw (invalid_argument) = 0; //Método virtual de autenticação
+        virtual bool Autenticar(string, string) throw (invalid_argument) = 0; //Método virtual de autenticação
         virtual ~IUAutenticacao(){} //Destrutor Virtual
 };
 

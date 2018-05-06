@@ -1,9 +1,10 @@
 ﻿Tarefas a serem realizadas:
--Revisar a declaração das constantes strings das classes de domínio;
--Comentar o hpp de testes;
--Revisar os comentários em entidades e domínios;
+
 
 Tarefas realizadas:
+-Revisar a declaração das constantes strings das classes de domínio;
+-Revisar os comentários em entidades e domínios;
+-Comentar o hpp de testes;
 -Gerado esqueleto dos módulos;
 -Construído esqueleto das classes do tipo Domínio;
 -Iniciada a construção dos métodos de validação;
