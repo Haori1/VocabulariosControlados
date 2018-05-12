@@ -12,25 +12,27 @@
 
 using namespace std;
 
-class Autenticacao_IA{
-    public:
-        static const int Email_Valido = 1;
-        static const int Email_Invalido = 2;
-        static const int Senha_Valida = 3;
-        static const int Senha_Invalida = 4;
-        static const int Erro_Sistema = 5;
+class AutenticacaoIS;  //Autenticação anterior para o link reconhecer a classe
 
-        virtual int autenticar() throw (invalid_argument) = 0; //Metodo virtual de autenticacao
-        // checar nome minusculo do mehtodo
-        virtual ~Autenticacao_IA(){} //Destrutor Virtual
+/*----------------------------------------------------------------------------*/
+
+class AutenticacaoIA{
+    public:
+        virtual bool Autenticar() throw (invalid_argument) = 0; //Metodo virtual de autenticacao
+
+        virtual void set_aut_ia(AutenticacaoIS *) = 0; //link
+
+        virtual ~AutenticacaoIA(){} //Destrutor Virtual
 };
 
-class Autenticacao_IS{
+class AutenticacaoIS{
     public:
-        virtual int Autenticar(string, string);
-        virtual ~Autenticacao_IS();
+        virtual bool Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
+        virtual ~AutenticacaoIS(){}
 };
 
-#Criar interface com stubs da camada de servico para a camada de apresentacao
+/*----------------------------------------------------------------------------*/
+
+//Criar interface com stubs da camada de servico para a camada de apresentacao
 
 #endif

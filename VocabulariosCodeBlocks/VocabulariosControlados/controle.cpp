@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <stdexcept>
 #include <exception>
 
@@ -8,24 +9,45 @@ using namespace std;
 
 /*----------------------------------------------------------------------------*/
 
-void ApresentacaoControle::Controle(){
-    do {
-        system(CLEAR);
-        cout << "\t\t\tVocabularios Controled\n\n\n";
-        cout << "Escolha uma das opções: \n";
-        cout << "1. Acessar conta\n";
-        cout << "2. Cadastrar\n";
-        cout << "3. Sair\n";
-        cin >> escolha;
-    } while(escolha > 3 || escolha < 1);
+bool ApresentacaoControle::Autenticar() throw (invalid_argument){
+    Correio_Eletronico correio_eletronico;
+    Senha senha;
+    string input;
+    int contador = 0;
+    bool retorno = false;   //Temporário.
 
-    switch (escolha) {
-        case ACESSAR_CONTA: //Falta preencher com os métodos que serão chamados
-            break;
-        case CADASTRAR:
-            break;
-        case SAIR:
-            exit(0);
+    while(contador != 3){
+        try{
+            if(contador != 0){
+                cout << "Você possui 3 tentativas. Tentativa: " << contador << " de 3\n";
+                cout << "Deseja retornar? S/N";
+                cin >> input;
+                if(input == "S" || input == "s"){
+                    return false;   //Temporário.
+                }
+            }
 
-    }
-}//end Controle()
+            system(CLEAR);
+            cout << "Digite seu email: ";
+            cin >> input;
+            correio_eletronico.set_correio_eletronico(input);
+            cout << "\nDigite sua senha: ";
+            cin >> input;
+            senha.set_senha(input);
+
+        } catch (const invalid_argument &exp) {
+            cout << "\nEntrada com formato incorreto.\n";
+        }//end try catch
+
+        retorno = CntrLinkAut->Autenticar(correio_eletronico, senha);
+        if(retorno == FALHA){
+            cout << "Email ou Senha Inválido" << endl;
+        }
+
+        return retorno;
+
+    }//end while()
+    return retorno;
+}//end Autenticar()
+
+/*----------------------------------------------------------------------------*/

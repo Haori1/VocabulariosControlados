@@ -41,7 +41,7 @@
 	<exception>
 	<stdexcept>
 
-1524713229 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
+1526075595 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -50,7 +50,7 @@
 	"dominios.hpp"
 	"entidades.hpp"
 
-1524713229 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
+1526075595 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
 	<iostream>
 	<string>
 	<exception>
@@ -117,27 +117,60 @@
 	<iostream>
 	"dominiosClasses.hpp"
 
-1524713229 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.cpp
+1526075595 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"dominios.hpp"
 
-1524713229 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.hpp
+1526087240 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.hpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 
-1524713229 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.cpp
+1526075595 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"entidades.hpp"
 
-1524713229 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.hpp
+1526075595 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.hpp
 	<iostream>
+	"dominios.hpp"
+
+1526085410 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\controle.cpp
+	<iostream>
+	<string>
+	<stdexcept>
+	<exception>
+	"controle.hpp"
+
+1526085372 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\controle.hpp
+	<stdexcept>
+	<exception>
+	"dominios.hpp"
+	"interfaces.hpp"
+
+1526085353 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\interfaces.hpp
+	<exception>
+	<stdexcept>
+	<iostream>
+	<string>
+	"dominios.hpp"
+	"entidades.hpp"
+
+1526087921 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\stubs.cpp
+	<iostream>
+	"stubs.hpp"
+	"dominios.hpp"
+
+1526086758 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\stubs.hpp
+	<iostream>
+	<stdexcept>
+	<exception>
+	"interfaces.hpp"
 	"dominios.hpp"
 

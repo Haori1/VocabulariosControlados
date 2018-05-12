@@ -11,22 +11,26 @@
 
 using namespace std;
 
-class ApresentacaoControle : public IUAutenticacao {
-    private:
-        int escolha;
+/*----------------------------------------------------------------------------*/
 
-        void Controle();
-        bool Autenticar() throw (invalid_argument);
+class ApresentacaoControle : public AutenticacaoIA{
+    private:
+        AutenticacaoIS* CntrLinkAut;
 
     public:
-        const static int ACESSAR_CONTA = 1;
-        const static int CADASTRAR = 2;
-        const static int SAIR = 3;
+        bool Autenticar() throw (invalid_argument) override;
 
-        void Menu(){
-            Controle();
-        }
+        void set_aut_ia(AutenticacaoIS *);
+
+        static const bool FALHA = false;
+        static const bool SUCESSO = true;
 
 };
+
+void inline ApresentacaoControle::set_aut_ia(AutenticacaoIS* CntrLinkAut){
+    this->CntrLinkAut = CntrLinkAut;
+}
+
+/*----------------------------------------------------------------------------*/
 
 #endif

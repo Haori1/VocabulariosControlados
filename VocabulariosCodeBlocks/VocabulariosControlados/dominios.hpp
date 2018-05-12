@@ -60,7 +60,7 @@ class Nome{
      */
 
         void set_nome (string nome) throw (invalid_argument);
-        string get_nome(){
+        string get_nome() const {
             return nome;
         }
 
@@ -105,7 +105,7 @@ class Sobrenome{
      * @param sobrenome recebe a string da classe Sobrenome.
      */
         void set_sobrenome (string sobrenome) throw (invalid_argument);
-        string get_sobrenome(){
+        string get_sobrenome() const {
             return sobrenome;
         }
 
@@ -153,7 +153,7 @@ class Telefone{
      * @param telefone recebe a string da classe Telefone.
      */
         void set_telefone (string telefone) throw (invalid_argument);
-        string get_telefone(){
+        string get_telefone() const {
             return telefone;
         }
 };
@@ -198,7 +198,7 @@ class Endereco{
      * @param endereco recebe a string da classe Endereco.
      */
         void set_endereco (string endereco) throw (invalid_argument);
-        string get_endereco(){
+        string get_endereco() const {
             return endereco;
         }
 };
@@ -256,7 +256,7 @@ class Data{
      * @param data recebe a string da classe Data.
      */
         void set_data (string data) throw (invalid_argument);
-        string get_data(){
+        string get_data() const {
             return data;
         }
 };
@@ -306,7 +306,7 @@ class Correio_Eletronico{
      * @param correio_eletronico recebe a string da classe Correio_Eletronico.
      */
         void set_correio_eletronico (string correio_eletronico) throw (invalid_argument);
-        string get_correio_eletronico(){
+        string get_correio_eletronico() const {
             return correio_eletronico;
         }
 };
@@ -350,7 +350,7 @@ class Senha{
      * @param senha recebe a string da classe Senha.
      */
         void set_senha (string senha) throw (invalid_argument);
-        string get_senha(){
+        string get_senha() const {
             return senha;
         }
 };
@@ -390,7 +390,7 @@ class Texto_Definicao{
      * @param texto_definicao recebe a string da classe Texto_Definicao.
      */
         void set_texto_definicao (string texto_definicao) throw (invalid_argument);
-        string get_texto_definicao(){
+        string get_texto_definicao() const {
             return texto_definicao;
         }
 };
@@ -429,7 +429,7 @@ class Idioma{
      * @param idioma recebe a string da classe idioma.
      */
         void set_idioma (string idioma) throw (invalid_argument);
-        string get_idioma(){
+        string get_idioma() const {
             return idioma;
         }
 };
@@ -467,7 +467,7 @@ class Classe_Termo{
      * @param classe_termo recebe a string da classe Classe_Termo.
      */
         void set_classe_termo (string classe_termo) throw (invalid_argument);
-        string get_classe_termo(){
+        string get_classe_termo() const {
             return classe_termo;
         }
 };
