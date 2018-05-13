@@ -18,13 +18,8 @@ class ApresentacaoControle : public AutenticacaoIA{
         AutenticacaoIS* CntrLinkAut;
 
     public:
-        bool Autenticar() throw (invalid_argument) override;
-
-        void set_aut_ia(AutenticacaoIS *);
-
-        static const bool FALHA = false;
-        static const bool SUCESSO = true;
-
+        ResultadoAutenticacao Autenticar() throw (invalid_argument) override;
+        void set_aut_ia(AutenticacaoIS *) override;
 };
 
 void inline ApresentacaoControle::set_aut_ia(AutenticacaoIS* CntrLinkAut){

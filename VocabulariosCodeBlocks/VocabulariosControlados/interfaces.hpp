@@ -18,16 +18,16 @@ class AutenticacaoIS;  //Autenticação anterior para o link reconhecer a classe
 
 class AutenticacaoIA{
     public:
-        virtual bool Autenticar() throw (invalid_argument) = 0; //Metodo virtual de autenticacao
+        virtual ResultadoAutenticacao Autenticar() throw (invalid_argument) = 0; //Metodo virtual de autenticacao
 
-        virtual void set_aut_ia(AutenticacaoIS *) = 0; //link
+        virtual void set_aut_ia(AutenticacaoIS *) = 0; //Link
 
         virtual ~AutenticacaoIA(){} //Destrutor Virtual
 };
 
 class AutenticacaoIS{
     public:
-        virtual bool Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
+        virtual Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
         virtual ~AutenticacaoIS(){}
 };
 

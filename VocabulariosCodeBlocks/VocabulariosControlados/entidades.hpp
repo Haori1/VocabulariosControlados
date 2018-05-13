@@ -470,4 +470,39 @@ class Definicao{
          */
         Definicao(){}
 };
+
+//Documentar novas classes//
+
+class Resultado{
+    protected:
+        int resultado;
+
+    public:
+        const static int SUCESSO = 0;
+        const static int FALHA = 1;
+        const static int RETORNAR = 3;
+
+        void set_resultado(int resultado){
+            this->resultado = resultado;
+        }
+
+        int get_resultado() const {
+            return resultado;
+        }
+};
+
+class ResultadoAutenticacao : public Resultado{
+    private:
+        Correio_Eletronico correio_eletronico;
+
+    public:
+        void set_correio_eletronico(const Correio_Eletronico &correio_eletronico){
+            this->correio_eletronico = correio_eletronico;
+        }
+
+        Correio_Eletronico get_correio_eletronico() const {
+            return correio_eletronico;
+        }
+
+};
 #endif
