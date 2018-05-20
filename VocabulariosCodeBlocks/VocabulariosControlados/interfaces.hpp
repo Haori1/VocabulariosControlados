@@ -30,7 +30,9 @@ class AutenticacaoIA{
 
 class AutenticacaoIS{
     public:
-        virtual Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
+        virtual Resultado Autenticar(const Correio_Eletronico&, const Senha&/*, const ResultadoUsuario&*/) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) throw(invalid_argument) = 0;
+
         virtual ~AutenticacaoIS(){}
 };
 
@@ -61,9 +63,9 @@ class CadastroIA{
 
 class CadastroIS{
     public:
-        virtual ResultadoCadastro CadastroLeitor(const Leitor&) throw (invalid_argument) = 0;
-        virtual ResultadoCadastro CadastroDesenvolvedor(const Desenvolvedor&) throw (invalid_argument) = 0;
-        virtual ResultadoCadastro CadastroAdministrador(const Administrador&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario CadastroLeitor(const Leitor&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario CadastroDesenvolvedor(const Desenvolvedor&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario CadastroAdministrador(const Administrador&) throw (invalid_argument) = 0;
         virtual ~CadastroIS(){}
 };
 

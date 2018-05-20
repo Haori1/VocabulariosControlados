@@ -512,7 +512,7 @@ class ResultadoAutenticacao : public Resultado{
 
 /*----------------------------------------------------------------------------*/
 
-class ResultadoCadastro : public Resultado{
+class ResultadoUsuario : public Resultado{
     private:
         Leitor leitor;
         Desenvolvedor desenvolvedor;
@@ -522,7 +522,9 @@ class ResultadoCadastro : public Resultado{
         const static int LEITOR = 1;
         const static int DESENVOLVEDOR = 2;
         const static int ADMINISTRADOR = 3;
-        
+
+        int tipo_de_usuario = 1; //Determina o leitor como tipo de usuario padrao, no estado da arte de stubs.
+
         void set_leitor(const Leitor &leitor){
             this->leitor = leitor;
         }

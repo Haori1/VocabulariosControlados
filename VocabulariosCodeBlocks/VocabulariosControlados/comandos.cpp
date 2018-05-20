@@ -6,7 +6,7 @@ void ComandoCadastroLeitorIA::Executar(CadastroIS* cntr_link_cadastro) throw (in
     Desenvolvedor desenvolvedor;
     Administrador administrador;
     string input;
-    ResultadoCadastro resultado_cadastro;
+    ResultadoUsuario resultado_cadastro;
     Nome nome;
     Sobrenome sobrenome;
     Correio_Eletronico correio_eletronico;
