@@ -31,65 +31,52 @@ Resultado StubAutenticacao::Autenticar(const Correio_Eletronico &correio_eletron
 
 }//end Autenticar
 
-ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &correio_eletronico, const Senha &senha) {
+ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &correio_eletronico, const Senha &senha) throw(invalid_argument){
 
     ResultadoUsuario resultado_usuario;
 
-     Leitor leitor;
-     Desenvolvedor desenvolvedor;
-     Administrador administrador;
-     Nome nome;
-     Sobrenome sobrenome;
-     Data data;
-     Telefone telefone;
-     Endereco endereco;
+    Nome nome;
+    Sobrenome sobrenome;
+    Data data;
+    Telefone telefone;
+    Endereco endereco;
+
+    nome.set_nome(NOME_LEITOR);
+    sobrenome.set_sobrenome(SOBRENOME_LEITOR);
+    Leitor *leitor;
+    leitor = new Leitor(nome, sobrenome, correio_eletronico, senha);
+
+    nome.set_nome(NOME_DESENVOLVEDOR);
+    sobrenome.set_sobrenome(SOBRENOME_DESENVOLVEDOR);
+    data.set_data(DATA_DESENVOLVEDOR);
+    Desenvolvedor *desenvolvedor;
+    desenvolvedor = new Desenvolvedor(nome, sobrenome,data, correio_eletronico, senha);
+
+    nome.set_nome(NOME_ADMINISTRADOR);
+    sobrenome.set_sobrenome(SOBRENOME_ADMINISTRADOR);
+    data.set_data(DATA_ADMINISTRADOR);
+    endereco.set_endereco(ENDERECO_ADMINISTRADOR);
+    telefone.set_telefone(TELEFONE_ADMINISTRADOR);
+    Administrador *administrador;
+    administrador = new Administrador(nome, sobrenome, telefone, data, endereco, correio_eletronico, senha);
 
     if(TRIGGER_LEITOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
-        leitor.set_correio_eletronico(correio_eletronico);
-        leitor.set_senha(senha);
-        nome.set_nome(NOME_LEITOR);
-        leitor.set_nome(nome);
-        sobrenome.set_sobrenome(SOBRENOME_LEITOR);
-        leitor.set_sobrenome(sobrenome);
-        resultado_usuario.set_leitor(leitor);
+        resultado_usuario.set_leitor(*leitor);
     } else if(TRIGGER_DESENVOLVEDOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.DESENVOLVEDOR;
-        desenvolvedor.set_correio_eletronico(correio_eletronico);
-        desenvolvedor.set_senha(senha);
-        nome.set_nome(NOME_DESENVOLVEDOR);
-        desenvolvedor.set_nome(nome);
-        sobrenome.set_sobrenome(SOBRENOME_DESENVOLVEDOR);
-        desenvolvedor.set_sobrenome(sobrenome);
-        data.set_data(DATA_DESENVOLVEDOR);
-        desenvolvedor.set_data(data);
-        resultado_usuario.set_desenvolvedor(desenvolvedor);
+        resultado_usuario.set_desenvolvedor(*desenvolvedor);
     } else if(TRIGGER_ADMINISTRADOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.ADMINISTRADOR;
-        administrador.set_correio_eletronico(correio_eletronico);
-        administrador.set_senha(senha);
-        nome.set_nome(NOME_ADMINISTRADOR);
-        administrador.set_nome(nome);
-        sobrenome.set_sobrenome(SOBRENOME_ADMINISTRADOR);
-        administrador.set_sobrenome(sobrenome);
-        data.set_data(DATA_ADMINISTRADOR);
-        administrador.set_data(data);
-        telefone.set_telefone(TELEFONE_ADMINISTRADOR);
-        administrador.set_telefone(telefone);
-        endereco.set_endereco(ENDERECO_ADMINISTRADOR);
-        administrador.set_endereco(endereco);
-        resultado_usuario.set_administrador(administrador);
+        resultado_usuario.set_administrador(*administrador);
     } else { //O leitor eh estabelecido como usuario padrao.
         resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
-        leitor.set_correio_eletronico(correio_eletronico);
-        leitor.set_senha(senha);
-        nome.set_nome(NOME_LEITOR);
-        leitor.set_nome(nome);
-        sobrenome.set_sobrenome(SOBRENOME_LEITOR);
-        leitor.set_sobrenome(sobrenome);
-        resultado_usuario.set_leitor(leitor);
+        resultado_usuario.set_leitor(*leitor);
     }
 
+    delete leitor;
+    delete desenvolvedor;
+    delete administrador;
 
     return resultado_usuario;
 

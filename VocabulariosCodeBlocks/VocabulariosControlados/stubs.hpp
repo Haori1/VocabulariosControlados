@@ -27,17 +27,17 @@ class StubAutenticacao : public AutenticacaoIS{
         static constexpr const char* TRIGGER_DESENVOLVEDOR = "henrique@gmail.com";
         static constexpr const char* NOME_DESENVOLVEDOR = "Henrique";
         static constexpr const char* SOBRENOME_DESENVOLVEDOR = "Mariano";
-        static constexpr const char* DATA_DESENVOLVEDOR = "12/03/1998"; //checar o formato correto da data.
+        static constexpr const char* DATA_DESENVOLVEDOR = "11/03/1999"; //checar o formato correto da data.
 
         static constexpr const char* TRIGGER_ADMINISTRADOR = "gabriel@unb.com";
         static constexpr const char* NOME_ADMINISTRADOR = "Gabriel";
         static constexpr const char* SOBRENOME_ADMINISTRADOR = "Alves";
-        static constexpr const char* DATA_ADMINISTRADOR = "21/06/1998";
-        static constexpr const char* TELEFONE_ADMINISTRADOR = "61 99999-9999";
+        static constexpr const char* DATA_ADMINISTRADOR = "11/03/1999";
+        static constexpr const char* TELEFONE_ADMINISTRADOR = "99 99999-9999";
         static constexpr const char* ENDERECO_ADMINISTRADOR = "Aldeiadafolha";
 
         Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
-        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
+        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) throw(invalid_argument) override;
 
 };
 

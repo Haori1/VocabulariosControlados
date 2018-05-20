@@ -31,7 +31,7 @@ class AutenticacaoIA{
 class AutenticacaoIS{
     public:
         virtual Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
-        virtual ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) = 0;
+        virtual ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) throw(invalid_argument) = 0;
 
         virtual ~AutenticacaoIS(){}
 };
