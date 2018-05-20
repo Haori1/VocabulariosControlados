@@ -473,6 +473,8 @@ class Definicao{
 
 //Documentar novas classes//
 
+/*----------------------------------------------------------------------------*/
+
 class Resultado{
     protected:
         int resultado;
@@ -491,6 +493,8 @@ class Resultado{
         }
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ResultadoAutenticacao : public Resultado{
     private:
         Correio_Eletronico correio_eletronico;
@@ -505,4 +509,46 @@ class ResultadoAutenticacao : public Resultado{
         }
 
 };
+
+/*----------------------------------------------------------------------------*/
+
+class ResultadoCadastro : public Resultado{
+    private:
+        Leitor leitor;
+        Desenvolvedor desenvolvedor;
+        Administrador administrador;
+
+    public:
+        const static int LEITOR = 1;
+        const static int DESENVOLVEDOR = 2;
+        const static int ADMINISTRADOR = 3;
+        
+        void set_leitor(const Leitor &leitor){
+            this->leitor = leitor;
+        }
+
+        void set_desenvolvedor(const Desenvolvedor &desenvolvedor){
+            this->desenvolvedor = desenvolvedor;
+        }
+
+        void set_administrador(const Administrador &administrador){
+            this->administrador = administrador;
+        }
+
+        Leitor get_leitor() const {
+            return leitor;
+        }
+
+        Desenvolvedor get_desenvolvedor() const {
+            return desenvolvedor;
+        }
+
+        Administrador get_administrador() const {
+            return administrador;
+        }
+
+};
+
+/*----------------------------------------------------------------------------*/
+
 #endif

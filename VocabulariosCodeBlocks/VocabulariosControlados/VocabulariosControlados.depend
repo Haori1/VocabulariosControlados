@@ -58,7 +58,7 @@
 	"dominios.hpp"
 	"entidades.hpp"
 
-1526223765 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
+1526752063 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -145,7 +145,7 @@
 	<iostream>
 	"dominios.hpp"
 
-1526223404 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\controle.cpp
+1526224209 source:c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\controle.cpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -171,7 +171,7 @@
 	"stubs.hpp"
 	"dominios.hpp"
 
-1526220253 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\stubs.hpp
+1526224584 c:\users\henri\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\stubs.hpp
 	<iostream>
 	<stdexcept>
 	<exception>

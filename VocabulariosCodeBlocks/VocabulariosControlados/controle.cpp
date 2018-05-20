@@ -17,7 +17,7 @@ ResultadoAutenticacao ApresentacaoControle::Autenticar() throw (invalid_argument
     string input;
     int contador = 0;
 
-    while(contador != 3){
+    while(contador != 4){
         try{
             if(contador != 0){
                 cout << "Voce possui 3 tentativas. Tentativa: " << contador << " de 3\n";
@@ -43,6 +43,7 @@ ResultadoAutenticacao ApresentacaoControle::Autenticar() throw (invalid_argument
             cout << "Pressione qualquer tecla para continuar: ";
             fflush(stdin);
             getchar();
+            continue;
         }//end try catch
 
         resultado = CntrLinkAut->Autenticar(correio_eletronico, senha);
