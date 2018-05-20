@@ -178,3 +178,88 @@
 	"interfaces.hpp"
 	"dominios.hpp"
 
+1526789614 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\controle.cpp
+	<iostream>
+	<string>
+	<stdexcept>
+	<exception>
+	"controle.hpp"
+
+1526796462 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\controle.hpp
+	<stdexcept>
+	<exception>
+	"dominios.hpp"
+	"interfaces.hpp"
+
+1526789614 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.hpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1526795977 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\interfaces.hpp
+	<exception>
+	<stdexcept>
+	<iostream>
+	<string>
+	"dominios.hpp"
+	"entidades.hpp"
+
+1526789614 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.hpp
+	<iostream>
+	"dominios.hpp"
+
+1526789614 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\dominios.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+
+1526789614 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\entidades.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"entidades.hpp"
+
+1526789614 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\main.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+	"controle.hpp"
+	"interfaces.hpp"
+	"stubs.hpp"
+
+1526789614 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\stubs.hpp
+	<iostream>
+	<stdexcept>
+	<exception>
+	"interfaces.hpp"
+	"dominios.hpp"
+
+1526789614 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\stubs.cpp
+	<iostream>
+	"stubs.hpp"
+	"dominios.hpp"
+
+1526789614 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"testes.hpp"
+	"dominios.hpp"
+	"entidades.hpp"
+
+1526789614 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\vocabularioscodeblocks\vocabularioscontrolados\testes.hpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+

@@ -15,6 +15,7 @@ using namespace std;
 class AutenticacaoIS;  //Autenticação anterior para o link reconhecer a classe
 class UsuarioIS;
 class CadastroIS;
+class VocabulariosIS;
 
 /*----------------------------------------------------------------------------*/
 
@@ -67,5 +68,54 @@ class CadastroIS{
 };
 
 //Criar interface com stubs da camada de servico para a camada de apresentacao
+
+/*----------------------------------------------------------------------------*/
+
+class VocabulariosIA{
+    public:
+    //Para receber o email que foi autentificado, talvez seja melhor modificar a classe resultadoAutentificacao para retornar o
+    //tipo de usuario que entrou no sistema(discutir)
+    virtual void Executar(const ResultadoAutenticacao&) throw (invalid_argument) = 0;
+    virtual void set_vocabulario_ia(VocabulariosIS *) = 0;
+    virtual ~VocabulariosIA(){}
+};
+
+//Responsabilidades do modulo de vocabularios:
+//Criar Vocabulario (apenas para administrador)
+//Criar termo (apenas para desenvolvedor)
+//listar vocabulario
+//Apresenta Vocabulario
+//Consultar termo
+//Consultar Definicao de termo
+//Retornar (nao necessita de metodo declarado na interface, ao menos nao por enquanto e ao meu ver)
+
+class VocabulariosIS{
+    public:
+        //A classe resultado eh suficiente para estes casos?
+
+    virtual Resultado ListaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    virtual Resultado ApresentaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    virtual Resultado ConsultarTermo(const Termo&) throw(invalid_argument) = 0;
+    virtual Resultado ConsultarDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
+    //Leitor utiliza ateh esse ponto
+
+    virtual Resultado CriaTermo(const Termo&) throw(invalid_argument) = 0;
+    virtual Resultado ExcluirTermo(const Termo&) throw(invalid_argument) = 0;
+    virtual Resultado EditarTermo(const Termo&) throw(invalid_argument) = 0;
+    virtual Resultado EditarDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
+    //Desenvolvedor utiliza ateh esse ponto
+
+    virtual Resultado CriaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    //Quando a conta de um administrador eh excluida deve-se excluir todos os vocabularios que o mesmo criou, como realizar tal processo?
+    virtual Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    virtual Resultado EditarDefinicaoVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    virtual Resultado AlterarIdiomaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    //Administrador utiliza ateh esse ponto
+
+    virtual ~VocabulariosIS(){}
+};
+
+/*----------------------------------------------------------------------------*/
+
 
 #endif
