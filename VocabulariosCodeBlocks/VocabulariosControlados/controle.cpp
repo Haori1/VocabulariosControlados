@@ -9,7 +9,7 @@ using namespace std;
 
 /*----------------------------------------------------------------------------*/
 
-ResultadoAutenticacao ApresentacaoControle::Autenticar() throw (invalid_argument){
+ResultadoAutenticacao ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_argument){
     ResultadoAutenticacao resultado_autenticacao;
     Resultado resultado;
     Correio_Eletronico correio_eletronico;
@@ -46,7 +46,7 @@ ResultadoAutenticacao ApresentacaoControle::Autenticar() throw (invalid_argument
             continue;
         }//end try catch
 
-        resultado = CntrLinkAut->Autenticar(correio_eletronico, senha);
+        resultado = cntr_link_autenticacao->Autenticar(correio_eletronico, senha);
         if(resultado.get_resultado() == ResultadoAutenticacao::FALHA){
             cout << "Email ou Senha Invalido" << endl;
             cout << "Pressione qualquer tecla para continuar: ";

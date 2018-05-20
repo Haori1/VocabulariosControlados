@@ -21,7 +21,7 @@ int main(void){
         //Controladoras
         AutenticacaoIA *cntr_ia_autenticacao;
 
-        cntr_ia_autenticacao = new ApresentacaoControle();
+        cntr_ia_autenticacao = new ApresentacaoAutenticacaoControle();
 
         //Stubs
         AutenticacaoIS *stub_autenticacao;
