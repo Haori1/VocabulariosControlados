@@ -43,40 +43,34 @@ ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &corre
 
     nome.set_nome(NOME_LEITOR);
     sobrenome.set_sobrenome(SOBRENOME_LEITOR);
-    Leitor *leitor;
-    leitor = new Leitor(nome, sobrenome, correio_eletronico, senha);
+    Leitor leitor(nome, sobrenome, correio_eletronico, senha);
 
     nome.set_nome(NOME_DESENVOLVEDOR);
     sobrenome.set_sobrenome(SOBRENOME_DESENVOLVEDOR);
     data.set_data(DATA_DESENVOLVEDOR);
-    Desenvolvedor *desenvolvedor;
-    desenvolvedor = new Desenvolvedor(nome, sobrenome,data, correio_eletronico, senha);
+    Desenvolvedor desenvolvedor(nome, sobrenome,data, correio_eletronico, senha);
 
     nome.set_nome(NOME_ADMINISTRADOR);
     sobrenome.set_sobrenome(SOBRENOME_ADMINISTRADOR);
     data.set_data(DATA_ADMINISTRADOR);
     endereco.set_endereco(ENDERECO_ADMINISTRADOR);
     telefone.set_telefone(TELEFONE_ADMINISTRADOR);
-    Administrador *administrador;
-    administrador = new Administrador(nome, sobrenome, telefone, data, endereco, correio_eletronico, senha);
+    Administrador administrador(nome, sobrenome, telefone, data, endereco, correio_eletronico, senha);
 
     if(TRIGGER_LEITOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
-        resultado_usuario.set_leitor(*leitor);
+        resultado_usuario.set_leitor(leitor);
     } else if(TRIGGER_DESENVOLVEDOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.DESENVOLVEDOR;
-        resultado_usuario.set_desenvolvedor(*desenvolvedor);
+        resultado_usuario.set_desenvolvedor(desenvolvedor);
     } else if(TRIGGER_ADMINISTRADOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.ADMINISTRADOR;
-        resultado_usuario.set_administrador(*administrador);
+        resultado_usuario.set_administrador(administrador);
     } else { //O leitor eh estabelecido como usuario padrao.
         resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
-        resultado_usuario.set_leitor(*leitor);
+        resultado_usuario.set_leitor(leitor);
     }
 
-    delete leitor;
-    delete desenvolvedor;
-    delete administrador;
 
     return resultado_usuario;
 
