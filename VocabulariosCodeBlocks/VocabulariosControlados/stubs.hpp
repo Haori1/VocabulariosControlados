@@ -36,10 +36,8 @@ class StubAutenticacao : public AutenticacaoIS{
         static constexpr const char* TELEFONE_ADMINISTRADOR = "61 99999-9999";
         static constexpr const char* ENDERECO_ADMINISTRADOR = "Aldeiadafolha";
 
-        //static constexpr const char* TRIGGER_ERRO_SISTEMA_TIPO_USUARIO = "qualquer@yahoo.com";
-
         Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
-        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) throw(invalid_argument) override;
+        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
 
 };
 

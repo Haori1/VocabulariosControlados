@@ -9,8 +9,8 @@ using namespace std;
 
 /*----------------------------------------------------------------------------*/
 
-ResultadoAutenticacao ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_argument){
-    ResultadoAutenticacao resultado_autenticacao;
+ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_argument){
+    ResultadoUsuario resultado_autenticacao;
     Resultado resultado;
     Correio_Eletronico correio_eletronico;
     Senha senha;
@@ -24,7 +24,7 @@ ResultadoAutenticacao ApresentacaoAutenticacaoControle::Autenticar() throw (inva
                 cout << "Deseja retornar? S/N: ";
                 cin >> input;
                 if(input == "S" || input == "s"){
-                    resultado_autenticacao.set_resultado(ResultadoAutenticacao::RETORNAR);
+                    resultado_autenticacao.set_resultado(ResultadoUsuario::RETORNAR);
                     resultado_autenticacao.set_correio_eletronico(correio_eletronico);
                     return resultado_autenticacao;
                 }
@@ -47,7 +47,8 @@ ResultadoAutenticacao ApresentacaoAutenticacaoControle::Autenticar() throw (inva
         }//end try catch
 
         resultado = cntr_link_autenticacao->Autenticar(correio_eletronico, senha);
-        if(resultado.get_resultado() == ResultadoAutenticacao::FALHA){
+        resultado_autenticacao = cntr_link_autenticacao->TipoDeUsuario(correio_eletronico, senha);
+        if(resultado.get_resultado() == ResultadoUsuario::FALHA){
             cout << "Email ou Senha Invalido" << endl;
             cout << "Pressione qualquer tecla para continuar: ";
             fflush(stdin);
@@ -59,7 +60,7 @@ ResultadoAutenticacao ApresentacaoAutenticacaoControle::Autenticar() throw (inva
         }
         contador++;
     }//end while()
-    resultado_autenticacao.set_resultado(ResultadoAutenticacao::RETORNAR);
+    resultado_autenticacao.set_resultado(ResultadoUsuario::RETORNAR);
     return resultado_autenticacao;
 }//end Autenticar()
 

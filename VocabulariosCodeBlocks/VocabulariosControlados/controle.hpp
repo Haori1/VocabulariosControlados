@@ -18,7 +18,7 @@ class ApresentacaoAutenticacaoControle : public AutenticacaoIA{
         AutenticacaoIS* cntr_link_autenticacao;
 
     public:
-        ResultadoAutenticacao Autenticar() throw (invalid_argument) override;
+        ResultadoUsuario Autenticar() throw (invalid_argument) override;
         void set_aut_ia(AutenticacaoIS *) override;
 };
 
@@ -62,7 +62,7 @@ class ApresentacaoVocabularioControle : public VocabulariosIA{
     const static int ALTERAR_IDIOMA_VOCABULARIO = 12;
 
     public:
-        void Executar(const ResultadoAutenticacao&) throw (invalid_argument) override;
+        void Executar(const ResultadoUsuario&) throw (invalid_argument) override;
         void set_vocabulario_ia(VocabulariosIS *) override;
 };
 

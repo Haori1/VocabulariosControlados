@@ -21,7 +21,7 @@ class VocabulariosIS;
 
 class AutenticacaoIA{
     public:
-        virtual ResultadoAutenticacao Autenticar() throw (invalid_argument) = 0; //Metodo virtual de autenticacao
+        virtual ResultadoUsuario Autenticar() throw (invalid_argument) = 0; //Metodo virtual de autenticacao
 
         virtual void set_aut_ia(AutenticacaoIS *) = 0; //Link IA-IS
 
@@ -30,8 +30,8 @@ class AutenticacaoIA{
 
 class AutenticacaoIS{
     public:
-        virtual Resultado Autenticar(const Correio_Eletronico&, const Senha&/*, const ResultadoUsuario&*/) throw (invalid_argument) = 0;
-        virtual ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) throw(invalid_argument) = 0;
+        virtual Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) = 0;
 
         virtual ~AutenticacaoIS(){}
 };
@@ -77,7 +77,7 @@ class VocabulariosIA{
     public:
     //Para receber o email que foi autentificado, talvez seja melhor modificar a classe resultadoAutentificacao para retornar o
     //tipo de usuario que entrou no sistema(discutir)
-    virtual void Executar(const ResultadoAutenticacao&) throw (invalid_argument) = 0;
+    virtual void Executar(const ResultadoUsuario&) throw (invalid_argument) = 0;
     virtual void set_vocabulario_ia(VocabulariosIS *) = 0;
     virtual ~VocabulariosIA(){}
 };

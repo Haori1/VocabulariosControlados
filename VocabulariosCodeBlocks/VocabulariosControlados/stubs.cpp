@@ -12,18 +12,18 @@ Resultado StubAutenticacao::Autenticar(const Correio_Eletronico &correio_eletron
     cout << "Email = " << correio_eletronico.get_correio_eletronico() << endl;
     cout << "Senha = " << senha.get_senha() << endl;
 
-    ResultadoAutenticacao resultado;
+    ResultadoUsuario resultado;
 
     if(TRIGGER_FALHA_EMAIL == correio_eletronico.get_correio_eletronico()){
-        resultado.set_resultado(ResultadoAutenticacao::FALHA);
+        resultado.set_resultado(ResultadoUsuario::FALHA);
     } else if (TRIGGER_ERRO_SISTEMA_EMAIL == correio_eletronico.get_correio_eletronico()){
         throw invalid_argument("\nErro de sistema.\n");
     } else {
-        resultado.set_resultado(ResultadoAutenticacao::SUCESSO);
+        resultado.set_resultado(ResultadoUsuario::SUCESSO);
     }
 
     if(TRIGGER_FALHA_SENHA == senha.get_senha()){
-        resultado.set_resultado(ResultadoAutenticacao::FALHA);
+        resultado.set_resultado(ResultadoUsuario::FALHA);
     }
 
 
@@ -31,7 +31,7 @@ Resultado StubAutenticacao::Autenticar(const Correio_Eletronico &correio_eletron
 
 }//end Autenticar
 
-ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &correio_eletronico, const Senha &senha) throw(invalid_argument) {
+ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &correio_eletronico, const Senha &senha) {
 
     ResultadoUsuario resultado_usuario;
 
@@ -88,9 +88,9 @@ ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &corre
         sobrenome.set_sobrenome(SOBRENOME_LEITOR);
         leitor.set_sobrenome(sobrenome);
         resultado_usuario.set_leitor(leitor);
-    } //o erro de sistema deve ser colocado aqui.
+    }
 
 
-    return(resultado_usuario);
+    return resultado_usuario;
 
 }

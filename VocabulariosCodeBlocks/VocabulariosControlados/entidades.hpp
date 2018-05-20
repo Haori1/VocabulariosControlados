@@ -495,28 +495,12 @@ class Resultado{
 
 /*----------------------------------------------------------------------------*/
 
-class ResultadoAutenticacao : public Resultado{
-    private:
-        Correio_Eletronico correio_eletronico;
-
-    public:
-        void set_correio_eletronico(const Correio_Eletronico &correio_eletronico){
-            this->correio_eletronico = correio_eletronico;
-        }
-
-        Correio_Eletronico get_correio_eletronico() const {
-            return correio_eletronico;
-        }
-
-};
-
-/*----------------------------------------------------------------------------*/
-
 class ResultadoUsuario : public Resultado{
     private:
         Leitor leitor;
         Desenvolvedor desenvolvedor;
         Administrador administrador;
+        Correio_Eletronico correio_eletronico;
 
     public:
         const static int LEITOR = 1;
@@ -547,6 +531,14 @@ class ResultadoUsuario : public Resultado{
 
         Administrador get_administrador() const {
             return administrador;
+        }
+
+        void set_correio_eletronico(const Correio_Eletronico &correio_eletronico){
+            this->correio_eletronico = correio_eletronico;
+        }
+
+        Correio_Eletronico get_correio_eletronico() const {
+            return correio_eletronico;
         }
 
 };

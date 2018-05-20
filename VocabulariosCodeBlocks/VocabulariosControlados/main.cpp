@@ -37,7 +37,7 @@ int main(void){
         cout << "Erro Sistema Email: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_EMAIL << endl;
         cout << "Erro Sistema Senha: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_SENHA << endl;
 
-        ResultadoAutenticacao resultado;
+        ResultadoUsuario resultado;
 
         do {
             cout << "\t\t\tVocabularios Controled\n\n";
@@ -53,10 +53,10 @@ int main(void){
                 try{
                     resultado = cntr_ia_autenticacao->Autenticar();
                     switch (resultado.get_resultado()) {
-                        case ResultadoAutenticacao::SUCESSO:
+                        case ResultadoUsuario::SUCESSO:
                             //chamar usuario apresentacao
                             break;
-                        case ResultadoAutenticacao::RETORNAR:
+                        case ResultadoUsuario::RETORNAR:
                             continue;
                                       /*Era pra retornar pro menu mas n podemos utilizar go to,
                                        *então teremos que fazer uma função disso.
