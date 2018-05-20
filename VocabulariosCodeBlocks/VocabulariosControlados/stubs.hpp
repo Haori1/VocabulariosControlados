@@ -37,7 +37,7 @@ class StubAutenticacao : public AutenticacaoIS{
         static constexpr const char* ENDERECO_ADMINISTRADOR = "Aldeiadafolha";
 
         Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
-        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) throw(invalid_argument) override;
+        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
 
 };
 

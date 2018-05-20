@@ -31,7 +31,7 @@ Resultado StubAutenticacao::Autenticar(const Correio_Eletronico &correio_eletron
 
 }//end Autenticar
 
-ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &correio_eletronico, const Senha &senha) throw(invalid_argument){
+ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &correio_eletronico, const Senha &senha){
 
     ResultadoUsuario resultado_usuario;
 
