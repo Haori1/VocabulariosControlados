@@ -95,7 +95,7 @@ class VocabulariosIS{
     public:
         //A classe resultado eh suficiente para estes casos?
 
-    virtual Resultado ListaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    virtual Resultado ListaVocabulario() throw(invalid_argument) = 0;
     virtual Resultado ApresentaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
     virtual Resultado ConsultarTermo(const Termo&) throw(invalid_argument) = 0;
     virtual Resultado ConsultarDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;

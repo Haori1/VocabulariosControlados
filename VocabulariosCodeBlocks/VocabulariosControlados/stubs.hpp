@@ -52,7 +52,11 @@ class StubCadastro : public CadastroIS{ //Falta terminar a declaracao e codifica
 
 };
 
-
 /*----------------------------------------------------------------------------*/
+
+class StubVocabularios : public VocabulariosIS{
+
+
+};
 
 #endif
