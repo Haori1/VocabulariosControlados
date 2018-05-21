@@ -6,6 +6,7 @@
 
 #include "dominios.hpp"
 #include "interfaces.hpp"
+#include "comandos.hpp"
 
 #define CLEAR "cls||clear"
 
@@ -36,7 +37,7 @@ class ApresentacaoCadastroControle : public CadastroIA{
         CadastroIS* cntr_link_cadastro;
 
     public:
-        void Executar() throw (invalid_argument) override;
+        Resultado Executar() throw (invalid_argument) override;
         void set_cadastro_ia(CadastroIS *) override;
 };
 

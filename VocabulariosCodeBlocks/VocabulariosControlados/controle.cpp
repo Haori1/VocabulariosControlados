@@ -65,3 +65,15 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
 }//end Autenticar()
 
 /*----------------------------------------------------------------------------*/
+
+Resultado ApresentacaoCadastroControle::Executar() throw (invalid_argument){
+    ComandoCadastroIA *comando;
+    Resultado resultado;
+
+    comando = new ComandoCadastroIA();
+    resultado = comando->Executar(cntr_link_cadastro);
+    delete comando;
+    return resultado;
+}
+
+/*----------------------------------------------------------------------------*/

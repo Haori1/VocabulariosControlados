@@ -15,19 +15,20 @@ using namespace std;
 
 class ComandoCadastro{
     public:
-        virtual void Executar(CadastroIS *) throw (invalid_argument) = 0; //Interface dos comandos
+        virtual Resultado Executar(CadastroIS *) throw (invalid_argument) = 0; //Interface dos comandos
         virtual ~ComandoCadastro(){}
 
 };
 
 /*----------------------------------------------------------------------------*/
 
-class ComandoCadastroLeitorIA : public ComandoCadastro {
+class ComandoCadastroIA : public ComandoCadastro {
     public:
         const static int LEITOR = 1;
         const static int DESENVOLVEDOR = 2;
         const static int ADMINISTRADOR = 3;
-        void Executar(CadastroIS *) throw (invalid_argument);
+        const static int RETORNAR = 4;
+        Resultado Executar(CadastroIS *) throw (invalid_argument) override;
 };
 
 

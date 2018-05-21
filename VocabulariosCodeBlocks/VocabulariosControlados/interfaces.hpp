@@ -56,16 +56,16 @@ class UsuarioIS{
 
 class CadastroIA{
     public:
-        virtual void Executar() throw (invalid_argument) = 0;
+        virtual Resultado Executar() throw (invalid_argument) = 0;
         virtual void set_cadastro_ia(CadastroIS *) = 0; //Link IA-IS
         virtual ~CadastroIA(){}
 };
 
 class CadastroIS{
     public:
-        virtual ResultadoUsuario CadastroLeitor(const Leitor&) throw (invalid_argument) = 0;
-        virtual ResultadoUsuario CadastroDesenvolvedor(const Desenvolvedor&) throw (invalid_argument) = 0;
-        virtual ResultadoUsuario CadastroAdministrador(const Administrador&) throw (invalid_argument) = 0;
+        virtual Resultado CadastroLeitor(const Leitor&) throw (invalid_argument) = 0;
+        virtual Resultado CadastroDesenvolvedor(const Desenvolvedor&) throw (invalid_argument) = 0;
+        virtual Resultado CadastroAdministrador(const Administrador&) throw (invalid_argument) = 0;
         virtual ~CadastroIS(){}
 };
 

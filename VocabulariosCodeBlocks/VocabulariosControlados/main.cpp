@@ -8,6 +8,7 @@
 #include "controle.hpp"
 #include "interfaces.hpp"
 #include "stubs.hpp"
+#include "comandos.hpp"
 
 #define ACESSAR_CONTA 1
 #define CADASTRAR 2
@@ -20,15 +21,21 @@ int main(void){
         int escolha;
         //Controladoras
         AutenticacaoIA *cntr_ia_autenticacao;
+        CadastroIA *cntr_ia_cadastro;
 
         cntr_ia_autenticacao = new ApresentacaoAutenticacaoControle();
+        cntr_ia_cadastro = new ApresentacaoCadastroControle();
 
         //Stubs
         AutenticacaoIS *stub_autenticacao;
         stub_autenticacao = new StubAutenticacao();
 
+        CadastroIS *stub_cadastro;
+        stub_cadastro = new StubCadastro();
+
         //Link controladora-stub
         cntr_ia_autenticacao->set_aut_ia(stub_autenticacao);
+        cntr_ia_cadastro->set_cadastro_ia(stub_cadastro);
 
         system(CLEAR);
         cout << "\tValores dos Triggers: \n";
@@ -38,6 +45,7 @@ int main(void){
         cout << "Erro Sistema Senha: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_SENHA << endl;
 
         ResultadoUsuario resultado;
+        Resultado resultado_cadastro;
 
         do {
             cout << "\t\t\tVocabularios Controled\n\n";
@@ -58,9 +66,6 @@ int main(void){
                             break;
                         case ResultadoUsuario::RETORNAR:
                             continue;
-                                      /*Era pra retornar pro menu mas n podemos utilizar go to,
-                                       *então teremos que fazer uma função disso.
-                                       */
                     }
                 } catch(const invalid_argument &exp) {
                     cout << "Erro de sistema" << endl;
@@ -71,13 +76,28 @@ int main(void){
                 }//end try catch
                 break;
             case CADASTRAR:
+                try{
+                    resultado_cadastro = cntr_ia_cadastro->Executar();
+                    switch (resultado_cadastro.get_resultado()) {
+                        case Resultado::RETORNAR:
+                            continue;
+                    }
+                } catch (invalid_argument &exp) {
+                    cout << "Erro de sistema" << endl;
+                    cout << "Pressione qualquer tecla para continuar: ";
+                    fflush(stdin);
+                    getchar();
+
+                }
                 break;
             case SAIR:
                 exit(0);
         }//end switch()
 
         delete cntr_ia_autenticacao;
+        delete cntr_ia_cadastro;
         delete stub_autenticacao;
+        delete stub_cadastro;
     }while(true);//do while principal
 
     return 0;

@@ -44,10 +44,17 @@ class StubAutenticacao : public AutenticacaoIS{
 /*----------------------------------------------------------------------------*/
 
 class StubCadastro : public CadastroIS{ //Falta terminar a declaracao e codificar a classe
+    private:
+        Leitor leitor;
+        Desenvolvedor desenvolvedor;
+        Administrador administrador;
+
     public:
-        ResultadoUsuario CadastroLeitor(const Leitor&) throw (invalid_argument) override;
-        ResultadoUsuario CadastroDesenvolvedor(const Desenvolvedor&) throw (invalid_argument) override;
-        ResultadoUsuario CadastroAdministrador(const Administrador&) throw (invalid_argument) override;
+        static constexpr const char* TRIGGER_CORREIO_ELETRONICO = "junkdog@gmail.com";
+        static constexpr const char* TRIGGER_ERRO_SISTEMA_EMAIL = "eaemeuchapa@gmail.com";
+        Resultado CadastroLeitor(const Leitor&) throw (invalid_argument) override;
+        Resultado CadastroDesenvolvedor(const Desenvolvedor&) throw (invalid_argument) override;
+        Resultado CadastroAdministrador(const Administrador&) throw (invalid_argument) override;
 
 
 };

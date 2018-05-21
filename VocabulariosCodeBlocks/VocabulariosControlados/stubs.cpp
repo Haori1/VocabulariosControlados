@@ -5,6 +5,8 @@
 
 using namespace std;
 
+/*----------------------------------------------------------------------------*/
+
 Resultado StubAutenticacao::Autenticar(const Correio_Eletronico &correio_eletronico, const Senha &senha) throw (invalid_argument){
 
     cout << endl << "AutenticacaoIS::Autenticar" << endl;
@@ -30,6 +32,8 @@ Resultado StubAutenticacao::Autenticar(const Correio_Eletronico &correio_eletron
     return resultado;
 
 }//end Autenticar
+
+/*----------------------------------------------------------------------------*/
 
 ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &correio_eletronico, const Senha &senha){
 
@@ -75,3 +79,52 @@ ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &corre
     return resultado_usuario;
 
 }
+
+/*----------------------------------------------------------------------------*/
+
+Resultado StubCadastro::CadastroLeitor(const Leitor &leitor) throw (invalid_argument){
+    Resultado resultado;
+    this->leitor = leitor;
+
+    if(leitor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
+        resultado.set_resultado(Resultado::FALHA);
+    } else if(leitor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_ERRO_SISTEMA_EMAIL){
+        throw invalid_argument("\nErro de sistema\n");
+    } else {
+        resultado.set_resultado(Resultado::SUCESSO);
+    }
+
+    return resultado;
+}
+
+Resultado StubCadastro::CadastroDesenvolvedor(const Desenvolvedor &desenvolvedor) throw (invalid_argument) {
+    Resultado resultado;
+    this->desenvolvedor = desenvolvedor;
+
+    if(desenvolvedor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
+        resultado.set_resultado(Resultado::FALHA);
+    } else if(desenvolvedor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_ERRO_SISTEMA_EMAIL){
+        throw invalid_argument("\nErro de sistema\n");
+    } else {
+        resultado.set_resultado(Resultado::SUCESSO);
+    }
+
+    return resultado;
+}
+
+Resultado StubCadastro::CadastroAdministrador(const Administrador &administrador) throw (invalid_argument){
+    Resultado resultado;
+    this->administrador = administrador;
+
+    if(administrador.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
+        resultado.set_resultado(Resultado::FALHA);
+    } else if(administrador.get_correio_eletronico().get_correio_eletronico() == TRIGGER_ERRO_SISTEMA_EMAIL){
+        throw invalid_argument("\nErro de sistema\n");
+    } else {
+        resultado.set_resultado(Resultado::SUCESSO);
+    }
+
+    return resultado;
+}
+
+/*----------------------------------------------------------------------------*/
