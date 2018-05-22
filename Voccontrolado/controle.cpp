@@ -2,8 +2,11 @@
 #include <string>
 #include <stdexcept>
 #include <exception>
+#include <cstdlib>
 
 #include "controle.hpp"
+#include "comandos.hpp"
+#include "interfaces.hpp"
 
 using namespace std;
 
@@ -66,14 +69,37 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
 
 /*----------------------------------------------------------------------------*/
 
-Resultado ApresentacaoCadastroControle::Executar() throw (invalid_argument){
-    ComandoCadastroIA *comando;
-    Resultado resultado;
+void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument){
+    ComandoCadastro *comando;
+    int conta;
 
-    comando = new ComandoCadastroIA();
-    resultado = comando->Executar(cntr_link_cadastro);
-    delete comando;
-    return resultado;
+    do{
+        cout << "Tipo de conta a ser cadastrada: " << endl;
+        cout << "1. Leitor" << endl;
+        cout << "2. Desenvolvedor" << endl;
+        cout << "3. Administrador" << endl;
+        cout << "4. Retornar" << endl;
+        cin >> conta;
+    }while(conta < 1 || conta > 4); //end do while
+
+    switch (conta) {
+        case LEITOR:
+                comando = new ComandoCadastroLeitorIA();
+                comando->ExecutarComando(cntr_link_cadastro);
+                delete comando;
+                break;
+        case DESENVOLVEDOR:
+            comando = new ComandoCadastroDesenvolvedorIA();
+            comando->ExecutarComando(cntr_link_cadastro);
+            delete comando;
+            break;
+        case ADMINISTRADOR:
+            comando = new ComandoCadastroAdministradorIA();
+            comando->ExecutarComando(cntr_link_cadastro);
+            delete comando;
+            break;
+    }
+
 }
 
 /*----------------------------------------------------------------------------*/

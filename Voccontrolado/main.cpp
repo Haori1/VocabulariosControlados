@@ -45,7 +45,6 @@ int main(void){
         cout << "Erro Sistema Senha: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_SENHA << endl;
 
         ResultadoUsuario resultado;
-        Resultado resultado_cadastro;
 
         do {
             cout << "\t\t\tVocabularios Controled\n\n";
@@ -67,7 +66,7 @@ int main(void){
                         case ResultadoUsuario::RETORNAR:
                             continue;
                     }
-                } catch(const invalid_argument &exp) {
+                } catch (const invalid_argument &exp) {
                     cout << "Erro de sistema" << endl;
                     cout << "Pressione qualquer tecla para continuar: ";
                     fflush(stdin);
@@ -77,11 +76,7 @@ int main(void){
                 break;
             case CADASTRAR:
                 try{
-                    resultado_cadastro = cntr_ia_cadastro->Executar();
-                    switch (resultado_cadastro.get_resultado()) {
-                        case Resultado::RETORNAR:
-                            continue;
-                    }
+                    cntr_ia_cadastro->ExecutarIA();
                 } catch (invalid_argument &exp) {
                     cout << "Erro de sistema" << endl;
                     cout << "Pressione qualquer tecla para continuar: ";

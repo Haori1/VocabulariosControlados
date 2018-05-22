@@ -6,6 +6,7 @@
 #include <exception>
 
 #include "interfaces.hpp"
+#include "comandos.hpp"
 #include "dominios.hpp"
 
 using namespace std;
@@ -62,7 +63,22 @@ class StubCadastro : public CadastroIS{ //Falta terminar a declaracao e codifica
 /*----------------------------------------------------------------------------*/
 
 class StubVocabularios : public VocabulariosIS{
+    private:
+        static constexpr const char* TRIGGER_VOCABULARIO_MATEMATICA = "Matematica";
+        static constexpr const char* TRIGGER_VOCABULARIO_ANIMES = "Animes";
+        static constexpr const char* TRIGGER_VOCABULARIO_ERRO = "Filosofia";
+        static constexpr const char* TRIGGER_TERMO_ERRO = "Quadrado";
+        static constexpr const char* TRIGGER_DEFINICAO_ERRO = "Boruto";
+        static constexpr const char* TRIGGER_DEFINICAO_TRIANGULO = "Triangulo";
+        static constexpr const char* TRIGGER_DEFINICAO_NARUTO = "Naruto";
 
+    public:
+        vector<VocControlado> ListaVocabulario() override;
+        void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;
+        vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) override;
+        void ConsultarTermo(const Termo&) throw(invalid_argument) override;
+        Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
+        void ConsultaDefinicaoTermo(const Definicao&) override;
 
 };
 

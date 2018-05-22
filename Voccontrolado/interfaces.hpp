@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <string>
-
+#include <vector>
 
 #include "dominios.hpp"
 #include "entidades.hpp"
@@ -40,9 +40,6 @@ class AutenticacaoIS{
 
 class UsuarioIA{
     public:
-        virtual void Executar(const Correio_Eletronico&) throw (invalid_argument) = 0;
-        virtual void set_usuario_ia(UsuarioIS *) = 0; //Link IA-IS
-        virtual ~UsuarioIA(){}
 
 };
 
@@ -56,7 +53,7 @@ class UsuarioIS{
 
 class CadastroIA{
     public:
-        virtual Resultado Executar() throw (invalid_argument) = 0;
+        virtual void ExecutarIA() throw (invalid_argument) = 0;
         virtual void set_cadastro_ia(CadastroIS *) = 0; //Link IA-IS
         virtual ~CadastroIA(){}
 };
@@ -95,10 +92,12 @@ class VocabulariosIS{
     public:
         //A classe resultado eh suficiente para estes casos?
 
-    virtual Resultado ListaVocabulario() throw(invalid_argument) = 0;
-    virtual Resultado ApresentaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
-    virtual Resultado ConsultarTermo(const Termo&) throw(invalid_argument) = 0;
-    virtual Resultado ConsultarDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
+    virtual vector<VocControlado> ListaVocabulario() = 0;
+    virtual void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    virtual vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) = 0;
+    virtual void ConsultarTermo(const Termo&) throw(invalid_argument) = 0;
+    virtual Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
+    virtual void ConsultaDefinicaoTermo(const Definicao&) = 0;
     //Leitor utiliza ateh esse ponto
 
     virtual Resultado CriaTermo(const Termo&) throw(invalid_argument) = 0;

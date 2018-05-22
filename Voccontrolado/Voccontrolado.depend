@@ -1,0 +1,85 @@
+# depslib dependency file v1.0
+1526951516 source:c:\users\henri\documents\voccontrolado\voccontrolado\comandos.cpp
+	"comandos.hpp"
+
+1526954413 c:\users\henri\documents\voccontrolado\voccontrolado\comandos.hpp
+	<iostream>
+	<stdexcept>
+	<exception>
+	<cstdlib>
+	"interfaces.hpp"
+	"dominios.hpp"
+	"entidades.hpp"
+	"stubs.hpp"
+	"controle.hpp"
+
+1526958047 c:\users\henri\documents\voccontrolado\voccontrolado\interfaces.hpp
+	<exception>
+	<stdexcept>
+	<iostream>
+	<string>
+	<vector>
+	"dominios.hpp"
+	"entidades.hpp"
+
+1526853248 c:\users\henri\documents\voccontrolado\voccontrolado\dominios.hpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1526958347 c:\users\henri\documents\voccontrolado\voccontrolado\entidades.hpp
+	<iostream>
+	"dominios.hpp"
+
+1526958230 c:\users\henri\documents\voccontrolado\voccontrolado\stubs.hpp
+	<iostream>
+	<stdexcept>
+	<exception>
+	"interfaces.hpp"
+	"comandos.hpp"
+	"dominios.hpp"
+
+1526949606 c:\users\henri\documents\voccontrolado\voccontrolado\controle.hpp
+	<stdexcept>
+	<exception>
+	"dominios.hpp"
+	"interfaces.hpp"
+	"comandos.hpp"
+
+1526954246 source:c:\users\henri\documents\voccontrolado\voccontrolado\controle.cpp
+	<iostream>
+	<string>
+	<stdexcept>
+	<exception>
+	<cstdlib>
+	"controle.hpp"
+	"comandos.hpp"
+	"interfaces.hpp"
+
+1526853248 source:c:\users\henri\documents\voccontrolado\voccontrolado\dominios.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+
+1526853248 source:c:\users\henri\documents\voccontrolado\voccontrolado\entidades.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"entidades.hpp"
+
+1526951125 source:c:\users\henri\documents\voccontrolado\voccontrolado\main.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+	"controle.hpp"
+	"interfaces.hpp"
+	"stubs.hpp"
+	"comandos.hpp"
+

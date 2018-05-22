@@ -34,10 +34,11 @@ class ApresentacaoCadastroControle : public CadastroIA{
         const static int LEITOR = 1;
         const static int DESENVOLVEDOR = 2;
         const static int ADMINISTRADOR = 3;
+        const static int RETORNAR = 4;
         CadastroIS* cntr_link_cadastro;
 
     public:
-        Resultado Executar() throw (invalid_argument) override;
+        void ExecutarIA() throw (invalid_argument) override;
         void set_cadastro_ia(CadastroIS *) override;
 };
 

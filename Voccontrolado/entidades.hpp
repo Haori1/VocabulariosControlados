@@ -439,7 +439,7 @@ class Definicao{
         /**
          * @brief Fornece o objeto do tipo Texto_Definicao da classe Definicao.
          */
-        Texto_Definicao get_texto_definicao(){
+        Texto_Definicao get_texto_definicao() const {
             return texto_definicao;
         }
         /**
