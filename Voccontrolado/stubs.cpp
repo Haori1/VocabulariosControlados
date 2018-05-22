@@ -64,12 +64,39 @@ ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &corre
     if(TRIGGER_LEITOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
         resultado_usuario.set_leitor(leitor);
+
     } else if(TRIGGER_DESENVOLVEDOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.DESENVOLVEDOR;
         resultado_usuario.set_desenvolvedor(desenvolvedor);
+
     } else if(TRIGGER_ADMINISTRADOR == correio_eletronico.get_correio_eletronico()) {
         resultado_usuario.tipo_de_usuario = resultado_usuario.ADMINISTRADOR;
         resultado_usuario.set_administrador(administrador);
+
+    } else if(TRIGGER_FALHA_LEITOR == correio_eletronico.get_correio_eletronico()){
+        resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
+        resultado_usuario.set_leitor(leitor);
+
+    } else if(TRIGGER_FALHA_DESENVOLVEDOR == correio_eletronico.get_correio_eletronico()){
+        resultado_usuario.tipo_de_usuario = resultado_usuario.DESENVOLVEDOR;
+        resultado_usuario.set_desenvolvedor(desenvolvedor);
+
+    } else if(TRIGGER_FALHA_ADMINISTRADOR == correio_eletronico.get_correio_eletronico()){
+        resultado_usuario.tipo_de_usuario = resultado_usuario.ADMINISTRADOR;
+        resultado_usuario.set_administrador(administrador);
+
+    } else if(TRIGGER_ERRO_SISTEMA_LEITOR == correio_eletronico.get_correio_eletronico()){
+        resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
+        resultado_usuario.set_leitor(leitor);
+
+    } else if(TRIGGER_ERRO_SISTEMA_DESENVOLVEDOR == correio_eletronico.get_correio_eletronico()){
+        resultado_usuario.tipo_de_usuario = resultado_usuario.DESENVOLVEDOR;
+        resultado_usuario.set_desenvolvedor(desenvolvedor);
+
+    } else if(TRIGGER_ERRO_SISTEMA_ADMINISTRADOR == correio_eletronico.get_correio_eletronico()){
+        resultado_usuario.tipo_de_usuario = resultado_usuario.ADMINISTRADOR;
+        resultado_usuario.set_administrador(administrador);
+
     } else { //O leitor eh estabelecido como usuario padrao.
         resultado_usuario.tipo_de_usuario = resultado_usuario.LEITOR;
         resultado_usuario.set_leitor(leitor);
@@ -87,6 +114,10 @@ Resultado StubCadastro::CadastroLeitor(const Leitor &leitor) throw (invalid_argu
     this->leitor = leitor;
 
     if(leitor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
+        cout << endl << "Falha no cadastro" << endl;
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
         resultado.set_resultado(Resultado::FALHA);
     } else if(leitor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_ERRO_SISTEMA_EMAIL){
         throw invalid_argument("\nErro de sistema\n");
@@ -102,6 +133,10 @@ Resultado StubCadastro::CadastroDesenvolvedor(const Desenvolvedor &desenvolvedor
     this->desenvolvedor = desenvolvedor;
 
     if(desenvolvedor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
+        cout << endl << "Falha no cadastro" << endl;
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
         resultado.set_resultado(Resultado::FALHA);
     } else if(desenvolvedor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_ERRO_SISTEMA_EMAIL){
         throw invalid_argument("\nErro de sistema\n");
@@ -117,6 +152,10 @@ Resultado StubCadastro::CadastroAdministrador(const Administrador &administrador
     this->administrador = administrador;
 
     if(administrador.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
+        cout << endl << "Falha no cadastro" << endl;
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
         resultado.set_resultado(Resultado::FALHA);
     } else if(administrador.get_correio_eletronico().get_correio_eletronico() == TRIGGER_ERRO_SISTEMA_EMAIL){
         throw invalid_argument("\nErro de sistema\n");
@@ -135,7 +174,7 @@ void StubUsuario::Exibir(const ResultadoUsuario resultado_usuario) throw (invali
         cout << "Sobrenome: " << resultado_usuario.get_leitor().get_sobrenome().get_sobrenome() << endl;
         cout << "Email: " << resultado_usuario.get_leitor().get_correio_eletronico().get_correio_eletronico() << endl;
         cout << "Senha: " << resultado_usuario.get_leitor().get_senha().get_senha() << endl;
-        cout << endl << "Pressione qualquer botao para continuar: ";
+        cout << endl << "Pressione qualquer tecla para continuar: ";
         fflush(stdin);
         getchar();
 
@@ -144,7 +183,7 @@ void StubUsuario::Exibir(const ResultadoUsuario resultado_usuario) throw (invali
         cout << "Sobrenome: " << resultado_usuario.get_desenvolvedor().get_sobrenome().get_sobrenome() << endl;
         cout << "Email: " << resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico() << endl;
         cout << "Data de nascimento: " << resultado_usuario.get_desenvolvedor().get_data().get_data() << endl;
-        cout << endl << "Pressione qualquer botao para continuar: ";
+        cout << endl << "Pressione qualquer tecla para continuar: ";
         fflush(stdin);
         getchar();
 
@@ -156,7 +195,7 @@ void StubUsuario::Exibir(const ResultadoUsuario resultado_usuario) throw (invali
         cout << "Data de nascimento: " << resultado_usuario.get_administrador().get_data().get_data() << endl;
         cout << "Telefone: " << resultado_usuario.get_administrador().get_telefone().get_telefone() << endl;
         cout << "Endereco: " << resultado_usuario.get_administrador().get_endereco().get_endereco() << endl;
-        cout << endl << "Pressione qualquer botao para continuar: ";
+        cout << endl << "Pressione qualquer tecla para continuar: ";
         fflush(stdin);
         getchar();
     }
@@ -308,7 +347,8 @@ Resultado StubUsuario::Excluir() throw (invalid_argument){
 
     system(CLEAR);
     cout << endl << "TRIGGER SENHA INVALIDA: " << StubAutenticacao::TRIGGER_FALHA_SENHA;
-    cout << endl << "Digite a sua senha para confirmar a exclusao.";
+    cout << endl << "TRIGGER SENHA ERRO SISTEMA: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_SENHA;
+    cout << endl << "Digite a sua senha para confirmar a exclusao: ";
     cin >> input;
     try{
         senha.set_senha(input);
@@ -321,7 +361,15 @@ Resultado StubUsuario::Excluir() throw (invalid_argument){
 
     if(senha.get_senha() == StubAutenticacao::TRIGGER_FALHA_SENHA){
         resultado.set_resultado(Resultado::FALHA);
+        cout << endl << "Falha na exclusao" << endl;
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
         return resultado;
+
+    } else if(senha.get_senha() == StubAutenticacao::TRIGGER_ERRO_SISTEMA_SENHA){
+        throw invalid_argument("\nErro de sistema\n");
+
     } else {
         resultado.set_resultado(Resultado::SUCESSO);
     }
@@ -372,10 +420,10 @@ vector<VocControlado> StubVocabularios::ListaVocabulario() {
 
 void StubVocabularios::ConsultarVocabulario(const VocControlado &voc_controlado) throw(invalid_argument){
     if(voc_controlado.get_nome().get_nome() == TRIGGER_VOCABULARIO_ERRO) {
-        throw("\nInformacoes do vocabulario nao encontradas");
+        throw invalid_argument("\nInformacoes do vocabulario nao encontradas");
     } else {
-        cout<< "idioma:" << voc_controlado.get_idioma().get_idioma();
-        cout<< "data:" << voc_controlado.get_data().get_data();
+            cout<< "\nidioma:" << voc_controlado.get_idioma().get_idioma();
+            cout<< "\ndata:" << voc_controlado.get_data().get_data();
     }
 }
 
@@ -424,13 +472,21 @@ vector<Termo> StubVocabularios::ApresentaTermos(const VocControlado &voc_control
     if(voc_controlado.get_nome().get_nome() == TRIGGER_VOCABULARIO_MATEMATICA) {
         vetor_termos.push_back(termo_mat_quadrado);
         vetor_termos.push_back(termo_mat_triangulo);
+
+        cout << "\n" << vetor_termos[0].get_nome().get_nome() << endl;
+        cout << "\n" << vetor_termos[1].get_nome().get_nome() << endl;
+
         return vetor_termos;
     } else if(voc_controlado.get_nome().get_nome() == TRIGGER_VOCABULARIO_ANIMES) {
         vetor_termos.push_back(termo_anime_naruto);
         vetor_termos.push_back(termo_anime_boruto);
+
+        cout << "\n" << vetor_termos[0].get_nome().get_nome() << endl;
+        cout << "\n" << vetor_termos[1].get_nome().get_nome() << endl;
+
         return vetor_termos;
     } else if(voc_controlado.get_nome().get_nome() == TRIGGER_VOCABULARIO_ERRO) {
-        throw("\nTermos do vocabulario nao encontrados\n");
+        throw invalid_argument("\nTermos do vocabulario nao encontrados\n");
     }
 
     return vetor_termos;
@@ -438,10 +494,10 @@ vector<Termo> StubVocabularios::ApresentaTermos(const VocControlado &voc_control
 
 void StubVocabularios::ConsultarTermo(const Termo &termo) throw(invalid_argument) {
     if(termo.get_nome().get_nome() == TRIGGER_TERMO_ERRO) {
-        throw("\nInformacoes do termo nao encontradas\n");
+        throw invalid_argument("\nInformacoes do termo nao encontradas\n");
     } else {
-        cout<< "termo:" << termo.get_classe_termo().get_classe_termo() << endl;
-        cout<< "data:" << termo.get_data().get_data() << endl;
+        cout<< "\ntermo:" << termo.get_classe_termo().get_classe_termo() << endl;
+        cout<< "\ndata:" << termo.get_data().get_data() << endl;
     }
 
 }
@@ -468,13 +524,199 @@ Definicao StubVocabularios::BuscaDefinicaoTermo(const Termo &termo) throw(invali
     } else if(termo.get_nome().get_nome() == TRIGGER_DEFINICAO_NARUTO){
         return definicao_naruto;
     } else if(termo.get_nome().get_nome() == TRIGGER_DEFINICAO_ERRO) {
-        throw("\nDefinicao nao encontrada\n");
+        throw invalid_argument("\nDefinicao nao encontrada\n");
     }
 
     return definicao_naruto;
 }
 
 void StubVocabularios::ConsultaDefinicaoTermo(const Definicao &definicao) {
-    cout<< "data de definicao:" << definicao.get_data().get_data() << endl;
-    cout<< "definicao:" << definicao.get_texto_definicao().get_texto_definicao() << endl;
+    cout<< "\ndata de definicao:" << definicao.get_data().get_data() << endl;
+    cout<< "\ndefinicao:" << definicao.get_texto_definicao().get_texto_definicao() << endl;
+}
+
+
+/*----------------------------------------------------------------------------*/
+
+Resultado StubVocabularios::CriaTermo(const Termo&) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+    Nome nome;
+    Classe_Termo classe_termo;
+    Data data;
+    Termo termo;
+    try{
+        cout << endl << "Digite o nome do termo: ";
+        cin >> input;
+        nome.set_nome(input);
+        termo.set_nome(nome);
+        cout << endl << "Digite a classe do termo: ";
+        cin >> input;
+        classe_termo.set_classe_termo(input);
+        termo.set_classe_termo(classe_termo);
+        cout << endl << "Digite a data: ";
+        cin >> input;
+        data.set_data(input);
+        termo.set_data(data);
+    } catch (invalid_argument &exp) {
+        cout << "\nFormato Invalido\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
+    }//end try catch
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}//end Criatermo
+
+Resultado StubVocabularios::ExcluirTermo(const Termo&) throw(invalid_argument){
+    Resultado resultado;
+    cout << "\nExclusão concluida com sucesso\n";
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+Resultado StubVocabularios::CriaVocabulario(const VocControlado&) throw(invalid_argument){
+    Resultado resultado;
+    VocControlado voc_controlado;
+    Nome nome;
+    Idioma idioma;
+    Data data;
+    string input;
+    try{
+        cout << "\nDigite o nome do vocabulario: ";
+        cin >> input;
+        nome.set_nome(input);
+        voc_controlado.set_nome(nome);
+        cout << "\nDigite o idioma: ";
+        cin >> input;
+        idioma.set_idioma(input);
+        voc_controlado.set_idioma(idioma);
+        cout << "\nDigite a data: ";
+        cin >> input;
+        data.set_data(input);
+        voc_controlado.set_data(data);
+    } catch (invalid_argument &exp) {
+        cout << "\nFormato Invalido\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
+    }
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+Resultado StubVocabularios::ExcluirVocabulario(const VocControlado&) throw(invalid_argument){
+    Resultado resultado;
+    cout << "\nExclusão concluida com sucesso\n";
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+//Resultado StubVocabularios::EditarDefinicaoVocabulario(const VocControlado&) throw(invalid_argument){
+//    Resultado resultado
+//}
+
+Resultado StubVocabularios::EditarDefinicaoTermo(Termo& termo) throw(invalid_argument){
+    string input;
+    Resultado resultado;
+    Nome nome;
+    Classe_Termo classe_termo;
+    Data data;
+
+    try{
+        cout << endl << "Digite o nome do termo: ";
+        cin >> input;
+        nome.set_nome(input);
+        termo.set_nome(nome);
+        cout << endl << "Digite a classe do termo: ";
+        cin >> input;
+        classe_termo.set_classe_termo(input);
+        termo.set_classe_termo(classe_termo);
+        cout << endl << "Digite a data: ";
+        cin >> input;
+        data.set_data(input);
+        termo.set_data(data);
+    } catch (invalid_argument &exp) {
+        cout << "\nFormato Invalido\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
+    }//end try catch
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+
+Resultado StubVocabularios::AlterarIdiomaVocabulario(VocControlado& voc_controlado) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+    Idioma idioma;
+    try{
+        cout << endl << "Digite o idioma: ";
+        cin >> input;
+        idioma.set_idioma(input);
+        voc_controlado.set_idioma(idioma);
+    } catch (invalid_argument &exp) {
+        cout << "\nFormato Invalido\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
+    }
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+Resultado StubVocabularios::EditarDefinicaoVocabulario(Definicao &definicao) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+
+    cout << "\nDigite a nova definicao:" << endl;
+
+    try {
+
+        cout << "\nDigite o novo texto de definicao:" << endl;
+        cin >> input;
+        definicao.get_texto_definicao().set_texto_definicao(input);
+
+        cout << "\nDigite a data>" << endl;
+        cin >> input;
+        definicao.get_data().set_data(input);
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+
+    } catch (invalid_argument &exp) {
+        cout << "\nFormato Invalido" << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
+}
+
+Resultado StubVocabularios::EditarTermo(Termo &termo) throw(invalid_argument) {
+
+    string input;
+    Resultado resultado;
+
+    cout << "\n Digite os novos valores para o termo:" << endl;
+    try {
+        cout << "\n Digite o novo nome:" << endl;
+        cin >> input;
+        termo.get_nome().set_nome(input);
+
+        cout << "\nDigite a nova classe:" << endl;
+        cin >> input;
+        termo.get_classe_termo().set_classe_termo(input);
+
+        cout << "\nDigite a nova data:" << endl;
+        cin >> input;
+        termo.get_data().set_data(input);
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+
+    } catch(invalid_argument &exp) {
+        cout << "\nFormato invalido." << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
 }

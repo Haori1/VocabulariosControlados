@@ -11,7 +11,22 @@
 
 using namespace std;
 
+/**
+ * @file stubs.hpp
+ * @author Henrique Mendes de Freitas Mariano
+ * @author Gabriel Alves Castro
+ * @date 18 de maio de 2018
+ *
+ * @brief Simulacao da camada de servicos.
+ *
+ */
+
 /*----------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe com a funcao de simular os servicos de autenticacao, contem os triggers para a simulacao do sistema.
+ *
+ */
 
 class StubAutenticacao : public AutenticacaoIS{
     public:
@@ -21,9 +36,9 @@ class StubAutenticacao : public AutenticacaoIS{
         static constexpr const char* TRIGGER_FALHA_EMAIL = "narutouzumaki@gmail.com";
         static constexpr const char* TRIGGER_ERRO_SISTEMA_EMAIL = "deuruim@hotmail.com";
 
-        static constexpr const char* TRIGGER_LEITOR = "yuri@hotmail.com";
-        static constexpr const char* NOME_LEITOR = "Yuri";
-        static constexpr const char* SOBRENOME_LEITOR = "Azevedo";
+        static constexpr const char* TRIGGER_LEITOR = "rafael@hotmail.com";
+        static constexpr const char* NOME_LEITOR = "Rafael";
+        static constexpr const char* SOBRENOME_LEITOR = "Jesus";
 
         static constexpr const char* TRIGGER_DESENVOLVEDOR = "henrique@gmail.com";
         static constexpr const char* NOME_DESENVOLVEDOR = "Henrique";
@@ -37,6 +52,18 @@ class StubAutenticacao : public AutenticacaoIS{
         static constexpr const char* TELEFONE_ADMINISTRADOR = "99 99999-9999";
         static constexpr const char* ENDERECO_ADMINISTRADOR = "Aldeiadafolha";
 
+        static constexpr const char* TRIGGER_FALHA_LEITOR = "teste@gmail.com";
+
+        static constexpr const char* TRIGGER_ERRO_SISTEMA_LEITOR = "erro@gmail.com";
+
+        static constexpr const char* TRIGGER_FALHA_DESENVOLVEDOR = "emailtop@hotmail.com";
+
+        static constexpr const char* TRIGGER_ERRO_SISTEMA_DESENVOLVEDOR = "errodev@gmail.com";
+
+        static constexpr const char* TRIGGER_FALHA_ADMINISTRADOR = "fernando@unb.com";
+
+        static constexpr const char* TRIGGER_ERRO_SISTEMA_ADMINISTRADOR = "erroadm@gmail.com";
+
         Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
         ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
 
@@ -44,7 +71,12 @@ class StubAutenticacao : public AutenticacaoIS{
 
 /*----------------------------------------------------------------------------*/
 
-class StubCadastro : public CadastroIS{ //Falta terminar a declaracao e codificar a classe
+/**
+ * @brief Classe com a funcao de simular os servicos de cadastro, contem os triggers para a simulacao do sistema.
+ *
+ */
+
+class StubCadastro : public CadastroIS{
     private:
         Leitor leitor;
         Desenvolvedor desenvolvedor;
@@ -62,9 +94,12 @@ class StubCadastro : public CadastroIS{ //Falta terminar a declaracao e codifica
 
 /*----------------------------------------------------------------------------*/
 
+/**
+ * @brief Classe com a funcao de simular os servicos de usuario.
+ *
+ */
+
 class StubUsuario : public UsuarioIS{
-    private:
-        static constexpr const char* TRIGGER_USUARIO = "eoq@gmail.com";
     public:
         void Exibir(const ResultadoUsuario) throw (invalid_argument) override;
         ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) override;
@@ -76,24 +111,39 @@ class StubUsuario : public UsuarioIS{
 
 /*----------------------------------------------------------------------------*/
 
-class StubVocabularios : public VocabulariosIS{
-    private:
-        static constexpr const char* TRIGGER_VOCABULARIO_MATEMATICA = "Matematica";
-        static constexpr const char* TRIGGER_VOCABULARIO_ANIMES = "Animes";
-        static constexpr const char* TRIGGER_VOCABULARIO_ERRO = "Filosofia";
-        static constexpr const char* TRIGGER_TERMO_ERRO = "Quadrado";
-        static constexpr const char* TRIGGER_DEFINICAO_ERRO = "Boruto";
-        static constexpr const char* TRIGGER_DEFINICAO_TRIANGULO = "Triangulo";
-        static constexpr const char* TRIGGER_DEFINICAO_NARUTO = "Naruto";
+/**
+ * @brief Classe com a funcao de simular os servicos de vocabulario, contem os triggers para a simulacao do sistema.
+ *
+ */
 
-    public:
-        vector<VocControlado> ListaVocabulario() override;
-        void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;
-        vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) override;
-        void ConsultarTermo(const Termo&) throw(invalid_argument) override;
-        Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
-        void ConsultaDefinicaoTermo(const Definicao&) override;
+ class StubVocabularios : public VocabulariosIS{
+     private:
+         static constexpr const char* TRIGGER_VOCABULARIO_MATEMATICA = "Matematica";
+         static constexpr const char* TRIGGER_VOCABULARIO_ANIMES = "Animes";
+         static constexpr const char* TRIGGER_VOCABULARIO_ERRO = "Filosofia";
+         static constexpr const char* TRIGGER_TERMO_ERRO = "Quadrado";
+         static constexpr const char* TRIGGER_DEFINICAO_ERRO = "Boruto";
+         static constexpr const char* TRIGGER_DEFINICAO_TRIANGULO = "Triangulo";
+         static constexpr const char* TRIGGER_DEFINICAO_NARUTO = "Naruto";
 
-};
+     public:
+         vector<VocControlado> ListaVocabulario() override;
+         void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;
+         vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) override;
+         void ConsultarTermo(const Termo&) throw(invalid_argument) override;
+         Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
+         void ConsultaDefinicaoTermo(const Definicao&) override;
+
+         Resultado CriaTermo(const Termo&) throw(invalid_argument) override;
+         Resultado ExcluirTermo(const Termo&) throw(invalid_argument) override;
+         Resultado CriaVocabulario(const VocControlado&) throw(invalid_argument) override;
+         Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) override;
+         Resultado EditarDefinicaoVocabulario(Definicao &definicao) throw(invalid_argument) override;//
+         Resultado EditarDefinicaoTermo(Termo&) throw(invalid_argument) override;
+         Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) override;
+         Resultado EditarTermo(Termo&) throw(invalid_argument) override;//
+
+
+ };
 
 #endif

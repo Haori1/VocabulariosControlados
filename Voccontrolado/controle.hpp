@@ -12,7 +12,22 @@
 
 using namespace std;
 
+/**
+ * @file controle.hpp
+ * @author Henrique Mendes de Freitas Mariano
+ * @author Gabriel Alves Castro
+ * @date 18 de maio de 2018
+ *
+ * @brief Classes controladoras que gerenciam o sistema.
+ *
+ */
+
 /*----------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe com a funcao de controlar os servicos de autenticacao.
+ *
+ */
 
 class ApresentacaoAutenticacaoControle : public AutenticacaoIA{
     private:
@@ -28,6 +43,11 @@ void inline ApresentacaoAutenticacaoControle::set_aut_ia(AutenticacaoIS* cntr_li
 }
 
 /*----------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe com a funcao de controlar os servicos do cadastro.
+ *
+ */
 
 class ApresentacaoCadastroControle : public CadastroIA{
     private:
@@ -48,6 +68,11 @@ void inline ApresentacaoCadastroControle::set_cadastro_ia(CadastroIS* cntr_link_
 
 /*----------------------------------------------------------------------------*/
 
+/**
+ * @brief Classe com a funcao de controlar os servicos do usuario.
+ *
+ */
+
 class ApresentacaoUsuarioControle : public UsuarioIA{
     private:
         const static int EXIBIR = 1;
@@ -66,6 +91,11 @@ void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usu
 }
 
 /*----------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe com a funcao de controlar os servicos do vocabulario.
+ *
+ */
 
 class ApresentacaoVocabularioControle : public VocabulariosIA{
     private:

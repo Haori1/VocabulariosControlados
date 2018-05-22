@@ -135,12 +135,55 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
 
 Resultado ComandoExibir::ExecutarComando(UsuarioIS *cntr_link_usuario, const ResultadoUsuario resultado_usuario) throw (invalid_argument) {
     Resultado resultado;
-    cntr_link_usuario->Exibir(resultado_usuario);
     if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::DESENVOLVEDOR){
-        resultado.set_resultado(Resultado::FALHA);
-    } else {
-        resultado.set_resultado(Resultado::SUCESSO);
+        if(resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_FALHA_DESENVOLVEDOR){
+            resultado.set_resultado(Resultado::FALHA);
+            cout << "\nFalha ao Exibir\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+            return resultado;
+
+        } else if(resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_ERRO_SISTEMA_DESENVOLVEDOR){
+            throw invalid_argument("\nErro de sistema\n");
+
+        } else {
+            resultado.set_resultado(Resultado::SUCESSO);
+
+        }
+    } else if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::LEITOR){
+        if(resultado_usuario.get_leitor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_FALHA_LEITOR){
+            resultado.set_resultado(Resultado::FALHA);
+            cout << "\nFalha ao Exibir\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+            return resultado;
+
+        } else if(resultado_usuario.get_leitor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_ERRO_SISTEMA_LEITOR){
+            throw invalid_argument("\nErro de sistema\n");
+
+        } else {
+            resultado.set_resultado(Resultado::SUCESSO);
+
+        }
+    } else if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::ADMINISTRADOR){
+        if(resultado_usuario.get_administrador().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_FALHA_ADMINISTRADOR){
+            resultado.set_resultado(Resultado::FALHA);
+            cout << "\nFalha ao Exibir\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+            return resultado;
+
+        } else if(resultado_usuario.get_administrador().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_ERRO_SISTEMA_ADMINISTRADOR){
+            throw invalid_argument("\nErro de sistema\n");
+
+        } else {
+            resultado.set_resultado(Resultado::SUCESSO);
+        }
     }
+    cntr_link_usuario->Exibir(resultado_usuario);
     return resultado;
 }
 
@@ -157,6 +200,7 @@ Resultado ComandoEditar::ExecutarComando(UsuarioIS *cntr_link_usuario, const Res
 }
 
 /*----------------------------------------------------------------------------*/
+
 vector<VocControlado> ComandoListarVocabularios::ExecutarComando(VocabulariosIS *cntr_link_vocabulario) {
 
     int tamanho;
@@ -167,28 +211,38 @@ vector<VocControlado> ComandoListarVocabularios::ExecutarComando(VocabulariosIS 
     tamanho = lista_vocabularios_controlados.size();
 
     for(int i = 0; i < tamanho; i++){
-        cout<< i + 1 << lista_vocabularios_controlados[i].get_nome().get_nome() << endl;
+        cout<< i + 1 << "- " << lista_vocabularios_controlados[i].get_nome().get_nome() << endl;
     }
 
     return lista_vocabularios_controlados;
 }
 
 vector<Termo> ComandoConsultarVocabulario::ExecutarComando(VocabulariosIS *cntr_link_vocabulario, vector<VocControlado> &lista_vocabularios,
-                                                           string nome_vocabulario) throw (invalid_argument) {
+                                                            const string nome_vocabulario) throw (invalid_argument) {
 
     bool TRIGGER_ERRO = false;
     int tamanho = lista_vocabularios.size();
     vector<Termo> lista_termos;
 
-    for(int i = 0; i < tamanho; i++) {
-        if(nome_vocabulario == lista_vocabularios[i].get_nome().get_nome()){
-            cntr_link_vocabulario->ConsultarVocabulario(lista_vocabularios[i]);
-            cout<< "\nTermos do vocabulario:" << endl;
-            lista_termos = cntr_link_vocabulario->ApresentaTermos(lista_vocabularios[i]);
-            TRIGGER_ERRO = true;
-            return lista_termos;
+    bool aux;
+
+
+
+   // try {
+        for(int i = 0; i < tamanho; i++) {
+            aux = nome_vocabulario == lista_vocabularios[i].get_nome().get_nome();
+            if(aux){
+                cntr_link_vocabulario->ConsultarVocabulario(lista_vocabularios[i]);
+                cout<< "\nTermos do vocabulario:" << endl;
+                lista_termos = cntr_link_vocabulario->ApresentaTermos(lista_vocabularios[i]);
+                TRIGGER_ERRO = true;
+                return lista_termos;
+            }
         }
-    }
+    //}catch(invalid_argument) {
+    //    cout << "Esse vocabulario Nao existe";
+    //}
+
 
     if(TRIGGER_ERRO == false) {
         throw("\nNome nao se encontra na lista de vocabularios\n");
@@ -198,16 +252,20 @@ vector<Termo> ComandoConsultarVocabulario::ExecutarComando(VocabulariosIS *cntr_
 }
 
 Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabulario, vector<Termo> &lista_termos,
-                                             string nome_termo) throw(invalid_argument){
+                                               string nome_termo) throw(invalid_argument){
     bool TRIGGER_ERRO = false;
     int tamanho = lista_termos.size();
 
-    for(int i = 0; i < tamanho; i++){
-        if(nome_termo == lista_termos[i].get_nome().get_nome()) {
-            cntr_link_vocabulario->ConsultarTermo(lista_termos[i]);
-            TRIGGER_ERRO = true;
-            return lista_termos[i];
+    try{
+        for(int i = 0; i < tamanho; i++){
+            if(nome_termo == lista_termos[i].get_nome().get_nome()) {
+                cntr_link_vocabulario->ConsultarTermo(lista_termos[i]);
+                TRIGGER_ERRO = true;
+                return lista_termos[i];
+            }
         }
+    } catch(invalid_argument) {
+
     }
 
     if(TRIGGER_ERRO == false) {

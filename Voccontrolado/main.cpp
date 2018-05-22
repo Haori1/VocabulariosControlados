@@ -55,14 +55,15 @@ int main(void){
         system(CLEAR);
         cout << "\tValores dos Triggers: \n";
         cout << "Email Invalido: " << StubAutenticacao::TRIGGER_FALHA_EMAIL << endl;
-        cout << "Senha Invalida: " << StubAutenticacao::TRIGGER_FALHA_SENHA << endl;
         cout << "Erro Sistema Email: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_EMAIL << endl;
-        cout << "Erro Sistema Senha: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_SENHA << endl;
+        cout << endl << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
 
         ResultadoUsuario resultado;
 
         do {
-            cout << "\t\t\tVocabularios Controled\n\n";
+            cout << "\n\t\t\tVocabularios Controlados\n\n";
             cout << "Escolha uma das opcoes: \n";
             cout << "1. Acessar conta\n";
             cout << "2. Cadastrar\n";
@@ -106,12 +107,12 @@ int main(void){
             case CADASTRAR:
                 try{
                     cntr_ia_cadastro->ExecutarIA();
+
                 } catch (invalid_argument &exp) {
                     cout << "Erro de sistema" << endl;
                     cout << "Pressione qualquer tecla para continuar: ";
                     fflush(stdin);
                     getchar();
-
                 }
                 break;
             case SAIR:

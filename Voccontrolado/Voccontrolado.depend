@@ -83,10 +83,10 @@
 	"stubs.hpp"
 	"comandos.hpp"
 
-1526975601 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
+1527014451 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
 	"comandos.hpp"
 
-1526975484 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
+1527014449 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
 	<iostream>
 	<stdexcept>
 	<exception>
@@ -97,7 +97,7 @@
 	"stubs.hpp"
 	"controle.hpp"
 
-1526976304 c:\users\henri\vocabularioscontrolados\voccontrolado\interfaces.hpp
+1527021380 c:\users\henri\vocabularioscontrolados\voccontrolado\interfaces.hpp
 	<exception>
 	<stdexcept>
 	<iostream>
@@ -116,7 +116,7 @@
 	<iostream>
 	"dominios.hpp"
 
-1526976262 c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.hpp
+1527022201 c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.hpp
 	<iostream>
 	<stdexcept>
 	<exception>
@@ -124,14 +124,14 @@
 	"comandos.hpp"
 	"dominios.hpp"
 
-1526975745 c:\users\henri\vocabularioscontrolados\voccontrolado\controle.hpp
+1527014446 c:\users\henri\vocabularioscontrolados\voccontrolado\controle.hpp
 	<stdexcept>
 	<exception>
 	"dominios.hpp"
 	"interfaces.hpp"
 	"comandos.hpp"
 
-1526975804 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
+1527022344 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -155,7 +155,7 @@
 	<stdexcept>
 	"entidades.hpp"
 
-1526976362 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
+1527014438 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -167,7 +167,7 @@
 	"stubs.hpp"
 	"comandos.hpp"
 
-1526973510 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
+1527022163 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
 	<iostream>
 	"stubs.hpp"
 	"dominios.hpp"
