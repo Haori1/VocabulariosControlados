@@ -62,6 +62,20 @@ class StubCadastro : public CadastroIS{ //Falta terminar a declaracao e codifica
 
 /*----------------------------------------------------------------------------*/
 
+class StubUsuario : public UsuarioIS{
+    private:
+        static constexpr const char* TRIGGER_USUARIO = "eoq@gmail.com";
+    public:
+        void Exibir(const ResultadoUsuario) throw (invalid_argument) override;
+        ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) override;
+        Resultado Excluir() throw (invalid_argument) override;
+        ResultadoUsuario EditarLeitor() throw (invalid_argument) override;
+        ResultadoUsuario EditarDesenvolvedor() throw (invalid_argument) override;
+        ResultadoUsuario EditarAdministrador() throw (invalid_argument) override;
+};
+
+/*----------------------------------------------------------------------------*/
+
 class StubVocabularios : public VocabulariosIS{
     private:
         static constexpr const char* TRIGGER_VOCABULARIO_MATEMATICA = "Matematica";

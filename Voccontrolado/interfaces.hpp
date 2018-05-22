@@ -40,13 +40,21 @@ class AutenticacaoIS{
 
 class UsuarioIA{
     public:
+        virtual void Executar(const ResultadoUsuario) throw (invalid_argument) = 0;
+        virtual void set_usuario_ia(UsuarioIS *) = 0; //Link IA-IS
+        virtual ~UsuarioIA(){}
 
 };
 
 class UsuarioIS{
     public:
-        //Criar as interfaces dos servicos que sao oferecidos pelo UsuarioIs
-
+        virtual void Exibir(const ResultadoUsuario) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) = 0;
+        virtual Resultado Excluir() throw (invalid_argument) = 0;
+        virtual ResultadoUsuario EditarLeitor() throw (invalid_argument) = 0;
+        virtual ResultadoUsuario EditarDesenvolvedor() throw (invalid_argument) = 0;
+        virtual ResultadoUsuario EditarAdministrador() throw (invalid_argument) = 0;
+        virtual ~UsuarioIS(){}
 };
 
 /*----------------------------------------------------------------------------*/
@@ -72,9 +80,7 @@ class CadastroIS{
 
 class VocabulariosIA{
     public:
-    //Para receber o email que foi autentificado, talvez seja melhor modificar a classe resultadoAutentificacao para retornar o
-    //tipo de usuario que entrou no sistema(discutir)
-    virtual void Executar(const ResultadoUsuario&) throw (invalid_argument) = 0;
+    virtual void Executar(const ResultadoUsuario) throw (invalid_argument) = 0;
     virtual void set_vocabulario_ia(VocabulariosIS *) = 0;
     virtual ~VocabulariosIA(){}
 };
@@ -100,9 +106,9 @@ class VocabulariosIS{
     virtual void ConsultaDefinicaoTermo(const Definicao&) = 0;
     //Leitor utiliza ateh esse ponto
 
-    virtual Resultado CriaTermo(const Termo&) throw(invalid_argument) = 0;
-    virtual Resultado ExcluirTermo(const Termo&) throw(invalid_argument) = 0;
-    virtual Resultado EditarTermo(const Termo&) throw(invalid_argument) = 0;
+    /*virtual Resultado CriaTermo(const Termo&) throw(invalid_argument) = 0;
+    //virtual Resultado ExcluirTermo(const Termo&) throw(invalid_argument) = 0;
+    //virtual Resultado EditarTermo(const Termo&) throw(invalid_argument) = 0;
     virtual Resultado EditarDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
     //Desenvolvedor utiliza ateh esse ponto
 
@@ -111,12 +117,10 @@ class VocabulariosIS{
     virtual Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) = 0;
     virtual Resultado EditarDefinicaoVocabulario(const VocControlado&) throw(invalid_argument) = 0;
     virtual Resultado AlterarIdiomaVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    */
     //Administrador utiliza ateh esse ponto
 
     virtual ~VocabulariosIS(){}
 };
-
-/*----------------------------------------------------------------------------*/
-
 
 #endif

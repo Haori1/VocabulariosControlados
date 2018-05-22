@@ -129,6 +129,206 @@ Resultado StubCadastro::CadastroAdministrador(const Administrador &administrador
 
 /*----------------------------------------------------------------------------*/
 
+void StubUsuario::Exibir(const ResultadoUsuario resultado_usuario) throw (invalid_argument){
+    if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::LEITOR){
+        cout << "\nNome: " << resultado_usuario.get_leitor().get_nome().get_nome() << endl;
+        cout << "Sobrenome: " << resultado_usuario.get_leitor().get_sobrenome().get_sobrenome() << endl;
+        cout << "Email: " << resultado_usuario.get_leitor().get_correio_eletronico().get_correio_eletronico() << endl;
+        cout << "Senha: " << resultado_usuario.get_leitor().get_senha().get_senha() << endl;
+        cout << endl << "Pressione qualquer botao para continuar: ";
+        fflush(stdin);
+        getchar();
+
+    } else if (resultado_usuario.tipo_de_usuario == ResultadoUsuario::DESENVOLVEDOR){
+        cout << "\nNome: " << resultado_usuario.get_desenvolvedor().get_nome().get_nome() << endl;
+        cout << "Sobrenome: " << resultado_usuario.get_desenvolvedor().get_sobrenome().get_sobrenome() << endl;
+        cout << "Email: " << resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico() << endl;
+        cout << "Data de nascimento: " << resultado_usuario.get_desenvolvedor().get_data().get_data() << endl;
+        cout << endl << "Pressione qualquer botao para continuar: ";
+        fflush(stdin);
+        getchar();
+
+    } else if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::ADMINISTRADOR){
+        cout << "\nNome: " << resultado_usuario.get_administrador().get_nome().get_nome() << endl;
+        cout << "Sobrenome: " << resultado_usuario.get_administrador().get_sobrenome().get_sobrenome() << endl;
+        cout << "Email: " << resultado_usuario.get_administrador().get_correio_eletronico().get_correio_eletronico() << endl;
+        cout << "Senha: " << resultado_usuario.get_administrador().get_senha().get_senha() << endl;
+        cout << "Data de nascimento: " << resultado_usuario.get_administrador().get_data().get_data() << endl;
+        cout << "Telefone: " << resultado_usuario.get_administrador().get_telefone().get_telefone() << endl;
+        cout << "Endereco: " << resultado_usuario.get_administrador().get_endereco().get_endereco() << endl;
+        cout << endl << "Pressione qualquer botao para continuar: ";
+        fflush(stdin);
+        getchar();
+    }
+}
+
+ResultadoUsuario StubUsuario::Editar(const ResultadoUsuario resultado_usuario) throw (invalid_argument){
+    ResultadoUsuario resultado;
+    if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::LEITOR){
+        resultado = EditarLeitor();
+    } else if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::DESENVOLVEDOR){
+        resultado = EditarDesenvolvedor();
+    } else {
+        resultado = EditarAdministrador();
+    }
+    return resultado;
+}
+
+ResultadoUsuario StubUsuario::EditarLeitor() throw (invalid_argument){
+    ResultadoUsuario resultado;
+    string input;
+    Nome nome;
+    Sobrenome sobrenome;
+    Senha senha;
+    Correio_Eletronico correio_eletronico;
+
+    do{
+        try{
+            system(CLEAR);
+            cout << "Escreva seu nome: ";
+            cin >> input;
+            nome.set_nome(input);
+            cout << endl << "Escreva seu sobrenome: ";
+            cin >> input;
+            sobrenome.set_sobrenome(input);
+            cout << endl << "Escreva sua senha: ";
+            cin >> input;
+            senha.set_senha(input);
+            cout << endl << "Escreva seu email: ";
+            cin >> input;
+            correio_eletronico.set_correio_eletronico(input);
+            break;
+
+        } catch (invalid_argument &exp) {
+            cout << "\nFormato Invalido\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+        }//end try catch
+    } while(true);//end while()
+    Leitor leitor(nome, sobrenome, correio_eletronico, senha);
+    resultado.set_leitor(leitor);
+    return resultado;
+}//end EditarLeitor()
+
+ResultadoUsuario StubUsuario::EditarDesenvolvedor() throw (invalid_argument){
+    ResultadoUsuario resultado;
+    string input;
+    Nome nome;
+    Sobrenome sobrenome;
+    Senha senha;
+    Correio_Eletronico correio_eletronico;
+    Data data_nascimento;
+
+    do{
+        try{
+            system(CLEAR);
+            cout << "Escreva seu nome: ";
+            cin >> input;
+            nome.set_nome(input);
+            cout << endl << "Escreva seu sobrenome: ";
+            cin >> input;
+            sobrenome.set_sobrenome(input);
+            cout << endl << "Escreva sua senha: ";
+            cin >> input;
+            senha.set_senha(input);
+            cout << endl << "Escreva seu email: ";
+            cin >> input;
+            correio_eletronico.set_correio_eletronico(input);
+            cout << endl << "Escreva sua data de nascimento: ";
+            cin >> input;
+            data_nascimento.set_data(input);
+            break;
+
+        } catch (invalid_argument &exp) {
+            cout << "\nFormato Invalido\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+        }//end try catch
+    } while(true);//end while()
+    Desenvolvedor desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
+    resultado.set_desenvolvedor(desenvolvedor);
+    return resultado;
+}
+
+ResultadoUsuario StubUsuario::EditarAdministrador() throw (invalid_argument){
+    ResultadoUsuario resultado;
+    string input;
+    Nome nome;
+    Sobrenome sobrenome;
+    Senha senha;
+    Correio_Eletronico correio_eletronico;
+    Data data_nascimento;
+    Telefone telefone;
+    Endereco endereco;
+
+    do{
+        try{
+            system(CLEAR);
+            cout << "Escreva seu nome: ";
+            cin >> input;
+            nome.set_nome(input);
+            cout << endl << "Escreva seu sobrenome: ";
+            cin >> input;
+            sobrenome.set_sobrenome(input);
+            cout << endl << "Escreva sua senha: ";
+            cin >> input;
+            senha.set_senha(input);
+            cout << endl << "Escreva seu email: ";
+            cin >> input;
+            correio_eletronico.set_correio_eletronico(input);
+            cout << endl << "Escreva sua data de nascimento: ";
+            cin >> input;
+            data_nascimento.set_data(input);
+            cout << endl << "Escreva seu telefone: ";
+            cin >> input;
+            telefone.set_telefone(input);
+            cout << endl << "Escreva seu endereco: ";
+            cin >> input;
+            endereco.set_endereco(input);
+            break;
+
+        } catch (invalid_argument &exp) {
+            cout << "\nFormato Invalido\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+        }//end try catch
+    } while(true);//end while()
+    Administrador administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
+    resultado.set_administrador(administrador);
+    return resultado;
+}
+
+Resultado StubUsuario::Excluir() throw (invalid_argument){
+    string input;
+    Senha senha;
+    Resultado resultado;
+
+    system(CLEAR);
+    cout << endl << "TRIGGER SENHA INVALIDA: " << StubAutenticacao::TRIGGER_FALHA_SENHA;
+    cout << endl << "Digite a sua senha para confirmar a exclusao.";
+    cin >> input;
+    try{
+        senha.set_senha(input);
+    } catch (invalid_argument &exp){
+        cout << "\nFormato Invalido\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
+    }
+
+    if(senha.get_senha() == StubAutenticacao::TRIGGER_FALHA_SENHA){
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    } else {
+        resultado.set_resultado(Resultado::SUCESSO);
+    }
+    return resultado;
+}//Excluir
+/*----------------------------------------------------------------------------*/
+
 vector<VocControlado> StubVocabularios::ListaVocabulario() {
 
     Nome nome_mat;

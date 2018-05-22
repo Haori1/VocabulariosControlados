@@ -48,6 +48,25 @@ void inline ApresentacaoCadastroControle::set_cadastro_ia(CadastroIS* cntr_link_
 
 /*----------------------------------------------------------------------------*/
 
+class ApresentacaoUsuarioControle : public UsuarioIA{
+    private:
+        const static int EXIBIR = 1;
+        const static int EDITAR = 2;
+        const static int EXCLUIR = 3;
+        const static int RETORNAR = 4;
+        UsuarioIS* cntr_link_usuario;
+
+    public:
+        void Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument) override;
+        void set_usuario_ia(UsuarioIS *) override;
+};
+
+void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usuario){
+    this->cntr_link_usuario = cntr_link_usuario;
+}
+
+/*----------------------------------------------------------------------------*/
+
 class ApresentacaoVocabularioControle : public VocabulariosIA{
     private:
     const static int LISTAR_VOCABULARIO = 1;
@@ -63,12 +82,15 @@ class ApresentacaoVocabularioControle : public VocabulariosIA{
     const static int EDITAR_DEFINICAO_VOCABULARIO = 11;
     const static int ALTERAR_IDIOMA_VOCABULARIO = 12;
 
+    VocabulariosIS *cntr_link_vocabulario;
+
     public:
-        void Executar(const ResultadoUsuario&) throw (invalid_argument) override;
+        void Executar(const ResultadoUsuario) throw (invalid_argument) override;
         void set_vocabulario_ia(VocabulariosIS *) override;
 };
 
-/*----------------------------------------------------------------------------*/
-
+void inline ApresentacaoVocabularioControle::set_vocabulario_ia(VocabulariosIS* cntr_link_vocabulario){
+    this->cntr_link_vocabulario = cntr_link_vocabulario;
+}
 
 #endif

@@ -106,3 +106,184 @@ void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument){
 }
 
 /*----------------------------------------------------------------------------*/
+
+void ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument){
+    ComandoUsuario *comando;
+    int escolha;
+    while(true){
+        do{
+            system(CLEAR);
+            cout << "Escolha o tipo de acao a ser realizada: " << endl;
+            cout << "1. Exibir" << endl;
+            cout << "2. Editar" << endl;
+            cout << "3. Excluir" << endl;
+            cout << "4. Retornar" << endl;
+            cin >> escolha;
+        } while (escolha < 1 || escolha > 4);
+
+        switch (escolha) {
+            case EXIBIR:
+                comando = new ComandoExibir();
+                comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
+                delete comando;
+                break;
+            case EDITAR:
+                comando = new ComandoEditar();
+                comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
+                delete comando;
+                break;
+            case EXCLUIR:
+                comando = new ComandoExcluir();
+                comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
+                delete comando;
+                break;
+            case RETORNAR:
+                return;
+        }
+    }
+}//end Executar
+
+/*----------------------------------------------------------------------------*/
+
+void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_usuario) throw(invalid_argument){
+
+    int contador = 1;
+    int input;
+    string string_input;
+
+    ComandoListarVocabularios *comando_listar_vocabularios;
+    vector<VocControlado> lista_vocabularios;
+    ComandoConsultarVocabulario *comando_consultar_vocabulario;
+    vector<Termo> lista_termos;
+    ComandoConsultarTermo *comando_consultar_termo;
+    Termo termo;
+    ComandoConsultarDefinicao *comando_consultar_definicao;
+
+
+    do {
+
+        cout<< "\nEscolha uma das opcoes:" << endl;
+        cout<< "\n1- Listar vocabularios" << endl;
+        if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
+            contador++;
+            cout<< "\n" << contador << "- Criar vocabulario" << endl; //
+        }
+        contador++;
+        cout<< "\n" << contador << "- Retornar" << endl;
+        cin >> input;
+
+        if(resultado_usuario.tipo_de_usuario == resultado_usuario.LEITOR) {
+            if(input == 1) {
+                system(CLEAR);
+                comando_listar_vocabularios = new ComandoListarVocabularios();
+                lista_vocabularios = comando_listar_vocabularios->ExecutarComando(cntr_link_vocabulario);
+                delete comando_listar_vocabularios;
+                do {
+                    cout<< "\nEscolha uma das opcoes:" << endl;
+                    cout<< "\n1- Consultar vocabulario" << endl;
+                    cout<< "\n2- Retornar" << endl;
+                    cin >> input;
+
+                    if(input == 1) {
+                        cout<< "\nDigite o vocabulario que deseja consultar:" << endl;
+                        cin >> input;
+                        string_input = input;
+                        try{
+                            system(CLEAR);
+                            comando_consultar_vocabulario = new ComandoConsultarVocabulario;
+                            lista_termos = comando_consultar_vocabulario->ExecutarComando(cntr_link_vocabulario, lista_vocabularios, string_input);
+                            delete comando_consultar_vocabulario;
+
+                            do {
+                                cout<< "\nEscolha uma das opcoes:" << endl;
+                                cout<< "\n1- Consultar termo" << endl;
+                                cout<< "\n2- Retornar" << endl;
+                                cin >> input;
+
+                                if(input == 1) {
+                                    cout<< "\nDigite o Termo que deseja consultar:" << endl;
+                                    cin >> input;
+                                    string_input = input;
+                                    try {
+                                        system(CLEAR);
+                                        comando_consultar_termo = new ComandoConsultarTermo;
+                                        termo = comando_consultar_termo->ExecutarComando(cntr_link_vocabulario, lista_termos, string_input);
+                                        delete comando_consultar_termo;
+
+                                        do {
+                                            cout <<"\nEscolha uma das opcoes:" << endl;
+                                            cout <<"\n1- Consultar definicao" << endl;
+                                            cout <<"\n2- Retornar" << endl;
+                                            cin >> input;
+                                            try {
+                                                if(input == 1) {
+                                                    system(CLEAR);
+                                                    comando_consultar_definicao = new ComandoConsultarDefinicao;
+                                                    comando_consultar_definicao->ExecutarComando(cntr_link_vocabulario, termo);
+                                                    delete comando_consultar_definicao;
+
+                                                    do {
+                                                        cout<<"\nEscolha uma das opcoes:" << endl;
+                                                        cout<<"\n1- Retornar" << endl;
+                                                        cout<<"\n2- Sair" << endl;
+                                                        cin >> input;
+
+                                                        if(input == 1) {
+                                                            break;
+                                                        }
+
+                                                        if(input == 2) {
+                                                            return;
+                                                        }
+
+                                                    } while(input != 1 && input != 2);
+                                                }
+
+                                                if(input == 2) {
+                                                    break;
+                                                }
+                                            } catch(invalid_argument &exp) {
+                                                cout << "\nDefinicao Nao encontrada" << endl;
+                                                continue;
+                                            }
+                                        } while (input != 1 && input != 2);
+
+                                    } catch(invalid_argument &exp) {
+                                        cout<< "\nNome nao se encontra na lista de termos" << endl;
+                                        continue;
+                                    }
+                                }
+
+                                if(input == 2) {
+                                    break;
+                                }
+                            } while(input != 1 && input != 2);
+
+                        } catch(invalid_argument &exp) {
+                            cout << "\nNome nao se encontra na lista de vocabularios" << endl;
+                            continue;
+                        }
+                    } else if(input == 2) {
+                        break;
+                    }
+
+                } while(input != 1 && input != 2);
+            } else if(input == 2) {
+                return;
+            } else {
+                cout << "\nEscolha invalida\n" << endl;
+                continue;
+            }
+        }
+
+        if(resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR) {
+            return;
+        }
+
+        if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
+            return;
+        }
+
+    } while(true);
+
+}
