@@ -27,6 +27,8 @@ void ComandoCadastroLeitorIA::ExecutarComando(CadastroIS *cntr_link_cadastro) th
 
     } catch (invalid_argument &exp) {
         cout << "\nFormato incorreto\n";
+        getchar();
+        continue;
     }
         Leitor leitor(nome, sobrenome, correio_eletronico, senha);
         resultado_cadastro = cntr_link_cadastro->CadastroLeitor(leitor);
@@ -65,6 +67,8 @@ void ComandoCadastroDesenvolvedorIA::ExecutarComando(CadastroIS *cntr_link_cadas
 
     } catch (invalid_argument &exp) {
         cout << "\nFormato incorreto\n";
+        getchar();
+        continue;
     }
         Desenvolvedor desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
         resultado_cadastro = cntr_link_cadastro->CadastroLeitor(desenvolvedor);
@@ -111,6 +115,8 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
 
     } catch (invalid_argument &exp) {
         cout << "\nFormato incorreto\n";
+        getchar();
+        continue;
     }
         Administrador administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
         resultado_cadastro = cntr_link_cadastro->CadastroLeitor(administrador);
