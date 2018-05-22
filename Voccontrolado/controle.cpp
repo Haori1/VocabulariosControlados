@@ -74,6 +74,7 @@ void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument){
     int conta;
 
     do{
+        system(CLEAR);
         cout << "Tipo de conta a ser cadastrada: " << endl;
         cout << "1. Leitor" << endl;
         cout << "2. Desenvolvedor" << endl;
@@ -98,6 +99,8 @@ void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument){
             comando->ExecutarComando(cntr_link_cadastro);
             delete comando;
             break;
+        case RETORNAR:
+            return;
     }
 
 }

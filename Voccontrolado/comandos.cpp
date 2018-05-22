@@ -30,6 +30,7 @@ void ComandoCadastroLeitorIA::ExecutarComando(CadastroIS *cntr_link_cadastro) th
     }
         Leitor leitor(nome, sobrenome, correio_eletronico, senha);
         resultado_cadastro = cntr_link_cadastro->CadastroLeitor(leitor);
+        return;
     }//end while(true)
 }//end Executar()
 
@@ -67,6 +68,7 @@ void ComandoCadastroDesenvolvedorIA::ExecutarComando(CadastroIS *cntr_link_cadas
     }
         Desenvolvedor desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
         resultado_cadastro = cntr_link_cadastro->CadastroLeitor(desenvolvedor);
+        return;
     }//end while(true)
 }
 
@@ -112,6 +114,7 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
     }
         Administrador administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
         resultado_cadastro = cntr_link_cadastro->CadastroLeitor(administrador);
+        return;
 
     }//end while(true)
 }

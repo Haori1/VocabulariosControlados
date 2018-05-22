@@ -83,3 +83,92 @@
 	"stubs.hpp"
 	"comandos.hpp"
 
+1526959572 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
+	"comandos.hpp"
+
+1526954413 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
+	<iostream>
+	<stdexcept>
+	<exception>
+	<cstdlib>
+	"interfaces.hpp"
+	"dominios.hpp"
+	"entidades.hpp"
+	"stubs.hpp"
+	"controle.hpp"
+
+1526958047 c:\users\henri\vocabularioscontrolados\voccontrolado\interfaces.hpp
+	<exception>
+	<stdexcept>
+	<iostream>
+	<string>
+	<vector>
+	"dominios.hpp"
+	"entidades.hpp"
+
+1526853248 c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.hpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+
+1526958347 c:\users\henri\vocabularioscontrolados\voccontrolado\entidades.hpp
+	<iostream>
+	"dominios.hpp"
+
+1526958230 c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.hpp
+	<iostream>
+	<stdexcept>
+	<exception>
+	"interfaces.hpp"
+	"comandos.hpp"
+	"dominios.hpp"
+
+1526949606 c:\users\henri\vocabularioscontrolados\voccontrolado\controle.hpp
+	<stdexcept>
+	<exception>
+	"dominios.hpp"
+	"interfaces.hpp"
+	"comandos.hpp"
+
+1526959342 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
+	<iostream>
+	<string>
+	<stdexcept>
+	<exception>
+	<cstdlib>
+	"controle.hpp"
+	"comandos.hpp"
+	"interfaces.hpp"
+
+1526853248 source:c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+
+1526853248 source:c:\users\henri\vocabularioscontrolados\voccontrolado\entidades.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"entidades.hpp"
+
+1526951125 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
+	<iostream>
+	<string>
+	<exception>
+	<stdexcept>
+	"dominios.hpp"
+	"entidades.hpp"
+	"controle.hpp"
+	"interfaces.hpp"
+	"stubs.hpp"
+	"comandos.hpp"
+
+1526958355 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
+	<iostream>
+	"stubs.hpp"
+	"dominios.hpp"
+
