@@ -281,3 +281,17 @@ void ComandoConsultarDefinicao::ExecutarComando(VocabulariosIS *cntr_link_vocabu
     definicao = cntr_link_vocabulario->BuscaDefinicaoTermo(termo);
     cntr_link_vocabulario->ConsultaDefinicaoTermo(definicao);
 }
+
+/*---------------------------------------------------------------------------*/
+
+Resultado ComandoEditarDefinicaoVoc::Executar(VocabulariosIS *cntr_link_vocabulario, Definicao &definicao) throw (invalid_argument){
+    Resultado resultado;
+    resultado = cntr_link_vocabulario->EditarDefinicaoVocabulario(definicao);
+    return resultado;
+}
+
+Resultado ComandoAlterarIdiomaVoc::Executar(VocabulariosIS *cntr_link_vocabulario, VocControlado &voc_controlado) throw (invalid_argument){
+    Resultado resultado;
+    resultado = cntr_link_vocabulario->AlterarIdiomaVocabulario(voc_controlado);
+    return resultado;
+}

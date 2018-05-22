@@ -30,6 +30,10 @@ using namespace std;
 
 class StubAutenticacao : public AutenticacaoIS{
     public:
+        /**
+         * @brief Triggers com funcao de simular o funcionamento da camada de servicos.
+         *
+         */
         static constexpr const char* TRIGGER_FALHA_SENHA = "Eoqxd12";
         static constexpr const char* TRIGGER_ERRO_SISTEMA_SENHA = "xd12E";
 
@@ -43,7 +47,7 @@ class StubAutenticacao : public AutenticacaoIS{
         static constexpr const char* TRIGGER_DESENVOLVEDOR = "henrique@gmail.com";
         static constexpr const char* NOME_DESENVOLVEDOR = "Henrique";
         static constexpr const char* SOBRENOME_DESENVOLVEDOR = "Mariano";
-        static constexpr const char* DATA_DESENVOLVEDOR = "11/03/1999"; //checar o formato correto da data.
+        static constexpr const char* DATA_DESENVOLVEDOR = "11/03/1999";
 
         static constexpr const char* TRIGGER_ADMINISTRADOR = "gabriel@unb.com";
         static constexpr const char* NOME_ADMINISTRADOR = "Gabriel";
@@ -63,8 +67,15 @@ class StubAutenticacao : public AutenticacaoIS{
         static constexpr const char* TRIGGER_FALHA_ADMINISTRADOR = "fernando@unb.com";
 
         static constexpr const char* TRIGGER_ERRO_SISTEMA_ADMINISTRADOR = "erroadm@gmail.com";
-
+        /**
+         * @brief Funcao que simula a autenticacao se o usuario conseguiu entrar com sucesso ou nao.
+         * @return Retorna o tipo Resultado que contem se a funcao foi sucesso ou falha.
+         */
         Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
+        /**
+         * @brief Funcao que de acordo com o trigger passado retorna um tipo de objeto Leitor, Desenvolvedor, Administrador.
+         * @return Retorna o tipo ResultadoUsuario que contem se a funcao foi sucesso ou falha e um objeto Leitor ou Desenvolvedor ou Administrador preenchido.
+         */
         ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
 
 };
@@ -118,6 +129,10 @@ class StubUsuario : public UsuarioIS{
 
  class StubVocabularios : public VocabulariosIS{
      private:
+         /**
+          * @brief Triggers com funcao de simular o funcionamento da camada de servicos
+          *
+          */
          static constexpr const char* TRIGGER_VOCABULARIO_MATEMATICA = "Matematica";
          static constexpr const char* TRIGGER_VOCABULARIO_ANIMES = "Animes";
          static constexpr const char* TRIGGER_VOCABULARIO_ERRO = "Filosofia";

@@ -115,24 +115,65 @@ class ComandoEditar : public ComandoUsuario {
 
 /*----------------------------------------------------------------------------*/
 
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario listar.
+ *
+ */
+
 class ComandoListarVocabularios{
     public:
         vector<VocControlado> ExecutarComando(VocabulariosIS *);
 };
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario consultar vocabulario.
+ *
+ */
 
 class ComandoConsultarVocabulario{
     public:
         vector<Termo> ExecutarComando(VocabulariosIS *, vector<VocControlado>&, const string) throw (invalid_argument);
 };
 
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario consultar termo.
+ *
+ */
+
 class ComandoConsultarTermo {
     public:
         Termo ExecutarComando(VocabulariosIS *, vector<Termo>&, string) throw (invalid_argument);
 };
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario consultar definicao.
+ *
+ */
 
 class ComandoConsultarDefinicao{
     public:
         void ExecutarComando(VocabulariosIS *, Termo&) throw (invalid_argument) ;
 };
 
+/*----------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario editar definicao do vocabulario.
+ *
+ */
+
+class ComandoEditarDefinicaoVoc{
+    public:
+        Resultado Executar(VocabulariosIS *, Definicao&) throw (invalid_argument);
+};
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario alterar idioma do vocabulario.
+ *
+ */
+
+class ComandoAlterarIdiomaVoc{
+    public:
+        Resultado Executar(VocabulariosIS *, VocControlado&) throw (invalid_argument);
+};
 #endif
