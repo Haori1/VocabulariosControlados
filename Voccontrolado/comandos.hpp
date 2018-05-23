@@ -216,4 +216,15 @@ class ComandoEditarDefinicaoTermo{
         Resultado Executar(VocabulariosIS *, Termo&);
 };
 
+
+class ComandoCriarVocabulario{
+    public:
+        Resultado Executar(VocabulariosIS *);
+};
+
+class ComandoExcluirVocabulario{
+    public:
+        Resultado Executar(VocabulariosIS *, VocControlado&);
+};
+
 #endif

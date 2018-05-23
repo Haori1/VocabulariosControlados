@@ -141,6 +141,9 @@ class StubUsuario : public UsuarioIS{
          static constexpr const char* TRIGGER_DEFINICAO_TRIANGULO = "Triangulo";
          static constexpr const char* TRIGGER_DEFINICAO_NARUTO = "Naruto";
 
+         static constexpr const char* TRIGGER_FALHA_CRIA_VOC = "Vocfalha";
+
+
      public:
          vector<VocControlado> ListaVocabulario() override;
          void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;

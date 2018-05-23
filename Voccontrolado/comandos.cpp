@@ -256,7 +256,6 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
     bool TRIGGER_ERRO = false;
     int tamanho = lista_termos.size();
 
-    try{
         for(int i = 0; i < tamanho; i++){
             if(nome_termo == lista_termos[i].get_nome().get_nome()) {
                 cntr_link_vocabulario->ConsultarTermo(lista_termos[i]);
@@ -264,9 +263,6 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
                 return lista_termos[i];
             }
         }
-    } catch(invalid_argument) {
-
-    }
 
     if(TRIGGER_ERRO == false) {
         throw("\nNome nao se encontra na lista de termos\n");
