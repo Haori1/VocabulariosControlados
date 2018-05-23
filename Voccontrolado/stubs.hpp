@@ -149,9 +149,9 @@ class StubUsuario : public UsuarioIS{
          Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
          void ConsultaDefinicaoTermo(const Definicao&) override;
 
-         Resultado CriaTermo(const Termo&) throw(invalid_argument) override;
+         Resultado CriaTermo() throw(invalid_argument) override;
          Resultado ExcluirTermo(const Termo&) throw(invalid_argument) override;
-         Resultado CriaVocabulario(const VocControlado&) throw(invalid_argument) override;
+         Resultado CriaVocabulario() throw(invalid_argument) override;
          Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) override;
          Resultado EditarDefinicaoVocabulario(Definicao &definicao) throw(invalid_argument) override;//
          Resultado EditarDefinicaoTermo(Termo&) throw(invalid_argument) override;

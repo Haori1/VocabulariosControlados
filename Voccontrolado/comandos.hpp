@@ -176,4 +176,44 @@ class ComandoAlterarIdiomaVoc{
     public:
         Resultado Executar(VocabulariosIS *, VocControlado&) throw (invalid_argument);
 };
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario de criar termo.
+ *
+ */
+
+class ComandoCriarTermo{
+    public:
+        Resultado Executar(VocabulariosIS *);
+};
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario de excluir termo.
+ *
+ */
+
+class ComandoExcluirTermo{
+    public:
+        Resultado Executar(VocabulariosIS *, Termo&);
+};
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario de editar termo.
+ *
+ */
+class ComandoEditarTermo{
+    public:
+        Resultado Executar(VocabulariosIS *, Termo&);
+};
+
+/**
+ * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario de editar a definicao de um termo.
+ *
+ */
+
+class ComandoEditarDefinicaoTermo{
+    public:
+        Resultado Executar(VocabulariosIS *, Termo&);
+};
+
 #endif

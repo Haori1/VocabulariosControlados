@@ -282,7 +282,51 @@ void ComandoConsultarDefinicao::ExecutarComando(VocabulariosIS *cntr_link_vocabu
     cntr_link_vocabulario->ConsultaDefinicaoTermo(definicao);
 }
 
-/*---------------------------------------------------------------------------*/
+Resultado ComandoCriarVocabulario::Executar(VocabulariosIS *cntr_link_vocabulario) {
+
+    Resultado resultado;
+
+    resultado = cntr_link_vocabulario->CriaVocabulario();
+
+    if(resultado.get_resultado() == Resultado::SUCESSO) {
+        cout << "\nOperacao realizada com sucesso" << endl;
+        return resultado;
+    } else if(resultado.get_resultado() == Resultado::FALHA){
+        cout << "\nOperacao nao pode ser concluida, ou falha no sistema." << endl;
+        return resultado;
+    } else {
+        cout << "\nFalha no sistema." << endl;
+        return resultado;
+    }
+}
+
+Resultado ComandoExcluirVocabulario::Executar(VocabulariosIS *cntr_link_vocabulario, VocControlado &voc_controlado) {
+    Resultado resultado;
+    string input;
+    cout << "\nDigite S para confirmar a exclusao do vocabulario,ou qualquer outra tecla para voltar" << endl;
+    cin >> input;
+
+    if(input == "S"){
+        try {
+            resultado = cntr_link_vocabulario->ExcluirVocabulario(voc_controlado);
+            return resultado;
+        } catch(invalid_argument &exp) {
+            cout << "\n" << exp.what() << endl;
+            return resultado;
+        }
+    } else {
+        resultado.set_resultado(Resultado::RETORNAR);
+        return resultado;
+    }
+
+}
+
+Resultado ComandoAlterarIdiomaVoc::Executar(VocabulariosIS *cntr_link_vocabulario, VocControlado &voc_controlado) throw (invalid_argument){
+    Resultado resultado;
+    resultado = cntr_link_vocabulario->AlterarIdiomaVocabulario(voc_controlado);
+    return resultado;
+}
+
 
 Resultado ComandoEditarDefinicaoVoc::Executar(VocabulariosIS *cntr_link_vocabulario, Definicao &definicao) throw (invalid_argument){
     Resultado resultado;
@@ -290,8 +334,51 @@ Resultado ComandoEditarDefinicaoVoc::Executar(VocabulariosIS *cntr_link_vocabula
     return resultado;
 }
 
-Resultado ComandoAlterarIdiomaVoc::Executar(VocabulariosIS *cntr_link_vocabulario, VocControlado &voc_controlado) throw (invalid_argument){
+Resultado ComandoCriarTermo::Executar(VocabulariosIS *cntr_link_vocabulario) {
     Resultado resultado;
-    resultado = cntr_link_vocabulario->AlterarIdiomaVocabulario(voc_controlado);
+
+    resultado = cntr_link_vocabulario->CriaTermo();
+
+    if(resultado.get_resultado() == Resultado::SUCESSO) {
+        cout << "\nOperacao realizada com sucesso" << endl;
+        return resultado;
+    } else if(resultado.get_resultado() == Resultado::FALHA){
+        cout << "\nOperacao nao pode ser concluida, ou falha no sistema." << endl;
+        return resultado;
+    } else {
+        cout << "\nFalha no sistema." << endl;
+        return resultado;
+    }
+}
+
+Resultado ComandoExcluirTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo) {
+    Resultado resultado;
+    string input;
+    cout << "\nDigite S para confirmar a exclusao do vocabulario,ou qualquer outra tecla para voltar" << endl;
+    cin >> input;
+
+    if(input == "S"){
+        try {
+            resultado = cntr_link_vocabulario->ExcluirTermo(termo);
+            return resultado;
+        } catch(invalid_argument &exp) {
+            cout << "\n" << exp.what() << endl;
+            return resultado;
+        }
+    } else {
+        resultado.set_resultado(Resultado::RETORNAR);
+        return resultado;
+    }
+}
+
+Resultado ComandoEditarTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo){
+    Resultado resultado;
+    resultado = cntr_link_vocabulario->EditarTermo(termo);
+    return resultado;
+}
+
+Resultado ComandoEditarDefinicaoTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo) {
+    Resultado resultado;
+    resultado = cntr_link_vocabulario->EditarDefinicaoTermo(termo);
     return resultado;
 }

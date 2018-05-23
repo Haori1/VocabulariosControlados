@@ -120,18 +120,6 @@ void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usu
 
 class ApresentacaoVocabularioControle : public VocabulariosIA{
     private:
-    const static int LISTAR_VOCABULARIO = 1;
-    const static int APRESENTAR_VOCABULARIO = 2;
-    const static int CONSULTAR_TERMO = 3;
-    const static int CONSULTAR_DEFINICAO_TERMO = 4;
-    const static int CRIAR_TERMO = 5;
-    const static int EXCLUIR_TERMO = 6;
-    const static int EDITAR_TERMO = 7;
-    const static int EDITAR_DEFINICAO_TERMO = 8;
-    const static int CRIAR_VOCABULARIO = 9;
-    const static int EXCLUIR_VOCABULARIO = 10;
-    const static int EDITAR_DEFINICAO_VOCABULARIO = 11;
-    const static int ALTERAR_IDIOMA_VOCABULARIO = 12;
     /**
      * @brief Referencia para a camada de servicos.
      *

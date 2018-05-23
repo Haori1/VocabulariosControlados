@@ -538,7 +538,7 @@ void StubVocabularios::ConsultaDefinicaoTermo(const Definicao &definicao) {
 
 /*----------------------------------------------------------------------------*/
 
-Resultado StubVocabularios::CriaTermo(const Termo&) throw(invalid_argument){
+Resultado StubVocabularios::CriaTermo() throw(invalid_argument){
     Resultado resultado;
     string input;
     Nome nome;
@@ -558,11 +558,15 @@ Resultado StubVocabularios::CriaTermo(const Termo&) throw(invalid_argument){
         cin >> input;
         data.set_data(input);
         termo.set_data(data);
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
     } catch (invalid_argument &exp) {
         cout << "\nFormato Invalido\n";
         cout << "Pressione qualquer tecla para continuar: ";
         fflush(stdin);
         getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
     }//end try catch
     resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
@@ -575,7 +579,7 @@ Resultado StubVocabularios::ExcluirTermo(const Termo&) throw(invalid_argument){
     return resultado;
 }
 
-Resultado StubVocabularios::CriaVocabulario(const VocControlado&) throw(invalid_argument){
+Resultado StubVocabularios::CriaVocabulario() throw(invalid_argument){
     Resultado resultado;
     VocControlado voc_controlado;
     Nome nome;
@@ -600,14 +604,24 @@ Resultado StubVocabularios::CriaVocabulario(const VocControlado&) throw(invalid_
         cout << "Pressione qualquer tecla para continuar: ";
         fflush(stdin);
         getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
     }
-    resultado.set_resultado(Resultado::SUCESSO);
-    return resultado;
+    if (nome.get_nome() ==  TRIGGER_FALHA_CRIA_VOC){
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    } else {
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    }
 }
 
-Resultado StubVocabularios::ExcluirVocabulario(const VocControlado&) throw(invalid_argument){
+Resultado StubVocabularios::ExcluirVocabulario(const VocControlado &voc_controlado) throw(invalid_argument){
+    if(voc_controlado.get_nome().get_nome() == TRIGGER_VOCABULARIO_ERRO) {
+        throw invalid_argument("Erro de sistema");
+    }
     Resultado resultado;
-    cout << "\nExclusão concluida com sucesso\n";
+    cout << "\nExclusao concluida com sucesso\n";
     resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
 }
@@ -656,11 +670,15 @@ Resultado StubVocabularios::AlterarIdiomaVocabulario(VocControlado& voc_controla
         cin >> input;
         idioma.set_idioma(input);
         voc_controlado.set_idioma(idioma);
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
     } catch (invalid_argument &exp) {
         cout << "\nFormato Invalido\n";
         cout << "Pressione qualquer tecla para continuar: ";
         fflush(stdin);
         getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
     }
     resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
