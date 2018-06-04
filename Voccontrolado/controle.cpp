@@ -107,6 +107,8 @@ void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument){
 
 /*----------------------------------------------------------------------------*/
 
+//Criar novos comando que resumam casos que possa ser generalizados. Tambem eh possivel criar um comando
+//para cada texto que eh exibido. No entanto poderia ficar mais complicado ainda de entender o loop (pensar a respeito).
 void ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument){
     ComandoUsuario *comando;
     int escolha;
@@ -210,7 +212,7 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                         try{
                             nome.set_nome(string_input);
                         } catch(invalid_argument &exp) {
-                            cout<< "\nNome invalido"<< endl;
+                            cout<< "\nNome invalido"<< endl; //Criar uma funcao para esse caso (como em orientacao a objetos?)
                             continue;
                         }
 
@@ -320,7 +322,7 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                                                         getchar();
                                                                         return;
                                                                     }
-                                                                }
+                                                                } //este for tambem pode ser reduzido a uma classe
                                                                 comando_editar_definicao_termo = new ComandoEditarDefinicaoTermo;
                                                                 resultado = comando_editar_definicao_termo->Executar(cntr_link_vocabulario, termo_aux);
                                                                 delete comando_editar_definicao_termo;
