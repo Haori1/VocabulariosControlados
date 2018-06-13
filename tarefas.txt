@@ -1,7 +1,17 @@
 ﻿Tarefas a serem realizadas:
+-Conhecer a sintaxe necessária de SQL e SQLite;
+-Acoplar o SQlite ao codeblocks;
+-Construir script com comandos de utilização dos bancos de dados;
+-Concertar detalhes na camada de vizualização; 
+-Substituir classes stubs de usuário e autenticação;
+-Substituir classes stubs de vocabulário; 
 
 
 Tarefas realizadas:
+
+Trabalho 3:
+
+Trabalhos anteriores:
 -Revisar a declaração das constantes strings das classes de domínio;
 -Revisar os comentários em entidades e domínios;
 -Comentar o hpp de testes;
