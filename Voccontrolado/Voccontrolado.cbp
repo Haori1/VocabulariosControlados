@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="comandoSQL.cpp" />
+		<Unit filename="comandoSQL.hpp" />
 		<Unit filename="comandos.cpp" />
 		<Unit filename="comandos.hpp" />
 		<Unit filename="controle.cpp" />
@@ -41,6 +43,10 @@
 		<Unit filename="entidades.hpp" />
 		<Unit filename="interfaces.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="sqlite3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sqlite3.h" />
 		<Unit filename="stubs.cpp" />
 		<Unit filename="stubs.hpp" />
 		<Extensions>

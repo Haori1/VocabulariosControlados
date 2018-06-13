@@ -1,5 +1,7 @@
 #include "comandoSQL.hpp"
 
+list<Elemento> ComandoSQL::lista_resultado;
+
 /*----------------------------------------------------------------------------*/
 
 void ComandoSQL::Conectar() throw (ErroPersistencia){
@@ -29,7 +31,7 @@ void ComandoSQL::Executar() throw (ErroPersistencia){
 int ComandoSQL::Callback(void *not_used, int argc, char **valor_coluna, char **nome_coluna){
     not_used = 0;
     Elemento elemento;
-    
+
     for(int i = 0; i < argc; i++){
         elemento.set_nome_coluna(nome_coluna[i]);
         elemento.set_valor_coluna(valor_coluna ? valor_coluna[i]: "NULL");
