@@ -97,7 +97,7 @@ int main(void){
                             continue;
                     } //end switch()
                 } catch (const invalid_argument &exp) {
-                    cout << "Erro de sistema" << endl;
+                    cout << exp.what() << endl;
                     cout << "Pressione qualquer tecla para continuar: ";
                     fflush(stdin);
                     getchar();
@@ -109,7 +109,7 @@ int main(void){
                     cntr_ia_cadastro->ExecutarIA();
 
                 } catch (invalid_argument &exp) {
-                    cout << "Erro de sistema" << endl;
+                    cout << exp.what() << endl;
                     cout << "Pressione qualquer tecla para continuar: ";
                     fflush(stdin);
                     getchar();
