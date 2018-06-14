@@ -86,7 +86,7 @@
 1528945803 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
 	"comandos.hpp"
 
-1527042813 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
+1528014578 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
 	<iostream>
 	<stdexcept>
 	<exception>
@@ -106,7 +106,7 @@
 	"dominios.hpp"
 	"entidades.hpp"
 
-1527041507 c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.hpp
+1528014578 c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.hpp
 	<iostream>
 	<string>
 	<exception>
@@ -124,14 +124,14 @@
 	"comandos.hpp"
 	"dominios.hpp"
 
-1527041507 c:\users\henri\vocabularioscontrolados\voccontrolado\controle.hpp
+1528014578 c:\users\henri\vocabularioscontrolados\voccontrolado\controle.hpp
 	<stdexcept>
 	<exception>
 	"dominios.hpp"
 	"interfaces.hpp"
 	"comandos.hpp"
 
-1528411654 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
+1528014578 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -141,14 +141,14 @@
 	"comandos.hpp"
 	"interfaces.hpp"
 
-1527041507 source:c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.cpp
+1528014578 source:c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"dominios.hpp"
 
-1527041507 source:c:\users\henri\vocabularioscontrolados\voccontrolado\entidades.cpp
+1528014578 source:c:\users\henri\vocabularioscontrolados\voccontrolado\entidades.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -262,7 +262,7 @@
 	"stubs.hpp"
 	"dominios.hpp"
 
-1528177886 source:c:\users\henri\vocabularioscontrolados\voccontrolado\sqlite3.c
+1528847562 source:c:\users\henri\vocabularioscontrolados\voccontrolado\sqlite3.c
 	"config.h"
 	<vxWorks.h>
 	<pthread.h>
@@ -333,7 +333,7 @@
 	"dominios.hpp"
 	"entidades.hpp"
 
-1528177886 c:\users\henri\vocabularioscontrolados\voccontrolado\sqlite3.h
+1528847562 c:\users\henri\vocabularioscontrolados\voccontrolado\sqlite3.h
 	<stdarg.h>
 
 1528947600 source:c:\users\henri\vocabularioscontrolados\voccontrolado\servicos.cpp

@@ -33,11 +33,12 @@ using namespace std;
  *
  */
 
-class Nome{
-    private:
-        string nome;
-        const static int TAM_MAX_NOME = 20;
-        const static int STRING_VAZIA = 0;
+class Nome
+{
+private:
+    string nome;
+    const static int TAM_MAX_NOME = 20;
+    const static int STRING_VAZIA = 0;
 
     /**
      * @brief Valida o atributo do tipo string da classe Nome
@@ -47,9 +48,9 @@ class Nome{
      * @param string recebe a string da classe Nome, para realizar a sua validacao.
      */
 
-        void Validation (string) throw (invalid_argument);
+    void Validation (string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Nome, de acordo com seus atributos privados.
      *
@@ -59,10 +60,11 @@ class Nome{
      * @param nome recebe a string da classe Nome.
      */
 
-        void set_nome (string nome) throw (invalid_argument);
-        string get_nome() const {
-            return nome;
-        }
+    void set_nome (string nome) throw (invalid_argument);
+    string get_nome() const
+    {
+        return nome;
+    }
 
 };
 
@@ -79,11 +81,12 @@ class Nome{
  *
  */
 
-class Sobrenome{
-    private:
-        string sobrenome;
-        const static int TAM_MAX_SOBRENOME = 20;
-        const static int STRING_VAZIA = 0;
+class Sobrenome
+{
+private:
+    string sobrenome;
+    const static int TAM_MAX_SOBRENOME = 20;
+    const static int STRING_VAZIA = 0;
 
     /**
      * @brief Valida o atributo do tipo string da classe Sobrenome.
@@ -93,9 +96,9 @@ class Sobrenome{
      * @param string recebe a string da classe Sobrenome, para realizar a sua validacao.
      */
 
-        void Validation (string) throw (invalid_argument);
+    void Validation (string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Sobrenome, de acordo com seus atributos privados.
      *
@@ -104,10 +107,11 @@ class Sobrenome{
      *
      * @param sobrenome recebe a string da classe Sobrenome.
      */
-        void set_sobrenome (string sobrenome) throw (invalid_argument);
-        string get_sobrenome() const {
-            return sobrenome;
-        }
+    void set_sobrenome (string sobrenome) throw (invalid_argument);
+    string get_sobrenome() const
+    {
+        return sobrenome;
+    }
 
 };
 
@@ -126,13 +130,14 @@ class Sobrenome{
  */
 
 
-class Telefone{
-    private:
-        string telefone;
-        const static int TAM_MAX_TELEFONE = 13;
-        const static int POS_ESPA_TELEFONE = 2;
-        const static int POS_TRACO_TELEFONE = 8;
-        const static int STRING_VAZIA = 0;
+class Telefone
+{
+private:
+    string telefone;
+    const static int TAM_MAX_TELEFONE = 13;
+    const static int POS_ESPA_TELEFONE = 2;
+    const static int POS_TRACO_TELEFONE = 8;
+    const static int STRING_VAZIA = 0;
 
     /**
      * @brief Valida o atributo do tipo string da classe Telefone
@@ -141,9 +146,9 @@ class Telefone{
      *
      * @param string recebe a string da classe Telefone, para realizar a sua validacao.
      */
-        void Validation (string) throw (invalid_argument);
+    void Validation (string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Telefone, de acordo com seus atributos privados.
      *
@@ -152,10 +157,11 @@ class Telefone{
      *
      * @param telefone recebe a string da classe Telefone.
      */
-        void set_telefone (string telefone) throw (invalid_argument);
-        string get_telefone() const {
-            return telefone;
-        }
+    void set_telefone (string telefone) throw (invalid_argument);
+    string get_telefone() const
+    {
+        return telefone;
+    }
 };
 
 /**
@@ -172,12 +178,13 @@ class Telefone{
  *
  */
 
-class Endereco{
-    private:
-        string endereco;
-        const static int TAM_MAX_ENDERECO = 20;
-        const static int TAM_MAX_ESPAC_CONSEC = 2;
-        const static int STRING_VAZIA = 0;
+class Endereco
+{
+private:
+    string endereco;
+    const static int TAM_MAX_ENDERECO = 20;
+    const static int TAM_MAX_ESPAC_CONSEC = 2;
+    const static int STRING_VAZIA = 0;
 
     /**
      * @brief Valida o atributo do tipo string da classe Endereco
@@ -186,9 +193,9 @@ class Endereco{
      *
      * @param string recebe a string da classe Endereco, para realizar a sua validacao.
      */
-        void Validation(string) throw (invalid_argument);
+    void Validation(string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Endereco, de acordo com seus atributos privados.
      *
@@ -197,10 +204,11 @@ class Endereco{
      *
      * @param endereco recebe a string da classe Endereco.
      */
-        void set_endereco (string endereco) throw (invalid_argument);
-        string get_endereco() const {
-            return endereco;
-        }
+    void set_endereco (string endereco) throw (invalid_argument);
+    string get_endereco() const
+    {
+        return endereco;
+    }
 };
 
 /**
@@ -220,22 +228,23 @@ class Endereco{
  *
  */
 
-class Data{
-    private:
-        string data;
-        const static int TAM_MAX_DATA = 10;
-        const static int STRING_VAZIA = 0;
-        const static int DIA_MAX = 31;
-        const static int DIA_MIN = 1;
-        const static int MES_MAX = 12;
-        const static int MES_MIN = 1;
-        const static int ANO_MIN = 1900;
-        const static int ANO_MAX = 2099;
-        const static int FEVEREIRO = 2;
-        const static int ABRIL = 4;
-        const static int JUNHO = 6;
-        const static int SETEMBRO = 9;
-        const static int NOVEMBRO = 11;
+class Data
+{
+private:
+    string data;
+    const static int TAM_MAX_DATA = 10;
+    const static int STRING_VAZIA = 0;
+    const static int DIA_MAX = 31;
+    const static int DIA_MIN = 1;
+    const static int MES_MAX = 12;
+    const static int MES_MIN = 1;
+    const static int ANO_MIN = 1900;
+    const static int ANO_MAX = 2099;
+    const static int FEVEREIRO = 2;
+    const static int ABRIL = 4;
+    const static int JUNHO = 6;
+    const static int SETEMBRO = 9;
+    const static int NOVEMBRO = 11;
 
     /**
      * @brief Valida o atributo do tipo string da classe Data
@@ -244,9 +253,9 @@ class Data{
      *
      * @param string recebe a string da classe Data, para realizar a sua validacao.
      */
-        void Validation(string) throw (invalid_argument);
+    void Validation(string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Data, de acordo com seus atributos privados.
      *
@@ -255,10 +264,11 @@ class Data{
      *
      * @param data recebe a string da classe Data.
      */
-        void set_data (string data) throw (invalid_argument);
-        string get_data() const {
-            return data;
-        }
+    void set_data (string data) throw (invalid_argument);
+    string get_data() const
+    {
+        return data;
+    }
 };
 
 /**
@@ -280,12 +290,13 @@ class Data{
  *
  */
 
-class Correio_Eletronico{
-    private:
-        string correio_eletronico;
-        const static int POS_INVALIDA = -1;
-        const static int STRING_VAZIA = 0;
-        const static int APOSTROFO = 39;
+class Correio_Eletronico
+{
+private:
+    string correio_eletronico;
+    const static int POS_INVALIDA = -1;
+    const static int STRING_VAZIA = 0;
+    const static int APOSTROFO = 39;
 
     /**
      * @brief Valida o atributo do tipo string da classe Correio_Eletronico
@@ -294,9 +305,9 @@ class Correio_Eletronico{
      *
      * @param string recebe a string da classe Correio_Eletronico, para realizar a sua validacao.
      */
-        void Validation(string) throw (invalid_argument);
+    void Validation(string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Correio_Eletronico, de acordo com seus atributos privados.
      *
@@ -305,10 +316,11 @@ class Correio_Eletronico{
      *
      * @param correio_eletronico recebe a string da classe Correio_Eletronico.
      */
-        void set_correio_eletronico (string correio_eletronico) throw (invalid_argument);
-        string get_correio_eletronico() const {
-            return correio_eletronico;
-        }
+    void set_correio_eletronico (string correio_eletronico) throw (invalid_argument);
+    string get_correio_eletronico() const
+    {
+        return correio_eletronico;
+    }
 };
 
 /**
@@ -325,11 +337,12 @@ class Correio_Eletronico{
  *
  */
 
-class Senha{
-    private:
-        string senha;
-        const static int TAM_MAX_SENHA = 8;
-        const static int STRING_VAZIA = 0;
+class Senha
+{
+private:
+    string senha;
+    const static int TAM_MAX_SENHA = 8;
+    const static int STRING_VAZIA = 0;
 
     /**
      * @brief Valida o atributo do tipo string da classe Senha
@@ -338,9 +351,9 @@ class Senha{
      *
      * @param string recebe a string da classe Senha, para realizar a sua validacao.
      */
-        void Validation(string) throw (invalid_argument);
+    void Validation(string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Senha, de acordo com seus atributos privados.
      *
@@ -349,10 +362,11 @@ class Senha{
      *
      * @param senha recebe a string da classe Senha.
      */
-        void set_senha (string senha) throw (invalid_argument);
-        string get_senha() const {
-            return senha;
-        }
+    void set_senha (string senha) throw (invalid_argument);
+    string get_senha() const
+    {
+        return senha;
+    }
 };
 
 /**
@@ -366,10 +380,11 @@ class Senha{
  *
  */
 
-class Texto_Definicao{
-    private:
-        string texto_definicao;
-        const static int TAM_MAX_TEXTO = 30;
+class Texto_Definicao
+{
+private:
+    string texto_definicao;
+    const static int TAM_MAX_TEXTO = 30;
 
     /**
      * @brief Valida o atributo do tipo string da classe Texto_Definicao
@@ -378,9 +393,9 @@ class Texto_Definicao{
      *
      * @param string recebe a string da classe Texto_Definicao, para realizar a sua validacao.
      */
-        void Validation(string) throw (invalid_argument);
+    void Validation(string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Texto_Definicao, de acordo com seus atributos privados.
      *
@@ -389,10 +404,11 @@ class Texto_Definicao{
      *
      * @param texto_definicao recebe a string da classe Texto_Definicao.
      */
-        void set_texto_definicao (string texto_definicao) throw (invalid_argument);
-        string get_texto_definicao() const {
-            return texto_definicao;
-        }
+    void set_texto_definicao (string texto_definicao) throw (invalid_argument);
+    string get_texto_definicao() const
+    {
+        return texto_definicao;
+    }
 };
 
 /**
@@ -407,9 +423,10 @@ class Texto_Definicao{
  */
 
 
-class Idioma{
-    private:
-        string idioma;
+class Idioma
+{
+private:
+    string idioma;
     /**
      * @brief Valida o atributo do tipo string da classe Idioma
      *
@@ -417,9 +434,9 @@ class Idioma{
      *
      * @param string recebe a string da classe Idioma, para realizar a sua validacao.
      */
-        void Validation(string) throw (invalid_argument);
+    void Validation(string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Idioma, de acordo com seus atributos privados.
      *
@@ -428,10 +445,11 @@ class Idioma{
      *
      * @param idioma recebe a string da classe idioma.
      */
-        void set_idioma (string idioma) throw (invalid_argument);
-        string get_idioma() const {
-            return idioma;
-        }
+    void set_idioma (string idioma) throw (invalid_argument);
+    string get_idioma() const
+    {
+        return idioma;
+    }
 };
 
 /**
@@ -445,9 +463,10 @@ class Idioma{
  *
  */
 
-class Classe_Termo{
-    private:
-        string classe_termo;
+class Classe_Termo
+{
+private:
+    string classe_termo;
     /**
      * @brief Valida o atributo do tipo string da classe Classe_Termo
      *
@@ -455,9 +474,9 @@ class Classe_Termo{
      *
      * @param string recebe a string da classe Classe_Termo, para realizar a sua validacao.
      */
-        void Validation(string) throw (invalid_argument);
+    void Validation(string) throw (invalid_argument);
 
-    public:
+public:
     /**
      * @brief Recebe uma string para guardar na classe Classe_Termo, de acordo com seus atributos privados.
      *
@@ -466,9 +485,10 @@ class Classe_Termo{
      *
      * @param classe_termo recebe a string da classe Classe_Termo.
      */
-        void set_classe_termo (string classe_termo) throw (invalid_argument);
-        string get_classe_termo() const {
-            return classe_termo;
-        }
+    void set_classe_termo (string classe_termo) throw (invalid_argument);
+    string get_classe_termo() const
+    {
+        return classe_termo;
+    }
 };
 #endif

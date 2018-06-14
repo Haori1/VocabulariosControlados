@@ -31,10 +31,11 @@ using namespace std;
  *
  */
 
-class ComandoCadastro {
-    public:
-        virtual void ExecutarComando(CadastroIS *) throw (invalid_argument) = 0; //Interface dos comandos
-        virtual ~ComandoCadastro(){}
+class ComandoCadastro
+{
+public:
+    virtual void ExecutarComando(CadastroIS *) throw (invalid_argument) = 0; //Interface dos comandos
+    virtual ~ComandoCadastro() {}
 
 };
 
@@ -43,9 +44,10 @@ class ComandoCadastro {
  *
  */
 
-class ComandoCadastroLeitorIA : public ComandoCadastro {
-    public:
-        void ExecutarComando(CadastroIS *) throw (invalid_argument) override;
+class ComandoCadastroLeitorIA : public ComandoCadastro
+{
+public:
+    void ExecutarComando(CadastroIS *) throw (invalid_argument) override;
 };
 
 
@@ -54,9 +56,10 @@ class ComandoCadastroLeitorIA : public ComandoCadastro {
  *
  */
 
-class ComandoCadastroDesenvolvedorIA : public ComandoCadastro {
-    public:
-        void ExecutarComando(CadastroIS *) throw (invalid_argument) override;
+class ComandoCadastroDesenvolvedorIA : public ComandoCadastro
+{
+public:
+    void ExecutarComando(CadastroIS *) throw (invalid_argument) override;
 
 };
 
@@ -65,9 +68,10 @@ class ComandoCadastroDesenvolvedorIA : public ComandoCadastro {
  *
  */
 
-class ComandoCadastroAdministradorIA : public ComandoCadastro {
-    public:
-        void ExecutarComando(CadastroIS *) throw (invalid_argument) override;
+class ComandoCadastroAdministradorIA : public ComandoCadastro
+{
+public:
+    void ExecutarComando(CadastroIS *) throw (invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------*/
@@ -77,10 +81,11 @@ class ComandoCadastroAdministradorIA : public ComandoCadastro {
  *
  */
 
-class ComandoUsuario{
-    public:
-        virtual Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) = 0;
-        virtual ~ComandoUsuario(){}
+class ComandoUsuario
+{
+public:
+    virtual Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) = 0;
+    virtual ~ComandoUsuario() {}
 };
 
 /**
@@ -88,9 +93,10 @@ class ComandoUsuario{
  *
  */
 
-class ComandoExibir : public ComandoUsuario {
-    public:
-        Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
+class ComandoExibir : public ComandoUsuario
+{
+public:
+    Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
 };
 
 /**
@@ -98,9 +104,10 @@ class ComandoExibir : public ComandoUsuario {
  *
  */
 
-class ComandoExcluir : public ComandoUsuario {
-    public:
-        Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
+class ComandoExcluir : public ComandoUsuario
+{
+public:
+    Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
 };
 
 /**
@@ -108,9 +115,10 @@ class ComandoExcluir : public ComandoUsuario {
  *
  */
 
-class ComandoEditar : public ComandoUsuario {
-    public:
-        Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
+class ComandoEditar : public ComandoUsuario
+{
+public:
+    Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------*/
@@ -120,9 +128,10 @@ class ComandoEditar : public ComandoUsuario {
  *
  */
 
-class ComandoListarVocabularios{
-    public:
-        vector<VocControlado> ExecutarComando(VocabulariosIS *);
+class ComandoListarVocabularios
+{
+public:
+    vector<VocControlado> ExecutarComando(VocabulariosIS *);
 };
 
 /**
@@ -130,9 +139,10 @@ class ComandoListarVocabularios{
  *
  */
 
-class ComandoConsultarVocabulario{
-    public:
-        vector<Termo> ExecutarComando(VocabulariosIS *, vector<VocControlado>&, const string) throw (invalid_argument);
+class ComandoConsultarVocabulario
+{
+public:
+    vector<Termo> ExecutarComando(VocabulariosIS *, vector<VocControlado>&, const string) throw (invalid_argument);
 };
 
 /**
@@ -140,9 +150,10 @@ class ComandoConsultarVocabulario{
  *
  */
 
-class ComandoConsultarTermo {
-    public:
-        Termo ExecutarComando(VocabulariosIS *, vector<Termo>&, string) throw (invalid_argument);
+class ComandoConsultarTermo
+{
+public:
+    Termo ExecutarComando(VocabulariosIS *, vector<Termo>&, string) throw (invalid_argument);
 };
 
 /**
@@ -150,9 +161,10 @@ class ComandoConsultarTermo {
  *
  */
 
-class ComandoConsultarDefinicao{
-    public:
-        void ExecutarComando(VocabulariosIS *, Termo&) throw (invalid_argument) ;
+class ComandoConsultarDefinicao
+{
+public:
+    void ExecutarComando(VocabulariosIS *, Termo&) throw (invalid_argument) ;
 };
 
 /*----------------------------------------------------------------------------*/
@@ -162,9 +174,10 @@ class ComandoConsultarDefinicao{
  *
  */
 
-class ComandoEditarDefinicaoVoc{
-    public:
-        Resultado Executar(VocabulariosIS *, Definicao&) throw (invalid_argument);
+class ComandoEditarDefinicaoVoc
+{
+public:
+    Resultado Executar(VocabulariosIS *, Definicao&) throw (invalid_argument);
 };
 
 /**
@@ -172,9 +185,10 @@ class ComandoEditarDefinicaoVoc{
  *
  */
 
-class ComandoAlterarIdiomaVoc{
-    public:
-        Resultado Executar(VocabulariosIS *, VocControlado&) throw (invalid_argument);
+class ComandoAlterarIdiomaVoc
+{
+public:
+    Resultado Executar(VocabulariosIS *, VocControlado&) throw (invalid_argument);
 };
 
 /**
@@ -182,9 +196,10 @@ class ComandoAlterarIdiomaVoc{
  *
  */
 
-class ComandoCriarTermo{
-    public:
-        Resultado Executar(VocabulariosIS *);
+class ComandoCriarTermo
+{
+public:
+    Resultado Executar(VocabulariosIS *);
 };
 
 /**
@@ -192,18 +207,20 @@ class ComandoCriarTermo{
  *
  */
 
-class ComandoExcluirTermo{
-    public:
-        Resultado Executar(VocabulariosIS *, Termo&);
+class ComandoExcluirTermo
+{
+public:
+    Resultado Executar(VocabulariosIS *, Termo&);
 };
 
 /**
  * @brief Classe que define a execucao do comando para o servico do modulo de vocabulario de editar termo.
  *
  */
-class ComandoEditarTermo{
-    public:
-        Resultado Executar(VocabulariosIS *, Termo&);
+class ComandoEditarTermo
+{
+public:
+    Resultado Executar(VocabulariosIS *, Termo&);
 };
 
 /**
@@ -211,20 +228,23 @@ class ComandoEditarTermo{
  *
  */
 
-class ComandoEditarDefinicaoTermo{
-    public:
-        Resultado Executar(VocabulariosIS *, Termo&);
+class ComandoEditarDefinicaoTermo
+{
+public:
+    Resultado Executar(VocabulariosIS *, Termo&);
 };
 
 
-class ComandoCriarVocabulario{
-    public:
-        Resultado Executar(VocabulariosIS *);
+class ComandoCriarVocabulario
+{
+public:
+    Resultado Executar(VocabulariosIS *);
 };
 
-class ComandoExcluirVocabulario{
-    public:
-        Resultado Executar(VocabulariosIS *, VocControlado&);
+class ComandoExcluirVocabulario
+{
+public:
+    Resultado Executar(VocabulariosIS *, VocControlado&);
 };
 
 #endif

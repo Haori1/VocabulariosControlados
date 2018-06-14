@@ -12,7 +12,8 @@ using namespace std;
 
 /*----------------------------------------------------------------------------*/
 
-ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_argument){
+ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_argument)
+{
     ResultadoUsuario resultado_autenticacao;
     Resultado resultado;
     Correio_Eletronico correio_eletronico;
@@ -20,13 +21,17 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
     string input;
     int contador = 0;
 
-    while(contador != 4){
-        try{
-            if(contador != 0){
+    while(contador != 4)
+    {
+        try
+        {
+            if(contador != 0)
+            {
                 cout << "Voce possui 3 tentativas. Tentativa: " << contador << " de 3\n";
                 cout << "Deseja retornar? S/N: ";
                 cin >> input;
-                if(input == "S" || input == "s"){
+                if(input == "S" || input == "s")
+                {
                     resultado_autenticacao.set_resultado(ResultadoUsuario::RETORNAR);
                     resultado_autenticacao.set_correio_eletronico(correio_eletronico);
                     return resultado_autenticacao;
@@ -41,7 +46,9 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
             cin >> input;
             senha.set_senha(input);
 
-        } catch (const invalid_argument &exp) {
+        }
+        catch (const invalid_argument &exp)
+        {
             cout << "\nEntrada com formato incorreto.\n";
             cout << "Pressione qualquer tecla para continuar: ";
             fflush(stdin);
@@ -51,12 +58,15 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
 
         resultado = cntr_link_autenticacao->Autenticar(correio_eletronico, senha);
         resultado_autenticacao = cntr_link_autenticacao->TipoDeUsuario(correio_eletronico, senha);
-        if(resultado.get_resultado() == ResultadoUsuario::FALHA){
+        if(resultado.get_resultado() == ResultadoUsuario::FALHA)
+        {
             cout << "Email ou Senha Invalido" << endl;
             cout << "Pressione qualquer tecla para continuar: ";
             fflush(stdin);
             getchar();
-        } else {
+        }
+        else
+        {
             resultado_autenticacao.set_resultado(resultado.get_resultado());
             resultado_autenticacao.set_correio_eletronico(correio_eletronico);
             return resultado_autenticacao;
@@ -69,11 +79,13 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
 
 /*----------------------------------------------------------------------------*/
 
-void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument){
+void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument)
+{
     ComandoCadastro *comando;
     int conta;
 
-    do{
+    do
+    {
         system(CLEAR);
         cout << "Tipo de conta a ser cadastrada: " << endl;
         cout << "1. Leitor" << endl;
@@ -81,39 +93,42 @@ void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument){
         cout << "3. Administrador" << endl;
         cout << "4. Retornar" << endl;
         cin >> conta;
-    }while(conta < 1 || conta > 4); //end do while
+    }
+    while(conta < 1 || conta > 4);  //end do while
 
-    switch (conta) {
-        case LEITOR:
-                comando = new ComandoCadastroLeitorIA();
-                comando->ExecutarComando(cntr_link_cadastro);
-                delete comando;
-                break;
-        case DESENVOLVEDOR:
-            comando = new ComandoCadastroDesenvolvedorIA();
-            comando->ExecutarComando(cntr_link_cadastro);
-            delete comando;
-            break;
-        case ADMINISTRADOR:
-            comando = new ComandoCadastroAdministradorIA();
-            comando->ExecutarComando(cntr_link_cadastro);
-            delete comando;
-            break;
-        case RETORNAR:
-            return;
+    switch (conta)
+    {
+    case LEITOR:
+        comando = new ComandoCadastroLeitorIA();
+        comando->ExecutarComando(cntr_link_cadastro);
+        delete comando;
+        break;
+    case DESENVOLVEDOR:
+        comando = new ComandoCadastroDesenvolvedorIA();
+        comando->ExecutarComando(cntr_link_cadastro);
+        delete comando;
+        break;
+    case ADMINISTRADOR:
+        comando = new ComandoCadastroAdministradorIA();
+        comando->ExecutarComando(cntr_link_cadastro);
+        delete comando;
+        break;
+    case RETORNAR:
+        return;
     }
 
 }
 
 /*----------------------------------------------------------------------------*/
 
-//Criar novos comando que resumam casos que possa ser generalizados. Tambem eh possivel criar um comando
-//para cada texto que eh exibido. No entanto poderia ficar mais complicado ainda de entender o loop (pensar a respeito).
-void ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument){
+void ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument)
+{
     ComandoUsuario *comando;
     int escolha;
-    while(true){
-        do{
+    while(true)
+    {
+        do
+        {
             system(CLEAR);
             cout << "Escolha o tipo de acao a ser realizada: " << endl;
             cout << "1. Exibir" << endl;
@@ -121,33 +136,36 @@ void ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) t
             cout << "3. Excluir" << endl;
             cout << "4. Retornar" << endl;
             cin >> escolha;
-        } while (escolha < 1 || escolha > 4);
+        }
+        while (escolha < 1 || escolha > 4);
 
-        switch (escolha) {
-            case EXIBIR:
-                comando = new ComandoExibir();
-                comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
-                delete comando;
-                break;
-            case EDITAR:
-                comando = new ComandoEditar();
-                comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
-                delete comando;
-                break;
-            case EXCLUIR:
-                comando = new ComandoExcluir();
-                comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
-                delete comando;
-                break;
-            case RETORNAR:
-                return;
+        switch (escolha)
+        {
+        case EXIBIR:
+            comando = new ComandoExibir();
+            comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
+            delete comando;
+            break;
+        case EDITAR:
+            comando = new ComandoEditar();
+            comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
+            delete comando;
+            break;
+        case EXCLUIR:
+            comando = new ComandoExcluir();
+            comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
+            delete comando;
+            break;
+        case RETORNAR:
+            return;
         }
     }
 }//end Executar
 
 /*----------------------------------------------------------------------------*/
 
-void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_usuario) throw(invalid_argument){
+void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_usuario) throw(invalid_argument)
+{
 
     string input;
     string string_input;
@@ -180,451 +198,620 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
     ComandoEditarDefinicaoTermo *comando_editar_definicao_termo;
 
 
-    do {
+    do
+    {
         cout<< "\nEscolha uma das opcoes abaixo:" << endl;
         cout<< "\n- Digite a letra L para listar vocabularios" << endl;
-        if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
+        if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)
+        {
             cout<< "\n- Digite a letra C para criar vocabulario" << endl;
         }
         cout<< "\n- Digite a letra R para retornar" << endl;
         cin >> input;
 
-            if(input == "L") {
-                system(CLEAR);
-                comando_listar_vocabularios = new ComandoListarVocabularios();
-                lista_vocabularios = comando_listar_vocabularios->ExecutarComando(cntr_link_vocabulario);
-                delete comando_listar_vocabularios;
-                do {
-                    cout<< "\nEscolha uma das opcoes:" << endl;
-                    cout<< "\n- Digite V para consultar vocabulario" << endl;
-                    if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
-                        cout<< "\n- Digite E para excluir vocabulario" << endl;
-                        cout<< "\n- Digite I para editar idioma de vocabulario" << endl;
+        if(input == "L")
+        {
+            system(CLEAR);
+            comando_listar_vocabularios = new ComandoListarVocabularios();
+            lista_vocabularios = comando_listar_vocabularios->ExecutarComando(cntr_link_vocabulario);
+            delete comando_listar_vocabularios;
+            do
+            {
+                cout<< "\nEscolha uma das opcoes:" << endl;
+                cout<< "\n- Digite V para consultar vocabulario" << endl;
+                if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)
+                {
+                    cout<< "\n- Digite E para excluir vocabulario" << endl;
+                    cout<< "\n- Digite I para editar idioma de vocabulario" << endl;
+                }
+                cout<< "\n- Digite R para retornar" << endl;
+                cin >> input;
+
+                if(input == "V")
+                {
+
+                    cout<< "\nDigite o nome do vocabulario que deseja consultar:" << endl;
+                    cin >> string_input;
+
+                    try
+                    {
+                        nome.set_nome(string_input);
                     }
-                    cout<< "\n- Digite R para retornar" << endl;
-                    cin >> input;
+                    catch(invalid_argument &exp)
+                    {
+                        cout<< "\nNome invalido"<< endl;
+                        continue;
+                    }
 
-                    if(input == "V") {
+                    try
+                    {
+                        system(CLEAR);
+                        comando_consultar_vocabulario = new ComandoConsultarVocabulario;
+                        lista_termos = comando_consultar_vocabulario->ExecutarComando(cntr_link_vocabulario, lista_vocabularios, string_input);
+                        delete comando_consultar_vocabulario;
 
-                        cout<< "\nDigite o nome do vocabulario que deseja consultar:" << endl;
-                        cin >> string_input;
+                        do
+                        {
+                            cout<< "\nEscolha uma das opcoes:" << endl;
+                            cout<< "\n- Digite T para consultar termo" << endl;
+                            if((resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
+                                    (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR))
+                            {
+                                cout<< "\n- Digite C para criar termo" << endl;
+                                cout<< "\n- Digite E para excluir termo" << endl;
+                                cout<< "\n- Digite TE para editar termo" << endl;
+                                cout<< "\n- Digite ED para editar definicao termo" << endl;
+                            }
+                            cout<< "\n- Digite R para retornar" << endl;
+                            cin >> input;
 
-                        try{
-                            nome.set_nome(string_input);
-                        } catch(invalid_argument &exp) {
-                            cout<< "\nNome invalido"<< endl; //Criar uma funcao para esse caso (como em orientacao a objetos?)
-                            continue;
-                        }
-
-                        try{
-                            system(CLEAR);
-                            comando_consultar_vocabulario = new ComandoConsultarVocabulario;
-                            lista_termos = comando_consultar_vocabulario->ExecutarComando(cntr_link_vocabulario, lista_vocabularios, string_input);
-                            delete comando_consultar_vocabulario;
-
-                             do {
-                                cout<< "\nEscolha uma das opcoes:" << endl;
-                                cout<< "\n- Digite T para consultar termo" << endl;
-                                if((resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
-                                    (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)) {
-                                        cout<< "\n- Digite C para criar termo" << endl;
-                                        cout<< "\n- Digite E para excluir termo" << endl;
-                                        cout<< "\n- Digite TE para editar termo" << endl;
-                                        cout<< "\n- Digite ED para editar definicao termo" << endl;
-                                    }
-                                cout<< "\n- Digite R para retornar" << endl;
-                                cin >> input;
-
-                                if(input == "T") {
-                                    cout<< "\nDigite o nome do termo que deseja consultar:" << endl;
-                                    cin >> string_input;
-
-
-                                    try{
-                                        nome.set_nome(string_input);
-                                    } catch(invalid_argument &exp) {
-                                        cout << "\n" << exp.what() << endl;
-                                        continue;
-                                    }
-
-                                    try {
-                                        system(CLEAR);
-                                        comando_consultar_termo = new ComandoConsultarTermo;
-                                        termo = comando_consultar_termo->ExecutarComando(cntr_link_vocabulario, lista_termos, string_input);
-                                        delete comando_consultar_termo;
-
-                                        do {
-                                            cout <<"\nEscolha uma das opcoes:" << endl;
-                                            cout <<"\n- Digite D para consultar definicao" << endl;
-                                            cout <<"\n- Digite R para retornar" << endl;
-                                            cin >> input;
-                                            try {
-                                                if(input == "D") {
-                                                    system(CLEAR);
-                                                    comando_consultar_definicao = new ComandoConsultarDefinicao;
-                                                    comando_consultar_definicao->ExecutarComando(cntr_link_vocabulario, termo);
-                                                    delete comando_consultar_definicao;
-
-                                                    do {
-                                                        cout<<"\nEscolha uma das opcoes:" << endl;
-                                                        cout<<"\n-Digite R para retornar" << endl;
-                                                        cout<<"\n-Digite S para sair" << endl;
-                                                        cin >> input;
-
-                                                        if(input == "R") {
-                                                            break;
-                                                        } else if(input == "S") {
-                                                            return;
-                                                        } else {
-                                                            cout << "Escolha Invalida";
-                                                        }
-
-                                                    } while(input != "R" && input != "S");
-                                                } else if(input == "R") {
-                                                    break;
-                                                } else {
-                                                    cout << "Escolha Invalida" << endl;
-                                                }
-                                            } catch(invalid_argument &exp) {
-                                                cout << "\n" << exp.what() << endl;
-                                                continue;
-                                            }
-                                        } while (input != "D" && input != "R");
-
-                                    } catch(invalid_argument &exp) {
-                                        cout << "\n" << exp.what() << endl;
-                                        continue;
-                                    }
-                                }if((input == "ED") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
-                                                             (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
-                                                            )){
-
-                                                        do {
-                                                            cout<< "\nDigite o nome do Termo que deseja editar a definicao:" << endl;
-                                                                cin >> string_input;
-                                                                    try{
-                                                                        nome.set_nome(string_input);
-                                                                    } catch(invalid_argument &exp) {
-                                                                        cout<< "\nNome invalido"<< endl;
-                                                                        continue;
-                                                                    }
-                                                                tamanho = lista_vocabularios.size();
-                                                                int i = 0;
-                                                                for(i = 0; i < tamanho; i++) {
-                                                                    if(lista_termos[i].get_nome().get_nome() == string_input) {
-                                                                        termo_aux = lista_termos[i];
-                                                                        break;
-                                                                    }
-                                                                    if(i == tamanho - 1){
-                                                                        cout << "\nTermo nao encontado" << endl;
-                                                                        cout << "\nPressione qualquer tecla para continuar:" << endl;
-                                                                        fflush(stdin);
-                                                                        getchar();
-                                                                        return;
-                                                                    }
-                                                                } //este for tambem pode ser reduzido a uma classe
-                                                                comando_editar_definicao_termo = new ComandoEditarDefinicaoTermo;
-                                                                resultado = comando_editar_definicao_termo->Executar(cntr_link_vocabulario, termo_aux);
-                                                                delete comando_editar_definicao_termo;
-
-                                                                if(resultado.get_resultado() == Resultado::FALHA) {
-                                                                    cout << "\nOperacao nao realizada com sucesso" << endl;
-                                                                    cout << "\nPressione S para tentar novamente, ou qualquer outra tecla para sair" << endl;
-                                                                    cin >> string_input;
-                                                                    if(string_input == "S") {
-                                                                        continue;
-                                                                    } else {
-                                                                        break;
-                                                                    }
-                                                                } else if(resultado.get_resultado() == Resultado::SUCESSO) {
-                                                                    cout << "\nOperacao realizada com sucesso" << endl;
-                                                                    cout << "\nPressione qualquer tecla para continuar" << endl;
-                                                                    fflush(stdin);
-                                                                    getchar();
-                                                                    break;
-                                                                }
-                                                        } while(true);
-                                                }else if((input == "C") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
-                                                             (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
-                                                            )) {
-                                    contador = 3;
-                                    comando_criar_termo = new ComandoCriarTermo();
-                                    do {
-
-                                        resultado = comando_criar_termo->Executar(cntr_link_vocabulario);
-
-                                        if(resultado.get_resultado() == Resultado::SUCESSO) {
-                                            cout << "Pressione qualquer tecla para continuar: ";
-                                            fflush(stdin);
-                                            getchar();
-                                            return;
-                                        } else if(resultado.get_resultado() == Resultado::FALHA){
-                                            cout << "\nClique S para continuar ou qualquer outra tecla para sair, voce tem " << contador << " tentativas" << endl;
-                                            cin >> string_input;
-                                            if(string_input == "S") {
-                                                contador--;
-                                                continue;
-                                            } else {
-                                                break;
-                                            }
-                                        }
-
-                                    } while(contador > 0);
-
-                                }else if((input == "E") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
-                                                             (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
-                                                            )){
-                                    do {
-                                        cout<< "\nDigite o nome do Termo que deseja excluir:" << endl;
-                                        cin >> string_input;
-                                            try{
-                                                nome.set_nome(string_input);
-                                            } catch(invalid_argument &exp) {
-                                                cout<< "\nNome invalido"<< endl;
-                                                continue;
-                                            }
-                                        tamanho = lista_vocabularios.size();
-                                        int i = 0;
-                                        for(i = 0; i < tamanho; i++) {
-                                            if(lista_termos[i].get_nome().get_nome() == string_input) {
-                                                termo_aux = lista_termos[i];
-                                                break;
-                                            }
-                                            if(i == tamanho - 1){
-                                                cout << "\nTermo nao encontado" << endl;
-                                                cout << "\nPressione qualquer tecla para continuar:" << endl;
-                                                fflush(stdin);
-                                                getchar();
-                                                return;
-                                            }
-                                        }
-                                        try {
-                                            comando_excluir_termo = new ComandoExcluirTermo();
-                                            resultado = comando_excluir_termo->Executar(cntr_link_vocabulario, termo_aux);
-                                            delete comando_excluir_termo;
-                                        } catch(invalid_argument &exp) {
-                                            cout << "\n" << exp.what() << endl;
-                                            return;
-                                        }
-                                        if(resultado.get_resultado() == Resultado::FALHA) {
-                                            cout << "\n" << "falha ao excluir, pressione S para tentar novamente, ou qualquer tecla para sair" << endl;
-                                            cin >> string_input;
-                                            if(string_input == "S") {
-                                                continue;
-                                            } else {
-                                                return;
-                                            }
-                                        } else if(resultado.get_resultado() == Resultado::SUCESSO) {
-                                            cout << "\n" << "Termo excluido com sucesso, pressione S para excluir mais um termo, ou qualquer tecla para sair" << endl;
-                                            cin >> string_input;
-                                            if(string_input == "S") {
-                                                continue;
-                                            } else {
-                                                return;
-                                            }
-                                        } else if(resultado.get_resultado() == Resultado::RETORNAR) {
-                                            return;
-                                        }
-                                    } while(true);
-                                }else if((input == "TE") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
-                                                             (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
-                                                            )){
-                                    do {
-                                        cout<< "\nDigite o nome do Termo que deseja editar:" << endl;
-                                            cin >> string_input;
-                                                try{
-                                                    nome.set_nome(string_input);
-                                                } catch(invalid_argument &exp) {
-                                                    cout<< "\nNome invalido"<< endl;
-                                                    continue;
-                                                }
-                                            tamanho = lista_vocabularios.size();
-                                            int i = 0;
-                                            for(i = 0; i < tamanho; i++) {
-                                                if(lista_termos[i].get_nome().get_nome() == string_input) {
-                                                    termo_aux = lista_termos[i];
-                                                    break;
-                                                }
-                                                if(i == tamanho - 1){
-                                                    cout << "\nTermo nao encontado" << endl;
-                                                    cout << "\nPressione qualquer tecla para continuar:" << endl;
-                                                    fflush(stdin);
-                                                    getchar();
-                                                    return;
-                                                }
-                                            }
-                                            comando_editar_termo = new ComandoEditarTermo;
-                                            resultado = comando_editar_termo->Executar(cntr_link_vocabulario, termo_aux);
-                                            delete comando_editar_termo;
-
-                                            if(resultado.get_resultado() == Resultado::FALHA) {
-                                                cout << "\nOperacao nao realizada com sucesso" << endl;
-                                                cout << "\nPressione S para tentar novamente, ou qualquer outra tecla para sair" << endl;
-                                                cin >> string_input;
-                                                if(string_input == "S") {
-                                                    continue;
-                                                } else {
-                                                    break;
-                                                }
-                                            } else if(resultado.get_resultado() == Resultado::SUCESSO) {
-                                                cout << "\nOperacao realizada com sucesso" << endl;
-                                                cout << "\nPressione qualquer tecla para continuar" << endl;
-                                                fflush(stdin);
-                                                getchar();
-                                                break;
-                                            }
-                                    } while(true);
-
-                                }else if(input == "R") {
-                                    break;
-                                } else {
-                                    cout << "Escolha invalida" << endl;
-                                }
-                            } while(input != "T" && input != "R");
-
-                        } catch(invalid_argument &exp) {
-                            cout << endl << exp.what() << endl;
-                            fflush(stdin);
-                            getchar();
-                            continue;
-                        }
-                    } else if((input == "I") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)) {
-                        do {
-                            cout<< "\nDigite o nome do vocabulario do qual deseja editar o idioma:" << endl;
+                            if(input == "T")
+                            {
+                                cout<< "\nDigite o nome do termo que deseja consultar:" << endl;
                                 cin >> string_input;
-                                    try{
+
+
+                                try
+                                {
+                                    nome.set_nome(string_input);
+                                }
+                                catch(invalid_argument &exp)
+                                {
+                                    cout << "\n" << exp.what() << endl;
+                                    continue;
+                                }
+
+                                try
+                                {
+                                    system(CLEAR);
+                                    comando_consultar_termo = new ComandoConsultarTermo;
+                                    termo = comando_consultar_termo->ExecutarComando(cntr_link_vocabulario, lista_termos, string_input);
+                                    delete comando_consultar_termo;
+
+                                    do
+                                    {
+                                        cout <<"\nEscolha uma das opcoes:" << endl;
+                                        cout <<"\n- Digite D para consultar definicao" << endl;
+                                        cout <<"\n- Digite R para retornar" << endl;
+                                        cin >> input;
+                                        try
+                                        {
+                                            if(input == "D")
+                                            {
+                                                system(CLEAR);
+                                                comando_consultar_definicao = new ComandoConsultarDefinicao;
+                                                comando_consultar_definicao->ExecutarComando(cntr_link_vocabulario, termo);
+                                                delete comando_consultar_definicao;
+
+                                                do
+                                                {
+                                                    cout<<"\nEscolha uma das opcoes:" << endl;
+                                                    cout<<"\n-Digite R para retornar" << endl;
+                                                    cout<<"\n-Digite S para sair" << endl;
+                                                    cin >> input;
+
+                                                    if(input == "R")
+                                                    {
+                                                        break;
+                                                    }
+                                                    else if(input == "S")
+                                                    {
+                                                        return;
+                                                    }
+                                                    else
+                                                    {
+                                                        cout << "Escolha Invalida";
+                                                    }
+
+                                                }
+                                                while(input != "R" && input != "S");
+                                            }
+                                            else if(input == "R")
+                                            {
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                cout << "Escolha Invalida" << endl;
+                                            }
+                                        }
+                                        catch(invalid_argument &exp)
+                                        {
+                                            cout << "\n" << exp.what() << endl;
+                                            continue;
+                                        }
+                                    }
+                                    while (input != "D" && input != "R");
+
+                                }
+                                catch(invalid_argument &exp)
+                                {
+                                    cout << "\n" << exp.what() << endl;
+                                    continue;
+                                }
+                            }
+                            if((input == "ED") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
+                                                    (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
+                                                  ))
+                            {
+
+                                do
+                                {
+                                    cout<< "\nDigite o nome do Termo que deseja editar a definicao:" << endl;
+                                    cin >> string_input;
+                                    try
+                                    {
                                         nome.set_nome(string_input);
-                                    } catch(invalid_argument &exp) {
+                                    }
+                                    catch(invalid_argument &exp)
+                                    {
                                         cout<< "\nNome invalido"<< endl;
                                         continue;
                                     }
-                                tamanho = lista_vocabularios.size();
-                                int i = 0;
-                                for(i = 0; i < tamanho; i++) {
-                                    if(lista_vocabularios[i].get_nome().get_nome() == string_input) {
-                                        voc_aux = lista_vocabularios[i];
+                                    tamanho = lista_vocabularios.size();
+                                    int i = 0;
+                                    for(i = 0; i < tamanho; i++)
+                                    {
+                                        if(lista_termos[i].get_nome().get_nome() == string_input)
+                                        {
+                                            termo_aux = lista_termos[i];
+                                            break;
+                                        }
+                                        if(i == tamanho - 1)
+                                        {
+                                            cout << "\nTermo nao encontado" << endl;
+                                            cout << "\nPressione qualquer tecla para continuar:" << endl;
+                                            fflush(stdin);
+                                            getchar();
+                                            return;
+                                        }
+                                    }
+                                    comando_editar_definicao_termo = new ComandoEditarDefinicaoTermo;
+                                    resultado = comando_editar_definicao_termo->Executar(cntr_link_vocabulario, termo_aux);
+                                    delete comando_editar_definicao_termo;
+
+                                    if(resultado.get_resultado() == Resultado::FALHA)
+                                    {
+                                        cout << "\nOperacao nao realizada com sucesso" << endl;
+                                        cout << "\nPressione S para tentar novamente, ou qualquer outra tecla para sair" << endl;
+                                        cin >> string_input;
+                                        if(string_input == "S")
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    else if(resultado.get_resultado() == Resultado::SUCESSO)
+                                    {
+                                        cout << "\nOperacao realizada com sucesso" << endl;
+                                        cout << "\nPressione qualquer tecla para continuar" << endl;
+                                        fflush(stdin);
+                                        getchar();
                                         break;
                                     }
-                                    if(i == tamanho - 1){
-                                        cout << "\nVocabulario nao encontado" << endl;
-                                        cout << "\nPressione qualquer tecla para continuar:" << endl;
+                                }
+                                while(true);
+                            }
+                            else if((input == "C") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
+                                                        (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
+                                                      ))
+                            {
+                                contador = 3;
+                                comando_criar_termo = new ComandoCriarTermo();
+                                do
+                                {
+
+                                    resultado = comando_criar_termo->Executar(cntr_link_vocabulario);
+
+                                    if(resultado.get_resultado() == Resultado::SUCESSO)
+                                    {
+                                        cout << "Pressione qualquer tecla para continuar: ";
                                         fflush(stdin);
                                         getchar();
                                         return;
                                     }
-                                }
-                                comando_alterar_idioma_voc = new ComandoAlterarIdiomaVoc;
-                                resultado = comando_alterar_idioma_voc->Executar(cntr_link_vocabulario, voc_aux);
-                                delete comando_alterar_idioma_voc;
+                                    else if(resultado.get_resultado() == Resultado::FALHA)
+                                    {
+                                        cout << "\nClique S para continuar ou qualquer outra tecla para sair, voce tem " << contador << " tentativas" << endl;
+                                        cin >> string_input;
+                                        if(string_input == "S")
+                                        {
+                                            contador--;
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
 
-                                if(resultado.get_resultado() == Resultado::FALHA) {
-                                    cout << "\nOperacao nao realizada com sucesso" << endl;
-                                    cout << "\nPressione S para tentar novamente, ou qualquer outra tecla para sair" << endl;
+                                }
+                                while(contador > 0);
+
+                            }
+                            else if((input == "E") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
+                                                        (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
+                                                      ))
+                            {
+                                do
+                                {
+                                    cout<< "\nDigite o nome do Termo que deseja excluir:" << endl;
                                     cin >> string_input;
-                                    if(string_input == "S") {
+                                    try
+                                    {
+                                        nome.set_nome(string_input);
+                                    }
+                                    catch(invalid_argument &exp)
+                                    {
+                                        cout<< "\nNome invalido"<< endl;
                                         continue;
-                                    } else {
+                                    }
+                                    tamanho = lista_vocabularios.size();
+                                    int i = 0;
+                                    for(i = 0; i < tamanho; i++)
+                                    {
+                                        if(lista_termos[i].get_nome().get_nome() == string_input)
+                                        {
+                                            termo_aux = lista_termos[i];
+                                            break;
+                                        }
+                                        if(i == tamanho - 1)
+                                        {
+                                            cout << "\nTermo nao encontado" << endl;
+                                            cout << "\nPressione qualquer tecla para continuar:" << endl;
+                                            fflush(stdin);
+                                            getchar();
+                                            return;
+                                        }
+                                    }
+                                    try
+                                    {
+                                        comando_excluir_termo = new ComandoExcluirTermo();
+                                        resultado = comando_excluir_termo->Executar(cntr_link_vocabulario, termo_aux);
+                                        delete comando_excluir_termo;
+                                    }
+                                    catch(invalid_argument &exp)
+                                    {
+                                        cout << "\n" << exp.what() << endl;
+                                        return;
+                                    }
+                                    if(resultado.get_resultado() == Resultado::FALHA)
+                                    {
+                                        cout << "\n" << "falha ao excluir, pressione S para tentar novamente, ou qualquer tecla para sair" << endl;
+                                        cin >> string_input;
+                                        if(string_input == "S")
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            return;
+                                        }
+                                    }
+                                    else if(resultado.get_resultado() == Resultado::SUCESSO)
+                                    {
+                                        cout << "\n" << "Termo excluido com sucesso, pressione S para excluir mais um termo, ou qualquer tecla para sair" << endl;
+                                        cin >> string_input;
+                                        if(string_input == "S")
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            return;
+                                        }
+                                    }
+                                    else if(resultado.get_resultado() == Resultado::RETORNAR)
+                                    {
+                                        return;
+                                    }
+                                }
+                                while(true);
+                            }
+                            else if((input == "TE") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
+                                                         (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
+                                                       ))
+                            {
+                                do
+                                {
+                                    cout<< "\nDigite o nome do Termo que deseja editar:" << endl;
+                                    cin >> string_input;
+                                    try
+                                    {
+                                        nome.set_nome(string_input);
+                                    }
+                                    catch(invalid_argument &exp)
+                                    {
+                                        cout<< "\nNome invalido"<< endl;
+                                        continue;
+                                    }
+                                    tamanho = lista_vocabularios.size();
+                                    int i = 0;
+                                    for(i = 0; i < tamanho; i++)
+                                    {
+                                        if(lista_termos[i].get_nome().get_nome() == string_input)
+                                        {
+                                            termo_aux = lista_termos[i];
+                                            break;
+                                        }
+                                        if(i == tamanho - 1)
+                                        {
+                                            cout << "\nTermo nao encontado" << endl;
+                                            cout << "\nPressione qualquer tecla para continuar:" << endl;
+                                            fflush(stdin);
+                                            getchar();
+                                            return;
+                                        }
+                                    }
+                                    comando_editar_termo = new ComandoEditarTermo;
+                                    resultado = comando_editar_termo->Executar(cntr_link_vocabulario, termo_aux);
+                                    delete comando_editar_termo;
+
+                                    if(resultado.get_resultado() == Resultado::FALHA)
+                                    {
+                                        cout << "\nOperacao nao realizada com sucesso" << endl;
+                                        cout << "\nPressione S para tentar novamente, ou qualquer outra tecla para sair" << endl;
+                                        cin >> string_input;
+                                        if(string_input == "S")
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    else if(resultado.get_resultado() == Resultado::SUCESSO)
+                                    {
+                                        cout << "\nOperacao realizada com sucesso" << endl;
+                                        cout << "\nPressione qualquer tecla para continuar" << endl;
+                                        fflush(stdin);
+                                        getchar();
                                         break;
                                     }
-                                } else if(resultado.get_resultado() == Resultado::SUCESSO) {
-                                    cout << "\nOperacao realizada com sucesso" << endl;
-                                    cout << "\nPressione qualquer tecla para continuar" << endl;
-                                    fflush(stdin);
-                                    getchar();
-                                    break;
                                 }
-                        } while(true);
-                    } else if(input == "R") {
-                        break;
-                    } else if((input == "E") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)){
-                        do {
-                            cout<< "\nDigite o nome do vocabulario que deseja excluir:" << endl;
-                            cin >> string_input;
-                                try{
-                                    nome.set_nome(string_input);
-                                } catch(invalid_argument &exp) {
-                                    cout<< "\nNome invalido"<< endl;
-                                    continue;
-                                }
-                            tamanho = lista_vocabularios.size();
-                            int i = 0;
-                            for(i = 0; i < tamanho; i++) {
-                                if(lista_vocabularios[i].get_nome().get_nome() == string_input) {
-                                    voc_aux = lista_vocabularios[i];
-                                    break;
-                                }
-                                if(i == tamanho - 1){
-                                    cout << "\nVocabulario nao encontado" << endl;
-                                    cout << "\nPressione qualquer tecla para continuar:" << endl;
-                                    fflush(stdin);
-                                    getchar();
-                                    return;
-                                }
+                                while(true);
+
                             }
-                            try {
-                                comando_excluir_vocabulario = new ComandoExcluirVocabulario();
-                                resultado = comando_excluir_vocabulario->Executar(cntr_link_vocabulario, voc_aux);
-                                delete comando_excluir_vocabulario;
-                            } catch(invalid_argument &exp) {
-                                cout << "\n" << exp.what() << endl;
-                                return;
+                            else if(input == "R")
+                            {
+                                break;
                             }
-                            if(resultado.get_resultado() == Resultado::FALHA) {
-                                cout << "\n" << "falha ao excluir, pressione S para tentar novamente, ou qualquer tecla para sair" << endl;
-                                cin >> string_input;
-                                if(string_input == "S") {
-                                    continue;
-                                } else {
-                                    return;
-                                }
-                            } else if(resultado.get_resultado() == Resultado::SUCESSO) {
-                                cout << "\n" << "Vocabulario excluido com sucesso, pressione S para excluir mais um vocabulario, ou qualquer tecla para sair" << endl;
-                                cin >> string_input;
-                                if(string_input == "S") {
-                                    continue;
-                                } else {
-                                    return;
-                                }
-                            } else if(resultado.get_resultado() == Resultado::RETORNAR) {
-                                return;
+                            else
+                            {
+                                cout << "Escolha invalida" << endl;
                             }
-                        } while(true);
-                    } else {
-                        cout << "\nEscolha invalida." << endl;
+                        }
+                        while(input != "T" && input != "R");
+
                     }
-
-                } while(input != "V" && input != "R" && input != "E");
-            } else if(input == "R") {
-                return;
-            } else if((input == "C") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)){
-                contador = 3;
-                comando_criar_vocabulario = new ComandoCriarVocabulario();
-                do {
-
-                    resultado = comando_criar_vocabulario->Executar(cntr_link_vocabulario);
-
-                    if(resultado.get_resultado() == Resultado::SUCESSO) {
-                        cout << "Pressione qualquer tecla para continuar: ";
+                    catch(invalid_argument &exp)
+                    {
+                        cout << endl << exp.what() << endl;
                         fflush(stdin);
                         getchar();
-                        return;
-                    } else if(resultado.get_resultado() == Resultado::FALHA){
-                        cout << "\nClique S para continuar ou qualquer outra tecla para sair, voce tem " << contador << " tentativas" << endl;
+                        continue;
+                    }
+                }
+                else if((input == "I") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR))
+                {
+                    do
+                    {
+                        cout<< "\nDigite o nome do vocabulario do qual deseja editar o idioma:" << endl;
                         cin >> string_input;
-                        if(string_input == "S") {
-                            contador--;
+                        try
+                        {
+                            nome.set_nome(string_input);
+                        }
+                        catch(invalid_argument &exp)
+                        {
+                            cout<< "\nNome invalido"<< endl;
                             continue;
-                        } else {
+                        }
+                        tamanho = lista_vocabularios.size();
+                        int i = 0;
+                        for(i = 0; i < tamanho; i++)
+                        {
+                            if(lista_vocabularios[i].get_nome().get_nome() == string_input)
+                            {
+                                voc_aux = lista_vocabularios[i];
+                                break;
+                            }
+                            if(i == tamanho - 1)
+                            {
+                                cout << "\nVocabulario nao encontado" << endl;
+                                cout << "\nPressione qualquer tecla para continuar:" << endl;
+                                fflush(stdin);
+                                getchar();
+                                return;
+                            }
+                        }
+                        comando_alterar_idioma_voc = new ComandoAlterarIdiomaVoc;
+                        resultado = comando_alterar_idioma_voc->Executar(cntr_link_vocabulario, voc_aux);
+                        delete comando_alterar_idioma_voc;
+
+                        if(resultado.get_resultado() == Resultado::FALHA)
+                        {
+                            cout << "\nOperacao nao realizada com sucesso" << endl;
+                            cout << "\nPressione S para tentar novamente, ou qualquer outra tecla para sair" << endl;
+                            cin >> string_input;
+                            if(string_input == "S")
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        else if(resultado.get_resultado() == Resultado::SUCESSO)
+                        {
+                            cout << "\nOperacao realizada com sucesso" << endl;
+                            cout << "\nPressione qualquer tecla para continuar" << endl;
+                            fflush(stdin);
+                            getchar();
                             break;
                         }
                     }
+                    while(true);
+                }
+                else if(input == "R")
+                {
+                    break;
+                }
+                else if((input == "E") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR))
+                {
+                    do
+                    {
+                        cout<< "\nDigite o nome do vocabulario que deseja excluir:" << endl;
+                        cin >> string_input;
+                        try
+                        {
+                            nome.set_nome(string_input);
+                        }
+                        catch(invalid_argument &exp)
+                        {
+                            cout<< "\nNome invalido"<< endl;
+                            continue;
+                        }
+                        tamanho = lista_vocabularios.size();
+                        int i = 0;
+                        for(i = 0; i < tamanho; i++)
+                        {
+                            if(lista_vocabularios[i].get_nome().get_nome() == string_input)
+                            {
+                                voc_aux = lista_vocabularios[i];
+                                break;
+                            }
+                            if(i == tamanho - 1)
+                            {
+                                cout << "\nVocabulario nao encontado" << endl;
+                                cout << "\nPressione qualquer tecla para continuar:" << endl;
+                                fflush(stdin);
+                                getchar();
+                                return;
+                            }
+                        }
+                        try
+                        {
+                            comando_excluir_vocabulario = new ComandoExcluirVocabulario();
+                            resultado = comando_excluir_vocabulario->Executar(cntr_link_vocabulario, voc_aux);
+                            delete comando_excluir_vocabulario;
+                        }
+                        catch(invalid_argument &exp)
+                        {
+                            cout << "\n" << exp.what() << endl;
+                            return;
+                        }
+                        if(resultado.get_resultado() == Resultado::FALHA)
+                        {
+                            cout << "\n" << "falha ao excluir, pressione S para tentar novamente, ou qualquer tecla para sair" << endl;
+                            cin >> string_input;
+                            if(string_input == "S")
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                        else if(resultado.get_resultado() == Resultado::SUCESSO)
+                        {
+                            cout << "\n" << "Vocabulario excluido com sucesso, pressione S para excluir mais um vocabulario, ou qualquer tecla para sair" << endl;
+                            cin >> string_input;
+                            if(string_input == "S")
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                        else if(resultado.get_resultado() == Resultado::RETORNAR)
+                        {
+                            return;
+                        }
+                    }
+                    while(true);
+                }
+                else
+                {
+                    cout << "\nEscolha invalida." << endl;
+                }
 
-                } while(contador > 0);
-                delete comando_criar_vocabulario;
-            } else {
-                cout << "\nEscolha invalida\n" << endl;
-                continue;
             }
-    } while(true);
+            while(input != "V" && input != "R" && input != "E");
+        }
+        else if(input == "R")
+        {
+            return;
+        }
+        else if((input == "C") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR))
+        {
+            contador = 3;
+            comando_criar_vocabulario = new ComandoCriarVocabulario();
+            do
+            {
+
+                resultado = comando_criar_vocabulario->Executar(cntr_link_vocabulario);
+
+                if(resultado.get_resultado() == Resultado::SUCESSO)
+                {
+                    cout << "Pressione qualquer tecla para continuar: ";
+                    fflush(stdin);
+                    getchar();
+                    return;
+                }
+                else if(resultado.get_resultado() == Resultado::FALHA)
+                {
+                    cout << "\nClique S para continuar ou qualquer outra tecla para sair, voce tem " << contador << " tentativas" << endl;
+                    cin >> string_input;
+                    if(string_input == "S")
+                    {
+                        contador--;
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+            }
+            while(contador > 0);
+            delete comando_criar_vocabulario;
+        }
+        else
+        {
+            cout << "\nEscolha invalida\n" << endl;
+            continue;
+        }
+    }
+    while(true);
 
 }

@@ -8,25 +8,33 @@ using namespace std;
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Nome::Validation(string nome) throw (invalid_argument){
+void Nome::Validation(string nome) throw (invalid_argument)
+{
 
     int tamanho_vetor = nome.size();
 
-    if(tamanho_vetor > TAM_MAX_NOME) {
+    if(tamanho_vetor > TAM_MAX_NOME)
+    {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanho_vetor == STRING_VAZIA) {
+    if(tamanho_vetor == STRING_VAZIA)
+    {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    if(nome[0] < 'A' || nome[0] > 'Z'){
+    if(nome[0] < 'A' || nome[0] > 'Z')
+    {
         throw invalid_argument("A primeira letra deve ser maiuscula.");
 
-    } else {
+    }
+    else
+    {
 
-        for(int i = 1; i < tamanho_vetor; i++) {
-            if(nome[i] < 'a' || nome[i] > 'z') {
+        for(int i = 1; i < tamanho_vetor; i++)
+        {
+            if(nome[i] < 'a' || nome[i] > 'z')
+            {
                 throw invalid_argument("Caractere invalido inserido");
             }
         } // Testa um a um os caracteres, caso não sejam caracteres minusculos, retorna um erro
@@ -36,120 +44,148 @@ void Nome::Validation(string nome) throw (invalid_argument){
     }
 }
 
-void Nome::set_nome(string nome) throw (invalid_argument){
+void Nome::set_nome(string nome) throw (invalid_argument)
+{
     Validation(nome);
     this->nome = nome;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Sobrenome::Validation(string sobrenome) throw (invalid_argument) {
+void Sobrenome::Validation(string sobrenome) throw (invalid_argument)
+{
 
     int tamanho_vetor = sobrenome.size();
 
-    if(tamanho_vetor > TAM_MAX_SOBRENOME) {
+    if(tamanho_vetor > TAM_MAX_SOBRENOME)
+    {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanho_vetor == STRING_VAZIA) {
+    if(tamanho_vetor == STRING_VAZIA)
+    {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    if(sobrenome[0] < 'A' || sobrenome[0] > 'Z'){
+    if(sobrenome[0] < 'A' || sobrenome[0] > 'Z')
+    {
         throw invalid_argument("A primeira letra deve ser maiuscula.");
-    } else {
+    }
+    else
+    {
 
-        for(int i = 1; i < tamanho_vetor; i++) {
-            if(sobrenome[i] < 'a' || sobrenome[i] > 'z') {
+        for(int i = 1; i < tamanho_vetor; i++)
+        {
+            if(sobrenome[i] < 'a' || sobrenome[i] > 'z')
+            {
                 throw invalid_argument("Caractere invalido inserido");
             }
         }
     }
 }
 
-void Sobrenome::set_sobrenome(string sobrenome) throw (invalid_argument) {
+void Sobrenome::set_sobrenome(string sobrenome) throw (invalid_argument)
+{
     Validation(sobrenome);
     this->sobrenome = sobrenome;
 }
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Telefone::Validation(string telefone) throw (invalid_argument) {
+void Telefone::Validation(string telefone) throw (invalid_argument)
+{
 
     int tamanho_vetor = telefone.size();
 
-    if(tamanho_vetor != TAM_MAX_TELEFONE) {
+    if(tamanho_vetor != TAM_MAX_TELEFONE)
+    {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
-    if(tamanho_vetor == STRING_VAZIA) {
+    if(tamanho_vetor == STRING_VAZIA)
+    {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    for(int i = 0; i < tamanho_vetor; i++){
+    for(int i = 0; i < tamanho_vetor; i++)
+    {
 
-        if(i == POS_ESPA_TELEFONE || i == POS_TRACO_TELEFONE) {
+        if(i == POS_ESPA_TELEFONE || i == POS_TRACO_TELEFONE)
+        {
             continue;
         }
 
         //Utiliza tabela ascii:
-        if(telefone[i] < '0' || telefone[i] > '9') {
+        if(telefone[i] < '0' || telefone[i] > '9')
+        {
             throw invalid_argument("Formato Invalido. Insira o formato correto: AA BBBBB-BBBB");
             break;
         }
     }
 
-    if(telefone[POS_ESPA_TELEFONE] != ' ') {
+    if(telefone[POS_ESPA_TELEFONE] != ' ')
+    {
         throw invalid_argument("Formato Invalido. Insira o formato correto: AA BBBBB-BBBB");
     }
 
-    if(telefone[POS_TRACO_TELEFONE] != '-') {
+    if(telefone[POS_TRACO_TELEFONE] != '-')
+    {
         throw invalid_argument("Formato Invalido. Insira o formato correto: AA BBBBB-BBBB");
     }
 }
 
-void Telefone::set_telefone(string telefone) throw (invalid_argument) {
+void Telefone::set_telefone(string telefone) throw (invalid_argument)
+{
     Validation(telefone);
     this->telefone = telefone;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Endereco::Validation(string endereco) throw (invalid_argument) {
+void Endereco::Validation(string endereco) throw (invalid_argument)
+{
 
     int contaEspacos = 0;
     int tamanho_vetor = endereco.size();
 
-      if(tamanho_vetor > TAM_MAX_ENDERECO) {
+    if(tamanho_vetor > TAM_MAX_ENDERECO)
+    {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
-     }
+    }
 
-    if(endereco[0] == ' ') {
+    if(endereco[0] == ' ')
+    {
         throw invalid_argument("O primeiro caractere nao pode ser um espaco");
     }
 
-    if(endereco[TAM_MAX_ENDERECO - 1] == ' ') {
+    if(endereco[TAM_MAX_ENDERECO - 1] == ' ')
+    {
         throw invalid_argument("O ultimo caractere nao pode ser um espaco");
     }
 
-    for(int i = 1; i < TAM_MAX_ENDERECO; i++) { //começa do 1, pois o primeiro não pode ser espaço
-        if(endereco[i] == ' ') {
+    for(int i = 1; i < TAM_MAX_ENDERECO; i++)   //começa do 1, pois o primeiro não pode ser espaço
+    {
+        if(endereco[i] == ' ')
+        {
             contaEspacos++;
         }
 
-        if(contaEspacos == TAM_MAX_ESPAC_CONSEC) {
+        if(contaEspacos == TAM_MAX_ESPAC_CONSEC)
+        {
             throw invalid_argument("Nao podem haver dois espacos consecutivos no endereco");
         }
     }
 }
 
-void Endereco::set_endereco(string endereco) throw (invalid_argument) {
+void Endereco::set_endereco(string endereco) throw (invalid_argument)
+{
     Validation(endereco);
     this->endereco = endereco;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Data::Validation(string data) throw (invalid_argument) {
+void Data::Validation(string data) throw (invalid_argument)
+{
     int tamanho_vetor = data.size();
     string dia = "";
     string mes = "";
@@ -157,11 +193,13 @@ void Data::Validation(string data) throw (invalid_argument) {
     int dia_int;
     int mes_int;
     int ano_int;
-    if (tamanho_vetor == STRING_VAZIA) {
+    if (tamanho_vetor == STRING_VAZIA)
+    {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    if(tamanho_vetor > TAM_MAX_DATA){
+    if(tamanho_vetor > TAM_MAX_DATA)
+    {
         throw invalid_argument("Quantidade maxima de caracteres excedida");
     }
 
@@ -172,7 +210,8 @@ void Data::Validation(string data) throw (invalid_argument) {
         if((i != 2 && i != 5) && (data[i] < '0' || data[i] > '9'))
             throw invalid_argument("Caractere invalido inserido");
 
-    for (int i = 0; i < tamanho_vetor; i++) {
+    for (int i = 0; i < tamanho_vetor; i++)
+    {
         if(i == 0 || i == 1)              //Data == posicao 0 + 1
             dia += data[i];
         if(i == 3 || i == 4)              //Mes == posicao 3 + 4
@@ -197,39 +236,44 @@ void Data::Validation(string data) throw (invalid_argument) {
         bissexto = true;
 
     if( (bissexto == false && mes_int == FEVEREIRO && dia_int > 28) ||
-        (bissexto == true && mes_int == FEVEREIRO && dia_int > 29) )    //Mes 2 é fevereiro e fevereiro só pode ter 29 dias em anos bissextos
+            (bissexto == true && mes_int == FEVEREIRO && dia_int > 29) )    //Mes 2 é fevereiro e fevereiro só pode ter 29 dias em anos bissextos
         throw invalid_argument("O Mes de fevereiro possui somente ate 29 dias em anos bissextos");
 
     if( (mes_int == ABRIL     ||
-         mes_int == JUNHO     ||
-         mes_int == SETEMBRO  ||
-         mes_int == NOVEMBRO) &&
-         dia_int > 30)
+            mes_int == JUNHO     ||
+            mes_int == SETEMBRO  ||
+            mes_int == NOVEMBRO) &&
+            dia_int > 30)
         throw invalid_argument("Os meses de Abril, Junho, Setembro e Novembro possuem ate 30 dias");
 }
 
-void Data::set_data(string data) throw (invalid_argument) {
+void Data::set_data(string data) throw (invalid_argument)
+{
     Validation(data);
     this->data = data;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Correio_Eletronico::Validation(string correio_eletronico) throw (invalid_argument) {
+void Correio_Eletronico::Validation(string correio_eletronico) throw (invalid_argument)
+{
     int tamanho_vetor = correio_eletronico.size();
     int pos = POS_INVALIDA;
     string local = "";
     string dominio = "";
 
-    if (tamanho_vetor == STRING_VAZIA) {
+    if (tamanho_vetor == STRING_VAZIA)
+    {
         throw invalid_argument("Nao foi inserido nenhum caractere");
     }
 
-    for (int i = 0; i < tamanho_vetor; i++){
+    for (int i = 0; i < tamanho_vetor; i++)
+    {
         if(correio_eletronico[i] != '@')        //Pega a parte local do email
             local += correio_eletronico[i];
 
-        if(correio_eletronico[i] == '@'){       //Salva a posição do domínio
+        if(correio_eletronico[i] == '@')        //Salva a posição do domínio
+        {
             pos = i + 1;
             break;
         }
@@ -238,10 +282,14 @@ void Correio_Eletronico::Validation(string correio_eletronico) throw (invalid_ar
     if(pos == POS_INVALIDA) //Se durante o percorrimento da string não for encontrado o caractere '@' a pos fica com POS_INVALIDA
         throw invalid_argument("Formato Invalido. O email deve conter o caractere '@'");
 
-    for (int i = pos; i < tamanho_vetor; i++){
-        if(correio_eletronico[i] == '@'){
+    for (int i = pos; i < tamanho_vetor; i++)
+    {
+        if(correio_eletronico[i] == '@')
+        {
             throw invalid_argument("Formato Invalido. O email não pode haver mais de um caracter '@'");
-        } else {
+        }
+        else
+        {
             dominio += correio_eletronico[i];   //Pega a parte do dominio do email
         }
     }
@@ -253,43 +301,52 @@ void Correio_Eletronico::Validation(string correio_eletronico) throw (invalid_ar
 
     /*Verificacao local*/
     int tamanhoLocal = local.size();
-    for (int i = 0; i < tamanhoLocal; i++){
+    for (int i = 0; i < tamanhoLocal; i++)
+    {
         if((local[i] >= 'A' && local[i] <= 'Z')             ||
-           (local[i] >= 'a' && local[i] <= 'z')             ||
-           (local[i] >= '0' && local[i] <= '9')             ||
-            local[i] == '!' || local[i] == '#'              ||
-            local[i] == '$' || local[i] == '%'              ||
-            local[i] == '&' || local[i] == (char) APOSTROFO ||         //O char 39 na tabela ascii é o caracter apostrofo
-            local[i] == '*' || local[i] == '+'              ||
-            local[i] == '-' || local[i] == '/'              ||
-            local[i] == '=' || local[i] == '?'              ||
-            local[i] == '^' || local[i] == '_'              ||
-            local[i] == '`' || local[i] == '{'              ||
-            local[i] == '|' || local[i] == '}'              ||
-            local[i] == '~' || local[i] == ';'              ||
-            local[i] == '.'){
-                continue;
-            } else {
-                throw invalid_argument("Caractere invalido inserido na parte local do email");
-            }
+                (local[i] >= 'a' && local[i] <= 'z')             ||
+                (local[i] >= '0' && local[i] <= '9')             ||
+                local[i] == '!' || local[i] == '#'              ||
+                local[i] == '$' || local[i] == '%'              ||
+                local[i] == '&' || local[i] == (char) APOSTROFO ||         //O char 39 na tabela ascii é o caracter apostrofo
+                local[i] == '*' || local[i] == '+'              ||
+                local[i] == '-' || local[i] == '/'              ||
+                local[i] == '=' || local[i] == '?'              ||
+                local[i] == '^' || local[i] == '_'              ||
+                local[i] == '`' || local[i] == '{'              ||
+                local[i] == '|' || local[i] == '}'              ||
+                local[i] == '~' || local[i] == ';'              ||
+                local[i] == '.')
+        {
+            continue;
+        }
+        else
+        {
+            throw invalid_argument("Caractere invalido inserido na parte local do email");
+        }
     }
 
     //Verificacao dominio
     int tamanhoDominio = dominio.size();
     bool letra = false;
-    for (int i = 0; i < tamanhoDominio; i++){
+    for (int i = 0; i < tamanhoDominio; i++)
+    {
         if((dominio[i] >= 'A' && dominio[i] <= 'Z') ||  //O dominio do email so pode conter letras, numeros, o caracter '.' e o caracter '-'
-           (dominio[i] >= 'a' && dominio[i] <= 'z') ||
-           (dominio[i] >= '0' && dominio[i] <= '9') ||
-            dominio[i] == '.' || dominio[i] == '-'){
-                continue;
-            } else {
-                throw invalid_argument("Caractere invalido inserido no dominio do email");
-            }
+                (dominio[i] >= 'a' && dominio[i] <= 'z') ||
+                (dominio[i] >= '0' && dominio[i] <= '9') ||
+                dominio[i] == '.' || dominio[i] == '-')
+        {
+            continue;
+        }
+        else
+        {
+            throw invalid_argument("Caractere invalido inserido no dominio do email");
+        }
     }
-    for (int i = 0; i < tamanhoDominio; i++){
+    for (int i = 0; i < tamanhoDominio; i++)
+    {
         if((dominio[i] >= 'A' && dominio[i] <= 'Z') ||
-           (dominio[i] >= 'a' && dominio[i] <= 'z'))
+                (dominio[i] >= 'a' && dominio[i] <= 'z'))
             letra = true;
         if(dominio[i] == '.')
             break;
@@ -299,14 +356,16 @@ void Correio_Eletronico::Validation(string correio_eletronico) throw (invalid_ar
         throw invalid_argument("O dominio do email nao pode ser somente numerico");
 }
 
-void Correio_Eletronico::set_correio_eletronico(string correio_eletronico) throw (invalid_argument) {
+void Correio_Eletronico::set_correio_eletronico(string correio_eletronico) throw (invalid_argument)
+{
     Validation(correio_eletronico);
     this->correio_eletronico = correio_eletronico;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Senha::Validation(string senha) throw (invalid_argument) {
+void Senha::Validation(string senha) throw (invalid_argument)
+{
     int tamanho_vetor = senha.size();
 
     if(tamanho_vetor == STRING_VAZIA)
@@ -314,18 +373,23 @@ void Senha::Validation(string senha) throw (invalid_argument) {
     if(tamanho_vetor > TAM_MAX_SENHA)
         throw invalid_argument("Quantidade maxima de caracteres excedida");
 
-    for(int i = 0; i < tamanho_vetor; i++){
+    for(int i = 0; i < tamanho_vetor; i++)
+    {
         if((senha[i] >= 'A' && senha[i] <= 'Z') ||
-           (senha[i] >= 'a' && senha[i] <= 'z') ||
-           (senha[i] >= '0' && senha[i] <= '9')){
-               continue;
-           } else {
-               throw invalid_argument("Caractere invalido inserido");
-           }
+                (senha[i] >= 'a' && senha[i] <= 'z') ||
+                (senha[i] >= '0' && senha[i] <= '9'))
+        {
+            continue;
+        }
+        else
+        {
+            throw invalid_argument("Caractere invalido inserido");
+        }
     }
 
     bool letra_maiuscula = false, letra_minuscula = false, numero = false;
-    for(int i = 0; i < tamanho_vetor; i++){
+    for(int i = 0; i < tamanho_vetor; i++)
+    {
         if(senha[i] >= 'A' && senha[i] <= 'Z')
             letra_maiuscula = true;
         if(senha[i] >= 'a' && senha[i] <= 'z')
@@ -335,52 +399,59 @@ void Senha::Validation(string senha) throw (invalid_argument) {
     }
 
     if(letra_maiuscula == false ||
-       letra_minuscula == false ||
-       numero == false)
+            letra_minuscula == false ||
+            numero == false)
         throw invalid_argument("A senha precisa conter pelo menos uma letra maiuscula, uma letra minuscula e um digito");
 }
 
-void Senha::set_senha(string senha) throw (invalid_argument) {
+void Senha::set_senha(string senha) throw (invalid_argument)
+{
     Validation(senha);
     this->senha = senha;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Texto_Definicao::Validation(string texto_definicao) throw (invalid_argument) {
+void Texto_Definicao::Validation(string texto_definicao) throw (invalid_argument)
+{
     int tamanho_vetor = texto_definicao.size();
 
     if(tamanho_vetor > TAM_MAX_TEXTO)
         throw invalid_argument("Quantidade maxima de caracteres excedida");
 }
 
-void Texto_Definicao::set_texto_definicao(string texto_definicao) throw (invalid_argument) {
+void Texto_Definicao::set_texto_definicao(string texto_definicao) throw (invalid_argument)
+{
     Validation(texto_definicao);
     this->texto_definicao = texto_definicao;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Idioma::Validation(string idioma) throw (invalid_argument) {
+void Idioma::Validation(string idioma) throw (invalid_argument)
+{
     if(idioma != "ENG" && idioma != "FRA" &&
-       idioma != "GER" && idioma != "ITA" &&
-       idioma != "POR" && idioma != "SPA")
+            idioma != "GER" && idioma != "ITA" &&
+            idioma != "POR" && idioma != "SPA")
         throw invalid_argument("Idioma invalido. Os idiomas disponiveis sao: ENG, FRA, GER, ITA, POR e SPA");
 }
 
-void Idioma::set_idioma(string idioma) throw (invalid_argument) {
+void Idioma::set_idioma(string idioma) throw (invalid_argument)
+{
     Validation(idioma);
     this->idioma = idioma;
 }
 
 /*---------------------------------------------------------------------------------------------------------*/
 
-void Classe_Termo::Validation(string classe_termo) throw (invalid_argument) {
+void Classe_Termo::Validation(string classe_termo) throw (invalid_argument)
+{
     if(classe_termo != "PT" && classe_termo != "NP")
         throw invalid_argument("Escolha invalida. As possiveis escolhas sao PT e NP");
 }
 
-void Classe_Termo::set_classe_termo(string classe_termo) throw (invalid_argument) {
+void Classe_Termo::set_classe_termo(string classe_termo) throw (invalid_argument)
+{
     Validation(classe_termo);
     this->classe_termo = classe_termo;
 }
