@@ -426,6 +426,7 @@ class Definicao{
     private:
         Texto_Definicao texto_definicao;
         Data data;
+        string codigo;
 
     public:
         /**
@@ -455,6 +456,14 @@ class Definicao{
          */
         Data get_data() const {
             return data;
+        }
+
+        void set_codigo(const string codigo){
+            this->codigo = codigo;
+        }
+
+        string get_codigo() const {
+            return codigo;
         }
         /**
          * @brief Definicao() é a função que é passada para criar-se um novo objeto.

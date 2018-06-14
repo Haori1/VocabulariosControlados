@@ -43,6 +43,8 @@
 		<Unit filename="entidades.hpp" />
 		<Unit filename="interfaces.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="servicos.cpp" />
+		<Unit filename="servicos.hpp" />
 		<Unit filename="sqlite3.c">
 			<Option compilerVar="CC" />
 		</Unit>

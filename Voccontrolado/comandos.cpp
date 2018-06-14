@@ -26,12 +26,19 @@ void ComandoCadastroLeitorIA::ExecutarComando(CadastroIS *cntr_link_cadastro) th
         senha.set_senha(input);
 
     } catch (invalid_argument &exp) {
-        cout << "\nFormato incorreto\n";
+        cout << exp.what() << endl;
         getchar();
         continue;
     }
-        Leitor leitor(nome, sobrenome, correio_eletronico, senha);
-        resultado_cadastro = cntr_link_cadastro->CadastroLeitor(leitor);
+        resultado_cadastro = cntr_link_cadastro->CadastroLeitor(nome, sobrenome, correio_eletronico, senha);
+
+        if(resultado_cadastro.get_resultado() == Resultado::FALHA){
+            cout << "\nFalha no cadastro\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+        }
+        
         return;
     }//end while(true)
 }//end Executar()
@@ -66,12 +73,20 @@ void ComandoCadastroDesenvolvedorIA::ExecutarComando(CadastroIS *cntr_link_cadas
         senha.set_senha(input);
 
     } catch (invalid_argument &exp) {
-        cout << "\nFormato incorreto\n";
+        cout << exp.what() << endl;
+        fflush(stdin);
         getchar();
         continue;
     }
-        Desenvolvedor desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
-        resultado_cadastro = cntr_link_cadastro->CadastroLeitor(desenvolvedor);
+        resultado_cadastro = cntr_link_cadastro->CadastroDesenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
+
+        if(resultado_cadastro.get_resultado() == Resultado::FALHA){
+            cout << "\nFalha no cadastro\n";
+            cout << "Pressione qualquer tecla para continuar: ";
+            fflush(stdin);
+            getchar();
+        }
+
         return;
     }//end while(true)
 }
@@ -115,11 +130,11 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
 
     } catch (invalid_argument &exp) {
         cout << "\nFormato incorreto\n";
+        fflush(stdin);
         getchar();
         continue;
     }
-        Administrador administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
-        resultado_cadastro = cntr_link_cadastro->CadastroLeitor(administrador);
+        resultado_cadastro = cntr_link_cadastro->CadastroAdministrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
         if(resultado_cadastro.get_resultado() == Resultado::FALHA){
             cout << "\nFalha no cadastro\n";
             cout << "Pressione qualquer tecla para continuar: ";

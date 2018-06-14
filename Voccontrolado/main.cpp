@@ -8,6 +8,7 @@
 #include "controle.hpp"
 #include "interfaces.hpp"
 #include "stubs.hpp"
+#include "servicos.hpp"
 #include "comandos.hpp"
 
 #define ACESSAR_CONTA 1
@@ -18,7 +19,7 @@
 
 using namespace std;
 
-int main(void){
+int main(int argc, char *argv[]){
     do{
         int escolha;
         int servico;
@@ -37,8 +38,8 @@ int main(void){
         AutenticacaoIS *stub_autenticacao;
         stub_autenticacao = new StubAutenticacao();
 
-        CadastroIS *stub_cadastro;
-        stub_cadastro = new StubCadastro();
+        CadastroIS *controle_cadastro;
+        controle_cadastro = new ControleCadastro();
 
         UsuarioIS *stub_usuario;
         stub_usuario = new StubUsuario();
@@ -48,7 +49,7 @@ int main(void){
 
         //Link controladora-stub
         cntr_ia_autenticacao->set_aut_ia(stub_autenticacao);
-        cntr_ia_cadastro->set_cadastro_ia(stub_cadastro);
+        cntr_ia_cadastro->set_cadastro_ia(controle_cadastro);
         cntr_ia_usuario->set_usuario_ia(stub_usuario);
         cntr_ia_vocabulario->set_vocabulario_ia(stub_vocabulario);
 
@@ -124,7 +125,7 @@ int main(void){
         delete cntr_ia_usuario;
         delete cntr_ia_vocabulario;
         delete stub_autenticacao;
-        delete stub_cadastro;
+        delete controle_cadastro;
         delete stub_usuario;
         delete stub_vocabulario;
     }while(true);//do while principal

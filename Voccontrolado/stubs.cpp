@@ -109,8 +109,8 @@ ResultadoUsuario StubAutenticacao::TipoDeUsuario(const Correio_Eletronico &corre
 
 /*----------------------------------------------------------------------------*/
 
-Resultado StubCadastro::CadastroLeitor(const Leitor &leitor) throw (invalid_argument){
-    Resultado resultado;
+/*ResultadoUsuario StubCadastro::CadastroLeitor(const Leitor &leitor) throw (invalid_argument){
+    ResultadoUsuario resultado;
     this->leitor = leitor;
 
     if(leitor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
@@ -128,8 +128,8 @@ Resultado StubCadastro::CadastroLeitor(const Leitor &leitor) throw (invalid_argu
     return resultado;
 }
 
-Resultado StubCadastro::CadastroDesenvolvedor(const Desenvolvedor &desenvolvedor) throw (invalid_argument) {
-    Resultado resultado;
+ResultadoUsuario StubCadastro::CadastroDesenvolvedor(const Desenvolvedor &desenvolvedor) throw (invalid_argument) {
+    ResultadoUsuario resultado;
     this->desenvolvedor = desenvolvedor;
 
     if(desenvolvedor.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
@@ -147,8 +147,8 @@ Resultado StubCadastro::CadastroDesenvolvedor(const Desenvolvedor &desenvolvedor
     return resultado;
 }
 
-Resultado StubCadastro::CadastroAdministrador(const Administrador &administrador) throw (invalid_argument){
-    Resultado resultado;
+ResultadoUsuario StubCadastro::CadastroAdministrador(const Administrador &administrador) throw (invalid_argument){
+    ResultadoUsuario resultado;
     this->administrador = administrador;
 
     if(administrador.get_correio_eletronico().get_correio_eletronico() == TRIGGER_CORREIO_ELETRONICO){
@@ -165,6 +165,7 @@ Resultado StubCadastro::CadastroAdministrador(const Administrador &administrador
 
     return resultado;
 }
+*/
 
 /*----------------------------------------------------------------------------*/
 

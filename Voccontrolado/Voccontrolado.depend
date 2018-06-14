@@ -83,7 +83,7 @@
 	"stubs.hpp"
 	"comandos.hpp"
 
-1527042813 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
+1528945803 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
 	"comandos.hpp"
 
 1527042813 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
@@ -97,7 +97,7 @@
 	"stubs.hpp"
 	"controle.hpp"
 
-1527042813 c:\users\henri\vocabularioscontrolados\voccontrolado\interfaces.hpp
+1528946407 c:\users\henri\vocabularioscontrolados\voccontrolado\interfaces.hpp
 	<exception>
 	<stdexcept>
 	<iostream>
@@ -112,11 +112,11 @@
 	<exception>
 	<stdexcept>
 
-1527041507 c:\users\henri\vocabularioscontrolados\voccontrolado\entidades.hpp
+1528944860 c:\users\henri\vocabularioscontrolados\voccontrolado\entidades.hpp
 	<iostream>
 	"dominios.hpp"
 
-1527042813 c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.hpp
+1528905516 c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.hpp
 	<iostream>
 	<stdexcept>
 	<exception>
@@ -155,7 +155,7 @@
 	<stdexcept>
 	"entidades.hpp"
 
-1528587754 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
+1528947354 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -165,9 +165,10 @@
 	"controle.hpp"
 	"interfaces.hpp"
 	"stubs.hpp"
+	"servicos.hpp"
 	"comandos.hpp"
 
-1527041507 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
+1528905521 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
 	<iostream>
 	"stubs.hpp"
 	"dominios.hpp"
@@ -318,4 +319,30 @@
 	<unicode/utf16.h>
 	<ctype.h>
 	<math.h>
+
+1528945020 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.cpp
+	"comandoSQL.hpp"
+
+1528945018 c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.hpp
+	<iostream>
+	<conio.h>
+	<string>
+	<stdio.h>
+	<list>
+	"sqlite3.h"
+	"dominios.hpp"
+	"entidades.hpp"
+
+1528177886 c:\users\henri\vocabularioscontrolados\voccontrolado\sqlite3.h
+	<stdarg.h>
+
+1528947600 source:c:\users\henri\vocabularioscontrolados\voccontrolado\servicos.cpp
+	"servicos.hpp"
+
+1528947014 c:\users\henri\vocabularioscontrolados\voccontrolado\servicos.hpp
+	"controle.hpp"
+	"dominios.hpp"
+	"entidades.hpp"
+	"interfaces.hpp"
+	"comandoSQL.hpp"
 

@@ -165,19 +165,25 @@ class CadastroIS{
          * @param const Leitor&
          * @return A funcao retorna Resultado indicando se foi sucesso ou falha.
          */
-        virtual Resultado CadastroLeitor(const Leitor&) throw (invalid_argument) = 0;
+        virtual Resultado CadastroLeitor(const Nome &nome, const Sobrenome &sobrenome,
+                                         const Correio_Eletronico &correio_eletronico, const Senha &senha) throw (invalid_argument) = 0;
         /**
          * @brief CadastroDesenvolvedor() é uma funcao que a partir de Leitor ele pega os dados do usuario e passa para o objeto Desenvolvedor.
          * @param const Leitor&
          * @return A funcao retorna Resultado indicando se foi sucesso ou falha.
          */
-        virtual Resultado CadastroDesenvolvedor(const Desenvolvedor&) throw (invalid_argument) = 0;
+        virtual Resultado CadastroDesenvolvedor(const Nome &nome, const Sobrenome &sobrenome,
+                                                const Data &data_nascimento, const Correio_Eletronico &correio_eletronico,
+                                                const Senha &senha) throw (invalid_argument) = 0;
         /**
          * @brief CadastroAdministrador() é uma funcao que a partir de Leitor ele pega os dados do usuario e passa para o objeto Administrador.
          * @param const Leitor&
          * @return A funcao retorna Resultado indicando se foi sucesso ou falha.
          */
-        virtual Resultado CadastroAdministrador(const Administrador&) throw (invalid_argument) = 0;
+        virtual Resultado CadastroAdministrador(const Nome &nome, const Sobrenome &sobrenome,
+                                                const Telefone &telefone, const Data &data_nascimento,
+                                                const Endereco &endereco, const Correio_Eletronico &correio_eletronico,
+                                                const Senha &senha) throw (invalid_argument) = 0;
         /**
          * @brief Destrutor virtual default da classe CadastroIS.
          */
