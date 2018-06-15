@@ -119,12 +119,18 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
         cin >> input;
         data_nascimento.set_data(input);
         cout << "\nEscreva seu telefone: ";
-        cin >> input;
+        cin.clear();
+        cin.ignore();
+        getline(cin, input);
+
         telefone.set_telefone(input);
         cout << "\nEscreva seu endereco: ";
-        cin >> input;
+        cin.clear();
+        getline(cin, input);
+
         endereco.set_endereco(input);
         cout << "\nEscreva sua senha: ";
+
         cin >> input;
         senha.set_senha(input);
 

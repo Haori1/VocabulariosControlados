@@ -83,7 +83,7 @@
 	"stubs.hpp"
 	"comandos.hpp"
 
-1529023940 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
+1529085536 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
 	"comandos.hpp"
 
 1528014578 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
@@ -131,7 +131,7 @@
 	"interfaces.hpp"
 	"comandos.hpp"
 
-1528014578 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
+1529025369 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -320,7 +320,7 @@
 	<ctype.h>
 	<math.h>
 
-1529021838 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.cpp
+1529084341 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.cpp
 	"comandoSQL.hpp"
 
 1529020218 c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.hpp

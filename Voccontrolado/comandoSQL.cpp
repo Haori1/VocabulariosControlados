@@ -60,7 +60,7 @@ ComandoSQLCadastrar::ComandoSQLCadastrar(const Desenvolvedor &desenvolvedor, str
 }
 
 ComandoSQLCadastrar::ComandoSQLCadastrar(const Administrador &administrador, string tipo){
-    comando_sql += "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Telefone, Data, Endereco, Email, Senha) VALUES (";
+    comando_sql += "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Telefone, Data, Endereco, Email, Senha, Tipo) VALUES (";
     comando_sql += "'" + administrador.get_nome().get_nome() + "', ";
     comando_sql += "'" + administrador.get_sobrenome().get_sobrenome() + "', ";
     comando_sql += "'" + administrador.get_telefone().get_telefone() + "', ";
