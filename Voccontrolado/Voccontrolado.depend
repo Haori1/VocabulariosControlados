@@ -83,7 +83,7 @@
 	"stubs.hpp"
 	"comandos.hpp"
 
-1529023211 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
+1529023940 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
 	"comandos.hpp"
 
 1528014578 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
@@ -106,7 +106,7 @@
 	"dominios.hpp"
 	"entidades.hpp"
 
-1529023453 c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.hpp
+1529023963 c:\users\henri\vocabularioscontrolados\voccontrolado\dominios.hpp
 	<iostream>
 	<string>
 	<exception>

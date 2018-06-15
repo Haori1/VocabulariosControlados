@@ -46,10 +46,8 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
             cin >> input;
             senha.set_senha(input);
 
-        }
-        catch (const invalid_argument &exp)
-        {
-            cout << "\nEntrada com formato incorreto.\n";
+        } catch (invalid_argument &exp) {
+            cout << exp.what() << endl;
             cout << "Pressione qualquer tecla para continuar: ";
             fflush(stdin);
             getchar();
@@ -239,7 +237,9 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                     }
                     catch(invalid_argument &exp)
                     {
-                        cout<< "\nNome invalido"<< endl;
+                        cout<< exp.what() << endl;
+                        fflush(stdin);
+                        getchar();
                         continue;
                     }
 
@@ -278,6 +278,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                 catch(invalid_argument &exp)
                                 {
                                     cout << "\n" << exp.what() << endl;
+                                    fflush(stdin);
+                                    getchar();
                                     continue;
                                 }
 
@@ -338,6 +340,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                         catch(invalid_argument &exp)
                                         {
                                             cout << "\n" << exp.what() << endl;
+                                            fflush(stdin);
+                                            getchar();
                                             continue;
                                         }
                                     }
@@ -466,7 +470,9 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                     }
                                     catch(invalid_argument &exp)
                                     {
-                                        cout<< "\nNome invalido"<< endl;
+                                        cout<< endl << exp.what() << endl;
+                                        fflush(stdin);
+                                        getchar();
                                         continue;
                                     }
                                     tamanho = lista_vocabularios.size();
@@ -545,7 +551,9 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                     }
                                     catch(invalid_argument &exp)
                                     {
-                                        cout<< "\nNome invalido"<< endl;
+                                        cout << endl << exp.what() << endl;
+                                        fflush(stdin);
+                                        getchar();
                                         continue;
                                     }
                                     tamanho = lista_vocabularios.size();
@@ -628,7 +636,7 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                         }
                         catch(invalid_argument &exp)
                         {
-                            cout<< "\nNome invalido"<< endl;
+                            cout << endl << exp.what() << endl;
                             continue;
                         }
                         tamanho = lista_vocabularios.size();
@@ -694,7 +702,7 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                         }
                         catch(invalid_argument &exp)
                         {
-                            cout<< "\nNome invalido"<< endl;
+                            cout << endl << exp.what() << endl;
                             continue;
                         }
                         tamanho = lista_vocabularios.size();
@@ -723,7 +731,7 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                         }
                         catch(invalid_argument &exp)
                         {
-                            cout << "\n" << exp.what() << endl;
+                            cout << endl << exp.what() << endl;
                             return;
                         }
                         if(resultado.get_resultado() == Resultado::FALHA)
