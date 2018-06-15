@@ -72,5 +72,19 @@ class ComandoSQLCadastrar : public ComandoSQL {
         ComandoSQLCadastrar(const Administrador&, string tipo);
 };
 
+/*----------------------------------------------------------------------------*/
+
+class ComandoSQLRetornoSenha : public ComandoSQL {
+    public:
+        ComandoSQLRetornoSenha(const Correio_Eletronico&);
+        string RetornoSenha() const;
+};
+
+class ComandoSQLRetornoEmail : public ComandoSQL {
+    public:
+        ComandoSQLRetornoEmail(const Correio_Eletronico&);
+        string RetornoEmail() const;
+};
+
 
 #endif

@@ -71,14 +71,15 @@ class StubAutenticacao : public AutenticacaoIS{
          * @brief Funcao que simula a autenticacao se o usuario conseguiu entrar com sucesso ou nao.
          * @return Retorna o tipo Resultado que contem se a funcao foi sucesso ou falha.
          */
-        Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
+        // Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
         /**
          * @brief Funcao que de acordo com o trigger passado retorna um tipo de objeto Leitor, Desenvolvedor, Administrador.
          * @return Retorna o tipo ResultadoUsuario que contem se a funcao foi sucesso ou falha e um objeto Leitor ou Desenvolvedor ou Administrador preenchido.
          */
-        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
+        //ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
 
 };
+
 
 /*----------------------------------------------------------------------------*/
 

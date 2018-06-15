@@ -1,9 +1,10 @@
 #include "servicos.hpp"
 
-/*----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------*/
 
-Resultado ControleCadastro::CadastroLeitor(const Nome &nome, const Sobrenome &sobrenome,
-                                   const Correio_Eletronico &correio_eletronico, const Senha &senha) throw (invalid_argument){
+Resultado ServicoCadastroControle::CadastroLeitor(const Nome &nome, const Sobrenome &sobrenome,
+                                                  const Correio_Eletronico &correio_eletronico,
+                                                  const Senha &senha) throw (invalid_argument){
     Resultado resultado;
     Leitor leitor;
 
@@ -37,11 +38,12 @@ Resultado ControleCadastro::CadastroLeitor(const Nome &nome, const Sobrenome &so
     return resultado;
 }
 
-/*----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------*/
 
-Resultado ControleCadastro::CadastroDesenvolvedor(const Nome &nome, const Sobrenome &sobrenome,
-                                          const Data &data_nascimento, const Correio_Eletronico &correio_eletronico,
-                                          const Senha &senha) throw (invalid_argument){
+Resultado ServicoCadastroControle::CadastroDesenvolvedor(const Nome &nome, const Sobrenome &sobrenome,
+                                                         const Data &data_nascimento,
+                                                         const Correio_Eletronico &correio_eletronico,
+                                                         const Senha &senha) throw (invalid_argument){
 
     Resultado resultado;
     Desenvolvedor desenvolvedor;
@@ -81,12 +83,12 @@ Resultado ControleCadastro::CadastroDesenvolvedor(const Nome &nome, const Sobren
     return resultado;
 }
 
-/*----------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------*/
 
-Resultado ControleCadastro::CadastroAdministrador(const Nome &nome, const Sobrenome &sobrenome,
-                                                  const Telefone &telefone, const Data &data_nascimento,
-                                                  const Endereco &endereco, const Correio_Eletronico &correio_eletronico,
-                                                  const Senha &senha) throw (invalid_argument){
+Resultado ServicoCadastroControle::CadastroAdministrador(const Nome &nome, const Sobrenome &sobrenome,
+                                                         const Telefone &telefone, const Data &data_nascimento,
+                                                         const Endereco &endereco, const Correio_Eletronico &correio_eletronico,
+                                                         const Senha &senha) throw (invalid_argument){
     Resultado resultado;
     Administrador administrador;
 
@@ -98,5 +100,58 @@ Resultado ControleCadastro::CadastroAdministrador(const Nome &nome, const Sobren
 
     resultado.set_resultado(Resultado::SUCESSO);
 
+    return resultado;
+}
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+ResultadoUsuario ServicoAutenticacaoControle::Autenticar(const Correio_Eletronico &correio_eletronico, const Senha &senha) throw (invalid_argument){
+    ResultadoUsuario resultado;
+    string senha_db;
+
+    try{
+        ComandoSQLRetornoEmail comandoSQLRetornoEmail(correio_eletronico);
+        comandoSQLRetornoEmail.Executar();
+        string email = comandoSQLRetornoEmail.RetornoEmail();
+
+    } catch (invalid_argument &exp) {
+        cout << "\nEmail ou senha invalidos.\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    try{
+        ComandoSQLRetornoSenha comandoSQLRetornoSenha(correio_eletronico);
+        comandoSQLRetornoSenha.Executar();
+        senha_db = comandoSQLRetornoSenha.RetornoSenha();
+
+    } catch (invalid_argument &exp) {
+        cout << "\nEmail ou senha invalidos.\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    if(senha_db == senha.get_senha()){
+        resultado.set_correio_eletronico(correio_eletronico);
+        resultado.set_resultado(Resultado::SUCESSO);
+    } else {
+        cout << "\nEmail ou senha invalidos.\n";
+        cout << "Pressione qualquer tecla para continuar: ";
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+    }
+
+    return resultado;
+}
+
+ResultadoUsuario ServicoAutenticacaoControle::TipoDeUsuario(const Correio_Eletronico&, const Senha&){
+    ResultadoUsuario resultado;
     return resultado;
 }

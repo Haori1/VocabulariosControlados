@@ -72,3 +72,57 @@ ComandoSQLCadastrar::ComandoSQLCadastrar(const Administrador &administrador, str
 }
 
 /*----------------------------------------------------------------------------*/
+
+ComandoSQLRetornoSenha::ComandoSQLRetornoSenha(const Correio_Eletronico &correio_eletronico){
+    comando_sql += "SELECT Senha FROM Usuario WHERE Email = ";
+    comando_sql += "'" + correio_eletronico.get_correio_eletronico() + "';";
+}
+
+string ComandoSQLRetornoSenha::RetornoSenha() const {
+    Elemento resultado;
+    string senha;
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+
+    lista_resultado.pop_back();
+    senha = resultado.get_valor_coluna();
+
+    lista_resultado.clear();
+
+    return senha;
+}
+
+/*----------------------------------------------------------------------------*/
+
+ComandoSQLRetornoEmail::ComandoSQLRetornoEmail(const Correio_Eletronico &correio_eletronico){
+    comando_sql += "SELECT Email FROM Usuario WHERE Email = ";
+    comando_sql += "'" + correio_eletronico.get_correio_eletronico() + "';";
+}
+
+string ComandoSQLRetornoEmail::RetornoEmail() const {
+    Elemento resultado;
+    string email;
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+
+    lista_resultado.pop_back();
+    email = resultado.get_valor_coluna();
+
+    lista_resultado.clear();
+
+    return email;
+}
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------*/

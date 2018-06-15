@@ -35,11 +35,11 @@ int main(int argc, char *argv[]){
         cntr_ia_vocabulario = new ApresentacaoVocabularioControle();
 
         //Stubs
-        AutenticacaoIS *stub_autenticacao;
-        stub_autenticacao = new StubAutenticacao();
+        AutenticacaoIS *controle_autenticacao;
+        controle_autenticacao = new ServicoAutenticacaoControle();
 
         CadastroIS *controle_cadastro;
-        controle_cadastro = new ControleCadastro();
+        controle_cadastro = new ServicoCadastroControle();
 
         UsuarioIS *stub_usuario;
         stub_usuario = new StubUsuario();
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
         stub_vocabulario = new StubVocabularios();
 
         //Link controladora-stub
-        cntr_ia_autenticacao->set_aut_ia(stub_autenticacao);
+        cntr_ia_autenticacao->set_aut_ia(controle_autenticacao);
         cntr_ia_cadastro->set_cadastro_ia(controle_cadastro);
         cntr_ia_usuario->set_usuario_ia(stub_usuario);
         cntr_ia_vocabulario->set_vocabulario_ia(stub_vocabulario);
@@ -80,8 +80,8 @@ int main(int argc, char *argv[]){
                         case ResultadoUsuario::SUCESSO:
                             do{
                                 system(CLEAR);
-                                cout << endl << "Voce ira utilizar qual servico: " << endl;
-                                cout << "1. Servicos de usuario" << endl;
+                                cout << endl << "Voce ira utilizar qual servico: " << endl; //Fazer uma função disso para poder funcionar
+                                cout << "1. Servicos de usuario" << endl;                   //corretamente
                                 cout << "2. Servicos de vocabulario" << endl;
                                 cin >> servico;
                             }while(servico < 1 || servico > 2);
@@ -124,7 +124,7 @@ int main(int argc, char *argv[]){
         delete cntr_ia_cadastro;
         delete cntr_ia_usuario;
         delete cntr_ia_vocabulario;
-        delete stub_autenticacao;
+        delete controle_autenticacao;
         delete controle_cadastro;
         delete stub_usuario;
         delete stub_vocabulario;

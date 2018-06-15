@@ -15,7 +15,7 @@ using namespace std;
 ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_argument)
 {
     ResultadoUsuario resultado_autenticacao;
-    Resultado resultado;
+    ResultadoUsuario resultado;
     Correio_Eletronico correio_eletronico;
     Senha senha;
     string input;
@@ -27,6 +27,7 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
         {
             if(contador != 0)
             {
+                system(CLEAR);
                 cout << "Voce possui 3 tentativas. Tentativa: " << contador << " de 3\n";
                 cout << "Deseja retornar? S/N: ";
                 cin >> input;
@@ -55,16 +56,8 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
         }//end try catch
 
         resultado = cntr_link_autenticacao->Autenticar(correio_eletronico, senha);
-        resultado_autenticacao = cntr_link_autenticacao->TipoDeUsuario(correio_eletronico, senha);
-        if(resultado.get_resultado() == ResultadoUsuario::FALHA)
-        {
-            cout << "Email ou Senha Invalido" << endl;
-            cout << "Pressione qualquer tecla para continuar: ";
-            fflush(stdin);
-            getchar();
-        }
-        else
-        {
+        //resultado_autenticacao = cntr_link_autenticacao->TipoDeUsuario(correio_eletronico, senha);
+        if(resultado.get_resultado() == ResultadoUsuario::SUCESSO) {
             resultado_autenticacao.set_resultado(resultado.get_resultado());
             resultado_autenticacao.set_correio_eletronico(correio_eletronico);
             return resultado_autenticacao;

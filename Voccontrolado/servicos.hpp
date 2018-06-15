@@ -9,7 +9,9 @@
 
 using namespace std;
 
-class ControleCadastro : public CadastroIS {
+/*----------------------------------------------------------------------------------*/
+
+class ServicoCadastroControle : public CadastroIS {
     private:
         Leitor leitor;
         Desenvolvedor desenvolvedor;
@@ -28,6 +30,22 @@ class ControleCadastro : public CadastroIS {
                                         const Endereco &endereco, const Correio_Eletronico &correio_eletronico,
                                         const Senha &senha) throw (invalid_argument) override;
 };
+
+/*----------------------------------------------------------------------------------*/
+
+class ServicoAutenticacaoControle : public AutenticacaoIS {
+    public:
+        ResultadoUsuario Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
+        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
+};
+
+/*----------------------------------------------------------------------------------*/
+
+class ControleUsuario : public UsuarioIS {
+
+};
+
+/*----------------------------------------------------------------------------------*/
 
 
 

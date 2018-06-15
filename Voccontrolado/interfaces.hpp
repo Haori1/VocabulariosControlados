@@ -65,7 +65,7 @@ class AutenticacaoIS{
          * @param const Correio_Eletronico&
          * @param const Senha&
          */
-        virtual Resultado Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
         /**
          * @brief TipoDeUsuario() é uma funcao que a partir do email, ele determina que tipo de usuario ira ser escrito e retornado pelo ResultadoUsuario.
          * @param const Correio_Eletronico&

@@ -119,16 +119,16 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
         cin >> input;
         data_nascimento.set_data(input);
         cout << "\nEscreva seu telefone: ";
-        cin.clear();
+        cin.clear();    //Limpar o cin pra poder pegar o input de maneira correta
         cin.ignore();
-        getline(cin, input);
+        getline(cin, input);    //Usar getline pois o cin não pega espaços
 
         telefone.set_telefone(input);
         cout << "\nEscreva seu endereco: ";
         cin.clear();
         getline(cin, input);
 
-        endereco.set_endereco(input);
+        endereco.set_endereco(input);   //Endereço esta bugado, quando vc tenta pegar "Vila da folha" ele dá erro de dois espaços concecutivos
         cout << "\nEscreva sua senha: ";
 
         cin >> input;
@@ -147,6 +147,7 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
             fflush(stdin);
             getchar();
         }
+        //Pesquisar dps pra ver se realmente cadastrou antes de retornar
         return;
 
     }//end while(true)

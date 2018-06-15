@@ -83,7 +83,7 @@
 	"stubs.hpp"
 	"comandos.hpp"
 
-1529085536 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
+1529086581 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.cpp
 	"comandos.hpp"
 
 1528014578 c:\users\henri\vocabularioscontrolados\voccontrolado\comandos.hpp
@@ -97,7 +97,7 @@
 	"stubs.hpp"
 	"controle.hpp"
 
-1528946407 c:\users\henri\vocabularioscontrolados\voccontrolado\interfaces.hpp
+1529095988 c:\users\henri\vocabularioscontrolados\voccontrolado\interfaces.hpp
 	<exception>
 	<stdexcept>
 	<iostream>
@@ -116,7 +116,7 @@
 	<iostream>
 	"dominios.hpp"
 
-1528905516 c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.hpp
+1529095789 c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.hpp
 	<iostream>
 	<stdexcept>
 	<exception>
@@ -131,7 +131,7 @@
 	"interfaces.hpp"
 	"comandos.hpp"
 
-1529025369 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
+1529098307 source:c:\users\henri\vocabularioscontrolados\voccontrolado\controle.cpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -155,7 +155,7 @@
 	<stdexcept>
 	"entidades.hpp"
 
-1528947354 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
+1529095538 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -168,7 +168,7 @@
 	"servicos.hpp"
 	"comandos.hpp"
 
-1528905521 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
+1529095958 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
 	<iostream>
 	"stubs.hpp"
 	"dominios.hpp"
@@ -320,10 +320,10 @@
 	<ctype.h>
 	<math.h>
 
-1529084341 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.cpp
+1529098096 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.cpp
 	"comandoSQL.hpp"
 
-1529020218 c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.hpp
+1529089090 c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.hpp
 	<iostream>
 	<conio.h>
 	<string>
@@ -336,10 +336,10 @@
 1528847562 c:\users\henri\vocabularioscontrolados\voccontrolado\sqlite3.h
 	<stdarg.h>
 
-1528947600 source:c:\users\henri\vocabularioscontrolados\voccontrolado\servicos.cpp
+1529098023 source:c:\users\henri\vocabularioscontrolados\voccontrolado\servicos.cpp
 	"servicos.hpp"
 
-1528947014 c:\users\henri\vocabularioscontrolados\voccontrolado\servicos.hpp
+1529096057 c:\users\henri\vocabularioscontrolados\voccontrolado\servicos.hpp
 	"controle.hpp"
 	"dominios.hpp"
 	"entidades.hpp"
