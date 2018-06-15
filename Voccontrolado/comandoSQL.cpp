@@ -18,10 +18,10 @@ void ComandoSQL::Desconectar() throw (invalid_argument){
 
 void ComandoSQL::Executar() throw (invalid_argument){
     Conectar();
-    rc = sqlite3_exec(bd, comando_sql.c_str(), Callback, 0, &mensagem);
+    rc = sqlite3_exec(bd, comando_sql.c_str(), Callback, nullptr, &mensagem);
     if(rc != SQLITE_OK){
         if(mensagem)
-            free(mensagem);
+            sqlite3_free(mensagem);
 
         throw invalid_argument("Erro na execucao do comando SQL");
     }
@@ -29,7 +29,6 @@ void ComandoSQL::Executar() throw (invalid_argument){
 }
 
 int ComandoSQL::Callback(void *not_used, int argc, char **valor_coluna, char **nome_coluna){
-    not_used = 0;
     Elemento elemento;
 
     for(int i = 0; i < argc; i++){
@@ -41,37 +40,35 @@ int ComandoSQL::Callback(void *not_used, int argc, char **valor_coluna, char **n
 }
 /*----------------------------------------------------------------------------*/
 
-//Nao ta funfando o comando n sei pq xdddd
-
 ComandoSQLCadastrar::ComandoSQLCadastrar(const Leitor &leitor, string tipo){
-    comando_sql = "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Senha, Email, Tipo) VALUES (";
-    comando_sql = "'" + leitor.get_nome().get_nome() + "', ";
-    comando_sql = "'" + leitor.get_sobrenome().get_sobrenome() + "', ";
-    comando_sql = "'" + leitor.get_senha().get_senha() + "', ";
-    comando_sql = "'" + leitor.get_correio_eletronico().get_correio_eletronico() + "', ";
-    comando_sql = "'" + tipo + "');";
+    comando_sql += "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Senha, Email, Tipo) VALUES (";
+    comando_sql += "'" + leitor.get_nome().get_nome() + "', ";
+    comando_sql += "'" + leitor.get_sobrenome().get_sobrenome() + "', ";
+    comando_sql += "'" + leitor.get_senha().get_senha() + "', ";
+    comando_sql += "'" + leitor.get_correio_eletronico().get_correio_eletronico() + "', ";
+    comando_sql += "'" + tipo + "');";
 }
 
 ComandoSQLCadastrar::ComandoSQLCadastrar(const Desenvolvedor &desenvolvedor, string tipo){
-    comando_sql = "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Data, Email, Senha, Tipo) VALUES (";
-    comando_sql = "'" + desenvolvedor.get_nome().get_nome() + "', ";
-    comando_sql = "'" + desenvolvedor.get_sobrenome().get_sobrenome() + "', ";
-    comando_sql = "'" + desenvolvedor.get_data().get_data() + "', ";
-    comando_sql = "'" + desenvolvedor.get_correio_eletronico().get_correio_eletronico() + "', ";
-    comando_sql = "'" + desenvolvedor.get_senha().get_senha() + "', ";
-    comando_sql = "'" + tipo + "');";
+    comando_sql += "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Data, Email, Senha, Tipo) VALUES (";
+    comando_sql += "'" + desenvolvedor.get_nome().get_nome() + "', ";
+    comando_sql += "'" + desenvolvedor.get_sobrenome().get_sobrenome() + "', ";
+    comando_sql += "'" + desenvolvedor.get_data().get_data() + "', ";
+    comando_sql += "'" + desenvolvedor.get_correio_eletronico().get_correio_eletronico() + "', ";
+    comando_sql += "'" + desenvolvedor.get_senha().get_senha() + "', ";
+    comando_sql += "'" + tipo += "');";
 }
 
 ComandoSQLCadastrar::ComandoSQLCadastrar(const Administrador &administrador, string tipo){
-    comando_sql = "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Telefone, Data, Endereco, Email, Senha) VALUES (";
-    comando_sql = "'" + administrador.get_nome().get_nome() + "', ";
-    comando_sql = "'" + administrador.get_sobrenome().get_sobrenome() + "', ";
-    comando_sql = "'" + administrador.get_telefone().get_telefone() + "', ";
-    comando_sql = "'" + administrador.get_data().get_data() +  "', ";
-    comando_sql = "'" + administrador.get_endereco().get_endereco() + "', ";
-    comando_sql = "'" + administrador.get_correio_eletronico().get_correio_eletronico() + "', ";
-    comando_sql = "'" + administrador.get_senha().get_senha() + "', ";
-    comando_sql = "'" + tipo + "');";
+    comando_sql += "INSERT or IGNORE INTO Usuario (Nome, Sobrenome, Telefone, Data, Endereco, Email, Senha) VALUES (";
+    comando_sql += "'" + administrador.get_nome().get_nome() + "', ";
+    comando_sql += "'" + administrador.get_sobrenome().get_sobrenome() + "', ";
+    comando_sql += "'" + administrador.get_telefone().get_telefone() + "', ";
+    comando_sql += "'" + administrador.get_data().get_data() +  "', ";
+    comando_sql += "'" + administrador.get_endereco().get_endereco() + "', ";
+    comando_sql += "'" + administrador.get_correio_eletronico().get_correio_eletronico() + "', ";
+    comando_sql += "'" + administrador.get_senha().get_senha() + "', ";
+    comando_sql += "'" + tipo + "');";
 }
 
 /*----------------------------------------------------------------------------*/

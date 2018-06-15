@@ -38,7 +38,7 @@ void ComandoCadastroLeitorIA::ExecutarComando(CadastroIS *cntr_link_cadastro) th
             fflush(stdin);
             getchar();
         }
-        
+
         return;
     }//end while(true)
 }//end Executar()
@@ -129,7 +129,7 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
         senha.set_senha(input);
 
     } catch (invalid_argument &exp) {
-        cout << "\nFormato incorreto\n";
+        cout << exp.what() << endl;
         fflush(stdin);
         getchar();
         continue;

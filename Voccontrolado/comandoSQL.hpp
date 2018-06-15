@@ -57,7 +57,7 @@ class ComandoSQL{
 
     public:
         ComandoSQL(){
-            nome_banco_dados = "voc_controlado_db";
+            nome_banco_dados = "voc_controlado_db.db";
         }
 
         void Executar() throw (invalid_argument);
