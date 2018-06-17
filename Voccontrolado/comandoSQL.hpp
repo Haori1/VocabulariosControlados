@@ -86,5 +86,9 @@ class ComandoSQLRetornoEmail : public ComandoSQL {
         string RetornoEmail() const;
 };
 
+class ComandoSQLCriarTabelas : public ComandoSQL {
+    public:
+        void CriarTabelas();
+};
 
 #endif

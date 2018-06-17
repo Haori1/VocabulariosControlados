@@ -3,6 +3,7 @@
 #include <exception>
 #include <stdexcept>
 
+
 #include "dominios.hpp"
 #include "entidades.hpp"
 #include "controle.hpp"
@@ -10,6 +11,7 @@
 #include "stubs.hpp"
 #include "servicos.hpp"
 #include "comandos.hpp"
+#include "comandoSQL.hpp"
 
 #define ACESSAR_CONTA 1
 #define CADASTRAR 2
@@ -20,6 +22,10 @@
 using namespace std;
 
 int main(int argc, char *argv[]){
+
+    ComandoSQLCriarTabelas comando_sql_criar_tabelas;
+    comando_sql_criar_tabelas.CriarTabelas();
+
     do{
         int escolha;
         int servico;
@@ -129,6 +135,8 @@ int main(int argc, char *argv[]){
         delete stub_usuario;
         delete stub_vocabulario;
     }while(true);//do while principal
+
+
 
     return 0;
 }

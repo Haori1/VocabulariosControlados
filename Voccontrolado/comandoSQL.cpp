@@ -4,6 +4,54 @@ list<Elemento> ComandoSQL::lista_resultado;
 
 /*----------------------------------------------------------------------------*/
 
+void ComandoSQLCriarTabelas::CriarTabelas() {
+  comando_sql += "CREATE TABLE IF NOT EXISTS Usuario (";
+  comando_sql += "Nome VARCHAR(21) NOT NULL, ";
+  comando_sql += "Sobrenome VARCHAR(21) NOT NULL, ";
+  comando_sql += "Senha VARCHAR(9) NOT NULL, ";
+  comando_sql += "Email VARCHAR(100) NOT NULL, ";
+  comando_sql += "Nascimento VARCHAR(11), ";
+  comando_sql += "Telefone VARCHAR(14), ";
+  comando_sql += "Endereco VARCHAR(21), ";
+  comando_sql += "Tipo INTEGER NOT NULL, ";
+  comando_sql += "PRIMARY KEY(Email) );";
+
+  comando_sql += "CREATE TABLE IF NOT EXISTS Definicao (";
+  comando_sql += "Texto VARCHAR(31) NOT NULL, ";
+  comando_sql += "Data VARCHAR(11) NOT NULL, ";
+  comando_sql += "PRIMARY KEY(Texto) );";
+
+  comando_sql += "CREATE TABLE IF NOT EXISTS Vocabulario (";
+  comando_sql += "Nome VARCHAR(21) NOT NULL, ";
+  comando_sql += "Idioma VARCHAR(4) NOT NULL, ";
+  comando_sql += "Data VARCHAR(11) NOT NULL, ";
+  comando_sql += "Definicao INT NOT NULL, ";
+  comando_sql += "Administrador VARCHAR(100) NOT NULL, ";
+  comando_sql += "FOREIGN KEY(Definicao) REFERENCES Definicao(Texto) ON DELETE CASCADE, ";
+  comando_sql += "FOREIGN KEY(Administrador) REFERENCES Usuario(Email) ON DELETE CASCADE, ";
+  comando_sql += "PRIMARY KEY(Nome) );";
+
+  comando_sql += "CREATE TABLE IF NOT EXISTS Termo (";
+  comando_sql += "Nome VARCHAR(21) NOT NULL, ";
+  comando_sql += "Classe VARCHAR(3) NOT NULL, ";
+  comando_sql += "Data VARCHAR(11) NOT NULL, ";
+  comando_sql += "Vocabulario VARCHAR(21) NOT NULL, ";
+  comando_sql += "FOREIGN KEY(Vocabulario) REFERENCES Vocabulario(Nome) ON DELETE CASCADE, ";
+  comando_sql += "PRIMARY KEY(Nome) );";
+
+  comando_sql += "CREATE TABLE IF NOT EXISTS Desenvolvedor_Vocabulario (";
+  comando_sql += "Desenvolvedor VARCHAR(100) NOT NULL, ";
+  comando_sql += "Vocabulario VARCHAR(21) NOT NULL, ";
+  comando_sql += "FOREIGN KEY(Desenvolvedor) REFERENCES Usuario(Email) ON DELETE CASCADE, ";
+  comando_sql += "FOREIGN KEY(Vocabulario) REFERENCES Vocabulario(Nome) ON DELETE CASCADE );";
+
+  comando_sql += "CREATE TABLE IF NOT EXISTS Termo_Definicao (";
+  comando_sql += "Termo VARCHAR(21) NOT NULL, ";
+  comando_sql += "Definicao VARCHAR(31) NOT NULL, ";
+  comando_sql += "FOREIGN KEY(Termo) REFERENCES Termo(Nome) ON DELETE CASCADE, ";
+  comando_sql += "FOREIGN KEY(Definicao) REFERENCES Definicao(Texto) ON DELETE CASCADE );";
+}
+
 void ComandoSQL::Conectar() throw (invalid_argument){
     rc = sqlite3_open(nome_banco_dados, &bd);
     if(rc != SQLITE_OK)
@@ -118,11 +166,5 @@ string ComandoSQLRetornoEmail::RetornoEmail() const {
 
     return email;
 }
-
-
-
-
-
-
 
 /*----------------------------------------------------------------------------*/
