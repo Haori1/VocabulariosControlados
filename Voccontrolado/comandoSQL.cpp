@@ -10,7 +10,7 @@ void ComandoSQLCriarTabelas::CriarTabelas() {
   comando_sql += "Sobrenome VARCHAR(21) NOT NULL, ";
   comando_sql += "Senha VARCHAR(9) NOT NULL, ";
   comando_sql += "Email VARCHAR(100) NOT NULL, ";
-  comando_sql += "Nascimento VARCHAR(11), ";
+  comando_sql += "Data VARCHAR(11), ";
   comando_sql += "Telefone VARCHAR(14), ";
   comando_sql += "Endereco VARCHAR(21), ";
   comando_sql += "Tipo INTEGER NOT NULL, ";

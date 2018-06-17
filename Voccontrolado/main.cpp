@@ -25,6 +25,7 @@ int main(int argc, char *argv[]){
 
     ComandoSQLCriarTabelas comando_sql_criar_tabelas;
     comando_sql_criar_tabelas.CriarTabelas();
+    comando_sql_criar_tabelas.Executar();
 
     do{
         int escolha;

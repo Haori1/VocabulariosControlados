@@ -155,7 +155,7 @@
 	<stdexcept>
 	"entidades.hpp"
 
-1529095538 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
+1529276874 source:c:\users\henri\vocabularioscontrolados\voccontrolado\main.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -167,6 +167,7 @@
 	"stubs.hpp"
 	"servicos.hpp"
 	"comandos.hpp"
+	"comandoSQL.hpp"
 
 1529095958 source:c:\users\henri\vocabularioscontrolados\voccontrolado\stubs.cpp
 	<iostream>
@@ -321,10 +322,10 @@
 	<ctype.h>
 	<math.h>
 
-1529098096 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.cpp
+1529276903 source:c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.cpp
 	"comandoSQL.hpp"
 
-1529089090 c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.hpp
+1529276071 c:\users\henri\vocabularioscontrolados\voccontrolado\comandosql.hpp
 	<iostream>
 	<conio.h>
 	<string>
