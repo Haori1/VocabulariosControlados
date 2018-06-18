@@ -192,3 +192,58 @@ void ServicoUsuarioControle::Exibir(const Administrador &administrador) throw (i
     fflush(stdin);
     getchar();
 }
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+Resultado ServicoVocabularios::CriaVocabulario(ResultadoUsuario &resultado_usuario) throw(invalid_argument) {
+    Resultado resultado;
+    Nome nome;
+    Idioma idioma;
+    Data data;
+    Texto_Definicao texto_definicao;
+    string input;
+
+    try{
+        cout << "\nDigite o nome do vocabulario: ";
+        cin >> input;
+        nome.set_nome(input);
+
+        cout << "\nDigite o idioma: ";
+        cin >> input;
+        idioma.set_idioma(input);
+
+        cout << "\nDigite a data: ";
+        cin >> input;
+        data.set_data(input);
+
+        VocControlado voc_controlado(nome, idioma, data);
+
+        cout << "\nDigite o nome da definicao do Vocabulario: ";
+        cin >> input;
+        nome.set_nome(input);
+
+        cout << "\nDigite o texto da definicao: ";
+        cin >> input;
+        texto_definicao.set_texto_definicao(input);
+
+        Definicao definicao(nome, texto_definicao);
+
+        ComandoSQLRegistraDefinicao ComandoSQLRegistraDefinicao(definicao);
+        ComandoSQLRegistraDefinicao.Executar();
+
+        ComandoSQLRegistraVocabulario ComandoSQLRegistraVocabulario(voc_controlado, definicao, resultado_usuario.get_administrador());
+        ComandoSQLRegistraVocabulario.Executar();
+
+
+    } catch (invalid_argument &exp) {
+        cout << "\n" << exp.what() << endl;
+        cout << "Pressione qualquer tecla para continuar: ";
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}

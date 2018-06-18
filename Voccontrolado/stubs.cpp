@@ -580,6 +580,7 @@ Resultado StubVocabularios::ExcluirTermo(const Termo&) throw(invalid_argument){
     return resultado;
 }
 
+/*
 Resultado StubVocabularios::CriaVocabulario() throw(invalid_argument){
     Resultado resultado;
     VocControlado voc_controlado;
@@ -616,6 +617,7 @@ Resultado StubVocabularios::CriaVocabulario() throw(invalid_argument){
         return resultado;
     }
 }
+*/
 
 Resultado StubVocabularios::ExcluirVocabulario(const VocControlado &voc_controlado) throw(invalid_argument){
     if(voc_controlado.get_nome().get_nome() == TRIGGER_VOCABULARIO_ERRO) {

@@ -380,6 +380,22 @@ Administrador ComandoSQLPesquisarUsuario::PesquisarAdministrador() const {
 
 /*----------------------------------------------------------------------------*/
 
+ComandoSQLRegistraDefinicao::ComandoSQLRegistraDefinicao(const Definicao &definicao){
+    comando_sql += "INSERT or IGNORE INTO Definicao (Texto, Data) VALUES (";
+    comando_sql += "'" + definicao.get_texto_definicao().get_texto_definicao() + "',";
+    comando_sql += "'" + definicao.get_data().get_data() + "');";
+}
+
+ComandoSQLRegistraVocabulario::ComandoSQLRegistraVocabulario(const VocControlado &voc_controlado,const Definicao &definicao,
+                                                             const Administrador &admistrador) {
+    comando_sql += "INSERT or IGNORE INTO Vocabulario (Nome, Idioma, Data, Definicao, Administrador) VALUES (";
+    comando_sql += "'" + voc_controlado.get_nome().get_nome() +  "',";
+    comando_sql += "'" + voc_controlado.get_idioma().get_idioma() + "',";
+    comando_sql += "'" + voc_controlado.get_data().get_data() + "',";
+    comando_sql += "'" + definicao.get_texto_definicao().get_texto_definicao() + "',";
+    comando_sql += "'" + admistrador.get_correio_eletronico().get_correio_eletronico() + "');";
+}
+
 ComandoSQLRetornoVocabularios::ComandoSQLRetornoVocabularios() {
     comando_sql += "SELECT Nome, Idioma, Data FROM Vocabulario";
 }
@@ -387,30 +403,35 @@ ComandoSQLRetornoVocabularios::ComandoSQLRetornoVocabularios() {
 vector<VocControlado>ComandoSQLRetornoVocabularios::GetVocabularios() {
 
     vector<VocControlado> voc_controlados;
-    VocControlado aux;
     Nome nome;
     Idioma idioma;
     Data data;
     Elemento resultado;
 
+    if((lista_resultado.size() % QUANTIDADE_COLUNAS) != 0) {
+        throw("\nErro de consistencia no retorno do banco de dados\n");
+    }
+
     int QUANTIDADE_VOCABULARIOS = lista_resultado.size()/QUANTIDADE_COLUNAS;
 
     if(lista_resultado.empty()) {
-        throw("Vocabularios nao encontrados");
+        throw("\nVocabularios nao encontrados\n");
     } else {
         for(int i = 0; i < QUANTIDADE_VOCABULARIOS; i++) {
 
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            aux.set_nome(nome.set_nome(resultado.get_valor_coluna()));
+            nome.set_nome(resultado.get_valor_coluna());
 
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            aux.set_idioma(idioma.set_idioma(resultado.get_valor_coluna()));
+            idioma.set_idioma(resultado.get_valor_coluna());
 
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            aux.set_data(data.set_data(resultado.get_nome_coluna()));
+            data.set_data(resultado.get_nome_coluna());
+
+            VocControlado aux(nome, idioma, data);
 
             voc_controlados.push_back(aux);
         }
@@ -427,29 +448,34 @@ ComandoSQLRetornoTermos::ComandoSQLRetornoTermos(const VocControlado &voc_contro
 
 vector<Termo> ComandoSQLRetornoTermos::GetTermos() {
     vector<Termo> termos;
-    Termo aux;
     Nome nome;
     Classe_Termo classe_termo;
     Data data;
     Elemento resultado;
 
+    if((lista_resultado.size() % QUANTIDADE_COLUNAS) != 0) {
+        throw("\nErro de consistencia no retorno do banco de dados\n");
+    }
+
     int QUANTIDADE_TERMOS = lista_resultado.size()/QUANTIDADE_COLUNAS;
 
     if(lista_resultado.empty()){
-        throw("Termos nao encontrados para este vocabulario");
+        throw("\nTermos nao encontrados para este vocabulario\n");
     } else {
         for(int i = 0; i < QUANTIDADE_TERMOS; i++) {
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            aux.set_nome(nome.set_nome(resultado.get_valor_coluna()));
+            nome.set_nome(resultado.get_valor_coluna());
 
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            aux.get_classe_termo(classe_termo.set_classe_termo(resultado.get_valor_coluna()));
+            classe_termo.set_classe_termo(resultado.get_valor_coluna());
 
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            aux.set_data(data.set_data(resultado.get_nome_coluna()));
+            data.set_data(resultado.get_nome_coluna());
+
+            Termo aux(nome, classe_termo, data);
 
             termos.push_back(aux);
         }
@@ -457,4 +483,36 @@ vector<Termo> ComandoSQLRetornoTermos::GetTermos() {
 
     lista_resultado.clear();
     return termos;
+}
+
+ComandoSQLRetornoDefinicoesVoc::ComandoSQLRetornoDefinicoesVoc(const VocControlado &voc_controlado) {
+    comando_sql += "SELECT Texto, Data FROM Vocabulario INNER JOIN Definicao ON Definicao.Texto = Vocabulario.Definicao WHERE Vocabulario = ";
+    comando_sql += "'" + voc_controlado.get_nome().get_nome() + "';";
+}
+
+Definicao ComandoSQLRetornoDefinicoesVoc::GetDefinicao() {
+    Texto_Definicao texto;
+    Data data;
+    Elemento resultado;
+
+    if((lista_resultado.size() % QUANTIDADE_COLUNAS) != 0) {
+        throw("\nErro de consistencia no retorno do banco de dados\n");
+    }
+
+    if(lista_resultado.empty()) {
+        throw("\nDefinicao nao encontrada\n");
+    } else {
+        resultado = lista_resultado.back();
+        lista_resultado.pop_back();
+        texto.set_texto_definicao(resultado.get_nome_coluna());
+
+        resultado = lista_resultado.back();
+        lista_resultado.pop_back();
+        data.set_data(resultado.get_nome_coluna());
+
+        Definicao definicao(texto, data);
+
+        lista_resultado.clear();
+        return definicao;
+    }
 }

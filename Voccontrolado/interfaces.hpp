@@ -295,7 +295,7 @@ class VocabulariosIS{
      * @param const VocControlado&
      * @return Resultado, retorna se foi sucesso ou falha.
      */
-    virtual Resultado CriaVocabulario() throw(invalid_argument) = 0;
+    virtual Resultado CriaVocabulario(ResultadoUsuario&) throw(invalid_argument) = 0;
     /**
      * @brief ExcluirVocabulario() é uma funcao que exclui o vocabulario passado.
      * @param const VocControlado&

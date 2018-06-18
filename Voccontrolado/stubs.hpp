@@ -156,7 +156,7 @@ class StubUsuario : public UsuarioIS{
 
          Resultado CriaTermo() throw(invalid_argument) override;
          Resultado ExcluirTermo(const Termo&) throw(invalid_argument) override;
-         Resultado CriaVocabulario() throw(invalid_argument) override;
+         //Resultado CriaVocabulario() throw(invalid_argument) override;
          Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) override;
          Resultado EditarDefinicaoVocabulario(Definicao &definicao) throw(invalid_argument) override;//
          Resultado EditarDefinicaoTermo(Termo&) throw(invalid_argument) override;

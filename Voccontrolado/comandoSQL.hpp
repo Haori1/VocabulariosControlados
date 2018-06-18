@@ -6,6 +6,7 @@
 #include <string>
 #include <stdio.h>
 #include <list>
+#include <vector>
 
 #include "sqlite3.h"
 #include "dominios.hpp"
@@ -115,6 +116,16 @@ class ComandoSQLCriarTabelas : public ComandoSQL {
 
 /*----------------------------------------------------------------------------*/
 
+class ComandoSQLRegistraDefinicao : public ComandoSQL {
+    public:
+        ComandoSQLRegistraDefinicao(const Definicao &definicao);
+};
+
+class ComandoSQLRegistraVocabulario : public ComandoSQL {
+    public:
+        ComandoSQLRegistraVocabulario(const VocControlado &voc_controlado, const Definicao &definicao, const Administrador &admistrador);
+};
+
 class ComandoSQLRetornoVocabularios : public ComandoSQL {
     private:
         int QUANTIDADE_COLUNAS = 3;
@@ -131,11 +142,17 @@ class ComandoSQLRetornoTermos : public ComandoSQL {
         vector<Termo> GetTermos();
 };
 
-class ComandoSQLRetornoDefinicoes : public ComandoSQL {
+class ComandoSQLRetornoDefinicoesVoc : public ComandoSQL {
+    private:
+        int QUANTIDADE_COLUNAS = 2;
+    public:
  //havera a definicao de vocabulario, que devera ser linkada ao vocabulario sempre, ou nao, dependendo do que escolher na apresentacao
+        ComandoSQLRetornoDefinicoesVoc(const VocControlado &voc_controlado);
+        Definicao GetDefinicao();
+};
+
  //haverao as definicoes dos termos, que devera seguir determinadas regras de negocio.
 
-};
 
 
 
