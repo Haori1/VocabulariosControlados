@@ -377,3 +377,84 @@ Administrador ComandoSQLPesquisarUsuario::PesquisarAdministrador() const {
     administrador = Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
     return administrador;
 }
+
+/*----------------------------------------------------------------------------*/
+
+ComandoSQLRetornoVocabularios::ComandoSQLRetornoVocabularios() {
+    comando_sql += "SELECT Nome, Idioma, Data FROM Vocabulario";
+}
+
+vector<VocControlado>ComandoSQLRetornoVocabularios::GetVocabularios() {
+
+    vector<VocControlado> voc_controlados;
+    VocControlado aux;
+    Nome nome;
+    Idioma idioma;
+    Data data;
+    Elemento resultado;
+
+    int QUANTIDADE_VOCABULARIOS = lista_resultado.size()/QUANTIDADE_COLUNAS;
+
+    if(lista_resultado.empty()) {
+        throw("Vocabularios nao encontrados");
+    } else {
+        for(int i = 0; i < QUANTIDADE_VOCABULARIOS; i++) {
+
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            aux.set_nome(nome.set_nome(resultado.get_valor_coluna()));
+
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            aux.set_idioma(idioma.set_idioma(resultado.get_valor_coluna()));
+
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            aux.set_data(data.set_data(resultado.get_nome_coluna()));
+
+            voc_controlados.push_back(aux);
+        }
+    }
+
+    lista_resultado.clear();
+    return voc_controlados;
+}
+
+ComandoSQLRetornoTermos::ComandoSQLRetornoTermos(const VocControlado &voc_controlado) {
+    comando_sql += "SELECT Nome, Classe, Data FROM Termo WHERE Vocabulario = ";
+    comando_sql += "'" + voc_controlado.get_nome().get_nome() + "';";
+}
+
+vector<Termo> ComandoSQLRetornoTermos::GetTermos() {
+    vector<Termo> termos;
+    Termo aux;
+    Nome nome;
+    Classe_Termo classe_termo;
+    Data data;
+    Elemento resultado;
+
+    int QUANTIDADE_TERMOS = lista_resultado.size()/QUANTIDADE_COLUNAS;
+
+    if(lista_resultado.empty()){
+        throw("Termos nao encontrados para este vocabulario");
+    } else {
+        for(int i = 0; i < QUANTIDADE_TERMOS; i++) {
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            aux.set_nome(nome.set_nome(resultado.get_valor_coluna()));
+
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            aux.get_classe_termo(classe_termo.set_classe_termo(resultado.get_valor_coluna()));
+
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            aux.set_data(data.set_data(resultado.get_nome_coluna()));
+
+            termos.push_back(aux);
+        }
+    }
+
+    lista_resultado.clear();
+    return termos;
+}

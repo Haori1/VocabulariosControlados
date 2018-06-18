@@ -103,7 +103,7 @@ class ComandoSQLPesquisarUsuario : public ComandoSQL {
         ComandoSQLPesquisarUsuario(const Correio_Eletronico&);
         Leitor PesquisarLeitor() const;
         Desenvolvedor PesquisarDesenvolvedor() const;
-        Administrador PesquisarAdministrador() const; 
+        Administrador PesquisarAdministrador() const;
 };
 
 /*----------------------------------------------------------------------------*/
@@ -112,5 +112,31 @@ class ComandoSQLCriarTabelas : public ComandoSQL {
     public:
         void CriarTabelas();
 };
+
+/*----------------------------------------------------------------------------*/
+
+class ComandoSQLRetornoVocabularios : public ComandoSQL {
+    private:
+        int QUANTIDADE_COLUNAS = 3;
+    public:
+        ComandoSQLRetornoVocabularios();
+        vector<VocControlado> GetVocabularios();
+};
+
+class ComandoSQLRetornoTermos : public ComandoSQL {
+    private:
+        int QUANTIDADE_COLUNAS = 3;
+    public:
+        ComandoSQLRetornoTermos(const VocControlado &voc_controlado);
+        vector<Termo> GetTermos();
+};
+
+class ComandoSQLRetornoDefinicoes : public ComandoSQL {
+ //havera a definicao de vocabulario, que devera ser linkada ao vocabulario sempre, ou nao, dependendo do que escolher na apresentacao
+ //haverao as definicoes dos termos, que devera seguir determinadas regras de negocio.
+
+};
+
+
 
 #endif

@@ -175,10 +175,10 @@
 	"stubs.hpp"
 	"dominios.hpp"
 
-1529214950 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandos.cpp
+1529297520 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandos.cpp
 	"comandos.hpp"
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandos.hpp
+1529297520 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandos.hpp
 	<iostream>
 	<stdexcept>
 	<exception>
@@ -188,8 +188,9 @@
 	"entidades.hpp"
 	"stubs.hpp"
 	"controle.hpp"
+	"ComandoSQL.hpp"
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\interfaces.hpp
+1529297520 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\interfaces.hpp
 	<exception>
 	<stdexcept>
 	<iostream>
@@ -198,17 +199,17 @@
 	"dominios.hpp"
 	"entidades.hpp"
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\dominios.hpp
+1529277358 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\dominios.hpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\entidades.hpp
+1529277358 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\entidades.hpp
 	<iostream>
 	"dominios.hpp"
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\stubs.hpp
+1529297520 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\stubs.hpp
 	<iostream>
 	<stdexcept>
 	<exception>
@@ -216,14 +217,14 @@
 	"comandos.hpp"
 	"dominios.hpp"
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\controle.hpp
+1529297520 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\controle.hpp
 	<stdexcept>
 	<exception>
 	"dominios.hpp"
 	"interfaces.hpp"
 	"comandos.hpp"
 
-1529214950 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\controle.cpp
+1529297520 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\controle.cpp
 	<iostream>
 	<string>
 	<stdexcept>
@@ -233,21 +234,21 @@
 	"comandos.hpp"
 	"interfaces.hpp"
 
-1529214950 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\dominios.cpp
+1529277358 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\dominios.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"dominios.hpp"
 
-1529214950 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\entidades.cpp
+1529277358 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\entidades.cpp
 	<iostream>
 	<string>
 	<exception>
 	<stdexcept>
 	"entidades.hpp"
 
-1529273054 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\main.cpp
+1529297520 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\main.cpp
 	<iostream>
 	<string>
 	<exception>
@@ -259,8 +260,9 @@
 	"stubs.hpp"
 	"servicos.hpp"
 	"comandos.hpp"
+	"comandoSQL.hpp"
 
-1529214950 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\stubs.cpp
+1529297520 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\stubs.cpp
 	<iostream>
 	"stubs.hpp"
 	"dominios.hpp"
@@ -349,17 +351,17 @@
 	"interfaces.hpp"
 	"comandoSQL.hpp"
 
-1529214950 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\servicos.cpp
+1529297520 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\servicos.cpp
 	"servicos.hpp"
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\servicos.hpp
+1529297520 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\servicos.hpp
 	"controle.hpp"
 	"dominios.hpp"
 	"entidades.hpp"
 	"interfaces.hpp"
 	"comandoSQL.hpp"
 
-1529271951 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandosql.hpp
+1529298714 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandosql.hpp
 	<iostream>
 	<conio.h>
 	<string>
@@ -369,10 +371,10 @@
 	"dominios.hpp"
 	"entidades.hpp"
 
-1529214950 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\sqlite3.h
+1529277358 c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\sqlite3.h
 	<stdarg.h>
 
-1529214950 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\sqlite3.c
+1529277358 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\sqlite3.c
 	"config.h"
 	<vxWorks.h>
 	<pthread.h>
@@ -430,6 +432,6 @@
 	<ctype.h>
 	<math.h>
 
-1529272592 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandosql.cpp
+1529297520 source:c:\users\cleibe\documents\pdfs curso ciencia da computacao\tp1\projeto\vocabularioscontrolados\voccontrolado\comandosql.cpp
 	"comandoSQL.hpp"
 
