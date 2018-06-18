@@ -41,8 +41,11 @@ class ServicoAutenticacaoControle : public AutenticacaoIS {
 
 /*----------------------------------------------------------------------------------*/
 
-class ControleUsuario : public UsuarioIS {
-
+class ServicoUsuarioControle : public UsuarioIS {
+    public:
+        void Exibir(const Leitor&) throw (invalid_argument) override;
+        void Exibir(const Desenvolvedor&) throw (invalid_argument) override;
+        void Exibir(const Administrador&) throw (invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------------*/

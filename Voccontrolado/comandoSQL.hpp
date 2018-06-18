@@ -80,11 +80,33 @@ class ComandoSQLRetornoSenha : public ComandoSQL {
         string RetornoSenha() const;
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLRetornoEmail : public ComandoSQL {
     public:
         ComandoSQLRetornoEmail(const Correio_Eletronico&);
         string RetornoEmail() const;
 };
+
+/*----------------------------------------------------------------------------*/
+
+class ComandoSQLRetornoTipo : public ComandoSQL {
+    public:
+        ComandoSQLRetornoTipo(const Correio_Eletronico&);
+        string RetornoTipo() const;
+};
+
+/*----------------------------------------------------------------------------*/
+
+class ComandoSQLPesquisarUsuario : public ComandoSQL {
+    public:
+        ComandoSQLPesquisarUsuario(const Correio_Eletronico&);
+        Leitor PesquisarLeitor() const;
+        Desenvolvedor PesquisarDesenvolvedor() const;
+        Administrador PesquisarAdministrador() const; 
+};
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLCriarTabelas : public ComandoSQL {
     public:

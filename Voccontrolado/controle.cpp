@@ -112,9 +112,9 @@ void ApresentacaoCadastroControle::ExecutarIA() throw (invalid_argument)
 
 /*----------------------------------------------------------------------------*/
 
-void ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument)
-{
+Resultado ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument){
     ComandoUsuario *comando;
+    Resultado resultado;
     int escolha;
     while(true)
     {
@@ -134,34 +134,35 @@ void ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuario) t
         {
         case EXIBIR:
             comando = new ComandoExibir();
-            comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
+            comando->ExecutarComando(cntr_link_usuario, resultado_usuario.get_correio_eletronico());
             delete comando;
             break;
         case EDITAR:
-            comando = new ComandoEditar();
-            comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
-            delete comando;
+            //comando = new ComandoEditar();
+            //comando->ExecutarComando(cntr_link_usuario, resultado_usuario.get_correio_eletronico());
+            //delete comando;
             break;
         case EXCLUIR:
-            comando = new ComandoExcluir();
-            comando->ExecutarComando(cntr_link_usuario, resultado_usuario);
-            delete comando;
+            //comando = new ComandoExcluir();
+            //comando->ExecutarComando(cntr_link_usuario, resultado_usuario.get_correio_eletronico());
+            //delete comando;
             break;
         case RETORNAR:
-            return;
+            resultado.set_resultado(Resultado::RETORNAR);
+            return resultado;
         }
     }
 }//end Executar
 
 /*----------------------------------------------------------------------------*/
 
-void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_usuario) throw(invalid_argument)
-{
+Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_usuario) throw(invalid_argument){
 
     string input;
     string string_input;
     Nome nome;
     Resultado resultado;
+    Resultado retorno;
     int contador = 0;
     int tamanho = 0;
 
@@ -311,7 +312,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                                     }
                                                     else if(input == "S")
                                                     {
-                                                        return;
+                                                        retorno.set_resultado(Resultado::RETORNAR);
+                                                        return retorno;
                                                     }
                                                     else
                                                     {
@@ -380,7 +382,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                             cout << "\nPressione qualquer tecla para continuar:" << endl;
                                             fflush(stdin);
                                             getchar();
-                                            return;
+                                            retorno.set_resultado(Resultado::RETORNAR);
+                                            return retorno;
                                         }
                                     }
                                     comando_editar_definicao_termo = new ComandoEditarDefinicaoTermo;
@@ -428,7 +431,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                         cout << "Pressione qualquer tecla para continuar: ";
                                         fflush(stdin);
                                         getchar();
-                                        return;
+                                        retorno.set_resultado(Resultado::RETORNAR);
+                                        return retorno;
                                     }
                                     else if(resultado.get_resultado() == Resultado::FALHA)
                                     {
@@ -483,7 +487,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                             cout << "\nPressione qualquer tecla para continuar:" << endl;
                                             fflush(stdin);
                                             getchar();
-                                            return;
+                                            retorno.set_resultado(Resultado::RETORNAR);
+                                            return retorno;
                                         }
                                     }
                                     try
@@ -495,7 +500,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                     catch(invalid_argument &exp)
                                     {
                                         cout << "\n" << exp.what() << endl;
-                                        return;
+                                        retorno.set_resultado(Resultado::RETORNAR);
+                                        return retorno;
                                     }
                                     if(resultado.get_resultado() == Resultado::FALHA)
                                     {
@@ -507,7 +513,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                         }
                                         else
                                         {
-                                            return;
+                                            retorno.set_resultado(Resultado::RETORNAR);
+                                            return retorno;
                                         }
                                     }
                                     else if(resultado.get_resultado() == Resultado::SUCESSO)
@@ -520,12 +527,14 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                         }
                                         else
                                         {
-                                            return;
+                                            retorno.set_resultado(Resultado::RETORNAR);
+                                            return retorno;
                                         }
                                     }
                                     else if(resultado.get_resultado() == Resultado::RETORNAR)
                                     {
-                                        return;
+                                        retorno.set_resultado(Resultado::RETORNAR);
+                                        return retorno;
                                     }
                                 }
                                 while(true);
@@ -564,7 +573,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                             cout << "\nPressione qualquer tecla para continuar:" << endl;
                                             fflush(stdin);
                                             getchar();
-                                            return;
+                                            retorno.set_resultado(Resultado::RETORNAR);
+                                            return retorno;
                                         }
                                     }
                                     comando_editar_termo = new ComandoEditarTermo;
@@ -647,7 +657,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                 cout << "\nPressione qualquer tecla para continuar:" << endl;
                                 fflush(stdin);
                                 getchar();
-                                return;
+                                retorno.set_resultado(Resultado::RETORNAR);
+                                return retorno;
                             }
                         }
                         comando_alterar_idioma_voc = new ComandoAlterarIdiomaVoc;
@@ -713,7 +724,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                                 cout << "\nPressione qualquer tecla para continuar:" << endl;
                                 fflush(stdin);
                                 getchar();
-                                return;
+                                retorno.set_resultado(Resultado::RETORNAR);
+                                return retorno;
                             }
                         }
                         try
@@ -725,7 +737,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                         catch(invalid_argument &exp)
                         {
                             cout << endl << exp.what() << endl;
-                            return;
+                            retorno.set_resultado(Resultado::RETORNAR);
+                            return retorno;
                         }
                         if(resultado.get_resultado() == Resultado::FALHA)
                         {
@@ -737,7 +750,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                             }
                             else
                             {
-                                return;
+                                retorno.set_resultado(Resultado::RETORNAR);
+                                return retorno;
                             }
                         }
                         else if(resultado.get_resultado() == Resultado::SUCESSO)
@@ -750,12 +764,14 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                             }
                             else
                             {
-                                return;
+                                retorno.set_resultado(Resultado::RETORNAR);
+                                return retorno;
                             }
                         }
                         else if(resultado.get_resultado() == Resultado::RETORNAR)
                         {
-                            return;
+                            retorno.set_resultado(Resultado::RETORNAR);
+                            return retorno;
                         }
                     }
                     while(true);
@@ -770,7 +786,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
         }
         else if(input == "R")
         {
-            return;
+            retorno.set_resultado(Resultado::RETORNAR);
+            return retorno;
         }
         else if((input == "C") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR))
         {
@@ -786,7 +803,8 @@ void ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_
                     cout << "Pressione qualquer tecla para continuar: ";
                     fflush(stdin);
                     getchar();
-                    return;
+                    retorno.set_resultado(Resultado::RETORNAR);
+                    return retorno;
                 }
                 else if(resultado.get_resultado() == Resultado::FALHA)
                 {

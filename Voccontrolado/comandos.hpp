@@ -11,6 +11,7 @@
 #include "entidades.hpp"
 #include "stubs.hpp"
 #include "controle.hpp"
+#include "ComandoSQL.hpp"
 
 using namespace std;
 
@@ -84,7 +85,7 @@ public:
 class ComandoUsuario
 {
 public:
-    virtual Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) = 0;
+    virtual Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) = 0;
     virtual ~ComandoUsuario() {}
 };
 
@@ -93,10 +94,9 @@ public:
  *
  */
 
-class ComandoExibir : public ComandoUsuario
-{
-public:
-    Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
+class ComandoExibir : public ComandoUsuario{
+    public:
+        Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) override;
 };
 
 /**
@@ -107,7 +107,7 @@ public:
 class ComandoExcluir : public ComandoUsuario
 {
 public:
-    Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
+    //Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) override;
 };
 
 /**
@@ -118,7 +118,7 @@ public:
 class ComandoEditar : public ComandoUsuario
 {
 public:
-    Resultado ExecutarComando(UsuarioIS *, const ResultadoUsuario) throw (invalid_argument) override;
+    //Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------*/

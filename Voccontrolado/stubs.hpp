@@ -114,12 +114,12 @@ class StubCadastro : public CadastroIS{
 
 class StubUsuario : public UsuarioIS{
     public:
-        void Exibir(const ResultadoUsuario) throw (invalid_argument) override;
-        ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) override;
-        Resultado Excluir() throw (invalid_argument) override;
-        ResultadoUsuario EditarLeitor() throw (invalid_argument) override;
-        ResultadoUsuario EditarDesenvolvedor() throw (invalid_argument) override;
-        ResultadoUsuario EditarAdministrador() throw (invalid_argument) override;
+        //void Exibir(const ResultadoUsuario) throw (invalid_argument) override;
+        //ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) override;
+        //Resultado Excluir() throw (invalid_argument) override;
+        //ResultadoUsuario EditarLeitor() throw (invalid_argument) override;
+        //ResultadoUsuario EditarDesenvolvedor() throw (invalid_argument) override;
+        //ResultadoUsuario EditarAdministrador() throw (invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------*/

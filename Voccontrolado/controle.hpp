@@ -105,7 +105,7 @@ private:
     UsuarioIS* cntr_link_usuario;
 
 public:
-    void Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument) override;
+    Resultado Executar(ResultadoUsuario resultado_usuario) throw (invalid_argument) override;
     void set_usuario_ia(UsuarioIS *) override;
 };
 /**
@@ -134,7 +134,7 @@ private:
     VocabulariosIS *cntr_link_vocabulario;
 
 public:
-    void Executar(const ResultadoUsuario) throw (invalid_argument) override;
+    Resultado Executar(const ResultadoUsuario) throw (invalid_argument) override;
     void set_vocabulario_ia(VocabulariosIS *) override;
 };
 /**
@@ -146,4 +146,5 @@ void inline ApresentacaoVocabularioControle::set_vocabulario_ia(VocabulariosIS* 
     this->cntr_link_vocabulario = cntr_link_vocabulario;
 }
 
+/*----------------------------------------------------------------------------*/
 #endif

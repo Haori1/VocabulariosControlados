@@ -48,8 +48,8 @@ int main(int argc, char *argv[]){
         CadastroIS *controle_cadastro;
         controle_cadastro = new ServicoCadastroControle();
 
-        UsuarioIS *stub_usuario;
-        stub_usuario = new StubUsuario();
+        UsuarioIS *controle_usuario;
+        controle_usuario = new ServicoUsuarioControle();
 
         VocabulariosIS *stub_vocabulario;
         stub_vocabulario = new StubVocabularios();
@@ -57,20 +57,15 @@ int main(int argc, char *argv[]){
         //Link controladora-stub
         cntr_ia_autenticacao->set_aut_ia(controle_autenticacao);
         cntr_ia_cadastro->set_cadastro_ia(controle_cadastro);
-        cntr_ia_usuario->set_usuario_ia(stub_usuario);
+        cntr_ia_usuario->set_usuario_ia(controle_usuario);
         cntr_ia_vocabulario->set_vocabulario_ia(stub_vocabulario);
 
-        system(CLEAR);
-        cout << "\tValores dos Triggers: \n";
-        cout << "Email Invalido: " << StubAutenticacao::TRIGGER_FALHA_EMAIL << endl;
-        cout << "Erro Sistema Email: " << StubAutenticacao::TRIGGER_ERRO_SISTEMA_EMAIL << endl;
-        cout << endl << "Pressione qualquer tecla para continuar: ";
-        fflush(stdin);
-        getchar();
-
         ResultadoUsuario resultado;
+        Resultado resultado_usuario;
+        Resultado resultado_vocabulario;
 
         do {
+            system(CLEAR);
             cout << "\n\t\t\tVocabularios Controlados\n\n";
             cout << "Escolha uma das opcoes: \n";
             cout << "1. Acessar conta\n";
@@ -86,20 +81,30 @@ int main(int argc, char *argv[]){
                     switch (resultado.get_resultado()) {
                         case ResultadoUsuario::SUCESSO:
                             do{
-                                system(CLEAR);
-                                cout << endl << "Voce ira utilizar qual servico: " << endl; //Fazer uma função disso para poder funcionar
-                                cout << "1. Servicos de usuario" << endl;                   //corretamente
-                                cout << "2. Servicos de vocabulario" << endl;
-                                cin >> servico;
-                            }while(servico < 1 || servico > 2);
-                            switch (servico) {
-                                case USUARIO:
-                                    cntr_ia_usuario->Executar(resultado);
-                                    break;
-                                case VOCABULARIO:
-                                    cntr_ia_vocabulario->Executar(resultado);
-                                    break;
-                            }//end switch()
+                                do{
+                                    system(CLEAR);
+                                    cout << endl << "Seja Bem-vindo!" << endl;
+                                    cout << "Escolha o servico a ser utilizado:" << endl;
+                                    cout << "1. Servicos de Usuario" << endl;
+                                    cout << "2. Servicos de Vocabulario" << endl;
+                                    cout << "3. Retornar" << endl;
+                                    cin >> servico;
+                                }while(servico < 1 || servico > 3);
+                                    if(servico == USUARIO){
+                                        resultado_usuario = cntr_ia_usuario->Executar(resultado);
+                                        if(resultado_usuario.get_resultado() == Resultado::RETORNAR)
+                                            continue;
+                                    }
+
+                                    if(servico == VOCABULARIO){
+                                        resultado_vocabulario = cntr_ia_vocabulario->Executar(resultado);
+                                        if(resultado_vocabulario.get_resultado() == Resultado::RETORNAR)
+                                            continue;
+                                    }
+
+                                    if(servico == SAIR)
+                                        break;
+                            }while(true);
                             break;
                         case ResultadoUsuario::RETORNAR:
                             continue;
@@ -133,7 +138,7 @@ int main(int argc, char *argv[]){
         delete cntr_ia_vocabulario;
         delete controle_autenticacao;
         delete controle_cadastro;
-        delete stub_usuario;
+        delete controle_usuario;
         delete stub_vocabulario;
     }while(true);//do while principal
 

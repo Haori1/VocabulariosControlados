@@ -168,3 +168,212 @@ string ComandoSQLRetornoEmail::RetornoEmail() const {
 }
 
 /*----------------------------------------------------------------------------*/
+
+ComandoSQLRetornoTipo::ComandoSQLRetornoTipo(const Correio_Eletronico &correio_eletronico){
+    comando_sql += "SELECT Tipo FROM Usuario WHERE Email = ";
+    comando_sql += "'" + correio_eletronico.get_correio_eletronico() + "';";
+}
+
+string ComandoSQLRetornoTipo::RetornoTipo() const {
+    Elemento resultado;
+    string tipo;
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+
+    lista_resultado.pop_back();
+    tipo = resultado.get_valor_coluna();
+
+    lista_resultado.clear();
+
+    return tipo;
+}
+
+/*----------------------------------------------------------------------------*/
+
+ComandoSQLPesquisarUsuario::ComandoSQLPesquisarUsuario(const Correio_Eletronico &correio_eletronico){
+    comando_sql += "SELECT * FROM Usuario WHERE Email = ";
+    comando_sql += "'" + correio_eletronico.get_correio_eletronico() + "';";
+}
+
+Leitor ComandoSQLPesquisarUsuario::PesquisarLeitor() const {
+    Elemento resultado;
+    Leitor leitor;
+    Nome nome;
+    Sobrenome sobrenome;
+    Correio_Eletronico correio_eletronico;
+    Senha senha;
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    nome.set_nome(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    sobrenome.set_sobrenome(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    senha.set_senha(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    correio_eletronico.set_correio_eletronico(resultado.get_valor_coluna());
+
+    lista_resultado.clear();
+
+    leitor = Leitor(nome, sobrenome, correio_eletronico, senha);
+    return leitor;
+}
+
+/*----------------------------------------------------------------------------*/
+
+Desenvolvedor ComandoSQLPesquisarUsuario::PesquisarDesenvolvedor() const {
+    Elemento resultado;
+    Desenvolvedor desenvolvedor;
+    Nome nome;
+    Sobrenome sobrenome;
+    Correio_Eletronico correio_eletronico;
+    Senha senha;
+    Data data_nascimento;
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    nome.set_nome(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    sobrenome.set_sobrenome(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    senha.set_senha(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    correio_eletronico.set_correio_eletronico(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    data_nascimento.set_data(resultado.get_valor_coluna());
+
+    lista_resultado.clear();
+
+    desenvolvedor = Desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
+
+    return desenvolvedor;
+
+}
+
+/*----------------------------------------------------------------------------*/
+
+Administrador ComandoSQLPesquisarUsuario::PesquisarAdministrador() const {
+    Elemento resultado;
+    Administrador administrador;
+    Nome nome;
+    Sobrenome sobrenome;
+    Correio_Eletronico correio_eletronico;
+    Senha senha;
+    Data data_nascimento;
+    Telefone telefone;
+    Endereco endereco;
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    nome.set_nome(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    sobrenome.set_sobrenome(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    senha.set_senha(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    correio_eletronico.set_correio_eletronico(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    data_nascimento.set_data(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    telefone.set_telefone(resultado.get_valor_coluna());
+
+    if(lista_resultado.empty())
+        throw invalid_argument("\nLista vazia\n");
+
+    resultado = lista_resultado.back();
+    lista_resultado.pop_back();
+
+    endereco.set_endereco(resultado.get_valor_coluna());
+
+    lista_resultado.clear();
+
+    administrador = Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
+    return administrador;
+}

@@ -151,7 +151,44 @@ ResultadoUsuario ServicoAutenticacaoControle::Autenticar(const Correio_Eletronic
     return resultado;
 }
 
-ResultadoUsuario ServicoAutenticacaoControle::TipoDeUsuario(const Correio_Eletronico&, const Senha&){
+/*-----------------------------------------------------------------------------------------------------*/
+
+ResultadoUsuario ServicoAutenticacaoControle::TipoDeUsuario(const Correio_Eletronico&, const Senha&){ //Retirar essa funcao
     ResultadoUsuario resultado;
     return resultado;
+}
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+void ServicoUsuarioControle::Exibir(const Leitor &leitor) throw (invalid_argument){
+    cout << endl << "Nome: " << leitor.get_nome().get_nome() << endl;
+    cout << "Sobrenome: " << leitor.get_sobrenome().get_sobrenome() << endl;
+    cout << "Email: " << leitor.get_correio_eletronico().get_correio_eletronico() << endl;
+    cout << "Senha: " << leitor.get_senha().get_senha() << endl;
+    cout << endl << "Pressione qualquer tecla para continuar: ";
+    fflush(stdin);
+    getchar();
+}
+
+void ServicoUsuarioControle::Exibir(const Desenvolvedor &desenvolvedor) throw (invalid_argument){
+    cout << endl << "Nome: " << desenvolvedor.get_nome().get_nome() << endl;
+    cout << "Sobrenome: " << desenvolvedor.get_sobrenome().get_sobrenome() << endl;
+    cout << "Email: " << desenvolvedor.get_correio_eletronico().get_correio_eletronico() << endl;
+    cout << "Data de nascimento: " << desenvolvedor.get_data().get_data() << endl;
+    cout << endl << "Pressione qualquer tecla para continuar: ";
+    fflush(stdin);
+    getchar();
+}
+
+void ServicoUsuarioControle::Exibir(const Administrador &administrador) throw (invalid_argument){
+    cout << endl << "Nome: " << administrador.get_nome().get_nome() << endl;
+    cout << "Sobrenome: " << administrador.get_sobrenome().get_sobrenome() << endl;
+    cout << "Email: " << administrador.get_correio_eletronico().get_correio_eletronico() << endl;
+    cout << "Senha: " << administrador.get_senha().get_senha() << endl;
+    cout << "Data de nascimento: " << administrador.get_data().get_data() << endl;
+    cout << "Telefone: " << administrador.get_telefone().get_telefone() << endl;
+    cout << "Endereco: " << administrador.get_endereco().get_endereco() << endl;
+    cout << endl << "Pressione qualquer tecla para continuar: ";
+    fflush(stdin);
+    getchar();
 }

@@ -22,6 +22,7 @@ using namespace std;
  *
  */
 
+class ApresentacaoControle;
 class AutenticacaoIS;  //Autenticação anterior para o link reconhecer a classe
 class UsuarioIS;
 class CadastroIS;
@@ -88,7 +89,7 @@ class AutenticacaoIS{
 
 class UsuarioIA{
     public:
-        virtual void Executar(const ResultadoUsuario) throw (invalid_argument) = 0;
+        virtual Resultado Executar(const ResultadoUsuario) throw (invalid_argument) = 0;
         /**
          * @brief set_usuario_ia() é a função que é responsavel por linkar a camada de apresentacao com as stubs.
          * @param UsuarioIS *
@@ -113,21 +114,23 @@ class UsuarioIS{
      * @param const ResultadoUsuario
      * @return void
      */
-        virtual void Exibir(const ResultadoUsuario) throw (invalid_argument) = 0;
+        virtual void Exibir(const Leitor&) throw (invalid_argument) = 0;
+        virtual void Exibir(const Desenvolvedor&) throw (invalid_argument) = 0;
+        virtual void Exibir(const Administrador&) throw (invalid_argument) = 0;
         /**
          * @brief Editar() é uma funcao que a partir de ResultadoUsuario ele pega o objeto que é passado a ele e edita seu conteudo.
          * @param const ResultadoUsuario
          * @return ResultadoUsuario, retorna se foi sucesso ou falha e um objeto Leitor, Desenvolvedor ou Administrador.
          */
-        virtual ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) = 0;
+        //virtual ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) = 0;
         /**
          * @brief Excluir() é uma funcao que exclui o usuario quando passado a sua senha.
          * @return Resultado, retorna se foi sucesso ou falha.
          */
-        virtual Resultado Excluir() throw (invalid_argument) = 0;
-        virtual ResultadoUsuario EditarLeitor() throw (invalid_argument) = 0;
-        virtual ResultadoUsuario EditarDesenvolvedor() throw (invalid_argument) = 0;
-        virtual ResultadoUsuario EditarAdministrador() throw (invalid_argument) = 0;
+        //virtual Resultado Excluir() throw (invalid_argument) = 0;
+        //virtual ResultadoUsuario EditarLeitor() throw (invalid_argument) = 0;
+        //virtual ResultadoUsuario EditarDesenvolvedor() throw (invalid_argument) = 0;
+        //virtual ResultadoUsuario EditarAdministrador() throw (invalid_argument) = 0;
         /**
          * @brief Destrutor virtual default da classe UsuarioIS.
          */
@@ -198,7 +201,7 @@ class CadastroIS{
 
 class VocabulariosIA{
     public:
-    virtual void Executar(const ResultadoUsuario) throw (invalid_argument) = 0;
+    virtual Resultado Executar(const ResultadoUsuario) throw (invalid_argument) = 0;
     /**
      * @brief set_vocabulario_ia() é a função que é responsavel por linkar a camada de apresentacao com as stubs.
      * @param VocabulariosIS *
@@ -318,5 +321,6 @@ class VocabulariosIS{
 
     virtual ~VocabulariosIS(){}
 };
+
 
 #endif

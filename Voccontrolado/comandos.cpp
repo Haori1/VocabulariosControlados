@@ -155,61 +155,40 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
 
 /*----------------------------------------------------------------------------*/
 
-Resultado ComandoExibir::ExecutarComando(UsuarioIS *cntr_link_usuario, const ResultadoUsuario resultado_usuario) throw (invalid_argument) {
+Resultado ComandoExibir::ExecutarComando(UsuarioIS *cntr_link_usuario, const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
     Resultado resultado;
-    if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::DESENVOLVEDOR){
-        if(resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_FALHA_DESENVOLVEDOR){
-            resultado.set_resultado(Resultado::FALHA);
-            cout << "\nFalha ao Exibir\n";
-            cout << "Pressione qualquer tecla para continuar: ";
-            fflush(stdin);
-            getchar();
-            return resultado;
+    string tipo;
+    ComandoSQLRetornoTipo comandoSQLRetornoTipo(correio_eletronico);
+    ComandoSQLPesquisarUsuario comandoSQLPesquisarUsuario(correio_eletronico);
 
-        } else if(resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_ERRO_SISTEMA_DESENVOLVEDOR){
-            throw invalid_argument("\nErro de sistema\n");
+    try{
+        comandoSQLRetornoTipo.Executar();
+        tipo = comandoSQLRetornoTipo.RetornoTipo();
 
-        } else {
-            resultado.set_resultado(Resultado::SUCESSO);
-
+        if(tipo == "Leitor"){
+            comandoSQLPesquisarUsuario.Executar();
+            Leitor leitor = comandoSQLPesquisarUsuario.PesquisarLeitor();
+            cntr_link_usuario->Exibir(leitor);
+        } else if(tipo == "Desenvolvedor") {
+            comandoSQLPesquisarUsuario.Executar();
+            Desenvolvedor desenvolvedor = comandoSQLPesquisarUsuario.PesquisarDesenvolvedor();
+            cntr_link_usuario->Exibir(desenvolvedor);
+        } else if(tipo == "Administrador") {
+            comandoSQLPesquisarUsuario.Executar();
+            Administrador administrador = comandoSQLPesquisarUsuario.PesquisarAdministrador();
+            cntr_link_usuario->Exibir(administrador);
         }
-    } else if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::LEITOR){
-        if(resultado_usuario.get_leitor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_FALHA_LEITOR){
-            resultado.set_resultado(Resultado::FALHA);
-            cout << "\nFalha ao Exibir\n";
-            cout << "Pressione qualquer tecla para continuar: ";
-            fflush(stdin);
-            getchar();
-            return resultado;
 
-        } else if(resultado_usuario.get_leitor().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_ERRO_SISTEMA_LEITOR){
-            throw invalid_argument("\nErro de sistema\n");
-
-        } else {
-            resultado.set_resultado(Resultado::SUCESSO);
-
-        }
-    } else if(resultado_usuario.tipo_de_usuario == ResultadoUsuario::ADMINISTRADOR){
-        if(resultado_usuario.get_administrador().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_FALHA_ADMINISTRADOR){
-            resultado.set_resultado(Resultado::FALHA);
-            cout << "\nFalha ao Exibir\n";
-            cout << "Pressione qualquer tecla para continuar: ";
-            fflush(stdin);
-            getchar();
-            return resultado;
-
-        } else if(resultado_usuario.get_administrador().get_correio_eletronico().get_correio_eletronico() == StubAutenticacao::TRIGGER_ERRO_SISTEMA_ADMINISTRADOR){
-            throw invalid_argument("\nErro de sistema\n");
-
-        } else {
-            resultado.set_resultado(Resultado::SUCESSO);
-        }
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
     }
-    cntr_link_usuario->Exibir(resultado_usuario);
+    resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
 }
 
-Resultado ComandoExcluir::ExecutarComando(UsuarioIS *cntr_link_usuario, const ResultadoUsuario resultado_usuario) throw (invalid_argument) {
+/*Resultado ComandoExcluir::ExecutarComando(UsuarioIS *cntr_link_usuario, const ResultadoUsuario resultado_usuario) throw (invalid_argument) {
     Resultado resultado;
     resultado = cntr_link_usuario->Excluir();
     return resultado;
@@ -220,6 +199,7 @@ Resultado ComandoEditar::ExecutarComando(UsuarioIS *cntr_link_usuario, const Res
     resultado = cntr_link_usuario->Editar(resultado_usuario);
     return resultado;
 }
+*/
 
 /*----------------------------------------------------------------------------*/
 
