@@ -13,7 +13,7 @@ void ComandoSQLCriarTabelas::CriarTabelas() {
   comando_sql += "Data VARCHAR(11), ";
   comando_sql += "Telefone VARCHAR(14), ";
   comando_sql += "Endereco VARCHAR(21), ";
-  comando_sql += "Tipo INTEGER NOT NULL, ";
+  comando_sql += "Tipo VARCHAR(30) NOT NULL, ";
   comando_sql += "PRIMARY KEY(Email) );";
 
   comando_sql += "CREATE TABLE IF NOT EXISTS Definicao (";

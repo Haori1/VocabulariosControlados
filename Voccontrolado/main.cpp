@@ -8,7 +8,6 @@
 #include "entidades.hpp"
 #include "controle.hpp"
 #include "interfaces.hpp"
-#include "stubs.hpp"
 #include "servicos.hpp"
 #include "comandos.hpp"
 #include "comandoSQL.hpp"
@@ -51,14 +50,14 @@ int main(int argc, char *argv[]){
         UsuarioIS *controle_usuario;
         controle_usuario = new ServicoUsuarioControle();
 
-        VocabulariosIS *stub_vocabulario;
-        stub_vocabulario = new StubVocabularios();
+        VocabulariosIS *controle_vocabulario;
+        controle_vocabulario = new ServicoVocabulariosControle();
 
         //Link controladora-stub
         cntr_ia_autenticacao->set_aut_ia(controle_autenticacao);
         cntr_ia_cadastro->set_cadastro_ia(controle_cadastro);
         cntr_ia_usuario->set_usuario_ia(controle_usuario);
-        cntr_ia_vocabulario->set_vocabulario_ia(stub_vocabulario);
+        cntr_ia_vocabulario->set_vocabulario_ia(controle_vocabulario);
 
         ResultadoUsuario resultado;
         Resultado resultado_usuario;
@@ -139,7 +138,7 @@ int main(int argc, char *argv[]){
         delete controle_autenticacao;
         delete controle_cadastro;
         delete controle_usuario;
-        delete stub_vocabulario;
+        delete controle_vocabulario;
     }while(true);//do while principal
 
 

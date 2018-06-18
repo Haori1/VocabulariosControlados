@@ -208,7 +208,7 @@ vector<VocControlado> ComandoListarVocabularios::ExecutarComando(VocabulariosIS 
     int tamanho;
     vector<VocControlado> lista_vocabularios_controlados;
 
-    lista_vocabularios_controlados = cntr_link_vocabulario->ListaVocabulario();
+    //lista_vocabularios_controlados = cntr_link_vocabulario->ListaVocabulario();
 
     tamanho = lista_vocabularios_controlados.size();
 
@@ -234,9 +234,9 @@ vector<Termo> ComandoConsultarVocabulario::ExecutarComando(VocabulariosIS *cntr_
         for(int i = 0; i < tamanho; i++) {
             aux = nome_vocabulario == lista_vocabularios[i].get_nome().get_nome();
             if(aux){
-                cntr_link_vocabulario->ConsultarVocabulario(lista_vocabularios[i]);
+                //cntr_link_vocabulario->ConsultarVocabulario(lista_vocabularios[i]);
                 cout<< "\nTermos do vocabulario:" << endl;
-                lista_termos = cntr_link_vocabulario->ApresentaTermos(lista_vocabularios[i]);
+                //lista_termos = cntr_link_vocabulario->ApresentaTermos(lista_vocabularios[i]);
                 TRIGGER_ERRO = true;
                 return lista_termos;
             }
@@ -260,7 +260,7 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
 
         for(int i = 0; i < tamanho; i++){
             if(nome_termo == lista_termos[i].get_nome().get_nome()) {
-                cntr_link_vocabulario->ConsultarTermo(lista_termos[i]);
+                //cntr_link_vocabulario->ConsultarTermo(lista_termos[i]);
                 TRIGGER_ERRO = true;
                 return lista_termos[i];
             }
@@ -276,15 +276,15 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
 void ComandoConsultarDefinicao::ExecutarComando(VocabulariosIS *cntr_link_vocabulario, Termo &termo) throw(invalid_argument){
     Definicao definicao;
 
-    definicao = cntr_link_vocabulario->BuscaDefinicaoTermo(termo);
-    cntr_link_vocabulario->ConsultaDefinicaoTermo(definicao);
+    //definicao = cntr_link_vocabulario->BuscaDefinicaoTermo(termo);
+    //cntr_link_vocabulario->ConsultaDefinicaoTermo(definicao);
 }
 
-Resultado ComandoCriarVocabulario::Executar(VocabulariosIS *cntr_link_vocabulario) {
+Resultado ComandoCriarVocabulario::Executar(VocabulariosIS *cntr_link_vocabulario, const ResultadoUsuario &resultado_usuario) {
 
     Resultado resultado;
 
-    resultado = cntr_link_vocabulario->CriaVocabulario();
+    resultado = cntr_link_vocabulario->CriaVocabulario(resultado_usuario);
 
     if(resultado.get_resultado() == Resultado::SUCESSO) {
         cout << "\nOperacao realizada com sucesso" << endl;
@@ -306,7 +306,7 @@ Resultado ComandoExcluirVocabulario::Executar(VocabulariosIS *cntr_link_vocabula
 
     if(input == "S"){
         try {
-            resultado = cntr_link_vocabulario->ExcluirVocabulario(voc_controlado);
+            //resultado = cntr_link_vocabulario->ExcluirVocabulario(voc_controlado);
             return resultado;
         } catch(invalid_argument &exp) {
             cout << "\n" << exp.what() << endl;
@@ -321,21 +321,21 @@ Resultado ComandoExcluirVocabulario::Executar(VocabulariosIS *cntr_link_vocabula
 
 Resultado ComandoAlterarIdiomaVoc::Executar(VocabulariosIS *cntr_link_vocabulario, VocControlado &voc_controlado) throw (invalid_argument){
     Resultado resultado;
-    resultado = cntr_link_vocabulario->AlterarIdiomaVocabulario(voc_controlado);
+    //resultado = cntr_link_vocabulario->AlterarIdiomaVocabulario(voc_controlado);
     return resultado;
 }
 
 
 Resultado ComandoEditarDefinicaoVoc::Executar(VocabulariosIS *cntr_link_vocabulario, Definicao &definicao) throw (invalid_argument){
     Resultado resultado;
-    resultado = cntr_link_vocabulario->EditarDefinicaoVocabulario(definicao);
+    //resultado = cntr_link_vocabulario->EditarDefinicaoVocabulario(definicao);
     return resultado;
 }
 
 Resultado ComandoCriarTermo::Executar(VocabulariosIS *cntr_link_vocabulario) {
     Resultado resultado;
 
-    resultado = cntr_link_vocabulario->CriaTermo();
+    //resultado = cntr_link_vocabulario->CriaTermo();
 
     if(resultado.get_resultado() == Resultado::SUCESSO) {
         cout << "\nOperacao realizada com sucesso" << endl;
@@ -357,7 +357,7 @@ Resultado ComandoExcluirTermo::Executar(VocabulariosIS *cntr_link_vocabulario, T
 
     if(input == "S"){
         try {
-            resultado = cntr_link_vocabulario->ExcluirTermo(termo);
+            //resultado = cntr_link_vocabulario->ExcluirTermo(termo);
             return resultado;
         } catch(invalid_argument &exp) {
             cout << "\n" << exp.what() << endl;
@@ -371,12 +371,12 @@ Resultado ComandoExcluirTermo::Executar(VocabulariosIS *cntr_link_vocabulario, T
 
 Resultado ComandoEditarTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo){
     Resultado resultado;
-    resultado = cntr_link_vocabulario->EditarTermo(termo);
+    //resultado = cntr_link_vocabulario->EditarTermo(termo);
     return resultado;
 }
 
 Resultado ComandoEditarDefinicaoTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo) {
     Resultado resultado;
-    resultado = cntr_link_vocabulario->EditarDefinicaoTermo(termo);
+    //resultado = cntr_link_vocabulario->EditarDefinicaoTermo(termo);
     return resultado;
 }

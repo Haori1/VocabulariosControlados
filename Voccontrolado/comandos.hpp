@@ -238,7 +238,7 @@ public:
 class ComandoCriarVocabulario
 {
 public:
-    Resultado Executar(VocabulariosIS *);
+    Resultado Executar(VocabulariosIS *, const ResultadoUsuario&);
 };
 
 class ComandoExcluirVocabulario

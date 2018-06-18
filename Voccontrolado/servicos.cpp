@@ -148,6 +148,29 @@ ResultadoUsuario ServicoAutenticacaoControle::Autenticar(const Correio_Eletronic
         getchar();
     }
 
+    ComandoSQLRetornoTipo comandoSQLRetornoTipo(correio_eletronico);
+    comandoSQLRetornoTipo.Executar();
+    string tipo = comandoSQLRetornoTipo.RetornoTipo();
+
+    ComandoSQLPesquisarUsuario comandoSQLPesquisarUsuario(correio_eletronico);
+    comandoSQLPesquisarUsuario.Executar();
+
+    if(tipo == "Leitor"){
+
+        resultado.tipo_de_usuario = ResultadoUsuario::LEITOR;
+        Leitor leitor = comandoSQLPesquisarUsuario.PesquisarLeitor();
+        resultado.set_leitor(leitor);
+    } else if(tipo == "Desenvolvedor"){
+
+        resultado.tipo_de_usuario = ResultadoUsuario::DESENVOLVEDOR;
+        Desenvolvedor desenvolvedor = comandoSQLPesquisarUsuario.PesquisarDesenvolvedor();
+        resultado.set_desenvolvedor(desenvolvedor);
+    } else if(tipo == "Administrador"){
+
+        resultado.tipo_de_usuario = ResultadoUsuario::ADMINISTRADOR;
+        Administrador administrador = comandoSQLPesquisarUsuario.PesquisarAdministrador();
+        resultado.set_administrador(administrador);
+    }
     return resultado;
 }
 
@@ -195,8 +218,9 @@ void ServicoUsuarioControle::Exibir(const Administrador &administrador) throw (i
 
 /*-----------------------------------------------------------------------------------------------------*/
 
-Resultado ServicoVocabularios::CriaVocabulario(ResultadoUsuario &resultado_usuario) throw(invalid_argument) {
+Resultado ServicoVocabulariosControle::CriaVocabulario(const ResultadoUsuario &resultado_usuario) throw(invalid_argument) {
     Resultado resultado;
+    Definicao definicao;
     Nome nome;
     Idioma idioma;
     Data data;
@@ -218,15 +242,17 @@ Resultado ServicoVocabularios::CriaVocabulario(ResultadoUsuario &resultado_usuar
 
         VocControlado voc_controlado(nome, idioma, data);
 
-        cout << "\nDigite o nome da definicao do Vocabulario: ";
+        cout << "\nDigite a data da definicao do Vocabulario: ";
         cin >> input;
-        nome.set_nome(input);
+        data.set_data(input);
 
         cout << "\nDigite o texto da definicao: ";
-        cin >> input;
+        cin.clear();    //Limpar o cin pra poder pegar o input de maneira correta
+        cin.ignore();
+        getline(cin, input);
         texto_definicao.set_texto_definicao(input);
 
-        Definicao definicao(nome, texto_definicao);
+        definicao = Definicao(texto_definicao, data);
 
         ComandoSQLRegistraDefinicao ComandoSQLRegistraDefinicao(definicao);
         ComandoSQLRegistraDefinicao.Executar();

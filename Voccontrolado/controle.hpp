@@ -134,7 +134,7 @@ private:
     VocabulariosIS *cntr_link_vocabulario;
 
 public:
-    Resultado Executar(const ResultadoUsuario) throw (invalid_argument) override;
+    Resultado Executar(const ResultadoUsuario&) throw (invalid_argument) override;
     void set_vocabulario_ia(VocabulariosIS *) override;
 };
 /**

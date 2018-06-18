@@ -33,9 +33,9 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
                 cin >> input;
                 if(input == "S" || input == "s")
                 {
-                    resultado_autenticacao.set_resultado(ResultadoUsuario::RETORNAR);
-                    resultado_autenticacao.set_correio_eletronico(correio_eletronico);
-                    return resultado_autenticacao;
+                    resultado.set_resultado(ResultadoUsuario::RETORNAR);
+                    resultado.set_correio_eletronico(correio_eletronico);
+                    return resultado;
                 }
             }
 
@@ -58,14 +58,14 @@ ResultadoUsuario ApresentacaoAutenticacaoControle::Autenticar() throw (invalid_a
         resultado = cntr_link_autenticacao->Autenticar(correio_eletronico, senha);
         //resultado_autenticacao = cntr_link_autenticacao->TipoDeUsuario(correio_eletronico, senha);
         if(resultado.get_resultado() == ResultadoUsuario::SUCESSO) {
-            resultado_autenticacao.set_resultado(resultado.get_resultado());
-            resultado_autenticacao.set_correio_eletronico(correio_eletronico);
-            return resultado_autenticacao;
+            resultado.set_resultado(resultado.get_resultado());
+            resultado.set_correio_eletronico(correio_eletronico);
+            return resultado;
         }
         contador++;
     }//end while()
     resultado_autenticacao.set_resultado(ResultadoUsuario::RETORNAR);
-    return resultado_autenticacao;
+    return resultado;
 }//end Autenticar()
 
 /*----------------------------------------------------------------------------*/
@@ -156,7 +156,7 @@ Resultado ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuar
 
 /*----------------------------------------------------------------------------*/
 
-Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resultado_usuario) throw(invalid_argument){
+Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resultado_usuario) throw(invalid_argument){
 
     string input;
     string string_input;
@@ -796,7 +796,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario resul
             do
             {
 
-                resultado = comando_criar_vocabulario->Executar(cntr_link_vocabulario);
+                resultado = comando_criar_vocabulario->Executar(cntr_link_vocabulario, resultado_usuario);
 
                 if(resultado.get_resultado() == Resultado::SUCESSO)
                 {
