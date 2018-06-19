@@ -220,4 +220,13 @@ class ComandoSQLRetornaDefinicao_Termo : public ComandoSQL {
         vector<string> get_definicoes();
 };
 
+class ComandoSQLRetornaDefinicoesTermo : public ComandoSQL {
+    private:
+        int QUANTIDADE_COLUNAS = 2;
+    public:
+        ComandoSQLRetornaDefinicoesTermo(string texto_definicao);
+        Definicao get_definicao();
+};
+
+
 #endif

@@ -219,7 +219,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                 cout<< "\n- Digite V para consultar vocabulario" << endl;
                 if(resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR ||
                    resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
-                    cout<< "\n- Digite DE para se cadastras como desenvolvedor de um vocabulario" << endl;
+                    cout<< "\n- Digite DE para se cadastrar como desenvolvedor de um vocabulario" << endl;
                 }
                 if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)
                 {
@@ -300,9 +300,9 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                                     {
                                         cout <<"\nEscolha uma das opcoes:" << endl;
                                         cout <<"\n- Digite D para consultar definicao" << endl;
-                                        if(resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR |
+                                        if(resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR ||
                                    resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
-                                        cout<<"\n Digite DF para criar uma definicao" << endl;
+                                        cout<<"\n- Digite DF para criar uma definicao" << endl;
                                    }
                                         cout <<"\n- Digite R para retornar" << endl;
                                         cin >> input;

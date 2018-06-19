@@ -313,10 +313,10 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
 }
 
 void ComandoConsultarDefinicao::ExecutarComando(VocabulariosIS *cntr_link_vocabulario, Termo &termo) throw(invalid_argument){
-    Definicao definicao;
+    vector<Definicao> definicoes;
 
-    //definicao = cntr_link_vocabulario->BuscaDefinicaoTermo(termo);
-    //cntr_link_vocabulario->ConsultaDefinicaoTermo(definicao);
+    definicoes = cntr_link_vocabulario->BuscaDefinicaoTermo(termo);
+    cntr_link_vocabulario->ConsultaDefinicaoTermo(definicoes);
 }
 
 Resultado ComandoCriarVocabulario::Executar(VocabulariosIS *cntr_link_vocabulario, const ResultadoUsuario &resultado_usuario) {

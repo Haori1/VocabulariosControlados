@@ -790,3 +790,46 @@ Resultado ServicoVocabulariosControle::CriaDefinicaoTermo(const Termo &termo) th
     resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
 }
+
+vector<Definicao> ServicoVocabulariosControle::BuscaDefinicaoTermo(const Termo &termo) throw(invalid_argument){
+
+    vector<Definicao> definicoes;
+    vector<string> nomes_definicoes;
+    int tamanho;
+    Definicao aux;
+
+    try {
+        ComandoSQLRetornaDefinicao_Termo retorna_texto_definicao_termo(termo.get_nome().get_nome());
+        retorna_texto_definicao_termo.Executar();
+        nomes_definicoes = retorna_texto_definicao_termo.get_definicoes();
+
+        tamanho = nomes_definicoes.size();
+        for(int i = 0; i < tamanho;  i++) {
+            ComandoSQLRetornaDefinicoesTermo retorna_definicao_termo(nomes_definicoes[i]);
+            retorna_definicao_termo.Executar();
+            aux = retorna_definicao_termo.get_definicao();
+            definicoes.push_back(aux);
+        }
+
+    } catch(invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        return definicoes;
+    }
+
+    return definicoes;
+
+}
+
+void ServicoVocabulariosControle::ConsultaDefinicaoTermo(const vector<Definicao> &definicoes){
+
+    int tamanho;
+    int contador = 1;
+
+    tamanho = definicoes.size();
+
+    for(int i = 0; i < tamanho; i++) {
+        cout << contador << ".\n" << "Definicao: " <<definicoes[i].get_texto_definicao().get_texto_definicao() << endl << "Data: " << definicoes[i].get_data().get_data() << endl;
+        contador++;
+    }
+
+}

@@ -68,8 +68,8 @@ class ServicoVocabulariosControle : public VocabulariosIS{
         void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;
         vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) override;
         void ConsultarTermo(const Termo&) throw(invalid_argument) override;
-        // Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
-        // void ConsultaDefinicaoTermo(const Definicao&) override;
+        vector<Definicao> BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
+        void ConsultaDefinicaoTermo(const vector<Definicao>&) override;
 
         Resultado CriaTermo(string nome_voc) throw(invalid_argument) override;
         Resultado ExcluirTermo(const Termo&) throw(invalid_argument) override;

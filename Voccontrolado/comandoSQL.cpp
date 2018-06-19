@@ -680,3 +680,38 @@ vector<string> ComandoSQLRetornaDefinicao_Termo::get_definicoes() {
     lista_resultado.clear();
     return definicoes;
 }
+
+ComandoSQLRetornaDefinicoesTermo::ComandoSQLRetornaDefinicoesTermo(string texto_definicao){
+    comando_sql += "SELECT Texto, Data FROM Definicao WHERE Texto = ";
+    comando_sql += "'" + texto_definicao + "';";
+}
+
+Definicao ComandoSQLRetornaDefinicoesTermo::get_definicao() {
+    Texto_Definicao texto;
+    Data data;
+    Elemento resultado;
+    Definicao definicao_vazia;
+
+    if((lista_resultado.size() % QUANTIDADE_COLUNAS) != 0) {
+        cout << "\nErro de consistencia no retorno do banco de dados\n";
+        return definicao_vazia;
+    }
+
+    if(lista_resultado.empty()) {
+        cout << "\nDefinicao nao encontrada\n";
+        return definicao_vazia;
+    } else {
+        resultado = lista_resultado.back();
+        lista_resultado.pop_back();
+        texto.set_texto_definicao(resultado.get_valor_coluna());
+
+        resultado = lista_resultado.back();
+        lista_resultado.pop_back();
+        data.set_data(resultado.get_valor_coluna());
+
+        Definicao definicao(texto, data);
+
+        lista_resultado.clear();
+        return definicao;
+    }
+}

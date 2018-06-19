@@ -258,13 +258,13 @@ class CadastroIS{
      //      * @param const Termo&
      //      * @return Definicao
      //      */
-     //     virtual Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
+          virtual vector<Definicao> BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
      //     /**
      //      * @brief ConsultaDefinicaoTermo() é uma funcao que imprime a definicao de um termo.
      //      * @param const Definicao&
      //      * @return void
      //      */
-     //     virtual void ConsultaDefinicaoTermo(const Definicao&) = 0;
+          virtual void ConsultaDefinicaoTermo(const vector<Definicao>&) = 0;
      // //Leitor utiliza ateh esse ponto
      //
      // /**
