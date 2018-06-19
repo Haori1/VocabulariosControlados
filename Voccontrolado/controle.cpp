@@ -186,10 +186,14 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
     ComandoEditarDefinicaoVoc *comando_editar_definicao_voc;
 
     Termo termo_aux;
+    string termo_atual;
     ComandoCriarTermo *comando_criar_termo;
     ComandoExcluirTermo *comando_excluir_termo;
     ComandoEditarTermo *comando_editar_termo;
     ComandoEditarDefinicaoTermo *comando_editar_definicao_termo;
+
+    ComandoRegistrarDesenvolvedor *comando_registrar_desenvolvedor;
+    ComandoCriarDefinicao *comando_criar_definicao;
 
 
     do
@@ -213,6 +217,10 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
             {
                 cout<< "\nEscolha uma das opcoes:" << endl;
                 cout<< "\n- Digite V para consultar vocabulario" << endl;
+                if(resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR ||
+                   resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
+                    cout<< "\n- Digite DE para se cadastras como desenvolvedor de um vocabulario" << endl;
+                }
                 if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)
                 {
                     cout<< "\n- Digite E para excluir vocabulario" << endl;
@@ -266,7 +274,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                             if(input == "T")
                             {
                                 cout<< "\nDigite o nome do termo que deseja consultar:" << endl;
-                                cin >> string_input;
+                                   cin >> string_input;
 
 
                                 try
@@ -292,6 +300,10 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                                     {
                                         cout <<"\nEscolha uma das opcoes:" << endl;
                                         cout <<"\n- Digite D para consultar definicao" << endl;
+                                        if(resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR |
+                                   resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
+                                        cout<<"\n Digite DF para criar uma definicao" << endl;
+                                   }
                                         cout <<"\n- Digite R para retornar" << endl;
                                         cin >> input;
                                         try
@@ -326,6 +338,12 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
 
                                                 }
                                                 while(input != "R" && input != "S");
+                                            } else if((input == "DF") && (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR ||
+                                                                          resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR))
+                                            {
+                                                comando_criar_definicao = new ComandoCriarDefinicao;
+                                                resultado = comando_criar_definicao->Executar(cntr_link_vocabulario, termo);
+                                                delete comando_criar_definicao;
                                             }
                                             else if(input == "R")
                                             {
@@ -663,6 +681,41 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                         getchar();
                         continue;
                     }
+                } else if ((input == "DE") && (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR ||
+                                               resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR)) {
+                        cout<< "\nDigite o nome do vocabulario do qual deseja ser desenvolvedor:" << endl;
+                        cin >> string_input;
+                        try
+                        {
+                            nome.set_nome(string_input);
+                        }
+                        catch(invalid_argument &exp)
+                        {
+                            cout << endl << exp.what() << endl;
+                            continue;
+                        }
+                        tamanho = lista_vocabularios.size();
+                        int i = 0;
+                        for(i = 0; i < tamanho; i++)
+                        {
+                            if(lista_vocabularios[i].get_nome().get_nome() == string_input)
+                            {
+                                voc_atual = lista_vocabularios[i].get_nome().get_nome();
+                                break;
+                            }
+                            if(i == tamanho - 1)
+                            {
+                                cout << "\nVocabulario nao encontado" << endl;
+                                cout << "\nPressione qualquer tecla para continuar:" << endl;
+                                fflush(stdin);
+                                getchar();
+                                retorno.set_resultado(Resultado::RETORNAR);
+                                return retorno;
+                            }
+                        }
+                        comando_registrar_desenvolvedor = new ComandoRegistrarDesenvolvedor;
+                        resultado = comando_registrar_desenvolvedor->Executar(cntr_link_vocabulario, voc_atual, resultado_usuario);
+                        delete comando_registrar_desenvolvedor;
                 }
                 else if((input == "I") && (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR))
                 {

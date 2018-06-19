@@ -684,3 +684,109 @@ Resultado ServicoVocabulariosControle::CriaTermo(string nome_voc) throw(invalid_
     resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
  }
+
+ Resultado ServicoVocabulariosControle::AlterarIdiomaVocabulario(VocControlado &voc_controlado) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+    Idioma idioma;
+    try{
+        cout << endl << "Digite o idioma: ";
+        cin >> input;
+        idioma.set_idioma(input);
+        voc_controlado.set_idioma(idioma);
+        ComandoSQLAlterarIdiomaVoc alterar_idioma(voc_controlado);
+        alterar_idioma.Executar();
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    } catch (invalid_argument &exp) {
+        cout << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+
+ }
+
+ Resultado ServicoVocabulariosControle::CadastraDesenvolvedor(string voc, string correio_eletronico) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+
+    try{
+
+        ComandoRetornaDesenvolvedor_Vocabulario retorna_desenvolvedor_vocabulario(voc);
+        retorna_desenvolvedor_vocabulario.Executar();
+
+        if(retorna_desenvolvedor_vocabulario.get_quantidade_desenvolvedores() < VALOR_MAXIMO_DESENVOLVEDORES) {
+            ComandoSQLCadastraDevenvolvedor cadastra_desenvolvedor(voc, correio_eletronico);
+            cadastra_desenvolvedor.Executar();
+        } else {
+            cout << "\nQuantidade limite de desenvolvedores atingida para este vocabulario\n";
+            resultado.set_resultado(Resultado::FALHA);
+            return resultado;
+        }
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    } catch (invalid_argument &exp) {
+        cout << "\n" << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }//end try catch
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+ }
+
+Resultado ServicoVocabulariosControle::CriaDefinicaoTermo(const Termo &termo) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+    Texto_Definicao texto_definicao;
+    Data data_definicao;
+
+
+    try{
+
+        ComandoSQLRetornaDefinicao_Termo retorna_definicao_termo(termo.get_nome().get_nome());
+        retorna_definicao_termo.Executar();
+
+        if(retorna_definicao_termo.get_quantidade_definicoes() < VALOR_MAXIMO_DEFINICOES) {
+            cout << endl << "Digite o texto da definicao: ";
+            cin.clear();    //Limpar o cin pra poder pegar o input de maneira correta
+            cin.ignore();
+            getline(cin, input);
+            texto_definicao.set_texto_definicao(input);
+
+            cout << endl << "Digite a data da definicao: ";
+            cin >> input;
+            data_definicao.set_data(input);
+
+            Definicao definicao(texto_definicao, data_definicao);
+
+            ComandoSQLRegistraDefinicao registra_definicao(definicao);
+            registra_definicao.Executar();
+
+            ComandoSQLLinkaDefinicao_Termo linka_definicao_termo(definicao.get_texto_definicao().get_texto_definicao(),
+                                                                 termo.get_nome().get_nome());
+            linka_definicao_termo.Executar();
+        } else {
+            cout << "\nQuantidade limite de definicoes atingida para este termo\n";
+            resultado.set_resultado(Resultado::FALHA);
+            return resultado;
+        }
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    } catch (invalid_argument &exp) {
+        cout << "\n" << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }//end try catch
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}

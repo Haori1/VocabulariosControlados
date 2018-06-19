@@ -191,7 +191,33 @@ class ComandoSQLRetornoDefinicoesVoc : public ComandoSQL {
 
  //haverao as definicoes dos termos, que devera seguir determinadas regras de negocio.
 
+class ComandoSQLAlterarIdiomaVoc : public ComandoSQL {
+    public:
+        ComandoSQLAlterarIdiomaVoc(const VocControlado &voc_controlado);
+ };
 
+class ComandoSQLCadastraDevenvolvedor : public ComandoSQL {
+    public:
+        ComandoSQLCadastraDevenvolvedor(string voc, string correio_eletronico);
+};
 
+class ComandoRetornaDesenvolvedor_Vocabulario : public ComandoSQL {
+    public:
+        ComandoRetornaDesenvolvedor_Vocabulario(string voc);
+        int get_quantidade_desenvolvedores();
+        vector<string> get_desenvolvedores();
+};
+
+class ComandoSQLLinkaDefinicao_Termo : public ComandoSQL {
+    public:
+        ComandoSQLLinkaDefinicao_Termo(string texto_definicao, string nome_termo);
+};
+
+class ComandoSQLRetornaDefinicao_Termo : public ComandoSQL {
+    public:
+        ComandoSQLRetornaDefinicao_Termo(string termo);
+        int get_quantidade_definicoes();
+        vector<string> get_definicoes();
+};
 
 #endif

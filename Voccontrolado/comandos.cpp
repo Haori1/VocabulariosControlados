@@ -362,7 +362,7 @@ Resultado ComandoExcluirVocabulario::Executar(VocabulariosIS *cntr_link_vocabula
 
 Resultado ComandoAlterarIdiomaVoc::Executar(VocabulariosIS *cntr_link_vocabulario, VocControlado &voc_controlado) throw (invalid_argument){
     Resultado resultado;
-    //resultado = cntr_link_vocabulario->AlterarIdiomaVocabulario(voc_controlado);
+    resultado = cntr_link_vocabulario->AlterarIdiomaVocabulario(voc_controlado);
     return resultado;
 }
 
@@ -430,4 +430,49 @@ Resultado ComandoEditarDefinicaoTermo::Executar(VocabulariosIS *cntr_link_vocabu
     Resultado resultado;
     //resultado = cntr_link_vocabulario->EditarDefinicaoTermo(termo);
     return resultado;
+}
+
+Resultado ComandoRegistrarDesenvolvedor::Executar(VocabulariosIS *cntr_link_vocabulario, string voc, const ResultadoUsuario &resultado_usuario) {
+    Resultado resultado;
+    string aux;
+
+    if(resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) {
+        aux = resultado_usuario.get_administrador().get_correio_eletronico().get_correio_eletronico();
+        resultado = cntr_link_vocabulario->CadastraDesenvolvedor(voc, aux);
+    } else if(resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR) {
+        aux =  resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico();
+        resultado = cntr_link_vocabulario->CadastraDesenvolvedor(voc, aux);
+    } else {
+        cout << "\nErro nas permissoes do usuario." << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
+
+    if(resultado.get_resultado() == Resultado::SUCESSO) {
+        cout << "\nOperacao realizada com sucesso" << endl;
+        return resultado;
+    } else if(resultado.get_resultado() == Resultado::FALHA){
+        cout << "\nOperacao nao pode ser concluida, ou falha no sistema." << endl;
+        return resultado;
+    } else {
+        cout << "\nFalha no sistema." << endl;
+        return resultado;
+    }
+}
+
+Resultado ComandoCriarDefinicao::Executar(VocabulariosIS *cntr_link_vocabulario, const Termo &termo) {
+    Resultado resultado;
+
+    resultado = cntr_link_vocabulario->CriaDefinicaoTermo(termo);
+
+    if(resultado.get_resultado() == Resultado::SUCESSO) {
+        cout << "\nOperacao realizada com sucesso" << endl;
+        return resultado;
+    } else if(resultado.get_resultado() == Resultado::FALHA){
+        cout << "\nOperacao nao pode ser concluida, ou falha no sistema." << endl;
+        return resultado;
+    } else {
+        cout << "\nFalha no sistema." << endl;
+        return resultado;
+    }
 }

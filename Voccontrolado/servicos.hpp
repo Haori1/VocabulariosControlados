@@ -60,6 +60,9 @@ class ServicoUsuarioControle : public UsuarioIS {
 
 
 class ServicoVocabulariosControle : public VocabulariosIS{
+    private:
+        int VALOR_MAXIMO_DESENVOLVEDORES = 10;
+        int VALOR_MAXIMO_DEFINICOES = 5;
     public:
         vector<VocControlado> ListaVocabulario() override;
         void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;
@@ -74,8 +77,11 @@ class ServicoVocabulariosControle : public VocabulariosIS{
         Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) override;
         Resultado EditarDefinicaoVocabulario(string voc) throw(invalid_argument) override;
         // Resultado EditarDefinicaoTermo(Termo&) throw(invalid_argument) override;
-        // Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) override;
+        Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) override;
         // Resultado EditarTermo(Termo&) throw(invalid_argument) override;//
+
+        Resultado CadastraDesenvolvedor(string voc, string correio_eletronico) throw(invalid_argument) override;
+        Resultado CriaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------------*/

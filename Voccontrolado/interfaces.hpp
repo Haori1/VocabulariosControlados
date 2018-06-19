@@ -315,11 +315,14 @@ class CadastroIS{
      //  * @param VocControlado&
      //  * @return Resultado, retorna se foi sucesso ou falha.
      //  */
-     // virtual Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) = 0;
+     virtual Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) = 0;
      //
      // /**
      //  * @brief Destrutor virtual default da classe VocabulariosIS.
      //  */
+
+     virtual Resultado CadastraDesenvolvedor(string voc, string correio_eletronico) throw(invalid_argument) = 0;
+     virtual Resultado CriaDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
 
      virtual ~VocabulariosIS(){}
  };

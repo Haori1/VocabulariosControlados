@@ -247,4 +247,16 @@ public:
      Resultado Executar(VocabulariosIS *, VocControlado&);
  };
 
+ class ComandoRegistrarDesenvolvedor
+ {
+  public:
+     Resultado Executar(VocabulariosIS *,string voc, const ResultadoUsuario&);
+ };
+
+class ComandoCriarDefinicao
+{
+public:
+    Resultado Executar(VocabulariosIS *, const Termo &temo);
+};
+
 #endif

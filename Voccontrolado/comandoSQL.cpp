@@ -547,13 +547,16 @@ Definicao ComandoSQLRetornoDefinicoesVoc::get_definicao() {
     Texto_Definicao texto;
     Data data;
     Elemento resultado;
+    Definicao definicao_vazia;
 
     if((lista_resultado.size() % QUANTIDADE_COLUNAS) != 0) {
-        throw("\nErro de consistencia no retorno do banco de dados\n");
+        cout << "\nErro de consistencia no retorno do banco de dados\n";
+        return definicao_vazia;
     }
 
     if(lista_resultado.empty()) {
-        throw("\nDefinicao nao encontrada\n");
+        cout << "\nDefinicao nao encontrada\n";
+        return definicao_vazia;
     } else {
         resultado = lista_resultado.back();
         lista_resultado.pop_back();
@@ -590,4 +593,90 @@ ComandoSQLEditarDefinicaoVocabulario::ComandoSQLEditarDefinicaoVocabulario(strin
     comando_sql += "WHERE Texto = ";
     comando_sql += "(SELECT Definicao FROM Vocabulario WHERE Nome =";
     comando_sql += "'" + voc + "');";
+}
+
+ComandoSQLAlterarIdiomaVoc::ComandoSQLAlterarIdiomaVoc(const VocControlado &voc_controlado) {
+    comando_sql += "UPDATE Vocabulario ";
+    comando_sql += "SET Idioma = '" + voc_controlado.get_idioma().get_idioma() + "'";
+    comando_sql += "WHERE Nome = '" + voc_controlado.get_nome().get_nome() + "';";
+}
+
+ComandoSQLCadastraDevenvolvedor::ComandoSQLCadastraDevenvolvedor(string voc, string correio_eletronico) {
+    comando_sql += "INSERT or IGNORE INTO Desenvolvedor_Vocabulario(Desenvolvedor, Vocabulario) VALUES (";
+    comando_sql += "'" + correio_eletronico + "',";
+    comando_sql += "'" + voc + "');";
+}
+
+ComandoRetornaDesenvolvedor_Vocabulario::ComandoRetornaDesenvolvedor_Vocabulario(string voc){
+    comando_sql += "SELECT Desenvolvedor FROM Desenvolvedor_Vocabulario WHERE Vocabulario = ";
+    comando_sql += "'" + voc + "';";
+}
+
+ComandoRetornaDesenvolvedor_Vocabulario::get_quantidade_desenvolvedores() {
+    int tamanho;
+    tamanho = lista_resultado.size();
+    lista_resultado.clear();
+    return tamanho;
+}
+
+vector<string> ComandoRetornaDesenvolvedor_Vocabulario::get_desenvolvedores() {
+    vector<string> desenvolvedores;
+    Elemento resultado;
+
+
+    int QUANTIDADE_TERMOS = lista_resultado.size();
+
+    if(lista_resultado.empty()){
+        cout <<"\nNao ha desenvolvedores\n";
+        return desenvolvedores;
+    } else {
+        for(int i = 0; i < QUANTIDADE_TERMOS; i++) {
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            desenvolvedores.push_back(resultado.get_valor_coluna());
+        }
+    }
+
+    lista_resultado.clear();
+    return desenvolvedores;
+}
+
+ComandoSQLLinkaDefinicao_Termo::ComandoSQLLinkaDefinicao_Termo(string texto_definicao, string nome_termo) {
+    comando_sql += "INSERT or IGNORE INTO Termo_Definicao(Termo, Definicao) VALUES (";
+    comando_sql += "'" + nome_termo + "',";
+    comando_sql += "'" + texto_definicao + "');";
+}
+
+ComandoSQLRetornaDefinicao_Termo::ComandoSQLRetornaDefinicao_Termo(string termo) {
+    comando_sql += "SELECT Definicao FROM Termo_Definicao WHERE Termo = ";
+    comando_sql += "'" + termo + "';";
+}
+
+int ComandoSQLRetornaDefinicao_Termo::get_quantidade_definicoes() {
+    int tamanho;
+    tamanho = lista_resultado.size();
+    lista_resultado.clear();
+    return tamanho;
+}
+
+vector<string> ComandoSQLRetornaDefinicao_Termo::get_definicoes() {
+    vector<string> definicoes;
+    Elemento resultado;
+
+
+    int QUANTIDADE_TERMOS = lista_resultado.size();
+
+    if(lista_resultado.empty()){
+        cout <<"\nNao ha definicoes\n";
+        return definicoes;
+    } else {
+        for(int i = 0; i < QUANTIDADE_TERMOS; i++) {
+            resultado = lista_resultado.back();
+            lista_resultado.pop_back();
+            definicoes.push_back(resultado.get_valor_coluna());
+        }
+    }
+
+    lista_resultado.clear();
+    return definicoes;
 }
