@@ -138,14 +138,14 @@ Resultado ApresentacaoUsuarioControle::Executar(ResultadoUsuario resultado_usuar
             delete comando;
             break;
         case EDITAR:
-            //comando = new ComandoEditar();
-            //comando->ExecutarComando(cntr_link_usuario, resultado_usuario.get_correio_eletronico());
-            //delete comando;
+            comando = new ComandoEditar();
+            comando->ExecutarComando(cntr_link_usuario, resultado_usuario.get_correio_eletronico());
+            delete comando;
             break;
         case EXCLUIR:
-            //comando = new ComandoExcluir();
-            //comando->ExecutarComando(cntr_link_usuario, resultado_usuario.get_correio_eletronico());
-            //delete comando;
+            comando = new ComandoExcluir();
+            comando->ExecutarComando(cntr_link_usuario, resultado_usuario.get_correio_eletronico());
+            delete comando;
             break;
         case RETORNAR:
             resultado.set_resultado(Resultado::RETORNAR);
@@ -180,8 +180,10 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
     ComandoCriarVocabulario *comando_criar_vocabulario;
 
     VocControlado voc_aux;
+    string voc_atual;
     ComandoExcluirVocabulario *comando_excluir_vocabulario;
     ComandoAlterarIdiomaVoc *comando_alterar_idioma_voc;
+    ComandoEditarDefinicaoVoc *comando_editar_definicao_voc;
 
     Termo termo_aux;
     ComandoCriarTermo *comando_criar_termo;
@@ -242,6 +244,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                         system(CLEAR);
                         comando_consultar_vocabulario = new ComandoConsultarVocabulario;
                         lista_termos = comando_consultar_vocabulario->ExecutarComando(cntr_link_vocabulario, lista_vocabularios, string_input);
+                        voc_atual = string_input;
                         delete comando_consultar_vocabulario;
 
                         do
@@ -255,6 +258,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                                 cout<< "\n- Digite E para excluir termo" << endl;
                                 cout<< "\n- Digite TE para editar termo" << endl;
                                 cout<< "\n- Digite ED para editar definicao termo" << endl;
+                                cout<< "\n- Digite EV para editar definicao vocabulario" << endl;
                             }
                             cout<< "\n- Digite R para retornar" << endl;
                             cin >> input;
@@ -348,7 +352,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                                     cout << "\n" << exp.what() << endl;
                                     continue;
                                 }
-                            }
+                            } else
                             if((input == "ED") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
                                                     (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
                                                   ))
@@ -414,6 +418,38 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                                     }
                                 }
                                 while(true);
+                            } else if((input == "EV") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
+                                                        (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
+                                                      ))
+                            {
+                                do {
+                                    comando_editar_definicao_voc = new ComandoEditarDefinicaoVoc();
+                                    resultado = comando_editar_definicao_voc->Executar(cntr_link_vocabulario, voc_atual);
+                                    delete comando_editar_definicao_voc;
+
+                                    if(resultado.get_resultado() == Resultado::FALHA)
+                                    {
+                                        cout << "\nOperacao nao realizada com sucesso" << endl;
+                                        cout << "\nPressione S para tentar novamente, ou qualquer outra tecla para sair" << endl;
+                                        cin >> string_input;
+                                        if(string_input == "S")
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    else if(resultado.get_resultado() == Resultado::SUCESSO)
+                                    {
+                                        cout << "\nOperacao realizada com sucesso" << endl;
+                                        cout << "\nPressione qualquer tecla para continuar" << endl;
+                                        fflush(stdin);
+                                        getchar();
+                                        break;
+                                    }
+                                } while(true);
                             }
                             else if((input == "C") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
                                                         (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
@@ -424,7 +460,8 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                                 do
                                 {
 
-                                    resultado = comando_criar_termo->Executar(cntr_link_vocabulario);
+                                    resultado = comando_criar_termo->Executar(cntr_link_vocabulario, voc_atual);
+
 
                                     if(resultado.get_resultado() == Resultado::SUCESSO)
                                     {
@@ -451,7 +488,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
 
                                 }
                                 while(contador > 0);
-
+                                delete comando_criar_termo;
                             }
                             else if((input == "E") && ( (resultado_usuario.tipo_de_usuario == resultado_usuario.ADMINISTRADOR) ||
                                                         (resultado_usuario.tipo_de_usuario == resultado_usuario.DESENVOLVEDOR)
@@ -472,7 +509,7 @@ Resultado ApresentacaoVocabularioControle::Executar(const ResultadoUsuario &resu
                                         getchar();
                                         continue;
                                     }
-                                    tamanho = lista_vocabularios.size();
+                                    tamanho = lista_termos.size();
                                     int i = 0;
                                     for(i = 0; i < tamanho; i++)
                                     {

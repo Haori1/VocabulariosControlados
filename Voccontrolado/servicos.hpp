@@ -46,6 +46,13 @@ class ServicoUsuarioControle : public UsuarioIS {
         void Exibir(const Leitor&) throw (invalid_argument) override;
         void Exibir(const Desenvolvedor&) throw (invalid_argument) override;
         void Exibir(const Administrador&) throw (invalid_argument) override;
+        Resultado Excluir(const Correio_Eletronico&) throw (invalid_argument) override;
+        ResultadoUsuario Editar(const Leitor&) throw (invalid_argument) override;
+        ResultadoUsuario Editar(const Desenvolvedor&) throw (invalid_argument) override;
+        ResultadoUsuario Editar(const Administrador&) throw (invalid_argument) override;
+        ResultadoUsuario EditarLeitor(const Correio_Eletronico&) throw (invalid_argument) override;
+        ResultadoUsuario EditarDesenvolvedor(const Correio_Eletronico&) throw (invalid_argument) override;
+        ResultadoUsuario EditarAdministrador(const Correio_Eletronico&) throw (invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------------*/
@@ -53,18 +60,18 @@ class ServicoUsuarioControle : public UsuarioIS {
 
  class ServicoVocabulariosControle : public VocabulariosIS{
      public:
-         // vector<VocControlado> ListaVocabulario() override;
-         // void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;
-         // vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) override;
-         // void ConsultarTermo(const Termo&) throw(invalid_argument) override;
+         vector<VocControlado> ListaVocabulario() override;
+         void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) override;
+         vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) override;
+         void ConsultarTermo(const Termo&) throw(invalid_argument) override;
          // Definicao BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
          // void ConsultaDefinicaoTermo(const Definicao&) override;
 
-         // Resultado CriaTermo() throw(invalid_argument) override;
-         // Resultado ExcluirTermo(const Termo&) throw(invalid_argument) override;
+         Resultado CriaTermo(string nome_voc) throw(invalid_argument) override;
+         Resultado ExcluirTermo(const Termo&) throw(invalid_argument) override;
          Resultado CriaVocabulario(const ResultadoUsuario &resultado_usuario) throw(invalid_argument) override;
-         // Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) override;
-         // Resultado EditarDefinicaoVocabulario(Definicao &definicao) throw(invalid_argument) override;//
+         Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) override;
+         Resultado EditarDefinicaoVocabulario(string voc) throw(invalid_argument) override;
          // Resultado EditarDefinicaoTermo(Termo&) throw(invalid_argument) override;
          // Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) override;
          // Resultado EditarTermo(Termo&) throw(invalid_argument) override;//

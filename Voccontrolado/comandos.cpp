@@ -154,7 +154,6 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
 }
 
 /*----------------------------------------------------------------------------*/
-
 Resultado ComandoExibir::ExecutarComando(UsuarioIS *cntr_link_usuario, const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
     Resultado resultado;
     string tipo;
@@ -188,18 +187,61 @@ Resultado ComandoExibir::ExecutarComando(UsuarioIS *cntr_link_usuario, const Cor
     return resultado;
 }
 
-/*Resultado ComandoExcluir::ExecutarComando(UsuarioIS *cntr_link_usuario, const ResultadoUsuario resultado_usuario) throw (invalid_argument) {
+Resultado ComandoExcluir::ExecutarComando(UsuarioIS *cntr_link_usuario, const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
     Resultado resultado;
-    resultado = cntr_link_usuario->Excluir();
+    resultado = cntr_link_usuario->Excluir(correio_eletronico);
     return resultado;
 }
 
-Resultado ComandoEditar::ExecutarComando(UsuarioIS *cntr_link_usuario, const ResultadoUsuario resultado_usuario) throw (invalid_argument) {
+
+Resultado ComandoEditar::ExecutarComando(UsuarioIS *cntr_link_usuario, const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
     ResultadoUsuario resultado;
-    resultado = cntr_link_usuario->Editar(resultado_usuario);
-    return resultado;
+    Resultado result;
+    ComandoSQLRetornoTipo comandoSQLRetornoTipo(correio_eletronico);
+    ComandoSQLPesquisarUsuario comandoSQLPesquisarUsuario(correio_eletronico);
+
+    try{
+        comandoSQLRetornoTipo.Executar();
+        string tipo = comandoSQLRetornoTipo.RetornoTipo();
+        if(tipo == "Leitor"){
+            comandoSQLPesquisarUsuario.Executar();
+            Leitor leitor = comandoSQLPesquisarUsuario.PesquisarLeitor();
+            resultado = cntr_link_usuario->Editar(leitor);
+            ComandoSQLEditar comandoSQLEditar(resultado.get_leitor());
+            comandoSQLEditar.Executar();
+        } else if(tipo == "Desenvolvedor"){
+            comandoSQLPesquisarUsuario.Executar();
+            Desenvolvedor desenvolvedor = comandoSQLPesquisarUsuario.PesquisarDesenvolvedor();
+            resultado = cntr_link_usuario->Editar(desenvolvedor);
+            ComandoSQLEditar comandoSQLEditar(resultado.get_desenvolvedor());
+            comandoSQLEditar.Executar();
+        } else if(tipo == "Administrador"){
+            comandoSQLPesquisarUsuario.Executar();
+            Administrador administrador = comandoSQLPesquisarUsuario.PesquisarAdministrador();
+            resultado = cntr_link_usuario->Editar(administrador);
+            ComandoSQLEditar comandoSQLEditar(resultado.get_administrador());
+            comandoSQLEditar.Executar();
+        }
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+    }
+
+    if(resultado.get_resultado() == Resultado::SUCESSO){
+        cout << endl << "Dados modificados com sucesso." << endl;
+        fflush(stdin);
+        getchar();
+    } else {
+        cout << endl << "Dados não foram modificados com sucesso." << endl;
+        fflush(stdin);
+        getchar();
+    }
+
+    result.set_resultado(resultado.get_resultado());
+    return result;
 }
-*/
 
 /*----------------------------------------------------------------------------*/
 
@@ -208,7 +250,7 @@ vector<VocControlado> ComandoListarVocabularios::ExecutarComando(VocabulariosIS 
     int tamanho;
     vector<VocControlado> lista_vocabularios_controlados;
 
-    //lista_vocabularios_controlados = cntr_link_vocabulario->ListaVocabulario();
+    lista_vocabularios_controlados = cntr_link_vocabulario->ListaVocabulario();
 
     tamanho = lista_vocabularios_controlados.size();
 
@@ -229,21 +271,16 @@ vector<Termo> ComandoConsultarVocabulario::ExecutarComando(VocabulariosIS *cntr_
     bool aux;
 
 
-
-   // try {
-        for(int i = 0; i < tamanho; i++) {
-            aux = nome_vocabulario == lista_vocabularios[i].get_nome().get_nome();
-            if(aux){
-                //cntr_link_vocabulario->ConsultarVocabulario(lista_vocabularios[i]);
-                cout<< "\nTermos do vocabulario:" << endl;
-                //lista_termos = cntr_link_vocabulario->ApresentaTermos(lista_vocabularios[i]);
-                TRIGGER_ERRO = true;
-                return lista_termos;
-            }
+    for(int i = 0; i < tamanho; i++) {
+        aux = nome_vocabulario == lista_vocabularios[i].get_nome().get_nome();
+        if(aux){
+            cntr_link_vocabulario->ConsultarVocabulario(lista_vocabularios[i]);
+            cout<< "\nTermos do vocabulario:" << endl;
+            lista_termos = cntr_link_vocabulario->ApresentaTermos(lista_vocabularios[i]);
+            TRIGGER_ERRO = true;
+            return lista_termos;
         }
-    //}catch(invalid_argument) {
-    //    cout << "Esse vocabulario Nao existe";
-    //}
+    }
 
 
     if(TRIGGER_ERRO == false) {
@@ -260,7 +297,7 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
 
         for(int i = 0; i < tamanho; i++){
             if(nome_termo == lista_termos[i].get_nome().get_nome()) {
-                //cntr_link_vocabulario->ConsultarTermo(lista_termos[i]);
+                cntr_link_vocabulario->ConsultarTermo(lista_termos[i]);
                 TRIGGER_ERRO = true;
                 return lista_termos[i];
             }
@@ -300,13 +337,15 @@ Resultado ComandoCriarVocabulario::Executar(VocabulariosIS *cntr_link_vocabulari
 
 Resultado ComandoExcluirVocabulario::Executar(VocabulariosIS *cntr_link_vocabulario, VocControlado &voc_controlado) {
     Resultado resultado;
+    Nome nome;
     string input;
+
     cout << "\nDigite S para confirmar a exclusao do vocabulario,ou qualquer outra tecla para voltar" << endl;
     cin >> input;
 
     if(input == "S"){
         try {
-            //resultado = cntr_link_vocabulario->ExcluirVocabulario(voc_controlado);
+            resultado = cntr_link_vocabulario->ExcluirVocabulario(voc_controlado);
             return resultado;
         } catch(invalid_argument &exp) {
             cout << "\n" << exp.what() << endl;
@@ -326,16 +365,26 @@ Resultado ComandoAlterarIdiomaVoc::Executar(VocabulariosIS *cntr_link_vocabulari
 }
 
 
-Resultado ComandoEditarDefinicaoVoc::Executar(VocabulariosIS *cntr_link_vocabulario, Definicao &definicao) throw (invalid_argument){
+Resultado ComandoEditarDefinicaoVoc::Executar(VocabulariosIS *cntr_link_vocabulario, string nome_voc) throw (invalid_argument){
     Resultado resultado;
-    //resultado = cntr_link_vocabulario->EditarDefinicaoVocabulario(definicao);
+    resultado = cntr_link_vocabulario->EditarDefinicaoVocabulario(nome_voc);
+    if(resultado.get_resultado() == Resultado::SUCESSO) {
+        cout << "\nOperacao realizada com sucesso" << endl;
+        return resultado;
+    } else if(resultado.get_resultado() == Resultado::FALHA){
+        cout << "\nOperacao nao pode ser concluida, ou falha no sistema." << endl;
+        return resultado;
+    } else {
+        cout << "\nFalha no sistema." << endl;
+        return resultado;
+    }
     return resultado;
 }
 
-Resultado ComandoCriarTermo::Executar(VocabulariosIS *cntr_link_vocabulario) {
+Resultado ComandoCriarTermo::Executar(VocabulariosIS *cntr_link_vocabulario, string nome_voc) {
     Resultado resultado;
 
-    //resultado = cntr_link_vocabulario->CriaTermo();
+    resultado = cntr_link_vocabulario->CriaTermo(nome_voc);
 
     if(resultado.get_resultado() == Resultado::SUCESSO) {
         cout << "\nOperacao realizada com sucesso" << endl;
@@ -352,12 +401,12 @@ Resultado ComandoCriarTermo::Executar(VocabulariosIS *cntr_link_vocabulario) {
 Resultado ComandoExcluirTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo) {
     Resultado resultado;
     string input;
-    cout << "\nDigite S para confirmar a exclusao do vocabulario,ou qualquer outra tecla para voltar" << endl;
+    cout << "\nDigite S para confirmar a exclusao do Termo,ou qualquer outra tecla para voltar" << endl;
     cin >> input;
 
     if(input == "S"){
         try {
-            //resultado = cntr_link_vocabulario->ExcluirTermo(termo);
+            resultado = cntr_link_vocabulario->ExcluirTermo(termo);
             return resultado;
         } catch(invalid_argument &exp) {
             cout << "\n" << exp.what() << endl;

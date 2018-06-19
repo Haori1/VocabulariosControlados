@@ -122,15 +122,17 @@ class UsuarioIS{
          * @param const ResultadoUsuario
          * @return ResultadoUsuario, retorna se foi sucesso ou falha e um objeto Leitor, Desenvolvedor ou Administrador.
          */
-        //virtual ResultadoUsuario Editar(const ResultadoUsuario) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario Editar(const Leitor&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario Editar(const Desenvolvedor&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario Editar(const Administrador&) throw (invalid_argument) = 0;
         /**
          * @brief Excluir() é uma funcao que exclui o usuario quando passado a sua senha.
          * @return Resultado, retorna se foi sucesso ou falha.
          */
-        //virtual Resultado Excluir() throw (invalid_argument) = 0;
-        //virtual ResultadoUsuario EditarLeitor() throw (invalid_argument) = 0;
-        //virtual ResultadoUsuario EditarDesenvolvedor() throw (invalid_argument) = 0;
-        //virtual ResultadoUsuario EditarAdministrador() throw (invalid_argument) = 0;
+        virtual Resultado Excluir(const Correio_Eletronico&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario EditarLeitor(const Correio_Eletronico&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario EditarDesenvolvedor(const Correio_Eletronico&) throw (invalid_argument) = 0;
+        virtual ResultadoUsuario EditarAdministrador(const Correio_Eletronico&) throw (invalid_argument) = 0;
         /**
          * @brief Destrutor virtual default da classe UsuarioIS.
          */
@@ -233,24 +235,24 @@ class VocabulariosIS{
     //      * @brief ListaVocabulario() é uma funcao que lista os vocabularios de acordo com a stub.
     //      * @return Retorna uma lista de vocabularios vector<VocControlado>
     //      */
-    //     virtual vector<VocControlado> ListaVocabulario() = 0;
+         virtual vector<VocControlado> ListaVocabulario() = 0;
     //     /**
     //      * @brief ConsultarVocabulario() é uma funcao que imprime o conteudo de vocabulario, ou seja, Data e Idioma.
     //      * @return void
     //      */
-    //     virtual void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+         virtual void ConsultarVocabulario(const VocControlado&) throw(invalid_argument) = 0;
     //     /**
     //      * @brief ApresentaTermos() é uma funcao que imprime os termos de um vocabulario controlado.
     //      * @param const VocControlado&
     //      * @return Retorna uma lista de termos vector<Termo>
     //      */
-    //     virtual vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) = 0;
+         virtual vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) = 0;
     //     /**
     //      * @brief ConsultarTermo() é uma funcao que imprime o conteudo de termo, ou seja, Termo e Data.
     //      * @param const Termo&
     //      * @return void
     //      */
-    //     virtual void ConsultarTermo(const Termo&) throw(invalid_argument) = 0;
+         virtual void ConsultarTermo(const Termo&) throw(invalid_argument) = 0;
     //     /**
     //      * @brief BuscaDefinicaoTermo() é uma funcao que busca a definicao do termo passado.
     //      * @param const Termo&
@@ -270,13 +272,13 @@ class VocabulariosIS{
     //  * @param const Termo&
     //  * @return Resultado, retorna se foi sucesso ou falha.
     //  */
-    // virtual Resultado CriaTermo() throw(invalid_argument) = 0;
+     virtual Resultado CriaTermo(string) throw(invalid_argument) = 0;
     // /**
     //  * @brief ExcluirTermo() é uma funcao que exclui o tipo Termo passado.
     //  * @param const Termo&
     //  * @return Resultado, retorna se foi sucesso ou falha.
     //  */
-    // virtual Resultado ExcluirTermo(const Termo&) throw(invalid_argument) = 0;
+     virtual Resultado ExcluirTermo(const Termo&) throw(invalid_argument) = 0;
     // /**
     //  * @brief EditarTermo() é uma funcao que edita o tipo Termo passado.
     //  * @param const Termo&
@@ -301,13 +303,13 @@ class VocabulariosIS{
     //  * @param const VocControlado&
     //  * @return Resultado, retorna se foi sucesso ou falha.
     //  */
-    // virtual Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) = 0;
+    virtual Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) = 0;
     // /**
     //  * @brief EditarAdministrador() é uma funcao que exclui o vocabulario passado.
     //  * @param Definicao&
     //  * @return Resultado, retorna se foi sucesso ou falha.
     //  */
-    // virtual Resultado EditarDefinicaoVocabulario(Definicao&) throw(invalid_argument) = 0;
+    virtual Resultado EditarDefinicaoVocabulario(string voc) throw(invalid_argument) = 0;
     // /**
     //  * @brief AlterarIdiomaVocabulario() é uma funcao que altera o idioma do vocabulario passado.
     //  * @param VocControlado&

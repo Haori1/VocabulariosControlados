@@ -109,6 +109,21 @@ class ComandoSQLPesquisarUsuario : public ComandoSQL {
 
 /*----------------------------------------------------------------------------*/
 
+class ComandoSQLExcluir : public ComandoSQL {
+    public:
+        ComandoSQLExcluir(const Correio_Eletronico&);
+
+};
+
+class ComandoSQLEditar : public ComandoSQL {
+    public:
+        ComandoSQLEditar(const Leitor&);
+        ComandoSQLEditar(const Desenvolvedor&);
+        ComandoSQLEditar(const Administrador&);
+};
+
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLCriarTabelas : public ComandoSQL {
     public:
         void CriarTabelas();
@@ -126,12 +141,32 @@ class ComandoSQLRegistraVocabulario : public ComandoSQL {
         ComandoSQLRegistraVocabulario(const VocControlado &voc_controlado, const Definicao &definicao, const Administrador &admistrador);
 };
 
+class ComandoSQLRegistraTermo : public ComandoSQL {
+    public:
+        ComandoSQLRegistraTermo(const Termo &termo, string nome_voc);
+};
+
+class ComandoSQLExcluirVocabulario : public ComandoSQL {
+    public:
+        ComandoSQLExcluirVocabulario(const VocControlado &voc_controlado);
+};
+
+class ComandoSQLExcluirTermo : public ComandoSQL {
+    public:
+        ComandoSQLExcluirTermo(const Termo &termo);
+};
+
+class ComandoSQLEditarDefinicaoVocabulario : public ComandoSQL {
+    public:
+        ComandoSQLEditarDefinicaoVocabulario(string voc, const Definicao &definicao);
+};
+
 class ComandoSQLRetornoVocabularios : public ComandoSQL {
     private:
         int QUANTIDADE_COLUNAS = 3;
     public:
         ComandoSQLRetornoVocabularios();
-        vector<VocControlado> GetVocabularios();
+        vector<VocControlado> get_vocabularios();
 };
 
 class ComandoSQLRetornoTermos : public ComandoSQL {
@@ -139,7 +174,7 @@ class ComandoSQLRetornoTermos : public ComandoSQL {
         int QUANTIDADE_COLUNAS = 3;
     public:
         ComandoSQLRetornoTermos(const VocControlado &voc_controlado);
-        vector<Termo> GetTermos();
+        vector<Termo> get_termos();
 };
 
 class ComandoSQLRetornoDefinicoesVoc : public ComandoSQL {
@@ -148,7 +183,7 @@ class ComandoSQLRetornoDefinicoesVoc : public ComandoSQL {
     public:
  //havera a definicao de vocabulario, que devera ser linkada ao vocabulario sempre, ou nao, dependendo do que escolher na apresentacao
         ComandoSQLRetornoDefinicoesVoc(const VocControlado &voc_controlado);
-        Definicao GetDefinicao();
+        Definicao get_definicao();
 };
 
  //haverao as definicoes dos termos, que devera seguir determinadas regras de negocio.

@@ -91,8 +91,7 @@ void inline ApresentacaoCadastroControle::set_cadastro_ia(CadastroIS* cntr_link_
  *
  */
 
-class ApresentacaoUsuarioControle : public UsuarioIA
-{
+class ApresentacaoUsuarioControle : public UsuarioIA {
 private:
     const static int EXIBIR = 1;
     const static int EDITAR = 2;
@@ -112,8 +111,7 @@ public:
  * @brief A funcao tem como responsabilidade linkar a camada de apresentacao com a camada de servicos.
  *
  */
-void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usuario)
-{
+void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usuario) {
     this->cntr_link_usuario = cntr_link_usuario;
 }
 

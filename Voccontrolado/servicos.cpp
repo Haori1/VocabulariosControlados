@@ -182,7 +182,6 @@ ResultadoUsuario ServicoAutenticacaoControle::TipoDeUsuario(const Correio_Eletro
 }
 
 /*-----------------------------------------------------------------------------------------------------*/
-
 void ServicoUsuarioControle::Exibir(const Leitor &leitor) throw (invalid_argument){
     cout << endl << "Nome: " << leitor.get_nome().get_nome() << endl;
     cout << "Sobrenome: " << leitor.get_sobrenome().get_sobrenome() << endl;
@@ -214,6 +213,244 @@ void ServicoUsuarioControle::Exibir(const Administrador &administrador) throw (i
     cout << endl << "Pressione qualquer tecla para continuar: ";
     fflush(stdin);
     getchar();
+}
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+Resultado ServicoUsuarioControle::Excluir(const Correio_Eletronico &correio_eletronico) throw (invalid_argument){
+    Resultado resultado;
+    string input;
+    Senha senha;
+    string senha_db;
+
+    system(CLEAR);
+    cout << "Digite sua senha para confirmar a exclusao: ";
+    try{
+        cin >> input;
+        senha.set_senha(input);
+        ComandoSQLRetornoSenha comandoSQLRetornoSenha(correio_eletronico);
+        comandoSQLRetornoSenha.Executar();
+        senha_db = comandoSQLRetornoSenha.RetornoSenha();
+
+        if(senha.get_senha() == senha_db){
+            resultado.set_resultado(Resultado::SUCESSO);
+        } else {
+            resultado.set_resultado(Resultado::FALHA);
+        }
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+    }
+
+    if(resultado.get_resultado() == Resultado::FALHA){
+        cout << endl << "Senha incorreta." << endl;
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    try{
+        ComandoSQLExcluir comandoSQLExcluir(correio_eletronico);
+        comandoSQLExcluir.Executar();
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+ResultadoUsuario ServicoUsuarioControle::EditarLeitor(const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
+    ResultadoUsuario resultado;
+    Leitor leitor;
+    string input;
+    Nome nome;
+    Sobrenome sobrenome;
+    Senha senha;
+
+    try{
+        system(CLEAR);
+        cout << "Digite seu nome: ";
+        cin >> input;
+        nome.set_nome(input);
+
+        cout << endl << "Digite seu sobrenome: ";
+        cin >> input;
+        sobrenome.set_sobrenome(input);
+
+        cout << endl << "Digite sua senha: ";
+        cin >> input;
+        senha.set_senha(input);
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    try{
+        leitor = Leitor(nome, sobrenome, correio_eletronico, senha);
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+    resultado.set_resultado(Resultado::SUCESSO);
+    resultado.set_leitor(leitor);
+    return resultado;
+}
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+ResultadoUsuario ServicoUsuarioControle::EditarDesenvolvedor(const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
+    ResultadoUsuario resultado;
+    Desenvolvedor desenvolvedor;
+    string input;
+    Nome nome;
+    Sobrenome sobrenome;
+    Data data_nascimento;
+    Senha senha;
+
+    try{
+        system(CLEAR);
+        cout << "Digite seu nome: ";
+        cin >> input;
+        nome.set_nome(input);
+
+        cout << endl << "Digite seu sobrenome: ";
+        cin >> input;
+        sobrenome.set_sobrenome(input);
+
+        cout << endl << "Digite sua data de nascimento: ";
+        cin >> input;
+        data_nascimento.set_data(input);
+
+        cout << endl << "Digite sua senha: ";
+        cin >> input;
+        senha.set_senha(input);
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    try{
+        desenvolvedor = Desenvolvedor(nome, sobrenome, data_nascimento, correio_eletronico, senha);
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    resultado.set_desenvolvedor(desenvolvedor);
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+ResultadoUsuario ServicoUsuarioControle::EditarAdministrador(const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
+    ResultadoUsuario resultado;
+    Administrador administrador;
+    string input;
+    Nome nome;
+    Sobrenome sobrenome;
+    Telefone telefone;
+    Data data_nascimento;
+    Endereco endereco;
+    Senha senha;
+
+    try{
+        system(CLEAR);
+        cout << "Digite seu nome: ";
+        cin >> input;
+        nome.set_nome(input);
+
+        cout << endl << "Digite seu sobrenome: ";
+        cin >> input;
+        sobrenome.set_sobrenome(input);
+
+        cout << endl << "Digite seu telefone: ";
+        cin.clear();
+        cin.ignore();
+        getline(cin, input);
+        telefone.set_telefone(input);
+
+        cout << endl << "Digite sua data de nascimento: ";
+        cin >> input;
+        data_nascimento.set_data(input);
+
+        cout << endl << "Digite seu endereco: ";
+        cin.clear();
+        cin.ignore();
+        getline(cin, input);
+        endereco.set_endereco(input);
+
+        cout << endl << "Digite sua senha: ";
+        cin >> input;
+        senha.set_senha(input);
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    try{
+        administrador = Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
+
+    } catch (invalid_argument &exp) {
+        cout << endl << exp.what() << endl;
+        resultado.set_resultado(Resultado::FALHA);
+        fflush(stdin);
+        getchar();
+        return resultado;
+    }
+
+    resultado.set_administrador(administrador);
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+ResultadoUsuario ServicoUsuarioControle::Editar(const Leitor &leitor) throw (invalid_argument) {
+    ResultadoUsuario resultado;
+    resultado = EditarLeitor(leitor.get_correio_eletronico());
+    return resultado;
+}
+
+ResultadoUsuario ServicoUsuarioControle::Editar(const Desenvolvedor &desenvolvedor) throw (invalid_argument) {
+    ResultadoUsuario resultado;
+    resultado = EditarDesenvolvedor(desenvolvedor.get_correio_eletronico());
+    return resultado;
+}
+
+ResultadoUsuario ServicoUsuarioControle::Editar(const Administrador &administrador) throw (invalid_argument) {
+    ResultadoUsuario resultado;
+    resultado = EditarAdministrador(administrador.get_correio_eletronico());
+    return resultado;
 }
 
 /*-----------------------------------------------------------------------------------------------------*/
@@ -273,3 +510,165 @@ Resultado ServicoVocabulariosControle::CriaVocabulario(const ResultadoUsuario &r
     resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
 }
+
+vector<VocControlado> ServicoVocabulariosControle::ListaVocabulario() {
+
+    vector<VocControlado> voc_controlados;
+    ComandoSQLRetornoVocabularios retorno_vocabulario;
+    retorno_vocabulario = ComandoSQLRetornoVocabularios();
+    retorno_vocabulario.Executar();
+
+    voc_controlados = retorno_vocabulario.get_vocabularios();
+
+    return voc_controlados;
+
+}
+
+void ServicoVocabulariosControle::ConsultarVocabulario(const VocControlado &voc_controlado) throw(invalid_argument){
+
+    Definicao definicao;
+
+    cout<< "\nidioma:" << voc_controlado.get_idioma().get_idioma();
+    cout<< "\ndata:" << voc_controlado.get_data().get_data();
+
+    ComandoSQLRetornoDefinicoesVoc retorno_definicoes_voc(voc_controlado);
+    retorno_definicoes_voc.Executar();
+    definicao = retorno_definicoes_voc.get_definicao();
+
+    cout << "\nTexto da definicao: " << definicao.get_texto_definicao().get_texto_definicao();
+    cout << "\nData da definicao: " << definicao.get_data().get_data();
+
+}
+
+vector<Termo> ServicoVocabulariosControle::ApresentaTermos(const VocControlado &voc_controlado) throw(invalid_argument) {
+
+    vector<Termo> vetor_termos;
+    Termo termo;
+    int tamanho;
+
+    try {
+        ComandoSQLRetornoTermos retorno_termos(voc_controlado);
+        retorno_termos.Executar();
+
+        vetor_termos = retorno_termos.get_termos();
+        tamanho = vetor_termos.size();
+
+        for(int i = 0; i < tamanho; i++) {
+            termo = vetor_termos[i];
+            cout << "\n" << termo.get_nome().get_nome() << endl;
+        }
+    } catch(invalid_argument &exp) {
+        cout << exp.what() << endl;
+    }
+
+    return vetor_termos;
+}
+
+Resultado ServicoVocabulariosControle::CriaTermo(string nome_voc) throw(invalid_argument) {
+    Resultado resultado;
+    string input;
+    Nome nome;
+    Classe_Termo classe_termo;
+    Data data;
+    Termo termo;
+    try{
+        cout << endl << "Digite o nome do termo: ";
+        cin >> input;
+        nome.set_nome(input);
+        termo.set_nome(nome);
+        cout << endl << "Digite a classe do termo: ";
+        cin >> input;
+        classe_termo.set_classe_termo(input);
+        termo.set_classe_termo(classe_termo);
+        cout << endl << "Digite a data: ";
+        cin >> input;
+        data.set_data(input);
+        termo.set_data(data);
+
+        ComandoSQLRegistraTermo registra_termo(termo, nome_voc);
+        registra_termo.Executar();
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    } catch (invalid_argument &exp) {
+        cout << "\n" << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }//end try catch
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+ }//end Criatermo
+
+ Resultado ServicoVocabulariosControle::ExcluirVocabulario(const VocControlado &voc_controlado) throw(invalid_argument){
+     Resultado resultado;
+     try {
+     ComandoSQLExcluirVocabulario excluir_vocabulario(voc_controlado);
+     excluir_vocabulario.Executar();
+     cout << "\nExclusao concluida com sucesso\n";
+     } catch(invalid_argument &exp) {
+        resultado.set_resultado(Resultado::FALHA);
+        cout << exp.what() << endl;
+        return resultado;
+     }
+     resultado.set_resultado(Resultado::SUCESSO);
+     return resultado;
+ }
+
+ Resultado ServicoVocabulariosControle::ExcluirTermo(const Termo &termo) throw(invalid_argument){
+    Resultado resultado;
+     try {
+     ComandoSQLExcluirTermo excluir_termo(termo);
+     excluir_termo.Executar();
+     cout << "\nExclusao concluida com sucesso\n";
+     } catch(invalid_argument &exp) {
+        resultado.set_resultado(Resultado::FALHA);
+        cout << exp.what() << endl;
+        return resultado;
+     }
+     resultado.set_resultado(Resultado::SUCESSO);
+     return resultado;
+ }
+
+ void ServicoVocabulariosControle::ConsultarTermo(const Termo &termo) throw(invalid_argument){
+    cout<< "\ntermo:" << termo.get_classe_termo().get_classe_termo() << endl;
+    cout<< "\ndata:" << termo.get_data().get_data() << endl;
+ }
+
+ Resultado ServicoVocabulariosControle::EditarDefinicaoVocabulario(string voc) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+    Texto_Definicao texto_definicao;
+    Data data_definicao;
+
+    try {
+        cout << endl << "Digite o texto da definicao: ";
+        cin.clear();    //Limpar o cin pra poder pegar o input de maneira correta
+        cin.ignore();
+        getline(cin, input);
+        texto_definicao.set_texto_definicao(input);
+
+        cout << endl << "Digite a data da definicao: ";
+        cin >> input;
+        data_definicao.set_data(input);
+
+        Definicao definicao(texto_definicao, data_definicao);
+
+        ComandoSQLEditarDefinicaoVocabulario editar_definicao_vocabulario(voc, definicao);
+        editar_definicao_vocabulario.Executar();
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    } catch (invalid_argument &exp) {
+        cout << "\n" << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+ }
+

@@ -81,7 +81,6 @@ public:
  * @brief Classe abstrata que define os comandos de usuario.
  *
  */
-
 class ComandoUsuario
 {
 public:
@@ -107,7 +106,7 @@ class ComandoExibir : public ComandoUsuario{
 class ComandoExcluir : public ComandoUsuario
 {
 public:
-    //Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) override;
+    Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) override;
 };
 
 /**
@@ -118,9 +117,8 @@ public:
 class ComandoEditar : public ComandoUsuario
 {
 public:
-    //Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) override;
+    Resultado ExecutarComando(UsuarioIS *, const Correio_Eletronico&) throw (invalid_argument) override;
 };
-
 /*----------------------------------------------------------------------------*/
 
 /**
@@ -177,7 +175,7 @@ public:
 class ComandoEditarDefinicaoVoc
 {
 public:
-    Resultado Executar(VocabulariosIS *, Definicao&) throw (invalid_argument);
+    Resultado Executar(VocabulariosIS *, string nome_voc) throw (invalid_argument);
 };
 
 /**
@@ -199,7 +197,7 @@ public:
 class ComandoCriarTermo
 {
 public:
-    Resultado Executar(VocabulariosIS *);
+    Resultado Executar(VocabulariosIS *, string nome_voc);
 };
 
 /**

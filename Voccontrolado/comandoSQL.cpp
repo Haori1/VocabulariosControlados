@@ -27,7 +27,7 @@ void ComandoSQLCriarTabelas::CriarTabelas() {
   comando_sql += "Data VARCHAR(11) NOT NULL, ";
   comando_sql += "Definicao INT NOT NULL, ";
   comando_sql += "Administrador VARCHAR(100) NOT NULL, ";
-  comando_sql += "FOREIGN KEY(Definicao) REFERENCES Definicao(Texto) ON DELETE CASCADE, ";
+  comando_sql += "FOREIGN KEY(Definicao) REFERENCES Definicao(Texto), ";
   comando_sql += "FOREIGN KEY(Administrador) REFERENCES Usuario(Email) ON DELETE CASCADE, ";
   comando_sql += "PRIMARY KEY(Nome) );";
 
@@ -67,6 +67,7 @@ void ComandoSQL::Desconectar() throw (invalid_argument){
 void ComandoSQL::Executar() throw (invalid_argument){
     Conectar();
     rc = sqlite3_exec(bd, comando_sql.c_str(), Callback, nullptr, &mensagem);
+
     if(rc != SQLITE_OK){
         if(mensagem)
             sqlite3_free(mensagem);
@@ -79,12 +80,16 @@ void ComandoSQL::Executar() throw (invalid_argument){
 int ComandoSQL::Callback(void *not_used, int argc, char **valor_coluna, char **nome_coluna){
     Elemento elemento;
 
-    for(int i = 0; i < argc; i++){
+    for (int i = 0; i < argc; i++) {
         elemento.set_nome_coluna(nome_coluna[i]);
-        elemento.set_valor_coluna(valor_coluna ? valor_coluna[i]: "NULL");
+        if (valor_coluna[i] != nullptr) {
+            elemento.set_valor_coluna(valor_coluna[i]);
+        } else {
+            continue;
+        }
         lista_resultado.push_front(elemento);
     }
-    return 0;
+  return 0;
 }
 /*----------------------------------------------------------------------------*/
 
@@ -206,42 +211,42 @@ Leitor ComandoSQLPesquisarUsuario::PesquisarLeitor() const {
     Correio_Eletronico correio_eletronico;
     Senha senha;
 
-    if(lista_resultado.empty())
-        throw invalid_argument("\nLista vazia\n");
 
-    resultado = lista_resultado.back();
-    lista_resultado.pop_back();
+  if (lista_resultado.empty()) {
+    throw invalid_argument("\nLista Vazia\n");
+  }
+  resultado = lista_resultado.back();
+  lista_resultado.pop_back();
+  nome.set_nome(resultado.get_valor_coluna());
+  leitor.set_nome(nome);
 
-    nome.set_nome(resultado.get_valor_coluna());
+  if (lista_resultado.empty()) {
+    throw invalid_argument("\nLista Vazia\n");
+  }
+  resultado = lista_resultado.back();
+  lista_resultado.pop_back();
+  sobrenome.set_sobrenome(resultado.get_valor_coluna());
+  leitor.set_sobrenome(sobrenome);
 
-    if(lista_resultado.empty())
-        throw invalid_argument("\nLista vazia\n");
+  if (lista_resultado.empty()) {
+    throw invalid_argument("\nLista Vazia\n");
+  }
+  resultado = lista_resultado.back();
+  lista_resultado.pop_back();
+  senha.set_senha(resultado.get_valor_coluna());
+  leitor.set_senha(senha);
 
-    resultado = lista_resultado.back();
-    lista_resultado.pop_back();
+  if (lista_resultado.empty()) {
+    throw invalid_argument("\nLista Vazia\n");
+  }
+  resultado = lista_resultado.back();
+  lista_resultado.pop_back();
+  correio_eletronico.set_correio_eletronico(resultado.get_valor_coluna());
+  leitor.set_correio_eletronico(correio_eletronico);
 
-    sobrenome.set_sobrenome(resultado.get_valor_coluna());
+  lista_resultado.clear();
 
-    if(lista_resultado.empty())
-        throw invalid_argument("\nLista vazia\n");
-
-    resultado = lista_resultado.back();
-    lista_resultado.pop_back();
-
-    senha.set_senha(resultado.get_valor_coluna());
-
-    if(lista_resultado.empty())
-        throw invalid_argument("\nLista vazia\n");
-
-    resultado = lista_resultado.back();
-    lista_resultado.pop_back();
-
-    correio_eletronico.set_correio_eletronico(resultado.get_valor_coluna());
-
-    lista_resultado.clear();
-
-    leitor = Leitor(nome, sobrenome, correio_eletronico, senha);
-    return leitor;
+return leitor;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -377,8 +382,43 @@ Administrador ComandoSQLPesquisarUsuario::PesquisarAdministrador() const {
     administrador = Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
     return administrador;
 }
+/*----------------------------------------------------------------------------*/
+
+ComandoSQLExcluir::ComandoSQLExcluir(const Correio_Eletronico &correio_eletronico){
+    comando_sql += "DELETE FROM Usuario WHERE Email = ";
+    comando_sql += "'" + correio_eletronico.get_correio_eletronico() + "';";
+}
+
+ComandoSQLEditar::ComandoSQLEditar(const Leitor &leitor){
+    comando_sql = "UPDATE Usuario ";
+    comando_sql += "SET Nome = '" + leitor.get_nome().get_nome();
+    comando_sql += "', Sobrenome = '" + leitor.get_sobrenome().get_sobrenome();
+    comando_sql += "', Senha = '" + leitor.get_senha().get_senha();
+    comando_sql += "' WHERE Email = '" + leitor.get_correio_eletronico().get_correio_eletronico() + "';";
+}
+
+ComandoSQLEditar::ComandoSQLEditar(const Desenvolvedor &desenvolvedor){
+    comando_sql = "UPDATE Usuario ";
+    comando_sql += "SET Nome = '" + desenvolvedor.get_nome().get_nome();
+    comando_sql += "', Sobrenome = '" + desenvolvedor.get_sobrenome().get_sobrenome();
+    comando_sql += "', Senha = '" + desenvolvedor.get_senha().get_senha();
+    comando_sql += "', Data = '" + desenvolvedor.get_data().get_data();
+    comando_sql += "' WHERE Email = '" + desenvolvedor.get_correio_eletronico().get_correio_eletronico() + "';";
+}
+
+ComandoSQLEditar::ComandoSQLEditar(const Administrador &administrador){
+    comando_sql = "UPDATE Usuario ";
+    comando_sql += "SET Nome = '" + administrador.get_nome().get_nome();
+    comando_sql += "', Sobrenome = '" + administrador.get_sobrenome().get_sobrenome();
+    comando_sql += "', Senha = '" + administrador.get_senha().get_senha();
+    comando_sql += "', Data = '" + administrador.get_data().get_data();
+    comando_sql += "', Telefone = '" + administrador.get_telefone().get_telefone();
+    comando_sql += "', Endereco = '" + administrador.get_endereco().get_endereco();
+    comando_sql += "' WHERE Email = '" + administrador.get_correio_eletronico().get_correio_eletronico() + "';";
+}
 
 /*----------------------------------------------------------------------------*/
+
 
 ComandoSQLRegistraDefinicao::ComandoSQLRegistraDefinicao(const Definicao &definicao){
     comando_sql += "INSERT or IGNORE INTO Definicao (Texto, Data) VALUES (";
@@ -396,11 +436,19 @@ ComandoSQLRegistraVocabulario::ComandoSQLRegistraVocabulario(const VocControlado
     comando_sql += "'" + admistrador.get_correio_eletronico().get_correio_eletronico() + "');";
 }
 
+ComandoSQLRegistraTermo::ComandoSQLRegistraTermo(const Termo &termo, string nome_voc) {
+    comando_sql += "INSERT or IGNORE INTO Termo (Nome, Classe, Data, Vocabulario) VALUES (";
+    comando_sql += "'" + termo.get_nome().get_nome() + "',";
+    comando_sql += "'" + termo.get_classe_termo().get_classe_termo() + "',";
+    comando_sql += "'" + termo.get_data().get_data() + "',";
+    comando_sql += "'" + nome_voc + "');";
+}
+
 ComandoSQLRetornoVocabularios::ComandoSQLRetornoVocabularios() {
     comando_sql += "SELECT Nome, Idioma, Data FROM Vocabulario";
 }
 
-vector<VocControlado>ComandoSQLRetornoVocabularios::GetVocabularios() {
+vector<VocControlado> ComandoSQLRetornoVocabularios::get_vocabularios() {
 
     vector<VocControlado> voc_controlados;
     Nome nome;
@@ -409,16 +457,17 @@ vector<VocControlado>ComandoSQLRetornoVocabularios::GetVocabularios() {
     Elemento resultado;
 
     if((lista_resultado.size() % QUANTIDADE_COLUNAS) != 0) {
-        throw("\nErro de consistencia no retorno do banco de dados\n");
+        cout <<"\nErro de consistencia no retorno do banco de dados\n";
+        return voc_controlados;
     }
 
     int QUANTIDADE_VOCABULARIOS = lista_resultado.size()/QUANTIDADE_COLUNAS;
 
     if(lista_resultado.empty()) {
-        throw("\nVocabularios nao encontrados\n");
+        cout << "\nVocabularios nao encontrados\n";
+        return voc_controlados;
     } else {
         for(int i = 0; i < QUANTIDADE_VOCABULARIOS; i++) {
-
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
             nome.set_nome(resultado.get_valor_coluna());
@@ -429,7 +478,7 @@ vector<VocControlado>ComandoSQLRetornoVocabularios::GetVocabularios() {
 
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            data.set_data(resultado.get_nome_coluna());
+            data.set_data(resultado.get_valor_coluna());
 
             VocControlado aux(nome, idioma, data);
 
@@ -446,21 +495,26 @@ ComandoSQLRetornoTermos::ComandoSQLRetornoTermos(const VocControlado &voc_contro
     comando_sql += "'" + voc_controlado.get_nome().get_nome() + "';";
 }
 
-vector<Termo> ComandoSQLRetornoTermos::GetTermos() {
+vector<Termo> ComandoSQLRetornoTermos::get_termos(){
     vector<Termo> termos;
     Nome nome;
     Classe_Termo classe_termo;
     Data data;
     Elemento resultado;
 
+
+
     if((lista_resultado.size() % QUANTIDADE_COLUNAS) != 0) {
-        throw("\nErro de consistencia no retorno do banco de dados\n");
+        cout << "\nErro de consistencia no retorno do banco de dados\n";
+        return termos;
     }
+
 
     int QUANTIDADE_TERMOS = lista_resultado.size()/QUANTIDADE_COLUNAS;
 
     if(lista_resultado.empty()){
-        throw("\nTermos nao encontrados para este vocabulario\n");
+        cout <<"\nNao ha termos\n";
+        return termos;
     } else {
         for(int i = 0; i < QUANTIDADE_TERMOS; i++) {
             resultado = lista_resultado.back();
@@ -473,7 +527,7 @@ vector<Termo> ComandoSQLRetornoTermos::GetTermos() {
 
             resultado = lista_resultado.back();
             lista_resultado.pop_back();
-            data.set_data(resultado.get_nome_coluna());
+            data.set_data(resultado.get_valor_coluna());
 
             Termo aux(nome, classe_termo, data);
 
@@ -486,11 +540,11 @@ vector<Termo> ComandoSQLRetornoTermos::GetTermos() {
 }
 
 ComandoSQLRetornoDefinicoesVoc::ComandoSQLRetornoDefinicoesVoc(const VocControlado &voc_controlado) {
-    comando_sql += "SELECT Texto, Data FROM Vocabulario INNER JOIN Definicao ON Definicao.Texto = Vocabulario.Definicao WHERE Vocabulario = ";
-    comando_sql += "'" + voc_controlado.get_nome().get_nome() + "';";
+    comando_sql += "SELECT Texto, Data FROM Definicao WHERE Texto = (SELECT Definicao FROM Vocabulario WHERE Nome = ";
+    comando_sql += "'" + voc_controlado.get_nome().get_nome() + "');";
 }
 
-Definicao ComandoSQLRetornoDefinicoesVoc::GetDefinicao() {
+Definicao ComandoSQLRetornoDefinicoesVoc::get_definicao() {
     Texto_Definicao texto;
     Data data;
     Elemento resultado;
@@ -504,15 +558,37 @@ Definicao ComandoSQLRetornoDefinicoesVoc::GetDefinicao() {
     } else {
         resultado = lista_resultado.back();
         lista_resultado.pop_back();
-        texto.set_texto_definicao(resultado.get_nome_coluna());
+        texto.set_texto_definicao(resultado.get_valor_coluna());
 
         resultado = lista_resultado.back();
         lista_resultado.pop_back();
-        data.set_data(resultado.get_nome_coluna());
+        data.set_data(resultado.get_valor_coluna());
 
         Definicao definicao(texto, data);
 
         lista_resultado.clear();
         return definicao;
     }
+}
+
+ComandoSQLExcluirVocabulario::ComandoSQLExcluirVocabulario(const VocControlado &voc_controlado) {
+    comando_sql += "DELETE FROM Definicao WHERE Texto = ";
+    comando_sql += "(SELECT Definicao FROM Vocabulario WHERE Nome =";
+    comando_sql += "'" + voc_controlado.get_nome().get_nome() + "');";
+    comando_sql += "DELETE FROM Vocabulario WHERE Nome = ";
+    comando_sql += "'" + voc_controlado.get_nome().get_nome() + "';";
+}
+
+ComandoSQLExcluirTermo::ComandoSQLExcluirTermo(const Termo &termo){
+    comando_sql += "DELETE FROM Termo WHERE Nome = ";
+    comando_sql += "'" + termo.get_nome().get_nome() + "';";
+}
+
+ComandoSQLEditarDefinicaoVocabulario::ComandoSQLEditarDefinicaoVocabulario(string voc, const Definicao &definicao) {
+    comando_sql += "UPDATE Definicao ";
+    comando_sql += "SET Texto = '" + definicao.get_texto_definicao().get_texto_definicao() + "',";
+    comando_sql += "Data = '" + definicao.get_data().get_data() + "'";
+    comando_sql += "WHERE Texto = ";
+    comando_sql += "(SELECT Definicao FROM Vocabulario WHERE Nome =";
+    comando_sql += "'" + voc + "');";
 }
