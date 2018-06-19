@@ -67,7 +67,6 @@ void ComandoSQL::Desconectar() throw (invalid_argument){
 void ComandoSQL::Executar() throw (invalid_argument){
     Conectar();
     rc = sqlite3_exec(bd, comando_sql.c_str(), Callback, nullptr, &mensagem);
-
     if(rc != SQLITE_OK){
         if(mensagem)
             sqlite3_free(mensagem);
@@ -89,7 +88,7 @@ int ComandoSQL::Callback(void *not_used, int argc, char **valor_coluna, char **n
         }
         lista_resultado.push_front(elemento);
     }
-  return 0;
+    return 0;
 }
 /*----------------------------------------------------------------------------*/
 
@@ -382,12 +381,14 @@ Administrador ComandoSQLPesquisarUsuario::PesquisarAdministrador() const {
     administrador = Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
     return administrador;
 }
-/*----------------------------------------------------------------------------*/
 
+/*----------------------------------------------------------------------------*/
 ComandoSQLExcluir::ComandoSQLExcluir(const Correio_Eletronico &correio_eletronico){
     comando_sql += "DELETE FROM Usuario WHERE Email = ";
     comando_sql += "'" + correio_eletronico.get_correio_eletronico() + "';";
 }
+
+/*----------------------------------------------------------------------------*/
 
 ComandoSQLEditar::ComandoSQLEditar(const Leitor &leitor){
     comando_sql = "UPDATE Usuario ";
@@ -416,9 +417,7 @@ ComandoSQLEditar::ComandoSQLEditar(const Administrador &administrador){
     comando_sql += "', Endereco = '" + administrador.get_endereco().get_endereco();
     comando_sql += "' WHERE Email = '" + administrador.get_correio_eletronico().get_correio_eletronico() + "';";
 }
-
 /*----------------------------------------------------------------------------*/
-
 
 ComandoSQLRegistraDefinicao::ComandoSQLRegistraDefinicao(const Definicao &definicao){
     comando_sql += "INSERT or IGNORE INTO Definicao (Texto, Data) VALUES (";

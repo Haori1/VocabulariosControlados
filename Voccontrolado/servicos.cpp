@@ -93,7 +93,6 @@ Resultado ServicoCadastroControle::CadastroAdministrador(const Nome &nome, const
     Administrador administrador;
 
     administrador = Administrador(nome, sobrenome, telefone, data_nascimento, endereco, correio_eletronico, senha);
-    //colocar os ifs
 
     ComandoSQLCadastrar comandoSQLCadastrar(administrador, "Administrador");
     comandoSQLCadastrar.Executar();
@@ -113,8 +112,7 @@ ResultadoUsuario ServicoAutenticacaoControle::Autenticar(const Correio_Eletronic
         ComandoSQLRetornoEmail comandoSQLRetornoEmail(correio_eletronico);
         comandoSQLRetornoEmail.Executar();
         string email = comandoSQLRetornoEmail.RetornoEmail();
-
-    } catch (invalid_argument &exp) {
+    } catch (exception &exp) {
         cout << "\nEmail ou senha invalidos.\n";
         cout << "Pressione qualquer tecla para continuar: ";
         resultado.set_resultado(Resultado::FALHA);
@@ -128,7 +126,7 @@ ResultadoUsuario ServicoAutenticacaoControle::Autenticar(const Correio_Eletronic
         comandoSQLRetornoSenha.Executar();
         senha_db = comandoSQLRetornoSenha.RetornoSenha();
 
-    } catch (invalid_argument &exp) {
+    } catch (exception &exp) {
         cout << "\nEmail ou senha invalidos.\n";
         cout << "Pressione qualquer tecla para continuar: ";
         resultado.set_resultado(Resultado::FALHA);
@@ -148,29 +146,43 @@ ResultadoUsuario ServicoAutenticacaoControle::Autenticar(const Correio_Eletronic
         getchar();
     }
 
+    string tipo;
     ComandoSQLRetornoTipo comandoSQLRetornoTipo(correio_eletronico);
-    comandoSQLRetornoTipo.Executar();
-    string tipo = comandoSQLRetornoTipo.RetornoTipo();
-
-    ComandoSQLPesquisarUsuario comandoSQLPesquisarUsuario(correio_eletronico);
-    comandoSQLPesquisarUsuario.Executar();
-
-    if(tipo == "Leitor"){
-
-        resultado.tipo_de_usuario = ResultadoUsuario::LEITOR;
-        Leitor leitor = comandoSQLPesquisarUsuario.PesquisarLeitor();
-        resultado.set_leitor(leitor);
-    } else if(tipo == "Desenvolvedor"){
-
-        resultado.tipo_de_usuario = ResultadoUsuario::DESENVOLVEDOR;
-        Desenvolvedor desenvolvedor = comandoSQLPesquisarUsuario.PesquisarDesenvolvedor();
-        resultado.set_desenvolvedor(desenvolvedor);
-    } else if(tipo == "Administrador"){
-
-        resultado.tipo_de_usuario = ResultadoUsuario::ADMINISTRADOR;
-        Administrador administrador = comandoSQLPesquisarUsuario.PesquisarAdministrador();
-        resultado.set_administrador(administrador);
+    try{
+        comandoSQLRetornoTipo.Executar();
+        tipo = comandoSQLRetornoTipo.RetornoTipo();
+    } catch (exception &exp) {
+        cout << endl << exp.what() << endl;
+        fflush(stdin);
+        getchar();
     }
+
+    try {
+        ComandoSQLPesquisarUsuario comandoSQLPesquisarUsuario(correio_eletronico);
+        comandoSQLPesquisarUsuario.Executar();
+        if(tipo == "Leitor"){
+
+            resultado.tipo_de_usuario = ResultadoUsuario::LEITOR;
+            Leitor leitor = comandoSQLPesquisarUsuario.PesquisarLeitor();
+            resultado.set_leitor(leitor);
+        } else if(tipo == "Desenvolvedor"){
+
+            resultado.tipo_de_usuario = ResultadoUsuario::DESENVOLVEDOR;
+            Desenvolvedor desenvolvedor = comandoSQLPesquisarUsuario.PesquisarDesenvolvedor();
+            resultado.set_desenvolvedor(desenvolvedor);
+        } else if(tipo == "Administrador"){
+
+            resultado.tipo_de_usuario = ResultadoUsuario::ADMINISTRADOR;
+            Administrador administrador = comandoSQLPesquisarUsuario.PesquisarAdministrador();
+            resultado.set_administrador(administrador);
+        }
+    } catch(exception &exp) {
+        cout << endl << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+    }
+
+
     return resultado;
 }
 
@@ -182,6 +194,7 @@ ResultadoUsuario ServicoAutenticacaoControle::TipoDeUsuario(const Correio_Eletro
 }
 
 /*-----------------------------------------------------------------------------------------------------*/
+
 void ServicoUsuarioControle::Exibir(const Leitor &leitor) throw (invalid_argument){
     cout << endl << "Nome: " << leitor.get_nome().get_nome() << endl;
     cout << "Sobrenome: " << leitor.get_sobrenome().get_sobrenome() << endl;
@@ -671,4 +684,3 @@ Resultado ServicoVocabulariosControle::CriaTermo(string nome_voc) throw(invalid_
     resultado.set_resultado(Resultado::SUCESSO);
     return resultado;
  }
-

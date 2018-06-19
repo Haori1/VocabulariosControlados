@@ -154,6 +154,7 @@ void ComandoCadastroAdministradorIA::ExecutarComando(CadastroIS *cntr_link_cadas
 }
 
 /*----------------------------------------------------------------------------*/
+
 Resultado ComandoExibir::ExecutarComando(UsuarioIS *cntr_link_usuario, const Correio_Eletronico &correio_eletronico) throw (invalid_argument) {
     Resultado resultado;
     string tipo;
@@ -242,6 +243,7 @@ Resultado ComandoEditar::ExecutarComando(UsuarioIS *cntr_link_usuario, const Cor
     result.set_resultado(resultado.get_resultado());
     return result;
 }
+
 
 /*----------------------------------------------------------------------------*/
 

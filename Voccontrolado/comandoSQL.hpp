@@ -11,6 +11,7 @@
 #include "sqlite3.h"
 #include "dominios.hpp"
 #include "entidades.hpp"
+#include "servicos.hpp"
 
 using namespace std;
 
@@ -114,6 +115,8 @@ class ComandoSQLExcluir : public ComandoSQL {
         ComandoSQLExcluir(const Correio_Eletronico&);
 
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLEditar : public ComandoSQL {
     public:

@@ -7,6 +7,7 @@
 #include "dominios.hpp"
 #include "interfaces.hpp"
 #include "comandos.hpp"
+#include "servicos.hpp"
 
 #define CLEAR "cls||clear"
 
@@ -122,27 +123,27 @@ void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usu
  *
  */
 
-class ApresentacaoVocabularioControle : public VocabulariosIA
-{
-private:
-    /**
-     * @brief Referencia para a camada de servicos.
-     *
-     */
-    VocabulariosIS *cntr_link_vocabulario;
+ class ApresentacaoVocabularioControle : public VocabulariosIA
+ {
+ private:
+     /**
+      * @brief Referencia para a camada de servicos.
+      *
+      */
+     VocabulariosIS *cntr_link_vocabulario;
 
-public:
-    Resultado Executar(const ResultadoUsuario&) throw (invalid_argument) override;
-    void set_vocabulario_ia(VocabulariosIS *) override;
-};
-/**
- * @brief A funcao tem como responsabilidade linkar a camada de apresentacao com a camada de servicos.
- *
- */
-void inline ApresentacaoVocabularioControle::set_vocabulario_ia(VocabulariosIS* cntr_link_vocabulario)
-{
-    this->cntr_link_vocabulario = cntr_link_vocabulario;
-}
-
+ public:
+     Resultado Executar(const ResultadoUsuario&) throw (invalid_argument) override;
+     void set_vocabulario_ia(VocabulariosIS *) override;
+ };
+ /**
+  * @brief A funcao tem como responsabilidade linkar a camada de apresentacao com a camada de servicos.
+  *
+  */
+ void inline ApresentacaoVocabularioControle::set_vocabulario_ia(VocabulariosIS* cntr_link_vocabulario)
+ {
+     this->cntr_link_vocabulario = cntr_link_vocabulario;
+ }
+ 
 /*----------------------------------------------------------------------------*/
 #endif
