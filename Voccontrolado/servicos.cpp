@@ -820,16 +820,137 @@ vector<Definicao> ServicoVocabulariosControle::BuscaDefinicaoTermo(const Termo &
 
 }
 
-void ServicoVocabulariosControle::ConsultaDefinicaoTermo(const vector<Definicao> &definicoes){
+void ServicoVocabulariosControle::ConsultaDefinicaoTermo(const vector<Definicao> &definicoes) throw(invalid_argument){
 
     int tamanho;
     int contador = 1;
 
     tamanho = definicoes.size();
 
+    try {
     for(int i = 0; i < tamanho; i++) {
         cout << contador << ".\n" << "Definicao: " <<definicoes[i].get_texto_definicao().get_texto_definicao() << endl << "Data: " << definicoes[i].get_data().get_data() << endl;
         contador++;
     }
+    } catch(invalid_argument &exp) {
+        cout << exp.what() << endl;
+    }
+
+}
+
+Resultado ServicoVocabulariosControle::EditarTermo(Termo &termo_anterior) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+    Nome nome;
+    Data data;
+
+
+    try {
+        cout << endl << "Digite o novo nome do termo: ";
+        cin >> input;
+        nome.set_nome(input);
+
+        cout << endl << "Digite a data: ";
+        cin >> input;
+        data.set_data(input);
+
+        Termo termo(nome, termo_anterior.get_classe_termo() , data);
+
+        ComandoSQLEditarTermo editar_termo(termo, termo_anterior.get_nome().get_nome());
+        editar_termo.Executar();
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    } catch (invalid_argument &exp) {
+        cout << "\n" << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+
+}
+
+Resultado ServicoVocabulariosControle::EditarDefinicaoTermo(string texto_definicao_anterior) throw(invalid_argument){
+    Resultado resultado;
+    string input;
+    Texto_Definicao texto_definicao;
+    Data data_definicao;
+
+    try {
+        cout << endl << "Digite o texto da definicao: ";
+        cin.clear();    //Limpar o cin pra poder pegar o input de maneira correta
+        cin.ignore();
+        getline(cin, input);
+        //cin >> input;
+        texto_definicao.set_texto_definicao(input);
+
+        cout << endl << "Digite a data da definicao: ";
+        cin >> input;
+        data_definicao.set_data(input);
+
+        Definicao definicao(texto_definicao, data_definicao);
+
+        ComandoSQLEditarDeficaoTermo editar_definicao_termo(definicao, texto_definicao_anterior);
+        editar_definicao_termo.Executar();
+
+        resultado.set_resultado(Resultado::SUCESSO);
+        return resultado;
+    } catch (invalid_argument &exp) {
+        cout << "\n" << exp.what() << endl;
+        fflush(stdin);
+        getchar();
+        resultado.set_resultado(Resultado::FALHA);
+        return resultado;
+    }
+
+    resultado.set_resultado(Resultado::SUCESSO);
+    return resultado;
+}
+
+ResultadoUsuario ServicoVocabulariosControle::RetornaAcessoUsuarioVocabulario(const ResultadoUsuario &resultado_usuario, string voc) throw(invalid_argument){
+    ResultadoUsuario resultado_usuario_aux;
+    resultado_usuario_aux = resultado_usuario;
+    vector<string> string_desenvolvedores;
+    string administrador;
+    string correio_eletronico;
+
+    int tamanho;
+
+    ComandoRetornaDesenvolvedor_Vocabulario retorna_desenvolvedor_vocabulario(voc);
+    retorna_desenvolvedor_vocabulario.Executar();
+
+    string_desenvolvedores = retorna_desenvolvedor_vocabulario.get_desenvolvedores();
+
+    ComandoSQLRetornaAdministradorVoc retorna_administrador_vocabulario(voc);
+    retorna_administrador_vocabulario.Executar();
+    administrador = retorna_administrador_vocabulario.get_administrador();
+
+    tamanho = string_desenvolvedores.size();
+
+        for(int i = 0; i < tamanho; i++) {
+            if(resultado_usuario_aux.tipo_de_usuario == ResultadoUsuario::ADMINISTRADOR) {
+                correio_eletronico = resultado_usuario.get_administrador().get_correio_eletronico().get_correio_eletronico();
+                    if(correio_eletronico == string_desenvolvedores[i]) {
+                        resultado_usuario_aux.tipo_de_usuario = ResultadoUsuario::ADMINISTRADOR;
+                        return resultado_usuario_aux;
+                    } else if(correio_eletronico == administrador) {
+                        resultado_usuario_aux.tipo_de_usuario = ResultadoUsuario::ADMINISTRADOR;
+                        return resultado_usuario_aux;
+                    }
+            } else if(resultado_usuario_aux.tipo_de_usuario == ResultadoUsuario::DESENVOLVEDOR) {
+                      correio_eletronico = resultado_usuario.get_desenvolvedor().get_correio_eletronico().get_correio_eletronico();
+                    if(correio_eletronico == string_desenvolvedores[i]) {
+                        resultado_usuario_aux.tipo_de_usuario = ResultadoUsuario::DESENVOLVEDOR;
+                        return resultado_usuario_aux;
+                    }
+            }
+        }
+
+        resultado_usuario_aux.tipo_de_usuario = ResultadoUsuario::LEITOR;
+        return resultado_usuario_aux;
 
 }

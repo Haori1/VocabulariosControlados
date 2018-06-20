@@ -231,7 +231,7 @@ public:
  class ComandoEditarDefinicaoTermo
  {
  public:
-     Resultado Executar(VocabulariosIS *, Termo&);
+     Resultado Executar(VocabulariosIS *, string texto_definicao_anterior);
  };
 
 
@@ -257,6 +257,12 @@ class ComandoCriarDefinicao
 {
 public:
     Resultado Executar(VocabulariosIS *, const Termo &temo);
+};
+
+class ComandoRetornaAcesso
+{
+    public:
+        ResultadoUsuario Executar(VocabulariosIS *, string voc, const ResultadoUsuario&);
 };
 
 #endif

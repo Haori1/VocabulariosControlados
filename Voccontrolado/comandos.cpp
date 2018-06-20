@@ -296,6 +296,8 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
                                                string nome_termo) throw(invalid_argument){
     bool TRIGGER_ERRO = false;
     int tamanho = lista_termos.size();
+    Termo termo;
+
 
         for(int i = 0; i < tamanho; i++){
             if(nome_termo == lista_termos[i].get_nome().get_nome()) {
@@ -306,7 +308,8 @@ Termo ComandoConsultarTermo::ExecutarComando(VocabulariosIS *cntr_link_vocabular
         }
 
     if(TRIGGER_ERRO == false) {
-        throw("\nNome nao se encontra na lista de termos\n");
+        cout << "\nNome nao se encontra na lista de termos\n";
+        return termo;
     }
 
     return lista_termos[0];
@@ -422,13 +425,13 @@ Resultado ComandoExcluirTermo::Executar(VocabulariosIS *cntr_link_vocabulario, T
 
 Resultado ComandoEditarTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo){
     Resultado resultado;
-    //resultado = cntr_link_vocabulario->EditarTermo(termo);
+    resultado = cntr_link_vocabulario->EditarTermo(termo);
     return resultado;
 }
 
-Resultado ComandoEditarDefinicaoTermo::Executar(VocabulariosIS *cntr_link_vocabulario, Termo &termo) {
+Resultado ComandoEditarDefinicaoTermo::Executar(VocabulariosIS *cntr_link_vocabulario, string texto_definicao_anterior){
     Resultado resultado;
-    //resultado = cntr_link_vocabulario->EditarDefinicaoTermo(termo);
+    resultado = cntr_link_vocabulario->EditarDefinicaoTermo(texto_definicao_anterior);
     return resultado;
 }
 
@@ -475,4 +478,10 @@ Resultado ComandoCriarDefinicao::Executar(VocabulariosIS *cntr_link_vocabulario,
         cout << "\nFalha no sistema." << endl;
         return resultado;
     }
+}
+
+ResultadoUsuario ComandoRetornaAcesso::Executar(VocabulariosIS *cntr_link_vocabulario, string voc, const ResultadoUsuario &resultado_usuario) {
+    ResultadoUsuario resultado_usuario_aux;
+    resultado_usuario_aux = cntr_link_vocabulario->RetornaAcessoUsuarioVocabulario(resultado_usuario, voc);
+    return resultado_usuario_aux;
 }

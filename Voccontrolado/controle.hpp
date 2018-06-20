@@ -133,7 +133,7 @@ void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usu
      VocabulariosIS *cntr_link_vocabulario;
 
  public:
-     Resultado Executar(const ResultadoUsuario&) throw (invalid_argument) override;
+     Resultado Executar(ResultadoUsuario&) throw (invalid_argument) override;
      void set_vocabulario_ia(VocabulariosIS *) override;
  };
  /**
@@ -144,6 +144,6 @@ void inline ApresentacaoUsuarioControle::set_usuario_ia(UsuarioIS* cntr_link_usu
  {
      this->cntr_link_vocabulario = cntr_link_vocabulario;
  }
- 
+
 /*----------------------------------------------------------------------------*/
 #endif

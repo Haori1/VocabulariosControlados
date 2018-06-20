@@ -159,6 +159,17 @@ class ComandoSQLExcluirTermo : public ComandoSQL {
         ComandoSQLExcluirTermo(const Termo &termo);
 };
 
+class ComandoSQLEditarTermo : public ComandoSQL {
+    public:
+        ComandoSQLEditarTermo(const Termo &termo, string nome_termo);
+};
+
+class ComandoSQLEditarDeficaoTermo : public ComandoSQL {
+    public:
+        ComandoSQLEditarDeficaoTermo(const Definicao &definicao, string texto_definicao_anterior);
+};
+
+
 class ComandoSQLEditarDefinicaoVocabulario : public ComandoSQL {
     public:
         ComandoSQLEditarDefinicaoVocabulario(string voc, const Definicao &definicao);
@@ -226,6 +237,12 @@ class ComandoSQLRetornaDefinicoesTermo : public ComandoSQL {
     public:
         ComandoSQLRetornaDefinicoesTermo(string texto_definicao);
         Definicao get_definicao();
+};
+
+class ComandoSQLRetornaAdministradorVoc : public ComandoSQL {
+    public:
+        ComandoSQLRetornaAdministradorVoc(string voc);
+        string get_administrador();
 };
 
 

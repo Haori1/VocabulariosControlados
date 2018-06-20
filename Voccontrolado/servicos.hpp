@@ -69,19 +69,21 @@ class ServicoVocabulariosControle : public VocabulariosIS{
         vector<Termo> ApresentaTermos(const VocControlado&) throw(invalid_argument) override;
         void ConsultarTermo(const Termo&) throw(invalid_argument) override;
         vector<Definicao> BuscaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
-        void ConsultaDefinicaoTermo(const vector<Definicao>&) override;
+        void ConsultaDefinicaoTermo(const vector<Definicao>&) throw(invalid_argument) override;
 
         Resultado CriaTermo(string nome_voc) throw(invalid_argument) override;
         Resultado ExcluirTermo(const Termo&) throw(invalid_argument) override;
         Resultado CriaVocabulario(const ResultadoUsuario &resultado_usuario) throw(invalid_argument) override;
         Resultado ExcluirVocabulario(const VocControlado&) throw(invalid_argument) override;
         Resultado EditarDefinicaoVocabulario(string voc) throw(invalid_argument) override;
-        // Resultado EditarDefinicaoTermo(Termo&) throw(invalid_argument) override;
+        Resultado EditarDefinicaoTermo(string Texto_Definicao_anterior) throw(invalid_argument) override;
         Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) override;
-        // Resultado EditarTermo(Termo&) throw(invalid_argument) override;//
+        Resultado EditarTermo(Termo &termo) throw(invalid_argument) override;
 
         Resultado CadastraDesenvolvedor(string voc, string correio_eletronico) throw(invalid_argument) override;
         Resultado CriaDefinicaoTermo(const Termo&) throw(invalid_argument) override;
+
+        ResultadoUsuario RetornaAcessoUsuarioVocabulario(const ResultadoUsuario&, string voc) throw(invalid_argument) override;
 };
 
 /*----------------------------------------------------------------------------------*/

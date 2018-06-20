@@ -66,6 +66,8 @@ void ComandoSQL::Desconectar() throw (invalid_argument){
 
 void ComandoSQL::Executar() throw (invalid_argument){
     Conectar();
+    cout << comando_sql;
+    system("pause");
     rc = sqlite3_exec(bd, comando_sql.c_str(), Callback, nullptr, &mensagem);
     if(rc != SQLITE_OK){
         if(mensagem)
@@ -713,5 +715,47 @@ Definicao ComandoSQLRetornaDefinicoesTermo::get_definicao() {
 
         lista_resultado.clear();
         return definicao;
+    }
+}
+
+ComandoSQLEditarTermo::ComandoSQLEditarTermo(const Termo &termo, string nome_termo) {
+    comando_sql += "UPDATE Termo ";
+    comando_sql += "SET Nome = '" + termo.get_nome().get_nome() + "',";
+    comando_sql += "Data = '" + termo.get_data().get_data() + "'";
+    comando_sql += "WHERE Nome = '" + nome_termo + "';";
+    comando_sql += "UPDATE Termo_Definicao ";
+    comando_sql += "SET Termo = '" + termo.get_nome().get_nome() + "'";
+    comando_sql += "WHERE Termo = '" + nome_termo + "';";
+}
+
+ComandoSQLEditarDeficaoTermo::ComandoSQLEditarDeficaoTermo(const Definicao &definicao, string texto_definicao_anterior) {
+     comando_sql += "UPDATE Definicao ";
+    comando_sql += "SET Texto = '" + definicao.get_texto_definicao().get_texto_definicao() + "',";
+    comando_sql += "Data = '" + definicao.get_data().get_data() + "'";
+    comando_sql += "WHERE Texto = '" + texto_definicao_anterior + "';";
+    comando_sql += "UPDATE Termo_Definicao ";
+    comando_sql += "SET Definicao = '" + definicao.get_texto_definicao().get_texto_definicao() + "'";
+    comando_sql += "WHERE Definicao = '" + texto_definicao_anterior + "';";
+}
+
+ComandoSQLRetornaAdministradorVoc::ComandoSQLRetornaAdministradorVoc(string voc) {
+    comando_sql += "SELECT Administrador FROM Vocabulario WHERE Nome = '";
+    comando_sql += voc + "';";
+}
+
+string ComandoSQLRetornaAdministradorVoc::get_administrador(){
+    string administrador;
+    Elemento resultado;
+
+    if(lista_resultado.empty()) {
+        cout << "\nAdministrador nao encontrado\n";
+        return administrador;
+    } else {
+        resultado = lista_resultado.back();
+        lista_resultado.pop_back();
+        administrador = resultado.get_valor_coluna();
+
+        lista_resultado.clear();
+        return administrador;
     }
 }
