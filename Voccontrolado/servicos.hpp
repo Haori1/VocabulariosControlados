@@ -10,7 +10,22 @@
 
 using namespace std;
 
+/**
+ * @file servicos.hpp
+ * @author Henrique Mendes de Freitas Mariano
+ * @author Gabriel Alves Castro
+ * @date 17 de junho de 2018
+ *
+ * @brief Controladoras da camada de serviços que regulamentam as regras de negócio.
+ *
+ */
+
 /*----------------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe que regulamenta o cadastro de usuarios no sistema e regulamenta as regras de negócio.
+ */
+
 
 class ServicoCadastroControle : public CadastroIS {
     private:
@@ -34,13 +49,21 @@ class ServicoCadastroControle : public CadastroIS {
 
 /*----------------------------------------------------------------------------------*/
 
+/**
+ * @brief Classe que regulamenta a autenticação do sistema.
+ */
+
+
 class ServicoAutenticacaoControle : public AutenticacaoIS {
     public:
         ResultadoUsuario Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) override;
-        ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) override;
 };
 
 /*----------------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe que fornece os serviços de usuario, como exibir, excluir, editar, e regulamenta as regras de negócio do sistema.
+ */
 
 class ServicoUsuarioControle : public UsuarioIS {
     public:
@@ -58,6 +81,9 @@ class ServicoUsuarioControle : public UsuarioIS {
 
 /*----------------------------------------------------------------------------------*/
 
+/**
+ * @brief Classe que fornece os serviços de Vocabulário, e regulamenta as regras de negócio do sistema
+ */
 
 class ServicoVocabulariosControle : public VocabulariosIS{
     private:

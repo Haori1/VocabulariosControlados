@@ -188,13 +188,6 @@ ResultadoUsuario ServicoAutenticacaoControle::Autenticar(const Correio_Eletronic
 
 /*-----------------------------------------------------------------------------------------------------*/
 
-ResultadoUsuario ServicoAutenticacaoControle::TipoDeUsuario(const Correio_Eletronico&, const Senha&){ //Retirar essa funcao
-    ResultadoUsuario resultado;
-    return resultado;
-}
-
-/*-----------------------------------------------------------------------------------------------------*/
-
 void ServicoUsuarioControle::Exibir(const Leitor &leitor) throw (invalid_argument){
     cout << endl << "Nome: " << leitor.get_nome().get_nome() << endl;
     cout << "Sobrenome: " << leitor.get_sobrenome().get_sobrenome() << endl;
@@ -651,20 +644,25 @@ Resultado ServicoVocabulariosControle::CriaTermo(string nome_voc) throw(invalid_
 
  Resultado ServicoVocabulariosControle::EditarDefinicaoVocabulario(string voc) throw(invalid_argument){
     Resultado resultado;
-    string input;
+    string input_texto;
+    string input_data;
     Texto_Definicao texto_definicao;
     Data data_definicao;
 
     try {
         cout << endl << "Digite o texto da definicao: ";
-        cin.clear();    //Limpar o cin pra poder pegar o input de maneira correta
+        fflush(stdin);
+        cin.clear();
         cin.ignore();
-        getline(cin, input);
-        texto_definicao.set_texto_definicao(input);
+        getline(cin, input_texto);
+        texto_definicao.set_texto_definicao(input_texto);
 
         cout << endl << "Digite a data da definicao: ";
-        cin >> input;
-        data_definicao.set_data(input);
+        fflush(stdin);
+        cin.clear();
+        cin.ignore();
+        cin >> input_data;
+        data_definicao.set_data(input_data);
 
         Definicao definicao(texto_definicao, data_definicao);
 

@@ -67,12 +67,6 @@ class AutenticacaoIS{
          * @param const Senha&
          */
         virtual ResultadoUsuario Autenticar(const Correio_Eletronico&, const Senha&) throw (invalid_argument) = 0;
-        /**
-         * @brief TipoDeUsuario() é uma funcao que a partir do email, ele determina que tipo de usuario ira ser escrito e retornado pelo ResultadoUsuario.
-         * @param const Correio_Eletronico&
-         * @param const Senha&
-         */
-        virtual ResultadoUsuario TipoDeUsuario(const Correio_Eletronico&, const Senha&) = 0;
 
         /**
          * @brief Destrutor virtual default da classe AutenticacaoIS.
@@ -125,10 +119,6 @@ class UsuarioIS{
         virtual ResultadoUsuario Editar(const Leitor&) throw (invalid_argument) = 0;
         virtual ResultadoUsuario Editar(const Desenvolvedor&) throw (invalid_argument) = 0;
         virtual ResultadoUsuario Editar(const Administrador&) throw (invalid_argument) = 0;
-        /**
-         * @brief Excluir() é uma funcao que exclui o usuario quando passado a sua senha.
-         * @return Resultado, retorna se foi sucesso ou falha.
-         */
         virtual Resultado Excluir(const Correio_Eletronico&) throw (invalid_argument) = 0;
         virtual ResultadoUsuario EditarLeitor(const Correio_Eletronico&) throw (invalid_argument) = 0;
         virtual ResultadoUsuario EditarDesenvolvedor(const Correio_Eletronico&) throw (invalid_argument) = 0;

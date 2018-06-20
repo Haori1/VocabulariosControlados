@@ -66,8 +66,6 @@ void ComandoSQL::Desconectar() throw (invalid_argument){
 
 void ComandoSQL::Executar() throw (invalid_argument){
     Conectar();
-    cout << comando_sql;
-    system("pause");
     rc = sqlite3_exec(bd, comando_sql.c_str(), Callback, nullptr, &mensagem);
     if(rc != SQLITE_OK){
         if(mensagem)

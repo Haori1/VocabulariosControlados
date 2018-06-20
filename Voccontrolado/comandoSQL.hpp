@@ -15,7 +15,21 @@
 
 using namespace std;
 
+/**
+ * @file comandoSQL.hpp
+ * @author Henrique Mendes de Freitas Mariano
+ * @author Gabriel Alves Castro
+ * @date 17 de junho de 2018
+ *
+ * @brief Comandos em SQL que permitem o acesso ao banco de dados
+ *
+ */
+
 /*----------------------------------------------------------------------------*/
+
+/**
+ * @brief Classe que representa um elemento da lista que eh preenchida quando um comando SQL recupera algum valor
+ */
 
 class Elemento{
     private:
@@ -42,6 +56,10 @@ class Elemento{
 
 /*----------------------------------------------------------------------------*/
 
+/**
+ * @brief Classe que define como os comandos SQL devem ser executados.
+ */
+
 class ComandoSQL{
     private:
         const char *nome_banco_dados;
@@ -51,6 +69,9 @@ class ComandoSQL{
 
         void Conectar() throw (invalid_argument);
         void Desconectar() throw (invalid_argument);
+        /**
+         * @brief Função que recupera valores do banco de dados.
+         */
         static int Callback(void *, int, char **, char **);
 
     protected:
@@ -58,6 +79,9 @@ class ComandoSQL{
         static list<Elemento> lista_resultado;
 
     public:
+        /**
+         * @brief Construtor que define o nome do banco de dados a ser utilizado.
+         */
         ComandoSQL(){
             nome_banco_dados = "voc_controlado_db.db";
         }
@@ -139,41 +163,56 @@ class ComandoSQLRegistraDefinicao : public ComandoSQL {
         ComandoSQLRegistraDefinicao(const Definicao &definicao);
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLRegistraVocabulario : public ComandoSQL {
     public:
         ComandoSQLRegistraVocabulario(const VocControlado &voc_controlado, const Definicao &definicao, const Administrador &admistrador);
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLRegistraTermo : public ComandoSQL {
     public:
         ComandoSQLRegistraTermo(const Termo &termo, string nome_voc);
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLExcluirVocabulario : public ComandoSQL {
     public:
         ComandoSQLExcluirVocabulario(const VocControlado &voc_controlado);
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLExcluirTermo : public ComandoSQL {
     public:
         ComandoSQLExcluirTermo(const Termo &termo);
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLEditarTermo : public ComandoSQL {
     public:
         ComandoSQLEditarTermo(const Termo &termo, string nome_termo);
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLEditarDeficaoTermo : public ComandoSQL {
     public:
         ComandoSQLEditarDeficaoTermo(const Definicao &definicao, string texto_definicao_anterior);
 };
 
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLEditarDefinicaoVocabulario : public ComandoSQL {
     public:
         ComandoSQLEditarDefinicaoVocabulario(string voc, const Definicao &definicao);
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLRetornoVocabularios : public ComandoSQL {
     private:
@@ -183,6 +222,8 @@ class ComandoSQLRetornoVocabularios : public ComandoSQL {
         vector<VocControlado> get_vocabularios();
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLRetornoTermos : public ComandoSQL {
     private:
         int QUANTIDADE_COLUNAS = 3;
@@ -190,6 +231,8 @@ class ComandoSQLRetornoTermos : public ComandoSQL {
         ComandoSQLRetornoTermos(const VocControlado &voc_controlado);
         vector<Termo> get_termos();
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLRetornoDefinicoesVoc : public ComandoSQL {
     private:
@@ -202,15 +245,21 @@ class ComandoSQLRetornoDefinicoesVoc : public ComandoSQL {
 
  //haverao as definicoes dos termos, que devera seguir determinadas regras de negocio.
 
+ /*----------------------------------------------------------------------------*/
+
 class ComandoSQLAlterarIdiomaVoc : public ComandoSQL {
     public:
         ComandoSQLAlterarIdiomaVoc(const VocControlado &voc_controlado);
  };
 
+ /*----------------------------------------------------------------------------*/
+
 class ComandoSQLCadastraDevenvolvedor : public ComandoSQL {
     public:
         ComandoSQLCadastraDevenvolvedor(string voc, string correio_eletronico);
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoRetornaDesenvolvedor_Vocabulario : public ComandoSQL {
     public:
@@ -219,10 +268,14 @@ class ComandoRetornaDesenvolvedor_Vocabulario : public ComandoSQL {
         vector<string> get_desenvolvedores();
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLLinkaDefinicao_Termo : public ComandoSQL {
     public:
         ComandoSQLLinkaDefinicao_Termo(string texto_definicao, string nome_termo);
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLRetornaDefinicao_Termo : public ComandoSQL {
     public:
@@ -231,6 +284,8 @@ class ComandoSQLRetornaDefinicao_Termo : public ComandoSQL {
         vector<string> get_definicoes();
 };
 
+/*----------------------------------------------------------------------------*/
+
 class ComandoSQLRetornaDefinicoesTermo : public ComandoSQL {
     private:
         int QUANTIDADE_COLUNAS = 2;
@@ -238,6 +293,8 @@ class ComandoSQLRetornaDefinicoesTermo : public ComandoSQL {
         ComandoSQLRetornaDefinicoesTermo(string texto_definicao);
         Definicao get_definicao();
 };
+
+/*----------------------------------------------------------------------------*/
 
 class ComandoSQLRetornaAdministradorVoc : public ComandoSQL {
     public:
