@@ -222,7 +222,7 @@ class CadastroIS{
  class VocabulariosIS{
      public:
           /**
-           * @brief ListaVocabulario() é uma funcao que lista os vocabularios de acordo com a stub.
+           * @brief ListaVocabulario() é uma funcao que lista os vocabularios de acordo com os vocabularios disponiveis no banco de dados
            * @return Retorna uma lista de vocabularios vector<VocControlado>
            */
           virtual vector<VocControlado> ListaVocabulario() = 0;
@@ -306,14 +306,37 @@ class CadastroIS{
        */
      virtual Resultado AlterarIdiomaVocabulario(VocControlado&) throw(invalid_argument) = 0;
 
-      /**
-       * @brief Destrutor virtual default da classe VocabulariosIS.
+     /**
+       * @brief CadastraDesenvolvedor() é uma funcao que cadastra uma conta desenvolvedor como desenvolvedor de um vocabulario e
+       * registra no banco de dados.
+       * @param string
+       * @param string
+       * @return Resultado, retorna se foi sucesso ou falha.
        */
 
      virtual Resultado CadastraDesenvolvedor(string voc, string correio_eletronico) throw(invalid_argument) = 0;
+
+     /**
+       * @brief CriaDefinicaoTermo() é uma funcao que cria uma definicao para um termo e registra no banco de dados.
+       * @param Termo&
+       * @return Resultado, retorna se foi sucesso ou falha.
+       */
+
      virtual Resultado CriaDefinicaoTermo(const Termo&) throw(invalid_argument) = 0;
+
+     /**
+       * @brief RetornaAcessoUsuarioVocabulario() é uma funcao que consulta o banco de dados para verificar se o usuario
+       * eh desenvolvedor, administrador ou leitor de um vocabulario.
+       * @param ResultadoUsuario&
+       * @param string
+       * @return ResultadoUsuario, retorna objeto que contem as informações do usuário e o seu tipo.
+       */
+
      virtual ResultadoUsuario RetornaAcessoUsuarioVocabulario(const ResultadoUsuario&, string voc) throw(invalid_argument) = 0;
 
+     /**
+       * @brief Destrutor virtual default da classe VocabulariosIS.
+       */
      virtual ~VocabulariosIS(){}
  };
 
